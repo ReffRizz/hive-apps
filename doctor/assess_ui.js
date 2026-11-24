@@ -56,6 +56,61 @@
     return out;
   }
 
+  // ---------- real Qwen endpoint (hosted; phone reaches it over the internet) ----------
+  // A real Qwen 3.x is far too big to run inside a phone browser, so the apps call a
+  // hosted Qwen (your PC's Ollama exposed by a tunnel, or any cloud endpoint). Point the
+  // app at it ONCE with ?qwen=<url>&model=<name>; it's saved on the device and the param
+  // is stripped from the address bar. The endpoint is OpenAI-compatible
+  // (…/v1/chat/completions). Qwen only writes a short conversational intro — the
+  // deterministic engine still produces every grounded, cited fact, and the intro is
+  // run through the SAME applyGuards verifier (no invented numbers, no injected
+  // directives/urgency) before it is ever shown. If it drifts, the exact engine
+  // sentence is used instead. Nothing here can change triage.
+  const QK = "hive.qwen.url", QKM = "hive.qwen.model";
+  (function captureQwenCfg() {
+    try {
+      const p = new URLSearchParams(location.search);
+      let changed = false;
+      if (p.has("qwen")) { lsSet(QK, (p.get("qwen") || "").trim()); p.delete("qwen"); changed = true; }
+      if (p.has("model")) { lsSet(QKM, (p.get("model") || "").trim()); p.delete("model"); changed = true; }
+      if (p.has("qwenoff")) { lsDel(QK); lsDel(QKM); p.delete("qwenoff"); changed = true; }
+      if (changed && history.replaceState) {
+        const qs = p.toString();
+        history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+      }
+    } catch (e) { }
+  })();
+  function remoteCfg() {
+    const url = lsGet(QK, ""); if (!url) return null;
+    let u = url.replace(/\/+$/, "");
+    if (!/\/chat\/completions$/.test(u)) u += /\/v1$/.test(u) ? "/chat/completions" : "/v1/chat/completions";
+    return { url: u, model: lsGet(QKM, "") || "qwen2.5:7b-instruct" };
+  }
+  // Returns a verified conversational intro string, or null (caller falls back).
+  async function remoteIntro(question, html) {
+    const cfg = remoteCfg(); if (!cfg) return null;
+    const base = plainBase(html); if (!base) return null;          // nothing grounded to rephrase
+    const sys = "You are the calm, plain-language voice of a medical TRIAGE tool speaking to a worried person. " +
+      "Rephrase the STATUS sentence so it sounds warm, clear and human. STRICT RULES: keep the same meaning and the " +
+      "same triage grade number; do NOT add any medical advice, instructions, actions, diagnoses, symptoms, urgency " +
+      "words, or new numbers; do NOT tell them what to do. One or two short sentences. Output only the sentence.";
+    const usr = "Person said: " + question + "\nSTATUS to rephrase: " + base;
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 12000);
+    try {
+      const r = await fetch(cfg.url, {
+        method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal,
+        body: JSON.stringify({ model: cfg.model, temperature: 0.3, max_tokens: 160, stream: false,
+          messages: [{ role: "system", content: sys }, { role: "user", content: usr }] })
+      });
+      if (!r.ok) return null;
+      const j = await r.json();
+      const out = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+      if (!out) return null;
+      const safe = applyGuards(base, out);           // fact-verified: invented facts → exact engine sentence
+      return safe === base ? null : safe;            // only surface a genuinely reworded, verified intro
+    } catch (e) { return null; } finally { clearTimeout(t); }
+  }
+
   // On-device model (phone GPU) via the self-hosted MLC WebLLM runtime — the
   // same engine ai.js uses. Loaded once (one-time download), then fully offline.
   let llm = null, llmLoading = false, llmTried = false;
@@ -197,7 +252,8 @@
     const who = activeName() ? ("Profile: " + activeName()) : "Anonymous";
     const styleLbl = (mode === "chat" ? "Conversational" : "Standard");
     const integ = integrity ? (integrity.ok === true ? " · ✓ verified" : integrity.ok === false ? " · ⚠ integrity" : "") : "";
-    status.textContent = who + " · " + styleLbl + (assistReady ? " · Qwen Assist" : "") + integ + " · private · works offline · " + VERSION;
+    const qwen = assistReady ? " · Qwen Assist" : (remoteCfg() ? " · Qwen" : "");
+    status.textContent = who + " · " + styleLbl + qwen + integ + " · private · works offline · " + VERSION;
   }
   function updateModeBtn() {
     const b = $("modebtn"); if (!b) return;
@@ -258,16 +314,10 @@
     lsSet(MK, mode); updateModeBtn(); setStatus();
     if (mode !== "chat") { toast("Standard wording"); return; }
     toast("Conversational wording on — the safety note stays exact");
-    // Offer on-device phone AI (one-time download) if the phone supports it and
-    // no model is loaded yet. Declining still gives the professional summary.
-    if (!llm && !llmLoading && !llmTried && ("gpu" in navigator)) {
-      const ok = window.confirm(
-        "Run conversational wording on THIS phone, offline?\n\n" +
-        "It downloads a small on-device AI model once (a few hundred MB over Wi-Fi), " +
-        "then works with no internet. The medical assessment and the safety note are " +
-        "never changed by it.\n\nDownload now?");
-      if (ok) ensureLocalLLM();
-    }
+    // Conversational mode adds a plain-language summary over the deterministic answer.
+    // A real Qwen (reachable via the Assist server / a configured endpoint) writes a
+    // fact-verified intro; otherwise the deterministic plain-terms summary stands. No
+    // weak on-device model runs — it was unreliable and could misread the input.
   });
   updateModeBtn();
 
@@ -342,18 +392,22 @@
     // Qwen Assist (only when launched from qwen_server.js): Qwen cleans up the
     // wording so the engine routes better, and writes a verified intro. The engine
     // still produces the grounded, cited answer below. Falls back on any error.
-    let engineInput = text, serverIntro = null;
-    if (assistReady) {
-      // Launched from the Qwen Assist server (PC): Qwen understands + writes a verified intro.
-      try {
-        const r = await fetch(ASSIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, understand: true, converse: mode === "chat" }) });
-        if (r.ok) { const j = await r.json(); if (j && j.normalized_query) engineInput = j.normalized_query; if (j && j.assist_intro) serverIntro = j.assist_intro; }
-      } catch (e) { }
-    } else if (llm && mode === "chat") {
-      // On the phone (no server): the on-device Qwen understands the wording.
-      engineInput = await understandLocal(text);
+    // The deterministic engine always reads the user's ACTUAL words — no model is ever
+    // allowed to rewrite the input (a weak model turning "how are you" into "tired" is
+    // exactly the hallucination these apps must never make). A real Qwen, when reachable,
+    // only writes a short conversational intro that is fact-verified before it's shown.
+    const html = HIVETriage.turn(text);
+    let serverIntro = null;
+    if (mode === "chat") {
+      if (assistReady) {
+        try {
+          const r = await fetch(ASSIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, understand: false, converse: true }) });
+          if (r.ok) { const j = await r.json(); if (j && j.assist_intro) serverIntro = j.assist_intro; }
+        } catch (e) { }
+      }
+      // A real hosted Qwen (phone): verified conversational intro over the internet.
+      if (!serverIntro && remoteCfg()) { try { serverIntro = await remoteIntro(text, html); } catch (e) { } }
     }
-    const html = HIVETriage.turn(engineInput);
     const node = add("bot", html);
     // Conversational mode: prepend a plain-language summary above the full
     // deterministic breakdown. The clinical blocks and the locked safety note
@@ -375,7 +429,7 @@
     anchorExchange(youNode);
     setStatus();
     // Then (if on) let the on-device model warm the wording — layout already settled.
-    if (pt && base && !serverIntro) {   // server intro is already verified; skip local reword
+    if (pt && base && !serverIntro && llm) {   // only reword when a real model is loaded
       try {
         const worded = await rewordLocal(base);
         if (worded && worded !== base) pt.querySelector("p").textContent = worded;
