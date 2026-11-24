@@ -1935,7 +1935,16 @@ document.getElementById('discok').onclick=()=>{localStorage.setItem('hl_disc_ack
 </script>
 <footer style="max-width:900px;margin:28px auto 16px;padding:12px 16px;border-top:1px solid var(--line);color:var(--mut);font-size:12px;line-height:1.5;text-align:center">
   HIVE Lawyer · © 2026 Jeff Robinson · JR TraceCode. All rights reserved.<br>
-  Educational reference, not a substitute for professional legal advice. Not independently verified by a licensed lawyer — confirm anything important with a lawyer, paralegal, or legal clinic.
+  Educational reference, not a substitute for professional legal advice. Not independently verified by a licensed lawyer — confirm anything important with a lawyer, paralegal, or legal clinic.<br>
+  <span id="integ" style="opacity:.8"></span>
 </footer>
+<script>
+/* Content-addressed provenance (HIVE AtomStore / ARK1 principle): show the verified
+   source root this bundle was built from. Byte-identity is enforced by the build gate. */
+(async function(){ try{
+  const m=await (await fetch('integrity_manifest.json',{cache:'no-store'})).json();
+  const e=document.getElementById('integ'); if(e&&m&&m.root) e.textContent='✓ built from '+m.counts.atoms+' verified sources · integrity root '+String(m.root).slice(0,12)+'…';
+}catch(e){} })();
+</script>
 </body>
 </html>

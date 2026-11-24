@@ -1,0 +1,64 @@
+{
+ "schema": "hive-integrity/1",
+ "product": "HIVE Doctor",
+ "author": "Jeff Robinson",
+ "publisher": "JR TraceCode",
+ "tech": "Content-addressed forged/stale rejection — reuses HIVE AtomStore (MATHLAB_KERNEL) + ARK1 Merkle vault principles.",
+ "algo": "sha256",
+ "created": "2026-11-24",
+ "atoms": {
+  "hive_symptom_map.json": {
+   "sha256": "b67a30a7b0a6a25092a3f872956fbfdb23a2e88e514e73dd968e1efb23aa54aa",
+   "bytes": 429100
+  },
+  "doctor_book.json": {
+   "sha256": "8c3d4880e49b52ba9186465cbae79280f2ffe41e53eb57aa01486a7e8830bc8b",
+   "bytes": 4696636
+  },
+  "hive_anatomy_ref.json": {
+   "sha256": "4989423be6dab0d8037bcaeb0ffcf85a38dca4af5c6f18530d6e95dac887f3b0",
+   "bytes": 26741
+  },
+  "hive_histology_ref.json": {
+   "sha256": "d5523d0b5b2308412d3d108b74abc496f6d186565cf1a508768e87ebad84feda",
+   "bytes": 22568
+  },
+  "hive_care_plans.json": {
+   "sha256": "f6701f0fa36f2d9e79d67a061ee05cf7726dfbd1ce4c94e36ca5b344825a056a",
+   "bytes": 175076
+  },
+  "hive_med_safety.json": {
+   "sha256": "3453b1d150a24b12ba120edd48dd1cc70e533171bb16108fb61aecd2f3af5778",
+   "bytes": 118185
+  },
+  "hive_lexicon.json": {
+   "sha256": "ab3fd83056c73f328372d3156eeea890915dd568dfd9983b789124ae20661434",
+   "bytes": 10941
+  },
+  "hive_support.json": {
+   "sha256": "870f62f6a2f4023e5e66ee9029993993f0c55f772411f276196b3d3c776dcaeb",
+   "bytes": 12135
+  },
+  "hive_specialists.json": {
+   "sha256": "8f3b3f402dcf16d31aaf5c0815545e5b0537701a478fd8b8dfac039c7f2c5e1a",
+   "bytes": 6355
+  },
+  "figures.json": {
+   "sha256": "6b795924a1cef23c404d2657015de73a0f5ccc8278d0a83bdbd8a794504cae2a",
+   "bytes": 499503
+  },
+  "photos.json": {
+   "sha256": "28b5f8648a3b0af75238a2993c09753cec3e00ad4f4ab0d5c432ef9ebd91fcfd",
+   "bytes": 210344
+  },
+  "triage.js": {
+   "sha256": "8d784778bad1bd928f2dcf34f06d72a66cb3e51a3371034cb655f73c65e00f4b",
+   "bytes": 98532
+  }
+ },
+ "root": "d21fd50ce6102d0dfdaafe1967c97da3f30c41badda5c005cdf5924fe1289bad",
+ "counts": {
+  "atoms": 12,
+  "bytes": 6306116
+ }
+}

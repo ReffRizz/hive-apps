@@ -21,6 +21,7 @@
   // Qwen Assist server endpoint (present only when the app is launched from
   // assist/qwen_server.js). Same-origin; absent on the static site / phone PWA.
   const ASSIST_URL = "/assist"; let assistReady = false;
+  let integrity = null;   // {ok:true|false|null} from HIVEIntegrity — content-addressed forged/stale check
   const AI_MODEL = "hive-local-qwen3-8b:latest";
   const AI_SYS = "You are the spoken-style summary voice of a medical TRIAGE tool speaking to a worried person. " +
     "Rewrite the status sentence to sound calm, clear and professional. STRICT RULES: do not add any medical advice, " +
@@ -195,7 +196,8 @@
     const n = (HIVETriage._state.map && HIVETriage._state.map.counts) ? HIVETriage._state.map.counts : { conditions: 0, symptoms: 0 };
     const who = activeName() ? ("Profile: " + activeName()) : "Anonymous";
     const styleLbl = (mode === "chat" ? "Conversational" : "Standard");
-    status.textContent = who + " · " + styleLbl + (assistReady ? " · Qwen Assist" : "") + " · private · works offline · " + VERSION;
+    const integ = integrity ? (integrity.ok === true ? " · ✓ verified" : integrity.ok === false ? " · ⚠ integrity" : "") : "";
+    status.textContent = who + " · " + styleLbl + (assistReady ? " · Qwen Assist" : "") + integ + " · private · works offline · " + VERSION;
   }
   function updateModeBtn() {
     const b = $("modebtn"); if (!b) return;
@@ -315,6 +317,11 @@
     renderDoor();
     // first run shows the door; afterwards go straight in
     if (lsGet(ACK, "") === "1") { door.classList.add("hidden"); greet(activeName()); q && q.focus(); }
+    // Verify the knowledge base against its content-addressed manifest (AtomStore/
+    // ARK1 forged/stale rejection). Non-blocking; surfaced in the status line.
+    (async () => {
+      try { if (window.HIVEIntegrity) { integrity = await HIVEIntegrity.verify(); setStatus(); } } catch (e) { }
+    })();
     // Probe for the Qwen Assist server (no model call: understand/converse off).
     (async () => {
       try {

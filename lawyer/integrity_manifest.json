@@ -1,0 +1,104 @@
+{
+ "schema": "hive-integrity/1",
+ "product": "HIVE Lawyer",
+ "author": "Jeff Robinson",
+ "publisher": "JR TraceCode",
+ "tech": "Content-addressed forged/stale rejection — reuses HIVE AtomStore (MATHLAB_KERNEL) + ARK1 Merkle vault principles.",
+ "algo": "sha256",
+ "created": "2026-11-24",
+ "atoms": {
+  "data/areas.json": {
+   "sha256": "ed941b0bc5c6d6e9924bcd01f19356d9ba41bd4622a5f58abe479423439f41f9",
+   "bytes": 58385
+  },
+  "data/book.json": {
+   "sha256": "283b634f1faf125ef84af76767748cda322cfa9fb8e13eb949640c52c1c1950b",
+   "bytes": 55983
+  },
+  "data/book_ca_ext.json": {
+   "sha256": "941517bc7f5522cbe17808706f6215647cbe903b14daca23cf912814e22da41a",
+   "bytes": 46475
+  },
+  "data/book_federal.json": {
+   "sha256": "701a09187e052c990b5ebaac894bf4fcec43a9bed2eb78770b57c74c6b97b946",
+   "bytes": 9360
+  },
+  "data/book_topics.json": {
+   "sha256": "5dacb15666f50d5a0e98cf774cd709281f1642972f8eb23ca8249c6bff679a53",
+   "bytes": 65106
+  },
+  "data/book_topics2.json": {
+   "sha256": "772068d15e2da17b28a05e9fcdd2dd4c3e4f5183f5bfac74a3b92af16ba04084",
+   "bytes": 34463
+  },
+  "data/book_us.json": {
+   "sha256": "8e69325e7c56f8b5455de10e700e5865557e8fa3d6283e96dc3da5e92580ed57",
+   "bytes": 41720
+  },
+  "data/book_us_ext.json": {
+   "sha256": "cc82c413af84f8d7b1be579ba7b788ea9ff5eb0bde85d9c636cbe4b2534d8039",
+   "bytes": 39120
+  },
+  "data/caselaw.json": {
+   "sha256": "c5fb9df430148832d5fc7df277571950e5c84e45ebc4deb5e3e13465beb174a5",
+   "bytes": 59219
+  },
+  "data/chapters.json": {
+   "sha256": "45f3a9f61fdda1c1bcce3761427ff3fe309c215eb4caf08c3d257e8be9b4b657",
+   "bytes": 310119
+  },
+  "data/config.json": {
+   "sha256": "a28ff60dc27da6f38d9b62d1777ddc2faafd39440f6fdf0381efe42b7fc41284",
+   "bytes": 1810
+  },
+  "data/deadlines.json": {
+   "sha256": "92c92e84256c791423a119ab693bb8102a8747fb4ea68e2a9d0d8b26025b16ba",
+   "bytes": 19782
+  },
+  "data/deadlines_us.json": {
+   "sha256": "ad01467dc7f55238fe377e284104b89e26542b40847e9ed5e7a95a711b9be908",
+   "bytes": 9791
+  },
+  "data/faq.json": {
+   "sha256": "4c41d456244df11e54c38ba1a4619525c97a14383680946795f16856d5d897b4",
+   "bytes": 61299
+  },
+  "data/figures.json": {
+   "sha256": "f279d40b0094f1ded925c716a840bc3c06ceca985aa15b0a5bd3b03e178677c9",
+   "bytes": 298706
+  },
+  "data/glossary.json": {
+   "sha256": "1df5e4b144f9a5156a27bafab05117b7a0fc55cb41d4f899cc26f58a078f00d7",
+   "bytes": 50366
+  },
+  "data/resources.json": {
+   "sha256": "985336f0c57f1ea36eab4dc1ca71e5797db1aa465c28ef5e10e335fa421cd3ac",
+   "bytes": 2581
+  },
+  "data/scripts.json": {
+   "sha256": "e5ad54895d813c298f899c66f6f6140bdcf51edd02f128a42f137be35d628d82",
+   "bytes": 1972
+  },
+  "data/sentencing.json": {
+   "sha256": "ba2bfde45a8d4ade05a8458b1004c0ae7608c398320dc9c6f8de34a559152843",
+   "bytes": 8089
+  },
+  "data/statutes_ca_core.json": {
+   "sha256": "f1037e6f62856d6dbaad9210f247f27d60e40919cc1e3d9c8cf0cee8a8697473",
+   "bytes": 6842
+  },
+  "data/statutes_seed.json": {
+   "sha256": "47077705714384435265c5f4e39f9d400a4c456abe1e4239a079399398817797",
+   "bytes": 6099
+  },
+  "engine/lawyer.js": {
+   "sha256": "e32a96d60df545068c64e1f2b1a26204868c2a71c213a3c30b0e8d233ce64ae0",
+   "bytes": 14778
+  }
+ },
+ "root": "40298ed63e580364771f01662a778cfc7898f13b5997973e753490f1288f629e",
+ "counts": {
+  "atoms": 22,
+  "bytes": 1202065
+ }
+}
