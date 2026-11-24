@@ -754,7 +754,10 @@
   }
   function carePlanBlock(rows) {
     if (!E.lastText || !TREAT_INTENT.test(E.lastText)) return "";
-    let targets = namedConditions(E.lastText).slice(0, 2);
+    // Only build a plan for a named condition when the differential also supports it,
+    // so a stray keyword (e.g. "burn" inside "sun burn") can't pull in a contradicting plan.
+    const rowIds = new Set(rows.map(r => r.c.id));
+    let targets = namedConditions(E.lastText).filter(id => rowIds.has(id)).slice(0, 2);
     if (!targets.length) targets = rows.slice(0, 1).map(r => r.c.id);
     if (!targets.length) return "";
     let html = `<div class="blk plan"><div class="htag">Care plan — from check-up to recovery</div>`;
