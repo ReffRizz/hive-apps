@@ -1,0 +1,312 @@
+{
+ "id": "pt",
+ "name": "Portugal",
+ "flag": "🇵🇹",
+ "country": "Portugal",
+ "region": "Europe",
+ "jur": "PT",
+ "version": "1.0",
+ "kind": "traveler",
+ "note": "Traveler-focused Portugal pack built from Government of Canada travel advice (fetched 2026-11-24): emergencies (112), ID, if detained, drugs, local offences, driving, entry rules, consular contacts. Verify before relying on it; not local legal advice.",
+ "language": {
+  "code": "pt",
+  "name": "Portuguese"
+ },
+ "phrasebook": [
+  {
+   "en": "I want to speak to a lawyer.",
+   "local": "Quero falar com um advogado.",
+   "pron": "KEH-roo fah-LAR kong oong ahd-voo-GAH-doo",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I want to contact the Canadian embassy.",
+   "local": "Quero contactar a embaixada do Canadá.",
+   "pron": "KEH-roo kon-tak-TAR ah em-bye-SHAH-dah doo kah-nah-DAH",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I do not understand.",
+   "local": "Não compreendo.",
+   "pron": "nowng kom-pree-EN-doo",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I need an interpreter.",
+   "local": "Preciso de um intérprete.",
+   "pron": "preh-SEE-zoo deh oong een-TAIR-preh-teh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I will not sign this.",
+   "local": "Não vou assinar isto.",
+   "pron": "nowng voh ah-see-NAR EESH-too",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "Am I free to go?",
+   "local": "Posso ir embora?",
+   "pron": "POH-soo eer em-BOH-rah",
+   "note": "If stopped or detained."
+  }
+ ],
+ "resources": [
+  {
+   "name": "Emergency (police, ambulance, fire)",
+   "type": "emergency",
+   "contact": "112",
+   "note": "All services."
+  },
+  {
+   "name": "Embassy of Canada (Lisbon)",
+   "type": "consular",
+   "contact": "+351 21 316 4600",
+   "note": "Avenida da Liberdade 196-200, 3rd Floor, 1269-121 Lisbon."
+  },
+  {
+   "name": "Honorary Consul of Canada (Ponta Delgada, Azores)",
+   "type": "consular",
+   "contact": "+351 296 281 488",
+   "note": "Rua D'Agua, 28, 9500-040 Ponta Delgada."
+  },
+  {
+   "name": "Canada Emergency Watch & Response (24/7)",
+   "type": "consular",
+   "contact": "00-800-2326-6831",
+   "note": "Toll-free from many European countries; otherwise call Ottawa collect."
+  }
+ ],
+ "getLawyer": [
+  {
+   "id": "pt_detained",
+   "when": [
+    "arrested",
+    "detained",
+    "police took me",
+    "in custody",
+    "charged",
+    "i was arrested"
+   ],
+   "why": "If you are arrested or detained in Portugal, ask for a lawyer and for the Canadian consular office to be notified (Embassy of Canada (Lisbon): +351 21 316 4600). Sign nothing you do not understand. Dual citizenship is recognized, but Canadian consular help may be limited."
+  },
+  {
+   "id": "pt_drugs",
+   "when": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed",
+    "pills"
+   ],
+   "why": "Penalties for possession, use or trafficking of illegal drugs in Portugal are severe — jail or heavy fines. Contact the Canadian consular office and get a local lawyer; say and sign nothing without counsel."
+  }
+ ],
+ "deadlines": [
+  {
+   "id": "pt_schengen_90",
+   "jur": "PT",
+   "area": "immigration",
+   "title": "Schengen 90/180 — max 90 days in any 180",
+   "rule": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "trigger": [
+    "how long can i stay",
+    "tourist",
+    "overstay",
+    "visa",
+    "schengen",
+    "etias",
+    "passport valid",
+    "stay in portugal"
+   ],
+   "source": "Government of Canada travel advice — Portugal",
+   "verify": false,
+   "urgency": "serious"
+  },
+  {
+   "id": "pt_driving",
+   "jur": "PT",
+   "area": "traffic",
+   "title": "Drive up to 185 days on a Canadian licence (0.05% alcohol limit)",
+   "rule": "A valid Canadian licence can be used for up to 185 DAYS if you are not a Portuguese resident. Minimum driving age 18. Blood-alcohol limit 0.05%. Keep a reflective vest and warning triangle in the vehicle (triangle placed at least 30 metres behind the car); low-beam headlights at all times; child seats for children under 12 or under 135 cm.",
+   "trigger": [
+    "driving",
+    "drive in portugal",
+    "rent a car",
+    "licence",
+    "license",
+    "idp"
+   ],
+   "source": "Government of Canada travel advice — Portugal",
+   "verify": false,
+   "urgency": "info"
+  }
+ ],
+ "sentencing": [
+  {
+   "id": "pt_drug_offence",
+   "jur": "PT",
+   "name": "Drug possession / trafficking (Portugal)",
+   "section": "Portugal criminal law",
+   "class": "serious",
+   "triggers": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed"
+   ],
+   "mandatory_minimum": "Not stated in the travel advice.",
+   "first_offender": "Convicted offenders can expect jail sentences or heavy fines.",
+   "maximum": "Severe penalties for trafficking.",
+   "collateral": "Criminal record; removal and re-entry consequences.",
+   "source": "Government of Canada travel advice — Portugal",
+   "verify": false,
+   "get_lawyer_urgent": true
+  }
+ ],
+ "statutes": [
+  {
+   "id": "pt_id_law",
+   "jur": "PT",
+   "act": "Portugal law",
+   "section": "ID",
+   "area": "police_rights",
+   "title": "Identification",
+   "summary": "Carry valid photo ID at all times — local authorities can ask to see it. Carry a photocopy or digital copy of your passport and keep another copy somewhere safe.",
+   "source": "https://travel.gc.ca/destinations/portugal"
+  }
+ ],
+ "book": [
+  {
+   "id": "pt_police",
+   "jur": "PT",
+   "area": "police_rights",
+   "title": "Police, ID, and if you're detained in Portugal",
+   "overview": "Carry valid photo ID at all times — local authorities can ask to see it. Carry a photocopy or digital copy of your passport and keep another copy somewhere safe. If you are arrested or detained, ask for a lawyer and ask that the Canadian consular office be told. Emergency: 112. Dual citizenship is recognized, but Canadian consular help may be limited.",
+   "your_rights": [
+    "Ask for a lawyer before answering questions.",
+    "Ask the authorities to notify the Canadian consular office.",
+    "Ask for an interpreter if you do not understand the language.",
+    "Do not sign anything you do not understand."
+   ],
+   "key_steps": [
+    "Carry ID (or a copy) as the local rules require.",
+    "If detained: ask for a lawyer, an interpreter, and the Canadian consular office.",
+    "Save the emergency number (112) and the consular contact (+351 21 316 4600).",
+    "Report theft to the police to get a report for insurance."
+   ],
+   "common_mistakes": [
+    "Not carrying ID or a copy.",
+    "Signing documents you cannot read.",
+    "Assuming dual citizenship guarantees Canadian consular help."
+   ],
+   "when_lawyer": "Immediately on arrest or detention — ask for a lawyer and the Canadian consular office.",
+   "sources": [
+    {
+     "title": "Government of Canada — Portugal travel advice",
+     "url": "https://travel.gc.ca/destinations/portugal"
+    }
+   ],
+   "statute": "Portugal criminal procedure; Vienna Convention on Consular Relations",
+   "verify": false
+  },
+  {
+   "id": "pt_immigration",
+   "jur": "PT",
+   "area": "immigration",
+   "title": "Entering and staying in Portugal",
+   "overview": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "your_rights": [
+    "Entry without a visa for the tourist period stated, if you meet the passport-validity rule.",
+    "To be told the reason if you are refused entry.",
+    "To contact the Canadian consular office if you are detained at the border."
+   ],
+   "key_steps": [
+    "Check your passport's expiry date against the validity rule before you book.",
+    "Count your days carefully and keep proof of your entry date.",
+    "Carry your return or onward ticket and proof of funds.",
+    "Apply for any required authorization only through official government websites."
+   ],
+   "common_mistakes": [
+    "Travelling on a passport that expires too soon.",
+    "Overstaying — it can mean fines, removal, and a ban on return.",
+    "Paying unofficial websites for travel authorizations."
+   ],
+   "when_lawyer": "If you are refused entry, have overstayed, or want to stay longer or work.",
+   "sources": [
+    {
+     "title": "Government of Canada — Portugal travel advice",
+     "url": "https://travel.gc.ca/destinations/portugal"
+    }
+   ],
+   "statute": "Portugal immigration rules",
+   "verify": false
+  },
+  {
+   "id": "pt_criminal",
+   "jur": "PT",
+   "area": "criminal",
+   "title": "Local laws that catch visitors in Portugal",
+   "overview": "Penalties for possession, use or trafficking of illegal drugs are severe — convicted offenders can expect jail sentences or heavy fines. Other local rules that surprise visitors: Photographing police, military, or sensitive installations is prohibited. Filming or photographing people without their consent is illegal. Causing a forest fire is a criminal offence, even if accidental. Drug penalties can include fines, administrative sanctions, mandatory treatment, or jail — do not carry packages for others.",
+   "your_rights": [
+    "The right to a lawyer if you are charged.",
+    "The right to have the Canadian consular office notified.",
+    "The right to an interpreter in proceedings you do not understand."
+   ],
+   "key_steps": [
+    "Do not carry packages or luggage for anyone else.",
+    "Learn the local rules below before you go — ignorance is not a defence.",
+    "Photographing police, military, or sensitive installations is prohibited.",
+    "Filming or photographing people without their consent is illegal."
+   ],
+   "common_mistakes": [
+    "Assuming rules are the same as in Canada.",
+    "Carrying or using drugs because they seem tolerated locally."
+   ],
+   "when_lawyer": "As soon as you are questioned about, or charged with, any offence.",
+   "sources": [
+    {
+     "title": "Government of Canada — Portugal travel advice",
+     "url": "https://travel.gc.ca/destinations/portugal"
+    }
+   ],
+   "statute": "Portugal criminal law",
+   "verify": false
+  },
+  {
+   "id": "pt_safety",
+   "jur": "PT",
+   "area": "safety",
+   "title": "Crime, scams and driving in Portugal",
+   "overview": "Pickpocketing and bag snatching are common in busy tourist areas and on trams, especially in Lisbon and Porto; drink spiking is a risk in bars and nightclubs. Driving: A valid Canadian licence can be used for up to 185 DAYS if you are not a Portuguese resident. Minimum driving age 18. Blood-alcohol limit 0.05%. Keep a reflective vest and warning triangle in the vehicle (triangle placed at least 30 metres behind the car); low-beam headlights at all times; child seats for children under 12 or under 135 cm.",
+   "your_rights": [
+    "To report a crime to the police and receive a report for insurance.",
+    "To consular assistance from Canada if you are a victim of crime.",
+    "To drive on your Canadian licence for the period stated, if you meet the conditions."
+   ],
+   "key_steps": [
+    "Keep valuables out of sight and bags closed in crowds and on transit.",
+    "Use only licensed taxis and check ATMs before using your card.",
+    "Carry the required safety equipment and documents when driving.",
+    "Report theft promptly and contact your card issuer."
+   ],
+   "common_mistakes": [
+    "Leaving valuables in a parked car.",
+    "Driving without the required permit, equipment, or insurance.",
+    "Ignoring local traffic-zone and alcohol rules."
+   ],
+   "when_lawyer": "After a serious collision, any arrest, or a significant theft or fraud.",
+   "sources": [
+    {
+     "title": "Government of Canada — Portugal travel advice",
+     "url": "https://travel.gc.ca/destinations/portugal"
+    }
+   ],
+   "statute": "Portugal road traffic law",
+   "verify": false
+  }
+ ]
+}

@@ -1,0 +1,566 @@
+{
+  "schema": "hive.doctor.histology/v1",
+  "title": "HIVE Doctor — Micro-anatomy: the body sliced to the cell",
+  "author": "Jeff",
+  "version": "0.1.0",
+  "updated": "2026-11-14",
+  "review_status": "UNVERIFIED",
+  "safety": "Educational micro-anatomy/histology reference. Not a diagnosis. Pending clinician sign-off.",
+  "entries": [
+    {
+      "id": "cell",
+      "topic": "The cell — the basic unit",
+      "phrases": [
+        "cell",
+        "what is a cell",
+        "cell structure",
+        "organelles",
+        "cellular level",
+        "inside a cell"
+      ],
+      "scale": "whole body → organ → tissue → CELL → organelle",
+      "layers": [
+        {
+          "level": "Cell membrane",
+          "detail": "A thin oily barrier controlling what enters and leaves the cell."
+        },
+        {
+          "level": "Cytoplasm",
+          "detail": "The jelly interior where reactions happen and organelles sit."
+        },
+        {
+          "level": "Nucleus",
+          "detail": "The control centre holding DNA (the genetic instructions)."
+        },
+        {
+          "level": "Mitochondria",
+          "detail": "The 'power plants' that make energy (ATP) — plentiful in busy cells like heart and muscle."
+        },
+        {
+          "level": "Ribosomes & endoplasmic reticulum",
+          "detail": "Build and fold proteins."
+        },
+        {
+          "level": "Golgi apparatus",
+          "detail": "Packages and ships proteins."
+        },
+        {
+          "level": "Lysosomes",
+          "detail": "Recycling and clean-up units."
+        }
+      ],
+      "function": "The cell is the smallest living unit; trillions of specialised cells build every tissue and organ.",
+      "clinical": "Many diseases start at the cell: too little energy (mitochondrial problems), uncontrolled division (cancer), or cell death from lost blood supply (a heart attack is heart-muscle cells dying).",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "tissue_epithelial",
+      "topic": "Epithelial tissue",
+      "phrases": [
+        "epithelial tissue",
+        "epithelium",
+        "lining tissue",
+        "skin cells lining"
+      ],
+      "scale": "organ surface → epithelial sheet → epithelial cells",
+      "layers": [
+        {
+          "level": "Function",
+          "detail": "Covers surfaces and lines cavities, glands, and vessels — a barrier and a gateway."
+        },
+        {
+          "level": "Types",
+          "detail": "Squamous (flat — for exchange, e.g. air sacs), cuboidal, columnar (tall — lining the gut), and glandular (secreting)."
+        },
+        {
+          "level": "Cells",
+          "detail": "Tightly joined cells sitting on a basement membrane; they renew quickly."
+        }
+      ],
+      "function": "Protection, absorption, secretion, and filtration happen at epithelial surfaces.",
+      "clinical": "Most cancers (carcinomas) arise from epithelium. Barrier breakdown lets in infection.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "tissue_connective",
+      "topic": "Connective tissue",
+      "phrases": [
+        "connective tissue",
+        "collagen",
+        "fat tissue",
+        "cartilage bone blood connective"
+      ],
+      "scale": "body framework → connective tissue → fibres + cells + matrix",
+      "layers": [
+        {
+          "level": "Function",
+          "detail": "Supports, binds, and protects — the body's scaffolding and packing."
+        },
+        {
+          "level": "Types",
+          "detail": "Loose/fatty tissue, dense fibrous (tendons, ligaments), cartilage, bone, and blood (a fluid connective tissue)."
+        },
+        {
+          "level": "Make-up",
+          "detail": "Cells scattered in a matrix of fibres (collagen, elastin) and ground substance."
+        }
+      ],
+      "function": "Holds the body together, cushions, stores energy (fat), and (as blood) transports.",
+      "clinical": "Collagen disorders weaken joints and vessels; cartilage wear causes osteoarthritis.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "tissue_muscle",
+      "topic": "Muscle tissue",
+      "phrases": [
+        "muscle tissue",
+        "muscle cells",
+        "how muscle contracts",
+        "actin myosin"
+      ],
+      "scale": "muscle → fascicle → muscle fibre → myofibril → actin/myosin",
+      "layers": [
+        {
+          "level": "Three types",
+          "detail": "Skeletal (voluntary, striped), cardiac (heart, striped, automatic), smooth (organs/vessels, automatic)."
+        },
+        {
+          "level": "Muscle fibre",
+          "detail": "A long muscle cell packed with myofibrils."
+        },
+        {
+          "level": "Myofibril",
+          "detail": "Repeating units (sarcomeres) of the proteins actin and myosin."
+        },
+        {
+          "level": "Contraction",
+          "detail": "Myosin pulls on actin (powered by ATP and triggered by calcium), shortening the fibre."
+        }
+      ],
+      "function": "Generates movement, pumps blood, and moves contents through organs.",
+      "clinical": "Loss of blood supply kills muscle (heart attack); breakdown releases contents (rhabdomyolysis); nerve/calcium problems cause weakness or cramps.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "tissue_nervous",
+      "topic": "Nervous tissue",
+      "phrases": [
+        "nervous tissue",
+        "neuron",
+        "nerve cells",
+        "how nerves work",
+        "glial cells"
+      ],
+      "scale": "nervous system → nerve → neuron + glia → synapse",
+      "layers": [
+        {
+          "level": "Neuron",
+          "detail": "The signalling cell: dendrites receive, the cell body processes, the axon sends signals."
+        },
+        {
+          "level": "Myelin",
+          "detail": "A fatty insulating sheath on many axons that speeds signals."
+        },
+        {
+          "level": "Synapse",
+          "detail": "The gap where one neuron passes a chemical message (neurotransmitter) to the next."
+        },
+        {
+          "level": "Glia",
+          "detail": "Support cells that feed, insulate, and protect neurons."
+        }
+      ],
+      "function": "Carries fast electrical/chemical signals for sensation, movement, and thought.",
+      "clinical": "Losing myelin slows signals (as in MS); blocked blood supply kills neurons (stroke); neurons mostly don't regrow, so damage can be lasting.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "vascular_tree",
+      "topic": "The vascular tree (artery to vein)",
+      "phrases": [
+        "arteriole",
+        "capillary",
+        "vascular tree",
+        "blood vessel layers",
+        "artery to vein",
+        "venule",
+        "vessel wall"
+      ],
+      "scale": "aorta → artery → ARTERIOLE → CAPILLARY → venule → vein",
+      "layers": [
+        {
+          "level": "Arteries",
+          "detail": "Thick, muscular, elastic vessels carrying blood away from the heart at high pressure."
+        },
+        {
+          "level": "Arterioles",
+          "detail": "The smallest arteries — their muscular walls tighten or relax to control blood flow and blood pressure."
+        },
+        {
+          "level": "Capillaries",
+          "detail": "One-cell-thick vessels where oxygen, nutrients, and waste are exchanged with tissues."
+        },
+        {
+          "level": "Venules & veins",
+          "detail": "Collect blood and return it to the heart at low pressure; veins have valves to stop backflow."
+        },
+        {
+          "level": "Wall layers",
+          "detail": "Most vessels have three coats: intima (inner endothelium), media (muscle/elastic), adventitia (outer support)."
+        },
+        {
+          "level": "Endothelium",
+          "detail": "The single-cell inner lining of every vessel — controls clotting, tone, and leakiness."
+        }
+      ],
+      "function": "Delivers oxygen/nutrients to every cell and removes waste; arterioles set blood pressure, capillaries do the exchange.",
+      "clinical": "Arteriole tone drives blood pressure; capillary leak causes swelling; endothelial damage starts atherosclerosis and clots; a blocked vessel starves the tissue beyond it.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "blood",
+      "topic": "Blood & its cells",
+      "phrases": [
+        "blood",
+        "blood cells",
+        "red cells white cells platelets",
+        "what is in blood",
+        "haemoglobin"
+      ],
+      "scale": "blood → plasma + cells → red cells / white cells / platelets",
+      "layers": [
+        {
+          "level": "Plasma",
+          "detail": "The fluid (mostly water) carrying proteins, salts, nutrients, and waste."
+        },
+        {
+          "level": "Red cells",
+          "detail": "Carry oxygen on haemoglobin; made in the bone marrow."
+        },
+        {
+          "level": "White cells",
+          "detail": "The immune defenders (several types) that fight infection."
+        },
+        {
+          "level": "Platelets",
+          "detail": "Cell fragments that plug leaks and start clotting."
+        }
+      ],
+      "function": "Transports oxygen, nutrients, hormones, heat, and immune cells; clots to stop bleeding.",
+      "clinical": "Low red cells = anaemia; abnormal white cells = leukaemia/infection; too few platelets = easy bleeding; too much clotting = DVT/stroke.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "heart_layers",
+      "topic": "Heart — sliced to the cell",
+      "phrases": [
+        "heart tissue",
+        "heart cells",
+        "myocardium",
+        "cardiomyocyte",
+        "heart microscopic",
+        "heart layers"
+      ],
+      "scale": "heart → chambers → myocardium → cardiac muscle cells",
+      "layers": [
+        {
+          "level": "Organ",
+          "detail": "Four-chambered pump with valves and its own coronary blood supply."
+        },
+        {
+          "level": "Wall layers",
+          "detail": "Endocardium (inner lining), myocardium (the thick muscle), epicardium/pericardium (outer covering)."
+        },
+        {
+          "level": "Myocardium",
+          "detail": "Heart-muscle tissue that contracts as one coordinated unit."
+        },
+        {
+          "level": "Cells",
+          "detail": "Cardiomyocytes — branching, striped cells joined by 'intercalated discs' that pass the electrical signal cell-to-cell; packed with mitochondria."
+        }
+      ],
+      "function": "Coordinated contraction of cardiomyocytes pumps blood around the body.",
+      "clinical": "A blocked coronary artery starves a patch of myocardium and the cells die — a heart attack. Scarred or stretched muscle causes heart failure and arrhythmias.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "lung_layers",
+      "topic": "Lungs — sliced to the cell",
+      "phrases": [
+        "lung tissue",
+        "alveoli",
+        "lung cells",
+        "pneumocytes",
+        "lung microscopic",
+        "gas exchange cells"
+      ],
+      "scale": "lungs → lobes → bronchioles → alveoli → alveolar cells",
+      "layers": [
+        {
+          "level": "Airways",
+          "detail": "Trachea → bronchi → bronchioles branch like a tree."
+        },
+        {
+          "level": "Alveoli",
+          "detail": "~300 million tiny air sacs wrapped in capillaries — the exchange surface."
+        },
+        {
+          "level": "Type I cells",
+          "detail": "Ultra-thin cells across which oxygen and CO₂ diffuse."
+        },
+        {
+          "level": "Type II cells",
+          "detail": "Make surfactant, a soap-like film that keeps the sacs from collapsing."
+        }
+      ],
+      "function": "Oxygen crosses the thin alveolar wall into capillary blood; CO₂ crosses out to be breathed away.",
+      "clinical": "Fluid or pus in the alveoli (pneumonia, heart failure) blocks exchange; too little surfactant collapses sacs; destroyed walls = emphysema/COPD.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "kidney_layers",
+      "topic": "Kidney — sliced to the cell",
+      "phrases": [
+        "kidney tissue",
+        "nephron",
+        "glomerulus",
+        "kidney cells",
+        "kidney microscopic",
+        "how the kidney filters"
+      ],
+      "scale": "kidney → cortex/medulla → nephron → glomerulus + tubule cells",
+      "layers": [
+        {
+          "level": "Organ",
+          "detail": "Filters blood into urine; ~1 million filtering units each."
+        },
+        {
+          "level": "Nephron",
+          "detail": "The working unit: a filter (glomerulus) plus a long tubule."
+        },
+        {
+          "level": "Glomerulus",
+          "detail": "A tuft of capillaries that filters fluid out of the blood."
+        },
+        {
+          "level": "Tubule cells",
+          "detail": "Line the tubule and reclaim water, salts, and nutrients while passing waste on as urine."
+        }
+      ],
+      "function": "Filters waste and balances water, salts, acid, and blood pressure, drop by drop.",
+      "clinical": "Damaged glomeruli leak protein/blood; lost nephrons = chronic kidney disease; a blocked, infected kidney is an emergency.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "gut_layers",
+      "topic": "Gut wall — sliced to the cell",
+      "phrases": [
+        "gut wall",
+        "intestine layers",
+        "mucosa",
+        "enterocytes",
+        "gut tissue",
+        "bowel microscopic",
+        "villi"
+      ],
+      "scale": "gut tube → wall layers → mucosa → lining cells",
+      "layers": [
+        {
+          "level": "Wall layers",
+          "detail": "From inside out: mucosa (lining), submucosa, muscularis (the moving muscle), serosa (outer)."
+        },
+        {
+          "level": "Villi",
+          "detail": "Finger-like folds of mucosa that hugely increase the absorbing surface."
+        },
+        {
+          "level": "Enterocytes",
+          "detail": "Absorbing cells on the villi that take up digested nutrients."
+        },
+        {
+          "level": "Other cells",
+          "detail": "Mucus-making goblet cells, hormone cells, and immune cells guarding the gut."
+        }
+      ],
+      "function": "Muscle layers push food along while the mucosa digests and absorbs it.",
+      "clinical": "Flattened villi = malabsorption (coeliac); inflamed mucosa = IBD; a full-thickness break = perforation (an emergency); mucosal cells can turn cancerous.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "skin_layers",
+      "topic": "Skin — sliced to the cell",
+      "phrases": [
+        "skin layers",
+        "epidermis dermis",
+        "skin cells",
+        "keratinocytes",
+        "skin microscopic"
+      ],
+      "scale": "skin → epidermis → dermis → subcutis → skin cells",
+      "layers": [
+        {
+          "level": "Epidermis",
+          "detail": "Thin outer barrier of stacked keratinocytes, renewing from the bottom up."
+        },
+        {
+          "level": "Melanocytes",
+          "detail": "Pigment cells that give skin colour and protect against UV."
+        },
+        {
+          "level": "Dermis",
+          "detail": "Tough collagen layer holding nerves, vessels, glands, and hair roots."
+        },
+        {
+          "level": "Subcutis",
+          "detail": "Fat layer for insulation and cushioning."
+        }
+      ],
+      "function": "A self-renewing waterproof barrier that senses, protects, and regulates temperature.",
+      "clinical": "Barrier loss = eczema/infection; melanocytes can turn into melanoma; deep burns destroy all layers and need specialist care.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "bone_layers",
+      "topic": "Bone — sliced to the cell",
+      "phrases": [
+        "bone tissue",
+        "osteon",
+        "bone cells",
+        "osteocytes",
+        "bone microscopic",
+        "how bone is built"
+      ],
+      "scale": "bone → cortical/spongy → osteon → bone cells",
+      "layers": [
+        {
+          "level": "Structure",
+          "detail": "Hard cortical shell over spongy inner bone, with marrow inside."
+        },
+        {
+          "level": "Osteon",
+          "detail": "Rings of mineralised bone around a central vessel — the repeating unit."
+        },
+        {
+          "level": "Bone cells",
+          "detail": "Osteoblasts build bone, osteoclasts break it down, osteocytes maintain it — constantly remodelling."
+        },
+        {
+          "level": "Marrow",
+          "detail": "Makes blood cells and stores fat."
+        }
+      ],
+      "function": "Living, remodelling tissue that supports the body, stores calcium, and makes blood.",
+      "clinical": "When breakdown outpaces building, bone thins (osteoporosis) and fractures easily; marrow problems affect blood cells.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "muscle_layers",
+      "topic": "Skeletal muscle — sliced to the cell",
+      "phrases": [
+        "skeletal muscle tissue",
+        "muscle fibre",
+        "sarcomere",
+        "muscle microscopic",
+        "how muscle is built"
+      ],
+      "scale": "muscle → fascicle → fibre → myofibril → sarcomere",
+      "layers": [
+        {
+          "level": "Muscle",
+          "detail": "Bundles (fascicles) of muscle fibres wrapped in connective tissue, attached by tendons."
+        },
+        {
+          "level": "Fibre",
+          "detail": "A single long muscle cell with many nuclei."
+        },
+        {
+          "level": "Myofibril",
+          "detail": "Chains of sarcomeres — the contracting units."
+        },
+        {
+          "level": "Sarcomere",
+          "detail": "Overlapping actin and myosin filaments that slide to shorten the muscle."
+        }
+      ],
+      "function": "Converts chemical energy into pulling force to move the skeleton.",
+      "clinical": "Tears, overuse (tendinitis), breakdown (rhabdomyolysis), and nerve or calcium problems all show as weakness, pain, or cramps.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "neuron_detail",
+      "topic": "Neuron & nerve signal — the detail",
+      "phrases": [
+        "how a nerve signal works",
+        "action potential",
+        "neurotransmitter",
+        "synapse detail",
+        "nerve conduction"
+      ],
+      "scale": "nerve → neuron → axon → synapse → next cell",
+      "layers": [
+        {
+          "level": "Resting state",
+          "detail": "The neuron holds a charge difference across its membrane, ready to fire."
+        },
+        {
+          "level": "Action potential",
+          "detail": "A trigger flips the charge and a wave races down the axon."
+        },
+        {
+          "level": "Myelin & jumps",
+          "detail": "Insulated gaps let the signal 'jump' and travel faster."
+        },
+        {
+          "level": "Synapse",
+          "detail": "At the end, neurotransmitters cross the gap to excite or calm the next cell."
+        }
+      ],
+      "function": "Fast, precise signalling underlies every sensation, movement, and thought.",
+      "clinical": "Nerve compression, demyelination, or chemical imbalance disrupt signals — numbness, weakness, pain, seizures, or mood changes.",
+      "source": "HIVE Doctor original micro-anatomy reference (standard public-domain histology, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "gland_layers",
+      "scale": "organ → gland tissue → secretory cell",
+      "layers": [
+        {
+          "level": "Gland (organ)",
+          "detail": "A secretory organ wrapped in a thin capsule, divided into lobules fed by blood vessels and drained by ducts (exocrine) or straight into the blood (endocrine)."
+        },
+        {
+          "level": "Lobule & acini/follicles",
+          "detail": "Clusters of secretory cells arranged around tiny spaces or follicles where the product (hormone, enzyme, or fluid) is made and stored."
+        },
+        {
+          "level": "Secretory cell",
+          "detail": "Epithelial cells packed with rough endoplasmic reticulum and Golgi that build and package the secretion; endocrine cells release it into nearby capillaries, exocrine cells into a duct."
+        },
+        {
+          "level": "Molecules",
+          "detail": "The hormone or enzyme itself (a protein or steroid) — the chemical message or tool the gland exists to make."
+        }
+      ],
+      "function": "Glands manufacture and release the body's chemical signals and fluids — hormones that set metabolism, growth and reproduction, or enzymes and fluids for digestion and protection.",
+      "clinical": "Glands can under- or over-produce (e.g. thyroid, pancreas/insulin), become inflamed, form nodules or cysts, or rarely turn cancerous — which is why lumps, or changes in energy, weight or hormones, are worth checking."
+    }
+  ],
+  "counts": {
+    "entries": 15
+  }
+}

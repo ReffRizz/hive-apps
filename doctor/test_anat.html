@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#0b1724;height:100%}#gl{width:100vw;height:100vh;display:block}</style></head>
+<body><canvas id="gl"></canvas>
+<script src="three.min.js"></script>
+<script src="hive_hmesh.js"></script>
+<script>
+const T=window.THREE, canvas=document.getElementById('gl');
+const renderer=new T.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(2);
+if(T.SRGBColorSpace!==undefined)renderer.outputColorSpace=T.SRGBColorSpace;
+if(T.ACESFilmicToneMapping){renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;}
+const scene=new T.Scene();
+const camera=new T.PerspectiveCamera(42,1,0.01,100);
+scene.add(new T.HemisphereLight(0xeaf2ff,0x40302a,0.9));
+let d=new T.DirectionalLight(0xfff3e6,1.1);d.position.set(5,9,8);scene.add(d);
+let d2=new T.DirectionalLight(0xaecbff,0.4);d2.position.set(-7,-1,-5);scene.add(d2);
+let rim=new T.DirectionalLight(0xffe9cf,0.6);rim.position.set(-4,5,-9);scene.add(rim);
+try{if(T.PMREMGenerator){let cnv=document.createElement('canvas');cnv.width=16;cnv.height=128;let cx=cnv.getContext('2d');let g=cx.createLinearGradient(0,0,0,128);g.addColorStop(0,'#aebdd6');g.addColorStop(.5,'#646870');g.addColorStop(1,'#1a1512');cx.fillStyle=g;cx.fillRect(0,0,16,128);let tex=new T.CanvasTexture(cnv);tex.mapping=T.EquirectangularReflectionMapping;let pm=new T.PMREMGenerator(renderer);scene.environment=pm.fromEquirectangular(tex).texture;tex.dispose();pm.dispose();}}catch(e){}
+const root=new T.Group();scene.add(root);
+const mats={spine:0xe8e1d0,ribcage:0xe8e1d0,pelvis:0xe8e1d0,heart:0x9e2b2b,lungs:0xb56b72,liver:0x6f3626,kidneys:0x8a4030,brain:0xd2abba,digestive_tract:0xbc8a5a,aorta_and_veins:0xaa2626};
+const files=Object.keys(mats);
+Promise.all(files.map(f=>HiveHMesh.load(T,'anatomy/'+f+'.hmesh').then(g=>{
+ let m=new T.MeshStandardMaterial({color:mats[f],roughness:0.55,metalness:0.02});m.envMapIntensity=0.3;
+ root.add(new T.Mesh(g,m));
+}).catch(e=>{document.title='ERR '+f+' '+e.message;}))).then(()=>{
+ let box=new T.Box3().setFromObject(root),c=new T.Vector3();box.getCenter(c);let s=new T.Vector3();box.getSize(s);
+ let scale=6/Math.max(s.x,s.y,s.z);
+ root.scale.setScalar(scale);root.position.set(-c.x*scale,-c.y*scale,-c.z*scale);
+ window.__ready=1;document.title='READY';
+});
+camera.position.set(0,0,9);
+function resize(){let w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+resize();window.addEventListener('resize',resize);
+function loop(){renderer.render(scene,camera);requestAnimationFrame(loop);}loop();
+window.__setrot=(x,y)=>{root.rotation.x=x;root.rotation.y=y;};
+</script></body></html>

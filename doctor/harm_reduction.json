@@ -1,0 +1,173 @@
+{
+  "schema": "hive.doctor.harmreduction/v1",
+  "title": "HIVE Doctor — Overdose Prevention & Harm Reduction Reference",
+  "review_status": "UNVERIFIED — awaiting clinician sign-off",
+  "policy": "This section exists to SAVE LIVES: to recognize and respond to overdose, to flag deadly combinations and the tolerance trap, and to connect people to help and to specialized harm-reduction services. It deliberately does NOT give recreational doses for illicit or street drugs — street supply is contaminated and unpredictable (fentanyl is widespread), so no amount is 'safe', and a number gives false confidence. For substance-specific safer-use guidance, use the specialized services listed here. Nothing here is a substitute for emergency care or a clinician.",
+  "universal_rules": [
+    "If someone is unresponsive, breathing slowly/irregularly, or not breathing — call 911 (or local emergency) now. Give naloxone if opioids are possible; start rescue breaths/CPR as directed.",
+    "NEVER use alone. If you use, have someone with you or use a 'never use alone' phone line so someone can call help.",
+    "The TOLERANCE TRAP kills: after any break (days clean, detox, jail, illness, a new batch), your old 'usual amount' can be a fatal dose. Restart far lower than before.",
+    "NEVER mix depressants: opioids + benzodiazepines + alcohol + other sedatives stack up and stop breathing. Most overdose deaths involve a mix.",
+    "Assume illicit drugs may contain fentanyl or other potent adulterants. Use fentanyl test strips, and carry naloxone — it reverses opioid overdose.",
+    "Good Samaritan laws in many places protect you from certain charges when you call 911 for an overdose. Calling is the right move."
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "contact": "911 (or local emergency number)",
+      "note": "Unresponsive, not breathing, seizure, chest pain — call now."
+    },
+    {
+      "name": "Poison Control (US)",
+      "contact": "1-800-222-1222",
+      "note": "24/7 expert advice on overdose, interactions, exposures."
+    },
+    {
+      "name": "DanceSafe",
+      "contact": "dancesafe.org",
+      "note": "Evidence-based harm reduction, drug checking, substance info."
+    },
+    {
+      "name": "TripSit",
+      "contact": "tripsit.me",
+      "note": "Harm-reduction info, a combinations chart, and live help."
+    },
+    {
+      "name": "PsychonautWiki",
+      "contact": "psychonautwiki.org",
+      "note": "Detailed, referenced substance and interaction information."
+    },
+    {
+      "name": "SAMHSA National Helpline (US)",
+      "contact": "1-800-662-4357",
+      "note": "Free, confidential treatment & support referral, 24/7."
+    },
+    {
+      "name": "Canada — local harm reduction / 811",
+      "contact": "811 (most provinces) or your public-health unit",
+      "note": "Naloxone kits, supervised services, and advice."
+    }
+  ],
+  "overdose_guides": [
+    {
+      "id": "od_opioids",
+      "class": "Opioids (heroin, fentanyl, oxycodone, morphine, methadone, etc.)",
+      "overdose_signs": [
+        "Slow, shallow, or stopped breathing (the thing that kills)",
+        "Pinpoint pupils",
+        "Blue/grey lips or fingertips",
+        "Unresponsive, limp, gurgling or snoring sounds"
+      ],
+      "response": [
+        "Call 911 immediately.",
+        "Give naloxone (nasal or injectable) per the kit; repeat every 2–3 minutes if no response.",
+        "Give rescue breaths; start CPR if not breathing and you're trained/directed.",
+        "Put them in the recovery position; stay — overdose can return as naloxone wears off."
+      ],
+      "key_dangers": [
+        "Fentanyl contamination makes potency unpredictable.",
+        "Mixing with benzodiazepines or alcohol greatly raises the risk (and naloxone does not reverse those).",
+        "Tolerance loss after any break is a leading cause of fatal overdose."
+      ],
+      "note": "Carry naloxone if you or someone near you uses opioids — it's free in many places and reverses opioid overdose."
+    },
+    {
+      "id": "od_sedatives",
+      "class": "Sedatives: benzodiazepines & alcohol (and GHB)",
+      "overdose_signs": [
+        "Extreme drowsiness, can't be woken",
+        "Slow or stopped breathing",
+        "Confusion, loss of coordination",
+        "Vomiting while unconscious (choking risk)",
+        "Cold/clammy or bluish skin (alcohol)"
+      ],
+      "response": [
+        "Call 911.",
+        "Recovery position to protect the airway from vomit.",
+        "Do not leave them to 'sleep it off' if breathing is abnormal or they can't be roused.",
+        "Naloxone won't reverse these, but give it anyway if opioids might also be involved."
+      ],
+      "key_dangers": [
+        "Combining with opioids or other depressants stops breathing.",
+        "Stopping heavy alcohol or benzodiazepine use SUDDENLY can cause dangerous withdrawal and seizures — medical help is needed to stop safely.",
+        "GHB has a very narrow margin and a steep overdose curve."
+      ],
+      "note": "Alcohol/benzo withdrawal can be life-threatening — never quit heavy use cold turkey without medical support."
+    },
+    {
+      "id": "od_stimulants",
+      "class": "Stimulants (cocaine, methamphetamine, amphetamines, MDMA)",
+      "overdose_signs": [
+        "Chest pain, very fast/irregular heartbeat",
+        "Very high body temperature (overheating), heavy sweating",
+        "Severe agitation, paranoia, confusion",
+        "Seizures",
+        "Collapse / stroke-like symptoms (weakness, slurred speech)"
+      ],
+      "response": [
+        "Call 911 — stimulant overdose can cause heart attack, stroke, or fatal overheating.",
+        "Move to a cool place, remove excess clothing, cool them down, offer sips of water if alert (MDMA overheating).",
+        "Keep them calm; protect from injury during a seizure.",
+        "Do not assume it will pass — chest pain or seizure is an emergency."
+      ],
+      "key_dangers": [
+        "Overheating and dehydration (especially MDMA at events) — but also DON'T over-drink water, which can be fatal with MDMA.",
+        "Hidden heart conditions; mixing stimulants strains the heart.",
+        "Contamination with fentanyl or other substances."
+      ],
+      "note": "There's no reversal drug for stimulants — cooling, calming, and emergency care are the response."
+    },
+    {
+      "id": "od_dissociatives",
+      "class": "Dissociatives (ketamine, PCP, DXM) & hallucinogens",
+      "overdose_signs": [
+        "Unresponsive or unable to move/protect airway ('k-hole')",
+        "Vomiting while sedated (choking risk)",
+        "Dangerously high blood pressure or heart rate (PCP)",
+        "Extreme agitation or psychosis",
+        "Seizures"
+      ],
+      "response": [
+        "Call 911 if unresponsive, vomiting while out, having a seizure, or with chest pain.",
+        "Recovery position; protect the airway.",
+        "Keep the environment calm and safe; reduce stimulation.",
+        "Stay with them."
+      ],
+      "key_dangers": [
+        "Loss of coordination/consciousness leads to choking or injury.",
+        "Mixing with depressants.",
+        "Severe psychological distress needs calm support and, if unsafe, medical help."
+      ],
+      "note": "For a difficult psychological experience, a calm, safe setting and reassurance help; seek medical help if there's danger to self or others."
+    }
+  ],
+  "counts": {
+    "overdose_guides": 4,
+    "resources": 7,
+    "universal_rules": 6,
+    "safer_use_principles": 9
+  },
+  "safer_use": {
+    "title": "Safer use & infection prevention (needle exchange / supervised consumption basics)",
+    "intent": "The core public-health harm-reduction practices that needle-exchange and supervised consumption services provide — they dramatically cut overdose deaths, HIV, hepatitis C, and serious infections. This is infection-prevention and connection to services, not a guide on how much to use.",
+    "principles": [
+      "Use a NEW, STERILE needle/syringe every single time. Never reuse your own and never share — sharing spreads HIV and hepatitis C.",
+      "Never share ANY equipment: needles, cookers, filters, water, ties, pipes, or straws. Hepatitis C survives on equipment and spreads easily.",
+      "Get free sterile supplies and sharps containers from a needle-exchange / harm-reduction program; many also give out naloxone and fentanyl test strips.",
+      "Use a supervised consumption site where available — trained staff, clean supplies, and someone present to reverse an overdose. These sites have never had an on-site death.",
+      "Wash hands and clean the skin with an alcohol swab before injecting, to prevent abscesses and bloodstream infections.",
+      "Use your own clean water; do not lick needles or equipment.",
+      "Rotate sites and avoid damaged skin; never inject into a red, swollen, or painful area.",
+      "Dispose of used needles in a sharps container or a rigid sealed container — return them to the exchange; never leave them loose.",
+      "Do not use alone; carry naloxone; use fentanyl test strips; and remember the tolerance trap after any break."
+    ],
+    "infection_warning_signs": [
+      "Abscess: a red, hot, swollen, painful lump at an injection site — see a clinician; it may need draining or antibiotics.",
+      "Spreading redness, red streaks, fever, or feeling very unwell — possible serious bloodstream infection; seek care urgently.",
+      "Endocarditis (heart-valve infection): fever, chills, night sweats, breathlessness, and fatigue after injecting — a medical EMERGENCY.",
+      "A wound that will not heal, or numbness or coldness in a limb after a missed injection — get medical help."
+    ],
+    "testing_note": "Where drug-checking services exist (at many harm-reduction sites and some events), use them — they can detect fentanyl and other adulterants before use. Fentanyl test strips are a simple at-home option.",
+    "getting_help": "Needle exchanges and supervised consumption sites also connect people to HIV/HCV testing, wound care, naloxone, and — whenever wanted — treatment and support. Asking about treatment is always available and never required to get clean supplies."
+  }
+}

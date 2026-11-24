@@ -1,0 +1,4 @@
+const C="hive-lawyer-v1-10";const A=["./","index.html","manifest.webmanifest","icon-192.png","icon-512.png"].concat(["ocr/eng.traineddata.gz","ocr/tesseract-core-lstm.wasm.js","ocr/tesseract-core-simd-lstm.wasm.js","ocr/tesseract.min.js","ocr/worker.min.js"]);
+self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>Promise.all(A.map(u=>c.add(u).catch(()=>{})))));});
+self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
+self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{const cp=res.clone();caches.open(C).then(c=>c.put(e.request,cp).catch(()=>{}));return res;}).catch(()=>caches.match("index.html"))));});

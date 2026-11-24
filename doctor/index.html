@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#0b1724">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HIVE Doctor">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>HIVE Doctor</title>
+<style>
+:root{--bg:#0a141f;--card:#121e2b;--ink:#eef3f8;--mut:#9fb0bf;--accent:#46c6ab;--accent2:#6fe0c8;--you:#1f3a4d;--line:rgba(255,255,255,.08);--serif:ui-serif,Georgia,"Iowan Old Style","Times New Roman",serif;--shadow:0 10px 34px rgba(0,0,0,.38);
+--emerg:#ff5b5b;--urgent:#ff9e45;--prompt:#ffd24a;--routine:#6ec6ff;--selfcare:#7ee0a8}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;height:100dvh;max-width:100%}
+header{padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top));border-bottom:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none}
+.brandrow{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 auto}
+.brandrow img{width:26px;height:26px;border-radius:7px;flex:none}
+h1{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbtns{display:flex;gap:6px;flex:none}
+.iconbtn{background:none;border:1px solid var(--line);color:var(--mut);border-radius:9px;min-width:32px;height:32px;font-size:12px;padding:0 7px;flex:none}
+@media(max-width:430px){.offbadge{display:none}h1{font-size:14px}.hbtns{gap:5px}.iconbtn{min-width:30px;height:30px;padding:0 6px}}
+#status{font-size:11.5px;color:var(--mut);padding:7px 16px 0;flex:none}
+#log{flex:1;overflow-y:auto;padding:6px 14px 22px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;display:flex;flex-direction:column}
+#log>.msg:first-child{margin-top:auto}
+.msg{margin:10px 0;max-width:760px;width:100%;align-self:flex-start;scroll-margin-top:12px}
+.msg .who{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+.msg .txt{overflow-wrap:anywhere;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
+.msg.you{align-self:flex-end;width:auto;max-width:85%}.msg.you .txt{background:var(--you)}.msg.you .who{text-align:right}
+.pillrow,.photorow{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+.pillrow img{max-width:100%;width:150px;max-height:150px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid var(--line)}
+.photorow figure{margin:0;width:calc(50% - 4px);max-width:190px}.photorow img{width:100%;height:130px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#0b141e}
+.photorow figcaption{font-size:10.5px;color:var(--mut);line-height:1.35;margin-top:3px}.photorow figcaption b{color:var(--ink,#eef3f8);font-size:11.5px}
+details.lbl{margin:5px 0;border-top:1px dashed var(--line);padding-top:5px}details.lbl summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent)}
+.blk{margin:0 0 12px}.blk:last-child{margin-bottom:0}
+.htag{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:2px 0 6px;font-weight:700}
+.blk.emerg{background:rgba(255,91,91,.1);border:1px solid var(--emerg);border-radius:11px;padding:10px 12px}
+.blk.emerg .htag{color:var(--emerg)}
+.blk.emerg p{margin:6px 0}
+.muted{color:var(--mut);font-size:13px;margin:0 0 8px}
+.sys{margin-bottom:6px}
+.cand{border:1px solid var(--line);border-left:4px solid var(--line);border-radius:9px;padding:9px 11px;margin:8px 0;background:#0e1a27}
+.cand.emergency{border-left-color:var(--emerg)}.cand.urgent{border-left-color:var(--urgent)}
+.cand.prompt{border-left-color:var(--prompt)}.cand.routine{border-left-color:var(--routine)}.cand.selfcare{border-left-color:var(--selfcare)}
+.cname{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.band{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em}
+.band.strong{background:rgba(126,224,168,.18);color:var(--selfcare)}
+.band.possible{background:rgba(110,198,255,.16);color:var(--routine)}
+.band.weak{background:rgba(159,176,191,.14);color:var(--mut)}
+.urg{font-size:12.5px;font-weight:600;margin:4px 0 6px}
+.u-emergency{color:var(--emerg)}.u-urgent{color:var(--urgent)}.u-prompt{color:var(--prompt)}.u-routine{color:var(--routine)}.u-selfcare{color:var(--selfcare)}
+.act{font-size:14px;margin:2px 0}
+.watch{font-size:12.5px;color:var(--mut);margin-top:5px}
+.ref{font-size:12px;color:var(--mut);margin-top:6px;border-top:1px dashed var(--line);padding-top:5px}
+.ref .src{opacity:.75}
+.blk.exam{background:rgba(126,224,168,.06);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.blk.exam .htag{color:var(--selfcare)}
+ul.lookfor{margin:4px 0 2px;padding-left:18px}
+ul.lookfor li{margin:2px 0}
+.blk.web{background:rgba(110,198,255,.06);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.blk.web .htag{color:var(--routine)}
+.webitem{font-size:13px;margin:6px 0}
+.rel{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:1px 6px;border-radius:999px;margin-right:6px}
+.rel.risk{background:rgba(255,158,69,.18);color:var(--urgent)}
+.rel.comp{background:rgba(255,91,91,.16);color:var(--emerg)}
+.rel.assoc{background:rgba(126,224,168,.16);color:var(--selfcare)}
+.rel.mimic{background:rgba(110,198,255,.16);color:var(--routine)}
+.blk.ask{background:rgba(79,209,181,.08);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.blk.ask p{margin:4px 0;font-weight:600}
+.foot{font-size:11px;color:var(--mut);margin-top:9px;border-top:1px solid var(--line);padding-top:7px}
+#form{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line);background:var(--card);flex:none;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+#q{flex:1;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px}
+#send{background:var(--accent);color:#06221b;font-weight:700;border:0;border-radius:10px;padding:0 17px}
+a{color:var(--accent)}
+.ackwrap{position:fixed;inset:0;background:rgba(6,12,20,.94);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.ackcard{background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:470px;padding:22px;max-height:90dvh;overflow:auto}
+.ackcard h2{margin:0 0 10px;font-size:18px}
+.ackcard p{color:var(--mut);font-size:14px}
+.ackcard b{color:var(--ink)}
+.offbadge{font-size:10.5px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap;flex:none}
+.blk.meds{background:rgba(255,158,69,.07);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.blk.meds .htag{color:var(--urgent)}
+.blk.plan{background:rgba(79,209,181,.07);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.blk.plan .htag{color:var(--accent)}
+/* front door */
+.door{max-width:440px;text-align:left}
+.doorbrand{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.doorbrand img{width:30px;height:30px;border-radius:8px}
+.doorbrand span{font-family:var(--serif);font-weight:600;letter-spacing:.01em;font-size:18px}
+.brandrow h1{font-family:var(--serif);font-weight:600;font-size:19px;margin:0;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:560px){.brandrow h1{display:none}.brandrow{flex:0 0 auto}}
+.doormodal,.door{box-shadow:var(--shadow)}
+.door h2{font-size:23px;line-height:1.2;margin:0 0 8px}
+.doorsub{color:var(--mut);font-size:14.5px;margin:0 0 18px}
+.doorcta{width:100%;background:linear-gradient(145deg,var(--accent2),var(--accent));color:#06221b;font-weight:700;letter-spacing:.2px;border:0;border-radius:13px;padding:16px;font:inherit;font-size:16px;cursor:pointer;box-shadow:0 4px 16px rgba(70,198,171,.24)}
+.doorprofiles{margin:14px 0 2px}
+.doorlabel{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:0 0 7px}
+.profchip{background:var(--you);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 13px;margin:0 7px 7px 0;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.doorrow{display:flex;gap:9px;margin-top:12px}
+.doorghost{flex:1;background:none;border:1px solid var(--line);color:var(--ink);border-radius:11px;padding:11px;font:inherit;font-size:13.5px;cursor:pointer}
+.doorfine{color:var(--mut);font-size:11.5px;margin:16px 0 0;line-height:1.5}
+/* sheets */
+.sheetwrap{position:fixed;inset:0;background:rgba(6,12,20,.86);display:flex;align-items:flex-end;justify-content:center;z-index:60;padding:0}
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:18px 18px 0 0;width:100%;max-width:560px;padding:20px 18px calc(20px + env(safe-area-inset-bottom));max-height:88dvh;overflow:auto}
+.sheet h3{margin:0 0 6px;font-size:17px}
+.sheet .muted{margin:0 0 12px}
+#sharetext{width:100%;min-height:210px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;resize:vertical}
+.sheetbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sheetbtns .prim{background:var(--accent);color:#06221b;font-weight:700;border:0;border-radius:10px;padding:11px 16px;font:inherit;cursor:pointer;flex:1;min-width:120px}
+.sheetbtns .ghost{background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 14px;font:inherit;cursor:pointer}
+.profrow{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin:7px 0;background:#0e1a27}
+.profrow .act{color:var(--accent);font-size:12px}
+.mini{background:var(--you);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 11px;margin-left:6px;font:inherit;font-size:12.5px;cursor:pointer}
+.mini.del{color:var(--emerg)}
+.namerow{display:flex;gap:8px;margin:10px 0 2px}
+.namerow input{flex:1;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit}
+.namerow .prim{background:var(--accent);color:#06221b;font-weight:700;border:0;border-radius:10px;padding:0 16px;font:inherit;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(14px);background:#06221b;color:#eafff8;border:1px solid var(--accent);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="brandrow"><img src="icon-192.png" alt=""><h1>HIVE Doctor</h1><span class="offbadge" id="offbadge" title="Runs on your device">● Offline-ready</span></div>
+  <div class="hbtns">
+    <a id="bodybtn" class="iconbtn" href="body3d.html" title="Body & development — 3D anatomy" aria-label="Body 3D" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none">3D</a>
+    <button id="profbtn" class="iconbtn" title="Profiles" aria-label="Profiles">◔</button>
+    <button id="sharebtn" class="iconbtn" title="Share session with a doctor" aria-label="Share">⇪</button>
+    <button id="modebtn" class="iconbtn" title="Response style: Standard (deterministic)" aria-label="Response style">◻</button>
+    <button id="reset" class="iconbtn" title="Start over">↺</button>
+    <button id="reportbtn" class="iconbtn" title="Report Lab — read & break down a medical letter or lab report" aria-label="Report Lab">📄</button>
+    <button id="atlasbtn" class="iconbtn" title="Picture atlas — every labelled diagram" aria-label="Atlas">🖼</button>
+    <button id="graphbtn" class="iconbtn" title="Track & graph — chart readings over time (BP, weight, sugar, symptoms)" aria-label="Graph">📊</button>
+    <button id="info" class="iconbtn" title="About" aria-label="About">ⓘ</button>
+  </div>
+</header>
+<div id="status">Loading the knowledge base…</div>
+<div id="log"></div>
+<form id="form" autocomplete="off">
+  <input id="q" placeholder="Describe the symptom or situation…" maxlength="600" autocomplete="off">
+  <button id="send" type="submit">Send</button>
+</form>
+
+<div class="ackwrap" id="ack">
+  <div class="ackcard door">
+    <div class="doorbrand"><img src="icon-192.png" alt=""><span>HIVE Doctor</span></div>
+    <h2>The doctor will see you now.</h2>
+    <p class="doorsub">Private medical help, right on your device. Tell me what's going on and I'll help you understand it, how urgent it is, and what to do — <b>information, not a diagnosis</b>.</p>
+    <button id="startbtn" class="doorcta">The doctor will see you now →</button>
+    <div class="doorprofiles" id="doorprofiles"></div>
+    <div class="doorrow">
+      <button id="anonbtn" class="doorghost">Talk anonymously</button>
+      <button id="newprofbtn" class="doorghost">Create a profile</button>
+    </div>
+    <p class="doorfine">Stay anonymous or save a profile anytime — your choice. You can skip any question, just say “pass”. If it's an emergency, call 911 / 112 / 999.</p>
+  </div>
+</div>
+
+<div class="sheetwrap hidden" id="sharesheet">
+  <div class="sheet">
+    <h3>Share this session</h3>
+    <p class="muted">A plain-text summary to hand to a real doctor — your profile, what you reported, any medicine flags, and the possible causes to consider.</p>
+    <textarea id="sharetext" readonly aria-label="Session summary"></textarea>
+    <div class="sheetbtns">
+      <button id="copybtn" class="prim">Copy</button>
+      <button id="dlbtn" class="prim">Download</button>
+      <button id="savesessbtn" class="ghost">Save as profile</button>
+      <button id="sharecancel" class="ghost">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="sheetwrap hidden" id="profsheet">
+  <div class="sheet">
+    <h3>Profiles</h3>
+    <p class="muted">Profiles stay on this device. Build one from the current session, switch between people, or stay anonymous.</p>
+    <div id="proflist"></div>
+    <div class="namerow hidden" id="namerow">
+      <input id="profname" placeholder="Name this profile (e.g. Me, Mom)" maxlength="40" autocomplete="off">
+      <button id="profsave" class="prim">Save</button>
+    </div>
+    <div class="sheetbtns">
+      <button id="profnew" class="ghost">New profile from this session</button>
+      <button id="profcancel" class="ghost">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<div id="rlWrap" style="position:fixed;inset:0;background:rgba(5,10,16,.72);display:none;align-items:flex-start;justify-content:center;z-index:70;padding:16px;overflow:auto">
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-width:680px;width:100%;margin:24px 0;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px">
+      <b style="font-family:var(--serif);font-size:18px">📄 Report Lab</b>
+      <button id="rlClose" class="iconbtn" aria-label="Close">✕</button>
+    </div>
+    <div style="color:var(--mut);font-size:13px;line-height:1.6;margin-bottom:12px">Paste a medical letter, lab report, or discharge summary — or scan a photo of one — and HIVE reads it into plain language: a point-form breakdown, the values and follow-ups worth asking about, and a jargon translator. It explains, it does not diagnose.</div>
+    <textarea id="rlIn" rows="5" placeholder="Paste the report text here…" style="width:100%;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px;font:inherit"></textarea>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+      <label for="rlPhoto" class="doorcta" style="width:auto;padding:11px 15px;font-size:14px;cursor:pointer">📷 Scan a photo</label>
+      <input id="rlPhoto" type="file" accept="image/*" capture="environment" style="display:none">
+      <button id="rlGo" class="doorcta" style="width:auto;padding:11px 15px;font-size:14px">Read &amp; break it down</button>
+    </div>
+    <div id="rlStatus" style="color:var(--mut);font-size:12px;margin-top:8px"></div>
+    <div id="rlOut" style="margin-top:12px"></div>
+  </div>
+</div>
+<script>
+(function(){
+  function E(id){return document.getElementById(id);}
+  const wrap=E('rlWrap'),inp=E('rlIn'),out=E('rlOut'),st=E('rlStatus');
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  E('reportbtn')&&(E('reportbtn').onclick=()=>{wrap.style.display='flex';});
+  E('rlClose').onclick=()=>{wrap.style.display='none';};
+  wrap.addEventListener('click',e=>{if(e.target===wrap)wrap.style.display='none';});
+  function render(a){
+    if(!a||!a.ok){out.innerHTML='<div style="color:var(--mut)">Paste or scan a report first.</div>';return;}
+    const SEV={high:'#ff9a9e',med:'var(--prompt)',low:'var(--mut)'};
+    let h=`<div style="color:var(--mut);font-size:12px;margin-bottom:6px">${a.counts.points} points · ${a.counts.flags} things flagged (${a.counts.high} to ask about) · ${a.counts.jargon} terms translated</div>`;
+    h+=`<div style="color:var(--accent);font-weight:700;font-size:13px;margin:8px 0 4px">In plain terms</div>`;
+    h+=a.breakdown.map(p=>`<div style="border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:9px;padding:9px 11px;margin:5px 0"><b style="font-size:13px">${p.icon} ${esc(p.type)}</b><div style="margin-top:3px;font-size:14px">${esc(p.text)}</div></div>`).join('');
+    for(const f of a.flags){
+      if(f.id==='jargon_present'){
+        h+=`<div style="color:var(--accent);font-weight:700;font-size:13px;margin:12px 0 4px">${esc(f.label)}</div>`;
+        h+=`<div style="display:grid;gap:4px">`+a.glossary.map(g=>`<div style="font-size:13px"><b>${esc(g.term)}</b> — ${esc(g.plain)}</div>`).join('')+`</div>`;
+      } else {
+        h+=`<div style="border:1px solid ${f.sev==='high'?'#5a2a2e':'var(--line)'};background:${f.sev==='high'?'#2a1518':'#14202c'};border-radius:11px;padding:11px 13px;margin:8px 0"><b style="color:${SEV[f.sev]};font-size:14px">${esc(f.label)}</b><div style="margin-top:4px;font-size:13px;line-height:1.55">${esc(f.note)}</div></div>`;
+      }
+    }
+    h+=`<div style="color:var(--mut);font-size:12px;line-height:1.55;margin-top:10px;border-top:1px solid var(--line);padding-top:8px">${esc(a.disclaimer)}</div>`;
+    out.innerHTML=h;
+  }
+  E('rlGo').onclick=()=>{const v=(inp.value||'').trim();if(!v){out.innerHTML='<div style="color:var(--mut)">Paste or scan a report first.</div>';return;}render(window.REPORTLAB.analyzeReport(v));};
+  async function hiveOCR(file){
+      const load=src=>new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});
+      const base=new URL('ocr/',location.href).href; const CDN='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+      const run=async(opts)=>{const w=await Tesseract.createWorker('eng',1,opts);try{const r=await w.recognize(file);return r.data;}finally{try{await w.terminate();}catch(e){}}};
+      if(typeof Tesseract==='undefined'){try{await load(base+'tesseract.min.js');}catch(e){await load(CDN);}}
+      try{return await run({workerPath:base+'worker.min.js',corePath:base,langPath:base,gzip:true});}   // bundled reader: works with no internet
+      catch(e){return await run({});}                                                                    // fall back to the online copy
+    }
+  E('rlPhoto').onchange=async(e)=>{
+    const file=e.target.files&&e.target.files[0];if(!file)return;
+    st.textContent='Reading the photo… (first scan loads the reader; this can take a moment)';
+    try{
+      const data=await hiveOCR(file);
+      const txt=(data&&data.text||'').trim();
+      if(txt){inp.value=(inp.value?inp.value+'\n':'')+txt;st.textContent='Scanned ✓ — review the text, then tap “Read & break it down”.';}
+      else st.textContent='Couldn’t read text from that image. Try a clearer, straight-on photo, or type it in.';
+    }catch(err){st.textContent='Photo reading needs an internet connection the first time (to load the reader). You can type or paste the text instead.';}
+  };
+})();
+</script>
+<div id="atWrap" style="position:fixed;inset:0;background:rgba(5,10,16,.8);display:none;align-items:flex-start;justify-content:center;z-index:70;padding:16px;overflow:auto">
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-width:980px;width:100%;margin:24px 0;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px">
+      <b style="font-family:var(--serif);font-size:18px">🖼 Picture atlas</b>
+      <span style="display:flex;gap:8px"><button id="atSave" class="iconbtn" title="Save the whole set as one file">⤓ Save set</button><button id="atClose" class="iconbtn" aria-label="Close">✕</button></span>
+    </div>
+    <div id="atTabs" style="display:flex;gap:8px;margin:2px 0 10px"><button id="atTabFig" class="iconbtn" style="width:auto;padding:0 12px">Diagrams</button><button id="atTabPhoto" class="iconbtn" style="width:auto;padding:0 12px">Photos</button></div>
+    <input id="atQ" placeholder="Search pictures — e.g. heart, rash, skeleton, self-check" style="width:100%;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:10px;font:inherit">
+    <div id="atCount" style="color:var(--mut);font-size:12px;margin:8px 0"></div>
+    <div id="atGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px"></div>
+    <div id="atLibs" style="margin-top:12px;font-size:13px;line-height:1.7"></div>
+    <div id="atNote" style="color:var(--mut);font-size:11px;margin-top:10px">Original schematic diagrams for reference and teaching — simplified, not to scale, not a diagnosis.</div>
+  </div>
+</div>
+<script>
+(function(){
+  function E(id){return document.getElementById(id);}
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  let FIGS=null,PHOTOS=null,MODE='fig';
+  function card(f){return `<div style="background:#0f1a26;border:1px solid var(--line);border-radius:12px;padding:10px"><div style="font-weight:600;font-size:13px;margin-bottom:6px">${esc(f.title)}</div>${f.svg}<div style="color:var(--mut);font-size:12px;line-height:1.5;margin-top:6px">${esc(f.caption)}</div></div>`;}
+  function pcard(x){return `<figure style="margin:0;background:#0f1a26;border:1px solid var(--line);border-radius:12px;padding:10px"><a href="${esc(x.file)}" target="_blank" rel="noopener"><img loading="lazy" src="${esc(x.file)}" alt="${esc(x.label)}" style="width:100%;height:190px;object-fit:cover;border-radius:8px;background:#0b141e"></a><figcaption style="margin-top:6px"><div style="font-weight:600;font-size:13px">${esc(x.label)}</div><div style="color:var(--mut);font-size:11px;line-height:1.45;margin-top:2px">${esc(x.artist)} · ${x.license_url?`<a href="${esc(x.license_url)}" target="_blank" rel="noopener">${esc(x.license)}</a>`:esc(x.license)}${x.page?` · <a href="${esc(x.page)}" target="_blank" rel="noopener">source</a>`:''}</div></figcaption></figure>`;}
+  function tabs(){const on='background:var(--accent);color:#06221c;border-color:var(--accent)';E('atTabFig').style.cssText='width:auto;padding:0 12px;'+(MODE==='fig'?on:'');E('atTabPhoto').style.cssText='width:auto;padding:0 12px;'+(MODE==='photo'?on:'');E('atTabFig').textContent='Diagrams'+(FIGS?` (${FIGS.length})`:'');E('atTabPhoto').textContent='Photos'+(PHOTOS?` (${PHOTOS.length})`:'');E('atTabPhoto').style.display=(PHOTOS&&PHOTOS.length)?'':'none';
+    E('atNote').textContent=MODE==='photo'?'Example photographs from Wikimedia Commons under free licences; author and licence shown on each. Conditions look different on different skin tones and bodies. A photograph cannot diagnose you.':'Original schematic diagrams for reference and teaching — simplified, not to scale, not a diagnosis.';
+    E('atQ').placeholder=MODE==='photo'?'Search photos — e.g. shingles, psoriasis, bunion, tonsillitis':'Search pictures — e.g. heart, rash, skeleton, self-check';}
+  function draw(){const q=(E('atQ').value||'').toLowerCase().trim();tabs();
+    if(MODE==='photo'){const list=(PHOTOS||[]).filter(x=>!q||(x.label+' '+x.title+' '+(x.keys_raw||[]).join(' ')).toLowerCase().includes(q));E('atCount').textContent=`${list.length} of ${(PHOTOS||[]).length} photos`;E('atGrid').innerHTML=list.slice(0,120).map(pcard).join('')+(list.length>120?`<div style="color:var(--mut);font-size:12px;align-self:center">Showing the first 120 — search to narrow down.</div>`:'');return;}
+    const list=(FIGS||[]).filter(f=>!q||(f.title+' '+f.caption+' '+(f.ref||'')).toLowerCase().includes(q));E('atCount').textContent=FIGS?`${list.length} of ${FIGS.length} pictures`:'Loading pictures…';E('atGrid').innerHTML=list.map(card).join('');}
+  E('atlasbtn').onclick=async()=>{E('atWrap').style.display='flex';if(!FIGS){try{const r=await fetch('figures.json',{cache:'no-store'});const J=await r.json();FIGS=J.figures||[];E('atLibs').innerHTML='<b>More photographs (free libraries — needs a connection):</b><br>'+(J.photo_libraries||[]).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a> — <span style="color:var(--mut)">${esc(l.note)}</span>`).join('<br>');}catch(e){FIGS=[];E('atCount').textContent='Pictures could not be loaded.';return;}
+    try{const r2=await fetch('photos.json',{cache:'no-store'});PHOTOS=r2.ok?((await r2.json()).photos||[]):[];}catch(e){PHOTOS=[];}}draw();};
+  E('atTabFig').onclick=()=>{MODE='fig';draw();};E('atTabPhoto').onclick=()=>{MODE='photo';draw();};
+  E('atQ').addEventListener('input',draw);
+  E('atClose').onclick=()=>{E('atWrap').style.display='none';};
+  E('atSave').onclick=()=>{if(!FIGS||!FIGS.length)return;const html='<!doctype html><meta charset="utf-8"><title>HIVE Doctor — Picture Atlas</title><body style="background:#0a141f;color:#eef3f8;font-family:sans-serif;padding:20px"><h1>HIVE Doctor — Picture Atlas</h1><p>'+FIGS.length+' original reference diagrams. Educational; not a diagnosis.</p><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">'+FIGS.map(card).join('')+'</div></body>';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));a.download='HIVE_Doctor_Atlas.html';a.click();};
+})();
+</script>
+<div id="gbWrap" style="position:fixed;inset:0;background:rgba(5,10,16,.72);display:none;align-items:flex-start;justify-content:center;z-index:70;padding:16px;overflow:auto">
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-width:640px;width:100%;margin:24px 0;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px">
+      <b style="font-family:var(--serif);font-size:18px">📊 Track &amp; graph</b>
+      <button id="gbClose" class="iconbtn" aria-label="Close">✕</button>
+    </div>
+    <div style="color:var(--mut);font-size:13px;line-height:1.6;margin-bottom:12px">Chart readings over time — blood pressure, weight, blood sugar, a symptom score (0–10), anything. Enter values separated by commas, or one per line as <i>label: value</i>. A reference band shows a typical healthy range where relevant.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      <button class="secondary" data-preset="bp">Blood pressure</button>
+      <button class="secondary" data-preset="weight">Weight</button>
+      <button class="secondary" data-preset="sugar">Blood sugar</button>
+      <button class="secondary" data-preset="symptom">Symptom (0–10)</button>
+    </div>
+    <label style="display:block;color:var(--mut);font-size:12px">Title<input id="gbTitle" style="width:100%;margin-top:4px;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:9px" placeholder="e.g. Morning blood pressure"></label>
+    <label style="display:block;color:var(--mut);font-size:12px;margin-top:10px">Type<select id="gbType" style="width:100%;margin-top:4px;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:9px"><option value="line">Line (over time)</option><option value="bar">Bar</option></select></label>
+    <label style="display:block;color:var(--mut);font-size:12px;margin-top:10px">Readings<textarea id="gbData" style="width:100%;margin-top:4px;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:9px" rows="4" placeholder="Mon: 138&#10;Tue: 135&#10;Wed: 140&#10;Thu: 132"></textarea></label>
+    <label style="display:block;color:var(--mut);font-size:12px;margin-top:10px">Y-axis label<input id="gbY" style="width:100%;margin-top:4px;background:#081725;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:9px" placeholder="mmHg / kg / mmol/L / score"></label>
+    <button id="gbGo" class="doorcta" style="width:auto;padding:11px 16px;font-size:14px;margin-top:10px">Draw chart</button>
+    <div id="gbOut" style="margin-top:12px"></div>
+    <div style="color:var(--mut);font-size:11px;margin-top:8px">A tracking aid, not a diagnosis. Share trends with your doctor — one reading rarely tells the story.</div>
+  </div>
+</div>
+<script>
+(function(){
+  function E(id){return document.getElementById(id);}
+  const wrap=E('gbWrap');
+  E('graphbtn')&&(E('graphbtn').onclick=()=>{wrap.style.display='flex';});
+  E('gbClose').onclick=()=>{wrap.style.display='none';};
+  wrap.addEventListener('click',e=>{if(e.target===wrap)wrap.style.display='none';});
+  const PRESET={bp:{t:'Morning blood pressure (systolic)',y:'mmHg',band:{from:90,to:120,label:'healthy <120'},data:'Mon: 138\nTue: 135\nWed: 140\nThu: 132\nFri: 130'},
+    weight:{t:'Weight',y:'kg',data:'Wk1: 82\nWk2: 81.4\nWk3: 80.9\nWk4: 80.2'},
+    sugar:{t:'Fasting blood sugar',y:'mmol/L',band:{from:4,to:7,label:'typical fasting 4–7'},data:'Mon: 7.8\nTue: 7.2\nWed: 6.9\nThu: 6.5'},
+    symptom:{t:'Symptom score',y:'0–10',data:'Day1: 8\nDay2: 6\nDay3: 5\nDay4: 3\nDay5: 2'}};
+  let band=null;
+  wrap.querySelectorAll('[data-preset]').forEach(btn=>btn.onclick=()=>{const p=PRESET[btn.dataset.preset];E('gbTitle').value=p.t;E('gbY').value=p.y;E('gbData').value=p.data;E('gbType').value='line';band=p.band||null;E('gbGo').click();});
+  E('gbGo').onclick=()=>{
+    const raw=(E('gbData').value||'').trim();const out=E('gbOut');
+    if(!raw||typeof GRAPH==='undefined'){out.innerHTML='<div style="color:var(--mut)">Enter some readings first.</div>';return;}
+    const p=GRAPH.parseSeries(raw);
+    if(!p.values.length){out.innerHTML='<div style="color:var(--mut)">Couldn’t read numbers from that. Try "120, 118, 121" or one per line as "day: value".</div>';return;}
+    const spec={type:E('gbType').value,title:E('gbTitle').value.trim(),yLabel:E('gbY').value.trim(),labels:p.labels,series:[{values:p.values,color:'#46c6ab'}]};
+    if(band)spec.bands=[band];
+    out.innerHTML=GRAPH.buildChart(spec);
+  };
+})();
+</script>
+<script src="reportlab.js"></script>
+<script src="teach.js"></script>
+<script src="graph.js"></script>
+<script src="triage.js"></script>
+<script src="assess_ui.js"></script>
+<script>
+/* Tap any diagram to view it full-size (pinch or scroll to read on a phone). */
+(function(){
+  var ov=null;
+  function close(){if(ov){ov.remove();ov=null;}}
+  document.addEventListener('click',function(e){
+    if(ov){if(e.target===ov||e.target.closest('[data-figclose]'))close();return;}
+    var s=e.target.closest&&e.target.closest('svg[role="img"]'); if(!s||s.closest('[data-figzoom]'))return;
+    ov=document.createElement('div');ov.setAttribute('data-figzoom','1');
+    ov.style.cssText='position:fixed;inset:0;z-index:999;background:rgba(4,8,14,.94);overflow:auto;padding:54px 12px 24px;-webkit-overflow-scrolling:touch';
+    var c=s.cloneNode(true);c.removeAttribute('width');c.removeAttribute('height');c.style.cssText='display:block;width:max(100%,860px);height:auto;margin:0 auto;max-width:1200px';
+    var x=document.createElement('button');x.setAttribute('data-figclose','1');x.setAttribute('aria-label','Close');x.textContent='✕ Close';
+    x.style.cssText='position:fixed;top:10px;right:12px;z-index:1000;background:#1b2636;color:#eef3f8;border:1px solid #33435a;border-radius:10px;padding:8px 14px;font:600 14px sans-serif;cursor:pointer';
+    ov.appendChild(x);ov.appendChild(c);document.body.appendChild(ov);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  var st=document.createElement('style');st.textContent='svg[role="img"]{cursor:zoom-in}[data-figzoom] svg{cursor:default}';document.head.appendChild(st);
+})();
+</script>
+<footer style="max-width:900px;margin:28px auto 16px;padding:12px 16px;border-top:1px solid var(--line);color:var(--mut);font-size:12px;line-height:1.5;text-align:center">
+  HIVE Doctor · © 2026 Jeff Robinson · JR TraceCode. All rights reserved.<br>
+  Educational reference, not a substitute for professional medical advice. Not independently verified by a licensed clinician — confirm anything important with a doctor or pharmacist.
+</footer>
+</body>
+</html>

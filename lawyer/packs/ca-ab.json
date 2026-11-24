@@ -1,0 +1,619 @@
+{
+  "id": "ca-ab",
+  "name": "Alberta",
+  "flag": "🇨🇦",
+  "country": "Canada",
+  "region": "Canada",
+  "jur": "CA-AB",
+  "version": "1.0",
+  "kind": "province",
+  "note": "Full Alberta practice-area pack (common-law). Residential Tenancies Act + RTDRS, Employment Standards Code, Court of Justice small claims (to $100k), Human Rights Commission, Family Law Act. Criminal law is federal (core). Verify; not legal advice.",
+  "getLawyer": [
+    {
+      "id": "ab_criminal_charged",
+      "when": [
+        "charged with a crime in alberta",
+        "arrested in alberta",
+        "rcmp charged me alberta"
+      ],
+      "why": "Criminal law is federal (Criminal Code); Alberta has its own Court of Justice and Legal Aid Alberta. If charged or arrested, say you want a lawyer and stay silent. Call Legal Aid Alberta (1-866-845-3425) or the free Brydges duty-counsel line, and get an Alberta criminal lawyer before any statement."
+    },
+    {
+      "id": "ab_child_intervention",
+      "when": [
+        "children's services took my kids",
+        "child intervention alberta",
+        "removed my child alberta",
+        "apprehended my child"
+      ],
+      "why": "If Children's Services apprehends or threatens to apprehend a child, timelines are short. Get a family/child-intervention lawyer and call Legal Aid Alberta (1-866-845-3425) immediately; you have the right to be heard at the initial custody/apprehension hearing."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "ab_rta_14day",
+      "jur": "CA-AB",
+      "area": "housing",
+      "title": "14-day notice for substantial breach (incl. unpaid rent)",
+      "rule": "For a substantial breach such as unpaid rent, an Alberta landlord can serve a 14-day notice to end the tenancy. A tenant can dispute through the Residential Tenancy Dispute Resolution Service (RTDRS) or the Court of Justice; paying the arrears or remedying the breach may preserve the tenancy. Act fast — don't wait out the 14 days.",
+      "trigger": [
+        "14 day notice",
+        "unpaid rent",
+        "behind on rent",
+        "eviction notice",
+        "didn't pay rent",
+        "evicting me",
+        "my landlord",
+        "notice to vacate"
+      ],
+      "source": "Alberta Residential Tenancies Act (substantial breach); alberta.ca — ending a tenancy",
+      "verify": false,
+      "urgency": "critical"
+    },
+    {
+      "id": "ab_esc_complaint",
+      "jur": "CA-AB",
+      "area": "employment",
+      "title": "Employment Standards complaint — within 6 months",
+      "rule": "A complaint for unpaid earnings (wages, overtime, vacation, termination pay) to Alberta Employment Standards must generally be filed within 6 MONTHS after the earnings became owing (e.g., the last day of employment).",
+      "trigger": [
+        "didn't pay me",
+        "unpaid wages",
+        "fired me",
+        "i was fired",
+        "without notice",
+        "owed overtime",
+        "wrongful dismissal",
+        "terminated me",
+        "lost my job",
+        "laid off"
+      ],
+      "source": "Alberta Employment Standards Code",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "ab_ahrc_complaint",
+      "jur": "CA-AB",
+      "area": "human_rights",
+      "title": "Human Rights complaint — within 1 year",
+      "rule": "A complaint to the Alberta Human Rights Commission (discrimination in employment, tenancy, services) must be filed within 1 YEAR of the last alleged incident of discrimination.",
+      "trigger": [
+        "discriminated",
+        "discrimination",
+        "discriminated against me",
+        "because of my disability",
+        "because of my race",
+        "harassment at work",
+        "refused housing",
+        "refused service"
+      ],
+      "source": "Alberta Human Rights Act s.20",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "ab_limitation_basic",
+      "jur": "CA-AB",
+      "area": "civil_general",
+      "title": "Civil lawsuit — 2-year basic limitation",
+      "rule": "Most Alberta civil claims must be started within 2 YEARS of when you first knew (or should have) that the injury/loss occurred, was caused by the defendant, and warranted a proceeding. A 10-year ultimate limitation also applies.",
+      "trigger": [
+        "sue someone",
+        "want to sue",
+        "how long to sue",
+        "limitation period",
+        "statute of limitations",
+        "contract dispute",
+        "they owe me money"
+      ],
+      "source": "Alberta Limitations Act s.3",
+      "verify": true,
+      "urgency": "serious"
+    }
+  ],
+  "statutes": [
+    {
+      "id": "ab_rta",
+      "jur": "CA-AB",
+      "act": "Residential Tenancies Act (AB)",
+      "section": "s.26, s.29",
+      "area": "housing",
+      "title": "Ending a tenancy + deposits + rent",
+      "summary": "Substantial breach (incl. unpaid rent): 14-day notice. Security deposit capped at ONE month's rent. Alberta has NO rent control: rent can rise once every 12 months with proper written notice (3 months for periodic tenancies), but the amount is not capped. Disputes go to the RTDRS or the Court of Justice.",
+      "source": "https://kings-printer.alberta.ca/1266.cfm?page=r17p1.cfm"
+    },
+    {
+      "id": "ab_esc",
+      "jur": "CA-AB",
+      "act": "Employment Standards Code (AB)",
+      "section": "termination",
+      "area": "employment",
+      "title": "Termination notice / pay",
+      "summary": "Statutory notice after 90 days: 1 week (<2 yrs), 2 weeks (2–<4), 4 weeks (4–<6), 5 weeks (6–<8), 6 weeks (8–<10), 8 weeks (10+ yrs). This is the minimum — common-law reasonable notice for a without-cause dismissal is often much more; get advice before signing a release.",
+      "source": "https://kings-printer.alberta.ca/1266.cfm?page=E09.cfm"
+    },
+    {
+      "id": "ab_small_claims",
+      "jur": "CA-AB",
+      "act": "Alberta Court of Justice (small claims)",
+      "section": "$100,000",
+      "area": "small_claims",
+      "title": "Money claims up to $100,000",
+      "summary": "Since August 1, 2023, the Alberta Court of Justice (formerly Provincial Court) hears civil claims up to $100,000. Larger claims go to the Court of King's Bench. Small-claims procedure is streamlined and designed to be navigable without a lawyer.",
+      "source": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims",
+      "verify": false
+    },
+    {
+      "id": "ab_limitations",
+      "jur": "CA-AB",
+      "act": "Limitations Act (AB)",
+      "section": "s.3",
+      "area": "civil_general",
+      "title": "2-year / 10-year limitation",
+      "summary": "Basic limitation: 2 years from discovery. Ultimate limitation: 10 years from when the claim arose, whichever comes first. Confirm for your specific claim type.",
+      "source": "https://kings-printer.alberta.ca/1266.cfm?page=L12.cfm"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "type": "emergency",
+      "contact": "911",
+      "note": "Police, fire, ambulance."
+    },
+    {
+      "name": "Residential Tenancy Dispute Resolution Service (RTDRS)",
+      "type": "tribunal",
+      "contact": "310-0000 then 780-644-3000",
+      "note": "Faster alternative to court for tenancy disputes."
+    },
+    {
+      "name": "Alberta Employment Standards",
+      "type": "government",
+      "contact": "1-877-427-3731",
+      "note": "Unpaid wages, termination pay."
+    },
+    {
+      "name": "Alberta Human Rights Commission",
+      "type": "tribunal",
+      "contact": "780-427-7661",
+      "note": "Discrimination complaints (1-year limit)."
+    },
+    {
+      "name": "Legal Aid Alberta",
+      "type": "legal_aid",
+      "contact": "1-866-845-3425",
+      "note": "Criminal, family legal aid + duty counsel."
+    },
+    {
+      "name": "Student Legal Services / Centre for Public Legal Education Alberta",
+      "type": "legal_aid",
+      "contact": "1-866-845-3425",
+      "note": "Free legal information and clinics."
+    }
+  ],
+  "book": [
+    {
+      "id": "ab_housing",
+      "jur": "CA-AB",
+      "area": "housing",
+      "title": "Renting in Alberta — tenants and landlords",
+      "overview": "Alberta tenancies run under the Residential Tenancies Act. Disputes can go to the RTDRS (faster, cheaper than court) or the Court of Justice. Alberta has NO rent control, so watch for large increases (allowed once every 12 months with notice). A 14-day notice can end a tenancy for a substantial breach like unpaid rent.",
+      "your_rights": [
+        "Security deposit capped at one month's rent.",
+        "Right to dispute a notice at the RTDRS or Court of Justice.",
+        "Rent can rise only once every 12 months, with proper written notice (3 months for periodic).",
+        "Right to a move-in/move-out inspection report.",
+        "Right to habitable premises and essential services."
+      ],
+      "key_steps": [
+        "Read the notice: identify the breach and the 14-day timeline.",
+        "Pay arrears / fix the breach where possible to preserve the tenancy.",
+        "Apply to the RTDRS quickly if you dispute it.",
+        "Document everything (inspection report, photos, receipts).",
+        "Use CPLEA resources or Legal Aid for help."
+      ],
+      "common_mistakes": [
+        "Waiting out the 14-day notice.",
+        "Assuming there's a rent-increase cap (there isn't in Alberta).",
+        "Skipping the inspection report (risks the deposit).",
+        "Not keeping written records."
+      ],
+      "when_lawyer": "RTDRS is built for self-representation; get advice for large claims, retaliation, or a court appeal.",
+      "sources": [
+        {
+          "title": "Alberta Residential Tenancies Act",
+          "url": "https://kings-printer.alberta.ca/1266.cfm?page=r17p1.cfm"
+        }
+      ],
+      "statute": "Residential Tenancies Act (AB) s.26, s.29",
+      "verify": true
+    },
+    {
+      "id": "ab_employment",
+      "jur": "CA-AB",
+      "area": "employment",
+      "title": "Work in Alberta — your rights and termination",
+      "overview": "The Employment Standards Code sets Alberta minimums. The complaint deadline is 6 months. Statutory termination notice is a floor; for a without-cause dismissal, common-law reasonable notice is often much larger, so don't sign a severance release before getting advice.",
+      "your_rights": [
+        "Statutory termination notice scales with service (1 week to 8 weeks).",
+        "Often more under common law if dismissed without cause.",
+        "Unpaid wages, overtime, vacation, and holiday pay are recoverable.",
+        "Protection from reprisal for asserting rights."
+      ],
+      "key_steps": [
+        "Don't sign a release right away — get it reviewed.",
+        "Compare the statutory minimum with possible common-law notice.",
+        "File an Employment Standards complaint within 6 months for pay issues.",
+        "Keep the contract, pay stubs, and termination letter.",
+        "For wrongful dismissal, consider the Court of Justice (up to $100k)."
+      ],
+      "common_mistakes": [
+        "Taking only the statutory minimum.",
+        "Signing a release under pressure.",
+        "Missing the 6-month window.",
+        "Assuming 'at-will' employment (not a thing in Canada)."
+      ],
+      "when_lawyer": "Before signing severance, or for without-cause/constructive dismissal or discrimination — get an employment lawyer.",
+      "sources": [
+        {
+          "title": "Alberta Employment Standards Code",
+          "url": "https://kings-printer.alberta.ca/1266.cfm?page=E09.cfm"
+        }
+      ],
+      "statute": "Employment Standards Code (AB)",
+      "verify": true
+    },
+    {
+      "id": "ab_small_claims",
+      "jur": "CA-AB",
+      "area": "small_claims",
+      "title": "Suing (and being sued) for money in Alberta",
+      "overview": "The Alberta Court of Justice hears civil claims up to $100,000 (since Aug 1, 2023) — one of the highest small-claims limits in Canada. Larger claims go to the Court of King's Bench. The 2-year basic limitation period usually applies.",
+      "your_rights": [
+        "Claims up to $100,000 in the streamlined Court of Justice.",
+        "Right to bring or defend a claim yourself.",
+        "Right to a pre-trial/mediation step.",
+        "Right to enforce a judgment (garnishment, seizure)."
+      ],
+      "key_steps": [
+        "Confirm the amount (≤$100k → Court of Justice).",
+        "File within 2 years of discovering the claim.",
+        "Gather contracts, invoices, messages, proof of loss.",
+        "Attend the pre-trial conference.",
+        "After winning, use enforcement to collect."
+      ],
+      "common_mistakes": [
+        "Missing the 2-year limitation period.",
+        "Suing a judgment-proof defendant.",
+        "Filing in the wrong court for the amount.",
+        "No documentary proof."
+      ],
+      "when_lawyer": "The Court of Justice is navigable self-represented; get advice for King's Bench claims or complex matters.",
+      "sources": [
+        {
+          "title": "Alberta Courts — Civil Claims",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta Court of Justice rules; Limitations Act",
+      "verify": true
+    },
+    {
+      "id": "ab_family",
+      "jur": "CA-AB",
+      "area": "family",
+      "title": "Family law in Alberta — separation, children, support",
+      "overview": "Alberta's Family Law Act governs parenting and support; divorce and property for married couples involve the federal Divorce Act and the Family Property Act. The Court of Justice handles parenting and support; the Court of King's Bench handles divorce and property. Adult interdependent partners have property rights too.",
+      "your_rights": [
+        "Parenting decided on the child's best interests.",
+        "Child and spousal/partner support under the Guidelines.",
+        "Family property division for married and adult interdependent partners.",
+        "Right to mediation and a written agreement."
+      ],
+      "key_steps": [
+        "Make a parenting plan and written agreement.",
+        "Exchange full financial disclosure.",
+        "Use family mediation / Resolution Services where possible.",
+        "For safety, seek an Emergency Protection Order.",
+        "File in the right court (Justice vs King's Bench)."
+      ],
+      "common_mistakes": [
+        "No financial disclosure.",
+        "Informal, unwritten agreements.",
+        "Assuming adult interdependent partners have no rights.",
+        "Withholding a child without an order."
+      ],
+      "when_lawyer": "For property, relocation, protection orders, or child disputes — get a family lawyer; Legal Aid Alberta may apply.",
+      "sources": [
+        {
+          "title": "Alberta Family Law Act",
+          "url": "https://kings-printer.alberta.ca/1266.cfm?page=F04P5.cfm"
+        }
+      ],
+      "statute": "Family Law Act (AB); Family Property Act; Divorce Act (federal)",
+      "verify": true
+    },
+    {
+      "id": "ab_criminal",
+      "jur": "CA-AB",
+      "area": "criminal",
+      "title": "Charged with a crime in Alberta",
+      "overview": "Criminal law is the federal Criminal Code; Alberta has its own Court of Justice and Legal Aid Alberta. Your rights on arrest are the same Canada-wide: to be told the charge, to stay silent, and to a lawyer without delay, including free immediate advice.",
+      "your_rights": [
+        "Right to silence.",
+        "Right to a lawyer without delay + free immediate advice (duty counsel).",
+        "Right to know the charge and to reasonable bail.",
+        "Presumption of innocence."
+      ],
+      "key_steps": [
+        "Say: 'I want a lawyer and I will remain silent.'",
+        "Call Legal Aid Alberta (1-866-845-3425) or duty counsel.",
+        "Don't discuss the case except with your lawyer.",
+        "Record officer details and events.",
+        "Attend every court date; obey release conditions."
+      ],
+      "common_mistakes": [
+        "Talking to police without a lawyer.",
+        "Breaching release conditions.",
+        "Treating a minor charge as no big deal.",
+        "Missing a court date."
+      ],
+      "when_lawyer": "Immediately on any arrest or charge — duty counsel first, then an Alberta criminal lawyer; apply to Legal Aid Alberta.",
+      "sources": [
+        {
+          "title": "Legal Aid Alberta",
+          "url": "https://www.legalaid.ab.ca"
+        }
+      ],
+      "statute": "Criminal Code (federal); Alberta court rules",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_debt",
+      "jur": "CA-AB",
+      "area": "debt_consumer",
+      "title": "Debt & collections in Alberta",
+      "overview": "If a collection agency is after you, Alberta's consumer-protection rules limit how and when they can contact you — generally no harassment, no threats, limited call hours, and no discussing the debt with your employer (except to confirm employment). You can usually require written contact only. Old debt may be past the limitation period, so it can't be successfully sued on — but a payment or admission can restart that clock.",
+      "your_rights": [
+        "Freedom from harassment, threats, and calls at unreasonable hours.",
+        "Right to require contact in writing only.",
+        "Collectors generally can't discuss your debt with family/employer.",
+        "A debt past the limitation period can't be successfully sued on."
+      ],
+      "key_steps": [
+        "Ask for the debt details in writing before paying.",
+        "Send a written notice limiting contact to writing.",
+        "Check if the debt is past the limitation period (often ~2 years).",
+        "Don't pay or admit an old debt without advice.",
+        "Complain to your provincial consumer-protection office about abuse."
+      ],
+      "common_mistakes": [
+        "Paying without confirming the debt is yours and in time.",
+        "Restarting the clock by paying a little on an old debt.",
+        "Ignoring a court claim (default judgment + garnishment).",
+        "Giving a collector banking details."
+      ],
+      "when_lawyer": "If you're sued, facing garnishment, or the debt isn't yours — get advice; Legal Aid Alberta or a legal clinic may help.",
+      "sources": [
+        {
+          "title": "Alberta consumer-protection reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta collection/consumer-protection law",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_pi",
+      "jur": "CA-AB",
+      "area": "personal_injury",
+      "title": "Injured in an accident in Alberta",
+      "overview": "If you're hurt by someone's carelessness, you may have a claim for treatment, lost income, and pain and suffering. The general limitation period is usually 2 years, but watch for MUCH shorter notice deadlines (e.g., injuries on municipal property or involving a government body). Document everything and get advice early.",
+      "your_rights": [
+        "Right to seek compensation for your injuries and losses.",
+        "Right to your own medical care and records.",
+        "Right not to give the other insurer a recorded statement.",
+        "Right to a lawyer before signing any release."
+      ],
+      "key_steps": [
+        "Get medical care; keep all records and receipts.",
+        "Photograph the scene and injuries; get witnesses.",
+        "Report it; get the incident/police report number.",
+        "Watch for SHORT municipal/government notice deadlines.",
+        "Don't sign a release or take a quick settlement without advice."
+      ],
+      "common_mistakes": [
+        "Missing a short notice deadline.",
+        "Giving the other insurer a recorded statement.",
+        "Settling before injuries are fully known.",
+        "Admitting fault at the scene."
+      ],
+      "when_lawyer": "For any serious injury, disputed fault, or a lowball insurer — get a personal-injury lawyer (usually contingency, free consult).",
+      "sources": [
+        {
+          "title": "Alberta injury-claim reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta negligence law; limitation + notice periods",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_traffic",
+      "jur": "CA-AB",
+      "area": "traffic",
+      "title": "Traffic tickets & driving offences in Alberta",
+      "overview": "A traffic ticket in Alberta usually lets you plead guilty (pay, take demerit points, risk higher insurance) or dispute it. Serious matters — impaired driving, dangerous driving, driving while suspended — are Criminal Code offences with severe, often mandatory penalties; treat them like any criminal charge and get a lawyer.",
+      "your_rights": [
+        "Right to dispute a ticket instead of paying.",
+        "Right to disclosure of the evidence.",
+        "Right to a lawyer for any Criminal Code driving charge.",
+        "Presumption of innocence on contested charges."
+      ],
+      "key_steps": [
+        "Note the dispute deadline — don't miss it.",
+        "Remember paying = pleading guilty (points + insurance).",
+        "Consider disputing or a plea discussion for demerit/insurance.",
+        "For impaired/dangerous/suspended driving, get a lawyer now.",
+        "Never ignore a ticket."
+      ],
+      "common_mistakes": [
+        "Ignoring a ticket.",
+        "Paying one you could have fought.",
+        "Treating impaired driving like a parking ticket.",
+        "Not checking demerit/insurance impact."
+      ],
+      "when_lawyer": "For impaired/dangerous driving, driving while suspended, or an accident with injury — get a lawyer right away.",
+      "sources": [
+        {
+          "title": "Alberta traffic/driving reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Criminal Code (impaired/dangerous driving); Alberta highway traffic law",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_police",
+      "jur": "CA-AB",
+      "area": "police_rights",
+      "title": "Your rights with police in Alberta",
+      "overview": "The Charter protects you across Canada: freedom from unreasonable search (s.8), from arbitrary detention (s.9), and — on arrest/detention — the right to be told why and to speak to a lawyer without delay (s.10). You generally don't have to answer questions. Stay calm, don't resist, assert your rights, and challenge any breach later in court.",
+      "your_rights": [
+        "Right to silence.",
+        "On detention/arrest, right to know why and to call a lawyer without delay.",
+        "Protection from unreasonable search (s.8).",
+        "Protection from arbitrary detention (s.9)."
+      ],
+      "key_steps": [
+        "Ask: 'Am I being detained, or am I free to go?'",
+        "Say you want a lawyer and will stay silent.",
+        "Don't physically resist; keep hands visible.",
+        "Use free 24-hour duty counsel if offered.",
+        "Note what happened and officer details afterward."
+      ],
+      "common_mistakes": [
+        "Answering questions without a lawyer.",
+        "Consenting to a search you could refuse.",
+        "Resisting or fleeing.",
+        "Not clearly asserting the right to counsel."
+      ],
+      "when_lawyer": "After any arrest, detention, or search — exercise your right to a lawyer immediately; free duty counsel is available 24/7.",
+      "sources": [
+        {
+          "title": "Charter of Rights (ss.8–10)",
+          "url": "https://laws-lois.justice.gc.ca/eng/const/page-12.html"
+        }
+      ],
+      "statute": "Canadian Charter of Rights and Freedoms, ss.8, 9, 10",
+      "verify": false
+    },
+    {
+      "id": "ca_ab_estates",
+      "jur": "CA-AB",
+      "area": "wills_estates",
+      "title": "Wills & estates in Alberta",
+      "overview": "A will directs who inherits and names the executor. Without a valid will you die 'intestate' and Alberta's rules decide who inherits — often not what you'd choose, and common-law partners may get nothing automatically. Estates are usually probated (the court confirms the will and executor) before debts are paid and gifts distributed.",
+      "your_rights": [
+        "Right to make a valid, witnessed will.",
+        "Right, as executor, to administer the estate.",
+        "Beneficiaries' right to an accounting.",
+        "Spouses/dependants may have protected claims."
+      ],
+      "key_steps": [
+        "Make a valid will; name an executor, backup, and guardian for minor kids.",
+        "Keep beneficiary designations current (they can bypass the will).",
+        "Store the will safely; tell your executor where it is.",
+        "After a death, locate the will and apply for probate; inventory assets/debts.",
+        "Pay debts and taxes BEFORE distributing."
+      ],
+      "common_mistakes": [
+        "Dying without a will.",
+        "An improperly witnessed will.",
+        "Assuming a common-law partner inherits automatically.",
+        "Distributing before debts/taxes are cleared."
+      ],
+      "when_lawyer": "For estate planning, a contested will, or executor duties — see a wills & estates lawyer; Legal Aid Alberta may help those who qualify.",
+      "sources": [
+        {
+          "title": "Alberta wills & estates reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta wills/estates & probate law",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_insurance",
+      "jur": "CA-AB",
+      "area": "insurance",
+      "title": "Insurance claims & disputes in Alberta",
+      "overview": "Insurers in Alberta owe a duty of good faith — to handle claims fairly and promptly. If a claim is denied or underpaid, demand the reason and policy wording in writing, appeal internally, and escalate to the ombudsperson/regulator or court. An unreasonable denial can expose the insurer to extra damages.",
+      "your_rights": [
+        "Right to a written reason for a denial and the policy wording.",
+        "Right to a fair, prompt investigation (good faith).",
+        "Right to the insurance ombudsperson and the regulator.",
+        "Possible extra damages for bad-faith handling."
+      ],
+      "key_steps": [
+        "Report the claim promptly and as the policy requires.",
+        "Document the loss — photos, receipts, a log of every contact.",
+        "Get the denial reason and policy terms in writing.",
+        "Appeal in writing, citing the policy.",
+        "Escalate to the ombudsperson/regulator or a lawyer if stonewalled."
+      ],
+      "common_mistakes": [
+        "Missing policy notice/claim deadlines.",
+        "Accepting a denial without the written reason.",
+        "Unrecorded phone-only dealings.",
+        "Not documenting the loss."
+      ],
+      "when_lawyer": "For a large denied claim, suspected bad faith, or a liability claim against you — consult an insurance lawyer.",
+      "sources": [
+        {
+          "title": "Alberta insurance reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta insurance law; duty of good faith",
+      "verify": true
+    },
+    {
+      "id": "ca_ab_business",
+      "jur": "CA-AB",
+      "area": "business",
+      "title": "Small business & self-employed in Alberta",
+      "overview": "Running a business in Alberta means picking a structure (sole proprietor = simple but personally liable; corporation = separate entity limiting personal liability), using written contracts, registering/licensing as required, and keeping business and personal finances separate. Put deals in writing, invoice with clear terms, and get advice before signing leases or big contracts.",
+      "your_rights": [
+        "Right to choose a structure that fits your risk.",
+        "Right to enforce written contracts and unpaid invoices.",
+        "Right to limited liability if you properly incorporate and maintain the company.",
+        "Right to sue (small claims within the limit) to collect."
+      ],
+      "key_steps": [
+        "Pick sole prop vs incorporation with tax + legal advice.",
+        "Use written contracts and clear invoices.",
+        "Register the business name and get required licences.",
+        "Keep business and personal money separate.",
+        "For unpaid invoices, demand then sue within the limitation period."
+      ],
+      "common_mistakes": [
+        "Handshake deals.",
+        "Mixing personal and business finances.",
+        "Skipping registration/licences.",
+        "Misclassifying employees as contractors."
+      ],
+      "when_lawyer": "For incorporation, a shareholder/partnership agreement, a major contract, or a dispute — get a business lawyer.",
+      "sources": [
+        {
+          "title": "Alberta small-business reference",
+          "url": "https://www.albertacourts.ca/cj/areas-of-law/civil/civil-claims"
+        }
+      ],
+      "statute": "Alberta business/corporations law",
+      "verify": true
+    }
+  ]
+}

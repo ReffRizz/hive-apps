@@ -1,0 +1,300 @@
+{
+ "id": "bs",
+ "name": "Bahamas",
+ "flag": "🇧🇸",
+ "country": "Bahamas",
+ "region": "Caribbean",
+ "jur": "BS",
+ "version": "1.0",
+ "kind": "traveler",
+ "note": "Traveler-focused Bahamas pack built from Government of Canada travel advice (fetched 2026-11-24): emergencies (911 or 919), ID, if detained, drugs, local offences, driving, entry rules, consular contacts. Verify before relying on it; not local legal advice.",
+ "language": {
+  "code": "en",
+  "name": "English"
+ },
+ "phrasebook": [
+  {
+   "en": "I want to speak to a lawyer.",
+   "local": "I want to speak to a lawyer.",
+   "pron": "",
+   "note": "English is the official language — say it plainly and repeat it."
+  },
+  {
+   "en": "Please notify the Canadian consular office.",
+   "local": "Please notify the Canadian consular office.",
+   "pron": "",
+   "note": "Ask for the Honorary Consul in Nassau or the High Commission in Kingston."
+  },
+  {
+   "en": "I do not consent to a search.",
+   "local": "I do not consent to a search.",
+   "pron": "",
+   "note": "Say it calmly; do not physically resist."
+  },
+  {
+   "en": "Am I under arrest, or am I free to go?",
+   "local": "Am I under arrest, or am I free to go?",
+   "pron": "",
+   "note": "Ask before answering further questions."
+  },
+  {
+   "en": "I will not sign anything without a lawyer.",
+   "local": "I will not sign anything without a lawyer.",
+   "pron": "",
+   "note": "If handed a statement or form."
+  }
+ ],
+ "resources": [
+  {
+   "name": "Emergency",
+   "type": "emergency",
+   "contact": "911 or 919",
+   "note": "Police, ambulance, fire."
+  },
+  {
+   "name": "Honorary Consul of Canada (Nassau)",
+   "type": "consular",
+   "contact": "1-876-926-1500 / 1-844-880-6519",
+   "note": "Shirley Street Plaza, Nassau."
+  },
+  {
+   "name": "High Commission of Canada (Kingston, Jamaica — covers The Bahamas)",
+   "type": "consular",
+   "contact": "1-876-926-1500 / 1-844-880-6519",
+   "note": "3 West Kings House Road, Kingston 10, Jamaica."
+  }
+ ],
+ "getLawyer": [
+  {
+   "id": "bs_detained",
+   "when": [
+    "arrested",
+    "detained",
+    "police took me",
+    "in custody",
+    "charged",
+    "i was arrested"
+   ],
+   "why": "If you are arrested or detained in Bahamas, ask for a lawyer and for the Canadian consular office to be notified (Honorary Consul of Canada (Nassau): 1-876-926-1500 / 1-844-880-6519). Sign nothing you do not understand. Dual citizenship is not legally recognized in The Bahamas."
+  },
+  {
+   "id": "bs_drugs",
+   "when": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed",
+    "pills"
+   ],
+   "why": "Penalties for possession, use or trafficking of illegal drugs in Bahamas are severe — jail or heavy fines. Contact the Canadian consular office and get a local lawyer; say and sign nothing without counsel."
+  }
+ ],
+ "deadlines": [
+  {
+   "id": "bs_tourist_stay",
+   "jur": "BS",
+   "area": "immigration",
+   "title": "Tourist stay up to 8 months; passport valid 6 months",
+   "rule": "Tourist stays of up to 8 MONTHS need no visa. Your Canadian passport must be valid at least 6 MONTHS beyond your departure date. Customs officials may ask for a return or onward ticket and proof of sufficient funds.",
+   "trigger": [
+    "how long can i stay",
+    "tourist",
+    "overstay",
+    "visa",
+    "schengen",
+    "etias",
+    "passport valid",
+    "stay in bahamas"
+   ],
+   "source": "Government of Canada travel advice — Bahamas",
+   "verify": false,
+   "urgency": "serious"
+  },
+  {
+   "id": "bs_driving",
+   "jur": "BS",
+   "area": "traffic",
+   "title": "Drive on the LEFT; Canadian licence valid 90 days",
+   "rule": "Traffic drives on the LEFT. A valid Canadian licence is accepted for up to 90 DAYS; longer stays require a Bahamian licence. An International Driving Permit is advised.",
+   "trigger": [
+    "driving",
+    "drive in bahamas",
+    "rent a car",
+    "licence",
+    "license",
+    "idp"
+   ],
+   "source": "Government of Canada travel advice — Bahamas",
+   "verify": false,
+   "urgency": "info"
+  }
+ ],
+ "sentencing": [
+  {
+   "id": "bs_drug_offence",
+   "jur": "BS",
+   "name": "Drug possession / trafficking (Bahamas)",
+   "section": "Bahamas criminal law",
+   "class": "serious",
+   "triggers": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed"
+   ],
+   "mandatory_minimum": "Not stated in the travel advice.",
+   "first_offender": "Convicted offenders can expect jail sentences or heavy fines.",
+   "maximum": "Severe penalties for trafficking.",
+   "collateral": "Criminal record; removal and re-entry consequences.",
+   "source": "Government of Canada travel advice — Bahamas",
+   "verify": false,
+   "get_lawyer_urgent": true
+  }
+ ],
+ "statutes": [
+  {
+   "id": "bs_id_law",
+   "jur": "BS",
+   "act": "Bahamas law",
+   "section": "ID",
+   "area": "police_rights",
+   "title": "Identification",
+   "summary": "Carry a copy of your passport and keep the original secure; customs officials may ask for a return or onward ticket and proof of sufficient funds.",
+   "source": "https://travel.gc.ca/destinations/bahamas"
+  }
+ ],
+ "book": [
+  {
+   "id": "bs_police",
+   "jur": "BS",
+   "area": "police_rights",
+   "title": "Police, ID, and if you're detained in Bahamas",
+   "overview": "Carry a copy of your passport and keep the original secure; customs officials may ask for a return or onward ticket and proof of sufficient funds. If you are arrested or detained, ask for a lawyer and ask that the Canadian consular office be told. Emergency: 911 or 919. Dual citizenship is not legally recognized in The Bahamas.",
+   "your_rights": [
+    "Ask for a lawyer before answering questions.",
+    "Ask the authorities to notify the Canadian consular office.",
+    "Ask for an interpreter if you do not understand the language.",
+    "Do not sign anything you do not understand."
+   ],
+   "key_steps": [
+    "Carry ID (or a copy) as the local rules require.",
+    "If detained: ask for a lawyer, an interpreter, and the Canadian consular office.",
+    "Save the emergency number (911 or 919) and the consular contact (1-876-926-1500 / 1-844-880-6519).",
+    "Report theft to the police to get a report for insurance."
+   ],
+   "common_mistakes": [
+    "Not carrying ID or a copy.",
+    "Signing documents you cannot read.",
+    "Assuming dual citizenship guarantees Canadian consular help."
+   ],
+   "when_lawyer": "Immediately on arrest or detention — ask for a lawyer and the Canadian consular office.",
+   "sources": [
+    {
+     "title": "Government of Canada — Bahamas travel advice",
+     "url": "https://travel.gc.ca/destinations/bahamas"
+    }
+   ],
+   "statute": "Bahamas criminal procedure; Vienna Convention on Consular Relations",
+   "verify": false
+  },
+  {
+   "id": "bs_immigration",
+   "jur": "BS",
+   "area": "immigration",
+   "title": "Entering and staying in Bahamas",
+   "overview": "Tourist stays of up to 8 MONTHS need no visa. Your Canadian passport must be valid at least 6 MONTHS beyond your departure date. Customs officials may ask for a return or onward ticket and proof of sufficient funds.",
+   "your_rights": [
+    "Entry without a visa for the tourist period stated, if you meet the passport-validity rule.",
+    "To be told the reason if you are refused entry.",
+    "To contact the Canadian consular office if you are detained at the border."
+   ],
+   "key_steps": [
+    "Check your passport's expiry date against the validity rule before you book.",
+    "Count your days carefully and keep proof of your entry date.",
+    "Carry your return or onward ticket and proof of funds.",
+    "Apply for any required authorization only through official government websites."
+   ],
+   "common_mistakes": [
+    "Travelling on a passport that expires too soon.",
+    "Overstaying — it can mean fines, removal, and a ban on return.",
+    "Paying unofficial websites for travel authorizations."
+   ],
+   "when_lawyer": "If you are refused entry, have overstayed, or want to stay longer or work.",
+   "sources": [
+    {
+     "title": "Government of Canada — Bahamas travel advice",
+     "url": "https://travel.gc.ca/destinations/bahamas"
+    }
+   ],
+   "statute": "Bahamas immigration rules",
+   "verify": false
+  },
+  {
+   "id": "bs_criminal",
+   "jur": "BS",
+   "area": "criminal",
+   "title": "Local laws that catch visitors in Bahamas",
+   "overview": "Penalties for possession, use or trafficking of illegal drugs are severe — convicted offenders can expect jail sentences or heavy fines. Other local rules that surprise visitors: It is illegal to leave The Bahamas with more than 10,000 BSD. Long-line fishing is illegal in Bahamian waters. Drones must be registered with The Bahamas Civil Aviation Authority. Dual citizenship is NOT legally recognized — if authorities consider you Bahamian they may refuse Canadian consular services.",
+   "your_rights": [
+    "The right to a lawyer if you are charged.",
+    "The right to have the Canadian consular office notified.",
+    "The right to an interpreter in proceedings you do not understand."
+   ],
+   "key_steps": [
+    "Do not carry packages or luggage for anyone else.",
+    "Learn the local rules below before you go — ignorance is not a defence.",
+    "It is illegal to leave The Bahamas with more than 10,000 BSD.",
+    "Long-line fishing is illegal in Bahamian waters."
+   ],
+   "common_mistakes": [
+    "Assuming rules are the same as in Canada.",
+    "Carrying or using drugs because they seem tolerated locally."
+   ],
+   "when_lawyer": "As soon as you are questioned about, or charged with, any offence.",
+   "sources": [
+    {
+     "title": "Government of Canada — Bahamas travel advice",
+     "url": "https://travel.gc.ca/destinations/bahamas"
+    }
+   ],
+   "statute": "Bahamas criminal law",
+   "verify": false
+  },
+  {
+   "id": "bs_safety",
+   "jur": "BS",
+   "area": "safety",
+   "title": "Crime, scams and driving in Bahamas",
+   "overview": "Credit and debit card and ATM fraud occurs frequently, especially in Nassau. Driving: Traffic drives on the LEFT. A valid Canadian licence is accepted for up to 90 DAYS; longer stays require a Bahamian licence. An International Driving Permit is advised.",
+   "your_rights": [
+    "To report a crime to the police and receive a report for insurance.",
+    "To consular assistance from Canada if you are a victim of crime.",
+    "To drive on your Canadian licence for the period stated, if you meet the conditions."
+   ],
+   "key_steps": [
+    "Keep valuables out of sight and bags closed in crowds and on transit.",
+    "Use only licensed taxis and check ATMs before using your card.",
+    "Carry the required safety equipment and documents when driving.",
+    "Report theft promptly and contact your card issuer."
+   ],
+   "common_mistakes": [
+    "Leaving valuables in a parked car.",
+    "Driving without the required permit, equipment, or insurance.",
+    "Ignoring local traffic-zone and alcohol rules."
+   ],
+   "when_lawyer": "After a serious collision, any arrest, or a significant theft or fraud.",
+   "sources": [
+    {
+     "title": "Government of Canada — Bahamas travel advice",
+     "url": "https://travel.gc.ca/destinations/bahamas"
+    }
+   ],
+   "statute": "Bahamas road traffic law",
+   "verify": false
+  }
+ ]
+}

@@ -1,0 +1,209 @@
+{
+  "schema": "hive.doctor.gestation/v1",
+  "title": "HIVE Doctor — Fetal Development (reference)",
+  "author": "Jeff",
+  "version": "0.1.0",
+  "updated": "2026-11-14",
+  "review_status": "UNVERIFIED",
+  "safety": "General week-by-week ranges for learning — every pregnancy is different, and these are not a measurement of any individual baby. Sizes and weights are typical averages. This does not replace antenatal care, ultrasound dating, or your midwife/doctor. If you have pain, bleeding, reduced movements or any concern, seek care. Pending clinician sign-off.",
+  "trimesters": {
+    "first": "weeks 1–12",
+    "second": "weeks 13–27",
+    "third": "weeks 28–40"
+  },
+  "stages": [
+    {
+      "week": 4,
+      "size_like": "poppy seed",
+      "length_label": "~1.5 mm (CRL)",
+      "lengthCm": 0.15,
+      "weight": "<1 g",
+      "milestones": "Neural tube (brain & spine) is forming and the heart tube begins to beat.",
+      "headRatio": 0.5,
+      "curl": 0.9
+    },
+    {
+      "week": 6,
+      "size_like": "sweet pea",
+      "length_label": "~5 mm (CRL)",
+      "lengthCm": 0.5,
+      "weight": "<1 g",
+      "milestones": "A heartbeat can often be detected; arm and leg buds appear.",
+      "headRatio": 0.5,
+      "curl": 0.9
+    },
+    {
+      "week": 8,
+      "size_like": "raspberry",
+      "length_label": "~1.6 cm (CRL)",
+      "lengthCm": 1.6,
+      "weight": "~1 g",
+      "milestones": "All major organs have begun; fingers and toes forming. Now called a fetus.",
+      "headRatio": 0.48,
+      "curl": 0.85
+    },
+    {
+      "week": 10,
+      "size_like": "strawberry",
+      "length_label": "~3.1 cm (CRL)",
+      "lengthCm": 3.1,
+      "weight": "~4 g",
+      "milestones": "Vital organs are working; tiny nails start; able to make small movements.",
+      "headRatio": 0.45,
+      "curl": 0.8
+    },
+    {
+      "week": 12,
+      "size_like": "lime",
+      "length_label": "~5.4 cm (CRL)",
+      "lengthCm": 5.4,
+      "weight": "~14 g",
+      "milestones": "Reflexes develop; can open and close the hands. End of the first trimester.",
+      "headRatio": 0.42,
+      "curl": 0.75
+    },
+    {
+      "week": 14,
+      "size_like": "lemon",
+      "length_label": "~8.7 cm (CRL)",
+      "lengthCm": 8.7,
+      "weight": "~43 g",
+      "milestones": "Facial muscles work (squints, frowns); fine hair (lanugo) begins.",
+      "headRatio": 0.4,
+      "curl": 0.7
+    },
+    {
+      "week": 16,
+      "size_like": "avocado",
+      "length_label": "~11.6 cm (CRL)",
+      "lengthCm": 11.6,
+      "weight": "~100 g",
+      "milestones": "Can sense light and may begin to hear; skeleton is hardening.",
+      "headRatio": 0.38,
+      "curl": 0.65
+    },
+    {
+      "week": 18,
+      "size_like": "bell pepper",
+      "length_label": "~14 cm (CRL)",
+      "lengthCm": 14,
+      "weight": "~190 g",
+      "milestones": "Movements become stronger; ears sit in their final position.",
+      "headRatio": 0.36,
+      "curl": 0.6
+    },
+    {
+      "week": 20,
+      "size_like": "banana",
+      "length_label": "~25 cm (head–heel)",
+      "lengthCm": 25,
+      "weight": "~300 g",
+      "milestones": "Halfway. The detailed anatomy scan is usually done around now.",
+      "headRatio": 0.34,
+      "curl": 0.55
+    },
+    {
+      "week": 22,
+      "size_like": "papaya",
+      "length_label": "~28 cm",
+      "lengthCm": 28,
+      "weight": "~430 g",
+      "milestones": "Eyebrows and a firmer grip; skin is wrinkled and reddish.",
+      "headRatio": 0.33,
+      "curl": 0.5
+    },
+    {
+      "week": 24,
+      "size_like": "ear of corn",
+      "length_label": "~30 cm",
+      "lengthCm": 30,
+      "weight": "~600 g",
+      "milestones": "Lungs start making surfactant; a point where survival outside becomes possible with intensive care.",
+      "headRatio": 0.32,
+      "curl": 0.5
+    },
+    {
+      "week": 26,
+      "size_like": "lettuce",
+      "length_label": "~35 cm",
+      "lengthCm": 35,
+      "weight": "~760 g",
+      "milestones": "Eyes begin to open; responds to sound.",
+      "headRatio": 0.31,
+      "curl": 0.45
+    },
+    {
+      "week": 28,
+      "size_like": "eggplant",
+      "length_label": "~37 cm",
+      "lengthCm": 37,
+      "weight": "~1.0 kg",
+      "milestones": "Rhythmic (REM) sleep; the third trimester begins.",
+      "headRatio": 0.3,
+      "curl": 0.45
+    },
+    {
+      "week": 30,
+      "size_like": "cabbage",
+      "length_label": "~39 cm",
+      "lengthCm": 39,
+      "weight": "~1.3 kg",
+      "milestones": "The brain grows quickly; eyes can track light.",
+      "headRatio": 0.3,
+      "curl": 0.4
+    },
+    {
+      "week": 32,
+      "size_like": "squash",
+      "length_label": "~42 cm",
+      "lengthCm": 42,
+      "weight": "~1.7 kg",
+      "milestones": "Practices breathing movements; bones fully formed but still soft.",
+      "headRatio": 0.29,
+      "curl": 0.4
+    },
+    {
+      "week": 34,
+      "size_like": "cantaloupe",
+      "length_label": "~45 cm",
+      "lengthCm": 45,
+      "weight": "~2.1 kg",
+      "milestones": "Lungs are maturing; fingernails reach the fingertips.",
+      "headRatio": 0.29,
+      "curl": 0.35
+    },
+    {
+      "week": 36,
+      "size_like": "honeydew",
+      "length_label": "~47 cm",
+      "lengthCm": 47,
+      "weight": "~2.6 kg",
+      "milestones": "Gaining fat and losing the fine lanugo hair; settling head-down.",
+      "headRatio": 0.28,
+      "curl": 0.35
+    },
+    {
+      "week": 38,
+      "size_like": "leek",
+      "length_label": "~49 cm",
+      "lengthCm": 49,
+      "weight": "~3.0 kg",
+      "milestones": "Considered early-term; organs ready for life outside.",
+      "headRatio": 0.28,
+      "curl": 0.3
+    },
+    {
+      "week": 40,
+      "size_like": "small pumpkin",
+      "length_label": "~51 cm",
+      "lengthCm": 51,
+      "weight": "~3.4 kg",
+      "milestones": "Full term — the estimated due date. Ready to be born.",
+      "headRatio": 0.28,
+      "curl": 0.3
+    }
+  ],
+  "counts": {
+    "stages": 19
+  }
+}

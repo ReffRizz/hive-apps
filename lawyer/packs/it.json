@@ -1,0 +1,312 @@
+{
+ "id": "it",
+ "name": "Italy",
+ "flag": "🇮🇹",
+ "country": "Italy",
+ "region": "Europe",
+ "jur": "IT",
+ "version": "1.0",
+ "kind": "traveler",
+ "note": "Traveler-focused Italy pack built from Government of Canada travel advice (fetched 2026-11-24): emergencies (112), ID, if detained, drugs, local offences, driving, entry rules, consular contacts. Verify before relying on it; not local legal advice.",
+ "language": {
+  "code": "it",
+  "name": "Italian"
+ },
+ "phrasebook": [
+  {
+   "en": "I want to speak to a lawyer.",
+   "local": "Voglio parlare con un avvocato.",
+   "pron": "VOL-yoh par-LAH-reh kon oon ahv-voh-KAH-toh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I want to contact the Canadian embassy.",
+   "local": "Voglio contattare l'ambasciata canadese.",
+   "pron": "VOL-yoh kon-taht-TAH-reh lahm-bah-SHAH-tah kah-nah-DEH-zeh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I do not understand.",
+   "local": "Non capisco.",
+   "pron": "non kah-PEES-koh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I need an interpreter.",
+   "local": "Ho bisogno di un interprete.",
+   "pron": "oh bee-ZOHN-yoh dee oon een-TAIR-preh-teh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I will not sign this.",
+   "local": "Non firmo questo.",
+   "pron": "non FEER-moh KWES-toh",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "Am I free to go?",
+   "local": "Sono libero di andare?",
+   "pron": "SOH-noh LEE-beh-roh dee ahn-DAH-reh",
+   "note": "If stopped or detained."
+  }
+ ],
+ "resources": [
+  {
+   "name": "Emergency (all services)",
+   "type": "emergency",
+   "contact": "112",
+   "note": "Violence/stalking support line: 1522 (24/7, multilingual)."
+  },
+  {
+   "name": "Embassy of Canada (Rome)",
+   "type": "consular",
+   "contact": "+39 06-85444-1",
+   "note": "Via Zara 30, Rome 00198 (Consular)."
+  },
+  {
+   "name": "Consulate of Canada (Milan)",
+   "type": "consular",
+   "contact": "See travel.gc.ca",
+   "note": "Via Verziere, 11, 20122 Milano."
+  },
+  {
+   "name": "Canada Emergency Watch & Response (24/7)",
+   "type": "consular",
+   "contact": "00-800-2326-6831",
+   "note": "Toll-free from many European countries; otherwise call Ottawa collect."
+  }
+ ],
+ "getLawyer": [
+  {
+   "id": "it_detained",
+   "when": [
+    "arrested",
+    "detained",
+    "police took me",
+    "in custody",
+    "charged",
+    "i was arrested"
+   ],
+   "why": "If you are arrested or detained in Italy, ask for a lawyer and for the Canadian consular office to be notified (Embassy of Canada (Rome): +39 06-85444-1). Sign nothing you do not understand. Dual citizenship is recognized; Canadian consular services may be limited if you are also an Italian citizen."
+  },
+  {
+   "id": "it_drugs",
+   "when": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed",
+    "pills"
+   ],
+   "why": "Penalties for possession, use or trafficking of illegal drugs in Italy are severe — jail or heavy fines. Contact the Canadian consular office and get a local lawyer; say and sign nothing without counsel."
+  }
+ ],
+ "deadlines": [
+  {
+   "id": "it_schengen_90",
+   "jur": "IT",
+   "area": "immigration",
+   "title": "Schengen 90/180 — max 90 days in any 180",
+   "rule": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "trigger": [
+    "how long can i stay",
+    "tourist",
+    "overstay",
+    "visa",
+    "schengen",
+    "etias",
+    "passport valid",
+    "stay in italy"
+   ],
+   "source": "Government of Canada travel advice — Italy",
+   "verify": false,
+   "urgency": "serious"
+  },
+  {
+   "id": "it_driving",
+   "jur": "IT",
+   "area": "traffic",
+   "title": "Drive up to 1 year with a Canadian licence + IDP (watch ZTL zones)",
+   "rule": "A valid Canadian licence is accepted for up to ONE YEAR when accompanied by an International Driving Permit or a certified Italian translation. International car insurance is required, plus a warning triangle and reflective jacket. Historic centres have restricted traffic zones (ZTL) needing a permit — fines can arrive by mail months later.",
+   "trigger": [
+    "driving",
+    "drive in italy",
+    "rent a car",
+    "licence",
+    "license",
+    "idp"
+   ],
+   "source": "Government of Canada travel advice — Italy",
+   "verify": false,
+   "urgency": "info"
+  }
+ ],
+ "sentencing": [
+  {
+   "id": "it_drug_offence",
+   "jur": "IT",
+   "name": "Drug possession / trafficking (Italy)",
+   "section": "Italy criminal law",
+   "class": "serious",
+   "triggers": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed"
+   ],
+   "mandatory_minimum": "Not stated in the travel advice.",
+   "first_offender": "Convicted offenders can expect jail sentences or heavy fines.",
+   "maximum": "Severe penalties for trafficking.",
+   "collateral": "Criminal record; removal and re-entry consequences.",
+   "source": "Government of Canada travel advice — Italy",
+   "verify": false,
+   "get_lawyer_urgent": true
+  }
+ ],
+ "statutes": [
+  {
+   "id": "it_id_law",
+   "jur": "IT",
+   "act": "Italy law",
+   "section": "ID",
+   "area": "police_rights",
+   "title": "Identification",
+   "summary": "Local authorities may ask to see your passport or other ID at any time — carry valid ID and keep a copy. Hotels require your passport at check-in and must return it.",
+   "source": "https://travel.gc.ca/destinations/italy"
+  }
+ ],
+ "book": [
+  {
+   "id": "it_police",
+   "jur": "IT",
+   "area": "police_rights",
+   "title": "Police, ID, and if you're detained in Italy",
+   "overview": "Local authorities may ask to see your passport or other ID at any time — carry valid ID and keep a copy. Hotels require your passport at check-in and must return it. If you are arrested or detained, ask for a lawyer and ask that the Canadian consular office be told. Emergency: 112. Dual citizenship is recognized; Canadian consular services may be limited if you are also an Italian citizen.",
+   "your_rights": [
+    "Ask for a lawyer before answering questions.",
+    "Ask the authorities to notify the Canadian consular office.",
+    "Ask for an interpreter if you do not understand the language.",
+    "Do not sign anything you do not understand."
+   ],
+   "key_steps": [
+    "Carry ID (or a copy) as the local rules require.",
+    "If detained: ask for a lawyer, an interpreter, and the Canadian consular office.",
+    "Save the emergency number (112) and the consular contact (+39 06-85444-1).",
+    "Report theft to the police to get a report for insurance."
+   ],
+   "common_mistakes": [
+    "Not carrying ID or a copy.",
+    "Signing documents you cannot read.",
+    "Assuming dual citizenship guarantees Canadian consular help."
+   ],
+   "when_lawyer": "Immediately on arrest or detention — ask for a lawyer and the Canadian consular office.",
+   "sources": [
+    {
+     "title": "Government of Canada — Italy travel advice",
+     "url": "https://travel.gc.ca/destinations/italy"
+    }
+   ],
+   "statute": "Italy criminal procedure; Vienna Convention on Consular Relations",
+   "verify": false
+  },
+  {
+   "id": "it_immigration",
+   "jur": "IT",
+   "area": "immigration",
+   "title": "Entering and staying in Italy",
+   "overview": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "your_rights": [
+    "Entry without a visa for the tourist period stated, if you meet the passport-validity rule.",
+    "To be told the reason if you are refused entry.",
+    "To contact the Canadian consular office if you are detained at the border."
+   ],
+   "key_steps": [
+    "Check your passport's expiry date against the validity rule before you book.",
+    "Count your days carefully and keep proof of your entry date.",
+    "Carry your return or onward ticket and proof of funds.",
+    "Apply for any required authorization only through official government websites."
+   ],
+   "common_mistakes": [
+    "Travelling on a passport that expires too soon.",
+    "Overstaying — it can mean fines, removal, and a ban on return.",
+    "Paying unofficial websites for travel authorizations."
+   ],
+   "when_lawyer": "If you are refused entry, have overstayed, or want to stay longer or work.",
+   "sources": [
+    {
+     "title": "Government of Canada — Italy travel advice",
+     "url": "https://travel.gc.ca/destinations/italy"
+    }
+   ],
+   "statute": "Italy immigration rules",
+   "verify": false
+  },
+  {
+   "id": "it_criminal",
+   "jur": "IT",
+   "area": "criminal",
+   "title": "Local laws that catch visitors in Italy",
+   "overview": "Penalties for possession, use or trafficking of illegal drugs are severe — convicted offenders can expect jail sentences or heavy fines. Other local rules that surprise visitors: Rome, Florence and Venice enforce strict conduct rules: fines or arrest are possible for sitting or eating on monuments, bathing in fountains, walking in swimwear or shirtless, feeding pigeons, and attaching locks to bridges. Removing pebbles, shells or sand from Sardinian and other beaches is prohibited. Photographing military installations and critical infrastructure is regulated; drones are banned or restricted near military sites, within 5 km of airports, and at mass gatherings. Declaration of presence: if you arrive from another Schengen country you must file at a local police office within 8 DAYS; failure can lead to expulsion.",
+   "your_rights": [
+    "The right to a lawyer if you are charged.",
+    "The right to have the Canadian consular office notified.",
+    "The right to an interpreter in proceedings you do not understand."
+   ],
+   "key_steps": [
+    "Do not carry packages or luggage for anyone else.",
+    "Learn the local rules below before you go — ignorance is not a defence.",
+    "Rome, Florence and Venice enforce strict conduct rules: fines or arrest are possible for sitting or eating on monuments, bathing in fountains, walking in swimwear or shirtless, feeding pigeons, and attaching locks to bridges.",
+    "Removing pebbles, shells or sand from Sardinian and other beaches is prohibited."
+   ],
+   "common_mistakes": [
+    "Assuming rules are the same as in Canada.",
+    "Carrying or using drugs because they seem tolerated locally."
+   ],
+   "when_lawyer": "As soon as you are questioned about, or charged with, any offence.",
+   "sources": [
+    {
+     "title": "Government of Canada — Italy travel advice",
+     "url": "https://travel.gc.ca/destinations/italy"
+    }
+   ],
+   "statute": "Italy criminal law",
+   "verify": false
+  },
+  {
+   "id": "it_safety",
+   "jur": "IT",
+   "area": "safety",
+   "title": "Crime, scams and driving in Italy",
+   "overview": "Pickpocketing, bag snatching and distraction tactics in crowded tourist areas, plus card skimming at compromised ATMs and PIN readers. Driving: A valid Canadian licence is accepted for up to ONE YEAR when accompanied by an International Driving Permit or a certified Italian translation. International car insurance is required, plus a warning triangle and reflective jacket. Historic centres have restricted traffic zones (ZTL) needing a permit — fines can arrive by mail months later.",
+   "your_rights": [
+    "To report a crime to the police and receive a report for insurance.",
+    "To consular assistance from Canada if you are a victim of crime.",
+    "To drive on your Canadian licence for the period stated, if you meet the conditions."
+   ],
+   "key_steps": [
+    "Keep valuables out of sight and bags closed in crowds and on transit.",
+    "Use only licensed taxis and check ATMs before using your card.",
+    "Carry the required safety equipment and documents when driving.",
+    "Report theft promptly and contact your card issuer."
+   ],
+   "common_mistakes": [
+    "Leaving valuables in a parked car.",
+    "Driving without the required permit, equipment, or insurance.",
+    "Ignoring local traffic-zone and alcohol rules."
+   ],
+   "when_lawyer": "After a serious collision, any arrest, or a significant theft or fraud.",
+   "sources": [
+    {
+     "title": "Government of Canada — Italy travel advice",
+     "url": "https://travel.gc.ca/destinations/italy"
+    }
+   ],
+   "statute": "Italy road traffic law",
+   "verify": false
+  }
+ ]
+}

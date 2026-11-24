@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1724">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HIVE Body 3D">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="body3d.css">
+<title>HIVE Doctor — Body 3D</title>
+</head>
+<body>
+<header>
+  <a href="ai.html">‹ Doctor</a>
+  <h1>Body &amp; Development</h1>
+  <a href="#" id="reset3d">Reset</a>
+</header>
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <div id="modebar">
+    <button id="m-anat" class="modebtn on">Anatomy</button>
+    <button id="m-preg" class="modebtn">Pregnancy</button>
+  </div>
+  <div id="zoomctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div>
+  <div id="ctlbar">
+    <div id="sexctl"><button id="sex-f" class="on">♀ Female</button><button id="sex-m">♂ Male</button></div>
+    <div id="gestctl" class="hidden">
+      <button id="g-prev" aria-label="Earlier week">‹</button>
+      <input id="g-week" type="range" min="0" max="18" value="8" aria-label="Pregnancy week">
+      <span id="g-weeklbl">Week 20</span>
+      <button id="g-next" aria-label="Later week">›</button>
+    </div>
+  </div>
+</div>
+<div id="layerbar">
+  <button class="laybtn on" data-layer="skin">Skin</button>
+  <button class="laybtn" data-layer="muscle">Muscle</button>
+  <button class="laybtn" data-layer="cardiovascular">Vessels</button>
+  <button class="laybtn" data-layer="skeletal">Skeleton</button>
+  <button class="laybtn" data-layer="organs">Organs</button>
+  <button class="laybtn" data-layer="respiratory">Respiratory</button>
+  <button class="laybtn" data-layer="digestive">Digestive</button>
+  <button class="laybtn" data-layer="urinary">Urinary</button>
+  <button class="laybtn" data-layer="nervous">Nervous</button>
+  <button class="laybtn" data-layer="reproductive">Reproductive</button>
+</div>
+<div id="panel">
+  <h2 id="pt">The human body</h2>
+  <div class="lvl" id="pl">Tap a region or organ to slice into it — gross → tissue → cell.</div>
+  <div id="pbody"><p class="muted">Schematic model drawn entirely in code (no scans or photos). Shapes are simplified — it's for learning the layout, systems and layers, not exact measurement.</p></div>
+  <div class="foot">Educational anatomy &amp; development model. Clinical/learning use only — not a diagnosis, and not a measurement of any individual. Not independently verified by a clinician.</div>
+</div>
+<script src="three.min.js"></script>
+<script src="hive_mesher.js"></script>
+<script src="hive_hmesh.js"></script>
+<script src="body3d.js"></script>
+</body>
+</html>

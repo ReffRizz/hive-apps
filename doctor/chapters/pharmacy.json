@@ -1,0 +1,205 @@
+{
+  "id": "chapter_pharmacy",
+  "title": "Pharmacy Practice",
+  "discipline": "Pharmacy / Pharmacology",
+  "review_status": "UNVERIFIED — educational practitioner reference; verify every dose against the current product label and your formulary. Awaiting clinician/pharmacist sign-off.",
+  "source": "Educational synthesis of standard pharmacology/pharmacy-practice references (FDA labeling, USP, MedlinePlus, standard pharmacotherapy texts). Public-domain and general-knowledge framing; written in HIVE's own words.",
+  "scope": "How medicines are prescribed, dispensed, dosed, monitored, and counseled — for pharmacists, prescribers, nurses, and students. Dosing here is taught as PRINCIPLES and frameworks; specific numbers must come from the current label.",
+  "sections": [
+    {
+      "id": "rx_anatomy",
+      "heading": "The prescription — anatomy & verification",
+      "body": "A complete prescription carries: prescriber details and signature, date, patient name and date of birth (and weight for pediatrics), drug name (generic preferred), strength, dosage form, dose, route, frequency, duration/quantity, refills, and indication where helpful. The dispensing pharmacist independently verifies legality, authenticity, appropriateness (right drug/dose/route for this patient), interactions against the full medication list, allergies, duplication, and clarity before dispensing.",
+      "key_points": [
+        "Generic name + strength + form + dose + route + frequency + quantity + refills.",
+        "Pharmacist performs an independent clinical check — not just a transcription.",
+        "Clarify, don't assume: illegible, ambiguous, or out-of-range orders are called back.",
+        "'Indication' on the order reduces look-alike/sound-alike errors."
+      ]
+    },
+    {
+      "id": "adme",
+      "heading": "Pharmacokinetics — what the body does to the drug (ADME)",
+      "body": "Pharmacokinetics describes Absorption, Distribution, Metabolism, and Excretion. ABSORPTION: how much drug reaches the blood and how fast (bioavailability F; oral drugs face first-pass metabolism in gut/liver). DISTRIBUTION: volume of distribution (Vd) reflects how widely a drug spreads into tissues; protein binding affects free (active) fraction. METABOLISM: mostly hepatic, via Phase I (CYP450 oxidation) and Phase II (conjugation); prodrugs require activation (e.g., codeine→morphine via CYP2D6). EXCRETION: mostly renal (so kidney function drives dosing of renally-cleared drugs) and biliary.",
+      "key_points": [
+        "Bioavailability (F): IV = 100%; oral varies with first-pass.",
+        "Vd guides loading dose; clearance guides maintenance dose.",
+        "CYP450 enzymes are the hub of most drug–drug and drug–food (grapefruit) interactions.",
+        "Renal clearance drops with age and kidney disease — adjust renally-cleared drugs."
+      ]
+    },
+    {
+      "id": "half_life",
+      "heading": "Half-life, steady state & dosing interval",
+      "body": "Half-life (t½) is the time for blood concentration to fall by half. It takes about 4–5 half-lives to reach steady state on repeated dosing, and about 4–5 half-lives to clear a drug after stopping. The dosing INTERVAL is chosen relative to t½: drugs with short half-lives need frequent dosing or extended-release forms; long half-lives allow once-daily dosing but take longer to reach steady state and longer to wash out. A LOADING DOSE is used when you can't wait 4–5 half-lives for effect.",
+      "key_points": [
+        "~4–5 half-lives to steady state AND to wash out.",
+        "Loading dose depends on Vd; maintenance dose depends on clearance.",
+        "Missed-dose advice depends on how far into the interval you are — a pharmacy counseling point.",
+        "Extended-release forms must not be crushed (dose-dumping risk)."
+      ]
+    },
+    {
+      "id": "pharmacodynamics",
+      "heading": "Pharmacodynamics — what the drug does to the body",
+      "body": "Pharmacodynamics covers mechanism and the dose–response relationship: agonists activate receptors, antagonists block them, partial agonists do both depending on context (e.g., buprenorphine). Potency (dose needed for an effect) differs from efficacy (maximum achievable effect). The therapeutic index is the margin between an effective dose and a toxic dose — narrow-therapeutic-index drugs (warfarin, lithium, digoxin, phenytoin, theophylline, aminoglycosides) demand monitoring.",
+      "key_points": [
+        "Agonist / antagonist / partial agonist / inverse agonist.",
+        "Potency ≠ efficacy.",
+        "Narrow therapeutic index → monitor levels and effects closely.",
+        "Tolerance, dependence, and receptor up/down-regulation shape chronic dosing."
+      ]
+    },
+    {
+      "id": "routes_forms",
+      "heading": "Routes & dosage forms",
+      "body": "Route determines speed, bioavailability, and suitability. ORAL (tablets, capsules, liquids, ODT, ER/SR): convenient, first-pass. SUBLINGUAL/BUCCAL: bypass first-pass (GTN). RECTAL: when vomiting or unconscious. INHALED: lungs, fast, local (asthma) or systemic. TOPICAL/TRANSDERMAL: local effect or steady systemic (patches). PARENTERAL: IV (immediate, 100% F), IM, subcutaneous. OPHTHALMIC/OTIC/NASAL/VAGINAL: local. Form choice considers age (liquids/ODT for children and dysphagia), adherence, and stability.",
+      "key_points": [
+        "IV = fastest and full bioavailability; oral = convenient but variable.",
+        "ER/SR/enteric forms: do not crush or split unless the label allows.",
+        "Transdermal patches: rotate sites; remove old patch; heat increases absorption.",
+        "Inhaler technique and spacer use are core counseling points."
+      ]
+    },
+    {
+      "id": "dose_individualization",
+      "heading": "Individualizing the dose — the framework",
+      "body": "Correct dosing is patient-specific. Account for: AGE (neonate/infant/child/adult/elderly), WEIGHT and body composition (mg/kg in pediatrics; adjusted body weight for some drugs in obesity), ORGAN FUNCTION (renal and hepatic), GENETICS (pharmacogenomics, e.g., CYP2D6/2C19/TPMT/HLA alleles), concurrent DRUGS and DISEASES, and the therapeutic goal. The rule that governs this book: the specific number comes from the CURRENT LABEL or a validated dosing reference for that patient — never from memory.",
+      "key_points": [
+        "Pediatrics: usually weight-based (mg/kg), capped at the adult dose; infants need extra caution.",
+        "Renal dosing: estimate kidney function (eGFR/CrCl) and follow the label's renal table.",
+        "Hepatic impairment: reduce/avoid hepatically-cleared or hepatotoxic drugs per label.",
+        "Pharmacogenomics increasingly guides starting dose and drug choice."
+      ]
+    },
+    {
+      "id": "renal_hepatic",
+      "heading": "Renal & hepatic dose adjustment (principles)",
+      "body": "For renally-cleared drugs, dosing is scaled to estimated kidney function (CrCl by Cockcroft–Gault, or eGFR). The label's renal dosing table gives the adjusted dose or interval for bands of function; some drugs are contraindicated below a threshold (e.g., many are avoided in severe impairment). For hepatically-metabolized drugs, impairment raises levels of first-pass drugs and lowers metabolism; Child–Pugh class guides adjustment where the label provides it. Monitor function over time — it changes with illness, dehydration, and age.",
+      "key_points": [
+        "Estimate function first (CrCl/eGFR, Child–Pugh), then read the label's table.",
+        "Acute kidney injury (dehydration, contrast, NSAIDs) changes dosing quickly.",
+        "Active metabolites can accumulate even when the parent drug seems fine (e.g., morphine in renal failure)."
+      ]
+    },
+    {
+      "id": "special_pop",
+      "heading": "Special populations",
+      "body": "PEDIATRICS: weight/BSA-based; organ systems immature; some drugs contraindicated (aspirin→Reye's, certain antibiotics). PREGNANCY & LACTATION: the old letter categories are replaced by the PLLR narrative labeling; weigh benefit vs fetal/infant risk, prefer best-studied agents, and check lactation transfer. GERIATRICS: reduced renal/hepatic clearance, more drugs, higher sensitivity; follow 'start low, go slow' and screen against the Beers Criteria for potentially inappropriate medicines. OBESITY: dosing weight descriptor varies by drug.",
+      "key_points": [
+        "Pregnancy: use the PLLR narrative label; no safe assumption without checking.",
+        "Elderly: Beers Criteria + anticholinergic burden + fall risk.",
+        "Children: never scale an adult dose by guesswork — use a validated pediatric reference."
+      ]
+    },
+    {
+      "id": "controlled",
+      "heading": "Controlled substances & schedules",
+      "body": "Controlled drugs are scheduled by abuse potential and medical use. In the US DEA system: Schedule I (no accepted medical use), II (high abuse, e.g., oxycodone, fentanyl, methylphenidate — no refills, strict records), III, IV (e.g., benzodiazepines, tramadol), V (lowest). Canada uses the CDSA schedules. Dispensing requires valid prescriber authority, tamper checks, quantity/refill limits, secure storage, record-keeping, and often PDMP/prescription-monitoring checks. Opioid dispensing includes naloxone co-prescribing counseling.",
+      "key_points": [
+        "Schedule II: no refills; strict documentation.",
+        "Check the prescription-drug-monitoring program for controlled dispensing.",
+        "Counsel on secure storage, disposal, and naloxone.",
+        "Watch for forgery, early refills, and multi-prescriber patterns."
+      ]
+    },
+    {
+      "id": "high_alert_lasa",
+      "heading": "High-alert & look-alike/sound-alike medicines",
+      "body": "HIGH-ALERT medicines carry a heightened risk of serious harm when used in error: insulin, anticoagulants (heparin, warfarin, DOACs), opioids, concentrated electrolytes (especially potassium chloride), chemotherapy, neuromuscular blockers, and insulin/heparin. These get independent double-checks, standardized concentrations, and special storage. LOOK-ALIKE/SOUND-ALIKE (LASA) pairs (e.g., hydroxyzine/hydralazine, DOPamine/DOBUTamine) use tall-man lettering, separation on shelves, and indication-on-order to prevent mix-ups.",
+      "key_points": [
+        "Independent double-check for high-alert drugs.",
+        "Never store concentrated KCl where it can be grabbed as saline.",
+        "Tall-man lettering and physical separation reduce LASA errors."
+      ]
+    },
+    {
+      "id": "tdm",
+      "heading": "Therapeutic drug monitoring (TDM)",
+      "body": "Some drugs are dosed to a blood-level target because effect and toxicity track concentration and the margin is narrow: warfarin (INR, a pharmacodynamic measure), digoxin, lithium, phenytoin, valproate, vancomycin and aminoglycosides, tacrolimus/cyclosporine, theophylline. TDM uses correctly-timed samples (trough vs peak), interpreted against the target range, renal function, interactions, and clinical picture — never the number alone.",
+      "key_points": [
+        "Sample at the right time (trough before next dose; peaks where specified).",
+        "Interpret level with kidney function, interactions, albumin (e.g., correct phenytoin for albumin).",
+        "Treat the patient, not just the number."
+      ]
+    },
+    {
+      "id": "allergy_intolerance",
+      "heading": "Allergy vs intolerance, and cross-reactivity",
+      "body": "A true allergy is an immune reaction (rash, urticaria, angioedema, anaphylaxis); an intolerance is a predictable side effect (e.g., nausea on an antibiotic). Documenting the reaction type matters: labeling someone 'penicillin allergic' for nausea can push them to worse antibiotics. Pharmacists clarify the reaction, assess cross-reactivity (e.g., limited penicillin–cephalosporin overlap), and flag true anaphylaxis risks clearly.",
+      "key_points": [
+        "Record WHAT happened, not just 'allergy'.",
+        "Anaphylaxis history = absolute avoidance + clear alerting.",
+        "Mislabeled allergies drive worse, costlier therapy."
+      ],
+      "red_flags": [
+        "History of anaphylaxis, Stevens–Johnson syndrome, or DRESS to a drug or class — hard stop, escalate."
+      ]
+    },
+    {
+      "id": "adherence",
+      "heading": "Adherence & counseling",
+      "body": "About half of chronic-medicine doses are missed or mistimed. Pharmacists improve adherence with plain-language counseling (what it's for, how/when to take, with or without food, key side effects, what to do about a missed dose), simplification (once-daily, combination products, blister packs), reminders, cost navigation, and the teach-back method (the patient repeats it back). Core counseling always covers red-flag side effects and when to seek help.",
+      "key_points": [
+        "Teach-back confirms understanding.",
+        "Simplify regimens; align with daily routines.",
+        "Address cost and beliefs, not just instructions.",
+        "Always counsel the 'stop and seek help' warning signs."
+      ]
+    },
+    {
+      "id": "storage_disposal",
+      "heading": "Storage, stability & disposal",
+      "body": "Most medicines keep at room temperature, dry, out of light and out of children's reach; some need refrigeration (many insulins, some antibiotics once reconstituted) and must not freeze. Expiry and beyond-use dates matter (reconstituted suspensions have short BUDs). Disposal: take-back programs are preferred; a few high-risk drugs (some opioids/patches) have specific disposal instructions; most others can be mixed with an undesirable substance and binned per local rules.",
+      "key_points": [
+        "Check 'refrigerate / do not freeze' and reconstituted beyond-use dates.",
+        "Keep in original child-resistant packaging.",
+        "Prefer medicine take-back; follow drug-specific disposal for fentanyl patches etc."
+      ]
+    },
+    {
+      "id": "immunization",
+      "heading": "Immunization & point-of-care services",
+      "body": "Pharmacies increasingly deliver vaccines, point-of-care testing, smoking cessation, blood-pressure and diabetes screening, and medication reviews. Vaccination practice covers eligibility and schedules, contraindications/precautions, informed consent, correct technique and site, cold-chain integrity, anaphylaxis preparedness (epinephrine on hand), and documentation to the immunization registry.",
+      "key_points": [
+        "Screen contraindications and keep the cold chain.",
+        "Have epinephrine and an anaphylaxis plan ready.",
+        "Document to the registry; provide the next-dose plan."
+      ]
+    },
+    {
+      "id": "mtm",
+      "heading": "Medication therapy management & deprescribing",
+      "body": "MTM is a structured review of a patient's full regimen to improve outcomes: a comprehensive medication review, a personal medication list, an action plan, intervention, and follow-up. It targets duplication, interactions, untreated indications, drugs without an indication, adherence, and cost. DEPRESCRIBING is the planned, supervised reduction or stopping of medicines that may now cause more harm than benefit (common in the elderly and in polypharmacy), always tapering where withdrawal is a risk.",
+      "key_points": [
+        "Reconcile the full list across every prescriber — the multi-doctor problem.",
+        "Find drugs with no indication and indications with no drug.",
+        "Deprescribe deliberately and taper where needed (steroids, benzodiazepines, opioids, beta-blockers)."
+      ]
+    },
+    {
+      "id": "otc_self_care",
+      "heading": "OTC self-care counseling (what to take)",
+      "body": "Pharmacists trage minor ailments and recommend over-the-counter care or referral. General adult self-care categories (confirm the product label, especially for children, pregnancy, and other conditions): pain/fever — acetaminophen or an NSAID if appropriate; allergies — non-sedating antihistamines, nasal steroids; heartburn — antacids, H2-blockers, short PPI courses; cough/cold — symptomatic agents; constipation — fibre, osmotic or stimulant laxatives; diarrhea — oral rehydration first; skin — emollients, antifungals, hydrocortisone. The key skill is spotting when self-care is NOT appropriate and referral is needed.",
+      "key_points": [
+        "Match the agent to the symptom AND the person (age, pregnancy, conditions, other drugs).",
+        "Oral rehydration is first-line for diarrhea, especially in children and elders.",
+        "OTC does not mean risk-free — NSAIDs, decongestants, and sedating antihistamines all have cautions."
+      ],
+      "red_flags": [
+        "Refer, don't self-treat: red-flag pain, high fever, dehydration, breathlessness, blood (in stool/urine/vomit/sputum), severe or persistent symptoms, infants, pregnancy, or failed OTC treatment."
+      ]
+    },
+    {
+      "id": "errors",
+      "heading": "Medication-error prevention & reporting",
+      "body": "Safety is systemic, not blame-based. Defenses include computerized order entry with decision support, barcode scanning at dispensing and administration, the 'rights' of administration (right patient, drug, dose, route, time, documentation, indication, response), standardized concentrations, independent double-checks for high-alert drugs, and a just-culture reporting system that treats near-misses as learning. Avoid error-prone abbreviations (e.g., 'U' for units, trailing zeros).",
+      "key_points": [
+        "Barcode + CPOE + double-checks catch most errors.",
+        "Report near-misses; fix the system, not the person.",
+        "Never use dangerous abbreviations; always a leading zero, never a trailing zero."
+      ]
+    }
+  ],
+  "subchapter_count": 18
+}

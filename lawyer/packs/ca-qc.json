@@ -1,0 +1,720 @@
+{
+  "id": "ca-qc",
+  "name": "Quebec",
+  "flag": "🇨🇦",
+  "country": "Canada",
+  "region": "Canada",
+  "jur": "CA-QC",
+  "version": "1.0",
+  "kind": "province",
+  "note": "Full Quebec practice-area pack — CIVIL LAW under the Civil Code of Québec (CCQ), not common law. Tribunal administratif du logement, CNESST, small claims (to $15k, no lawyers), CDPDJ, family patrimony. Criminal law is federal (core). French phrasebook. Verify; not legal advice.",
+  "language": {
+    "code": "fr",
+    "name": "French"
+  },
+  "phrasebook": [
+    {
+      "en": "I want to speak to a lawyer.",
+      "local": "Je veux parler à un avocat.",
+      "pron": "zhuh vuh par-LAY ah uhn ah-vo-KAH",
+      "note": "Core right."
+    },
+    {
+      "en": "I wish to remain silent.",
+      "local": "Je souhaite garder le silence.",
+      "pron": "zhuh soo-ET gar-DAY luh see-LAHNSS",
+      "note": "On arrest."
+    },
+    {
+      "en": "I do not understand. I need an interpreter.",
+      "local": "Je ne comprends pas. J'ai besoin d'un interprète.",
+      "pron": "zhuh nuh kom-PRAHN pah",
+      "note": ""
+    },
+    {
+      "en": "I want to proceed in English.",
+      "local": "Je veux procéder en anglais.",
+      "pron": "zhuh vuh pro-say-DAY ahn ahn-GLAY",
+      "note": "You can request English in court."
+    },
+    {
+      "en": "I will not sign anything without a lawyer.",
+      "local": "Je ne signerai rien sans un avocat.",
+      "pron": "zhuh nuh see-nyuh-RAY ree-AHN",
+      "note": ""
+    },
+    {
+      "en": "I want to file a complaint.",
+      "local": "Je veux déposer une plainte.",
+      "pron": "zhuh vuh day-po-ZAY oon PLANT",
+      "note": "e.g. CNESST, TAL, CDPDJ."
+    },
+    {
+      "en": "This is my lease (bail).",
+      "local": "Voici mon bail.",
+      "pron": "vwah-SEE mohn BYE",
+      "note": "Housing matters."
+    },
+    {
+      "en": "Please call an ambulance.",
+      "local": "Appelez une ambulance, s'il vous plaît.",
+      "pron": "ah-play OON ahm-boo-LAHNSS seel voo PLEH",
+      "note": "911."
+    }
+  ],
+  "getLawyer": [
+    {
+      "id": "qc_criminal_charged",
+      "when": [
+        "charged with a crime in quebec",
+        "arrested in quebec",
+        "spvm charged me",
+        "sureté du québec"
+      ],
+      "why": "Criminal law is federal (Criminal Code), but Quebec procedure and Aide juridique are provincial. If charged or arrested, say you want a lawyer and stay silent. Call Aide juridique (1-800-842-2213) or free duty counsel; get a Quebec criminal lawyer (avocat) before any statement. You can ask to proceed in English."
+    },
+    {
+      "id": "qc_dpj",
+      "when": [
+        "dpj took my kids",
+        "youth protection quebec",
+        "removed my child quebec",
+        "director of youth protection"
+      ],
+      "why": "If the Director of Youth Protection (DPJ) intervenes or removes a child, timelines are short and the stakes are high. Get a family/youth-protection lawyer and call Aide juridique (1-800-842-2213) immediately; you have the right to be heard before the Court of Québec (Youth Division)."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "qc_lnt_124",
+      "jur": "CA-QC",
+      "area": "employment",
+      "title": "Dismissal without good cause (art.124) — 45 days",
+      "rule": "An employee with 2+ years of continuous service who is dismissed without good and sufficient cause can file a complaint with the CNESST under art.124 of the Act respecting labour standards — but ONLY within 45 DAYS of the dismissal. This is a short, strict deadline.",
+      "trigger": [
+        "fired without cause",
+        "fired me",
+        "i was fired",
+        "dismissed",
+        "unjust dismissal",
+        "lost my job",
+        "terminated me",
+        "let me go",
+        "without notice"
+      ],
+      "source": "Act respecting labour standards (QC) art.124",
+      "verify": true,
+      "urgency": "critical"
+    },
+    {
+      "id": "qc_prescription",
+      "jur": "CA-QC",
+      "area": "civil_general",
+      "title": "Civil action — 3-year prescription",
+      "rule": "Under the Civil Code of Québec, most personal and movable-property claims (contract, injury, debt) must be brought within 3 YEARS (art.2925). Defamation is shorter (1 year). Prescription generally runs from when the right of action arises/you knew of the damage.",
+      "trigger": [
+        "sue someone",
+        "want to sue",
+        "how long to sue",
+        "prescription",
+        "limitation period",
+        "contract dispute",
+        "they owe me money"
+      ],
+      "source": "Civil Code of Québec art.2925, art.2929",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "qc_cdpdj",
+      "jur": "CA-QC",
+      "area": "human_rights",
+      "title": "Discrimination complaint to the CDPDJ",
+      "rule": "Discrimination or harassment based on a protected ground can be taken to the Commission des droits de la personne et des droits de la jeunesse (CDPDJ). File promptly — delay can bar the complaint; confirm the current time limit for your situation.",
+      "trigger": [
+        "discriminated",
+        "discrimination",
+        "discriminated against me",
+        "because of my disability",
+        "because of my race",
+        "harassment at work",
+        "refused service",
+        "refused housing"
+      ],
+      "source": "Charter of Human Rights and Freedoms (QC)",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "qc_tal_nonpayment",
+      "jur": "CA-QC",
+      "area": "housing",
+      "title": "Non-payment of rent — landlord can apply after 3 weeks late",
+      "rule": "A Quebec landlord can apply to the Tribunal administratif du logement (TAL) to cancel the lease once rent is MORE THAN 3 WEEKS late (or sooner for repeated late payment causing serious prejudice). A tenant can usually avoid cancellation by paying the rent, interest, and costs before judgment.",
+      "trigger": [
+        "behind on rent",
+        "unpaid rent",
+        "landlord tal",
+        "evicting me",
+        "being evicted",
+        "my landlord",
+        "notice to vacate",
+        "keeping my deposit"
+      ],
+      "source": "Civil Code of Québec art.1971; Tribunal administratif du logement (tal.gouv.qc.ca)",
+      "verify": false,
+      "urgency": "serious"
+    }
+  ],
+  "statutes": [
+    {
+      "id": "qc_ccq_lease",
+      "jur": "CA-QC",
+      "act": "Civil Code of Québec",
+      "section": "art.1851–2000 (lease); art.1971",
+      "area": "housing",
+      "title": "Residential lease (bail) + the TAL",
+      "summary": "Residential leases are governed by the CCQ and overseen by the Tribunal administratif du logement (TAL). Leases typically renew automatically; the landlord must follow strict notice rules to change rent or refuse renewal, and a tenant can contest a rent increase. For non-payment, the landlord applies to the TAL (lease cancellation possible once rent is >3 weeks late).",
+      "source": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+    },
+    {
+      "id": "qc_lnt",
+      "jur": "CA-QC",
+      "act": "Act respecting labour standards (QC)",
+      "section": "notice + art.124",
+      "area": "employment",
+      "title": "Notice of termination + unjust-dismissal recourse",
+      "summary": "Minimum notice of termination: 1 week (3 months–1 yr), 2 weeks (1–5 yrs), 4 weeks (5–10 yrs), 8 weeks (10+ yrs). Separately, the CCQ (art.2091) requires reasonable notice. An employee with 2+ years' service dismissed without good and sufficient cause can file an art.124 complaint with the CNESST within 45 days.",
+      "source": "https://www.legisquebec.gouv.qc.ca/en/document/cs/N-1.1"
+    },
+    {
+      "id": "qc_small_claims",
+      "jur": "CA-QC",
+      "act": "Code of Civil Procedure (QC) — Small Claims Division",
+      "section": "$15,000",
+      "area": "small_claims",
+      "title": "Small claims — up to $15,000, no lawyers",
+      "summary": "The Small Claims Division of the Court of Québec hears claims up to $15,000 (before interest). Lawyers may NOT represent parties at the hearing — you present your own case (a business must have had 10 or fewer employees). This keeps it accessible and low-cost.",
+      "source": "https://www.quebec.ca/en/justice-and-civil-status/small-claims",
+      "verify": false
+    },
+    {
+      "id": "qc_ccq_prescription",
+      "jur": "CA-QC",
+      "act": "Civil Code of Québec",
+      "section": "art.2925",
+      "area": "civil_general",
+      "title": "3-year prescription",
+      "summary": "The general prescriptive period for personal rights and movable property is 3 years (art.2925). Defamation is 1 year (art.2929). Prescription is a hard bar — once it runs, the claim is extinguished.",
+      "source": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+    },
+    {
+      "id": "qc_family_patrimony",
+      "jur": "CA-QC",
+      "act": "Civil Code of Québec",
+      "section": "family patrimony",
+      "area": "family",
+      "title": "Family patrimony + de facto spouses",
+      "summary": "Married and civil-union spouses share the 'family patrimony' (residence, furniture, vehicles, pension/QPP earnings) equally on separation, regardless of who paid. De facto spouses (conjoints de fait) have historically had NO automatic property or support rights in Quebec — though reforms are extending some rights to parents — so a cohabitation agreement matters greatly.",
+      "source": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "type": "emergency",
+      "contact": "911",
+      "note": "Police, fire, ambulance."
+    },
+    {
+      "name": "Tribunal administratif du logement (TAL)",
+      "type": "tribunal",
+      "contact": "1-800-683-2245",
+      "note": "Housing/lease disputes (formerly Régie du logement)."
+    },
+    {
+      "name": "CNESST",
+      "type": "government",
+      "contact": "1-844-838-0808",
+      "note": "Labour standards, unpaid wages, workplace injury/health & safety."
+    },
+    {
+      "name": "CDPDJ (human rights)",
+      "type": "tribunal",
+      "contact": "1-800-361-6477",
+      "note": "Discrimination and harassment complaints."
+    },
+    {
+      "name": "Aide juridique (Legal Aid)",
+      "type": "legal_aid",
+      "contact": "1-800-842-2213",
+      "note": "Criminal, family, civil legal aid + duty counsel."
+    },
+    {
+      "name": "Éducaloi",
+      "type": "legal_info",
+      "contact": "educaloi.qc.ca",
+      "note": "Plain-language Quebec legal information (EN/FR)."
+    }
+  ],
+  "book": [
+    {
+      "id": "qc_civil_law",
+      "jur": "CA-QC",
+      "area": "civil_general",
+      "title": "Quebec is different — civil law under the Civil Code",
+      "overview": "Quebec is the only Canadian province with a CIVIL-LAW system: private law comes from the Civil Code of Québec (CCQ), not common-law precedent. Terms, bodies, and deadlines differ — 'prescription' instead of limitation periods (generally 3 years), the TAL for housing, CNESST for work, and the Small Claims Division where lawyers can't represent you. Criminal law is still the federal Criminal Code. Proceedings are in French, but you can ask to proceed in English.",
+      "your_rights": [
+        "Rights flow from the Civil Code of Québec, not case-law precedent alone.",
+        "Access to specialized tribunals: TAL (housing), CNESST (work), CDPDJ (rights).",
+        "Right to use English in Quebec courts.",
+        "3-year general prescription for most civil claims."
+      ],
+      "key_steps": [
+        "Identify the right body (TAL, CNESST, CDPDJ, Small Claims).",
+        "Note the SHORT Quebec deadlines (e.g., 45 days for art.124 dismissal).",
+        "Keep documents in order; translations may be needed.",
+        "Use Éducaloi for plain-language guidance.",
+        "For criminal matters, treat it like the rest of Canada (federal Code)."
+      ],
+      "common_mistakes": [
+        "Applying common-law assumptions to Quebec.",
+        "Missing the 45-day unjust-dismissal deadline.",
+        "Assuming de facto spouses have the same rights as married couples (they don't, historically).",
+        "Bringing a lawyer to Small Claims (not allowed at the hearing)."
+      ],
+      "when_lawyer": "For anything beyond Small Claims, or any family/property/dismissal matter — consult a Quebec avocat or notaire; Aide juridique may apply.",
+      "sources": [
+        {
+          "title": "Civil Code of Québec",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Civil Code of Québec",
+      "verify": true
+    },
+    {
+      "id": "qc_housing",
+      "jur": "CA-QC",
+      "area": "housing",
+      "title": "Renting in Quebec — the lease (bail) and the TAL",
+      "overview": "Residential leases run under the Civil Code and the Tribunal administratif du logement (TAL). Leases usually renew automatically, and strong tenant protections apply: strict rules on rent increases (which a tenant can contest), and limits on a landlord repossessing a unit. For non-payment, the landlord must apply to the TAL.",
+      "your_rights": [
+        "Automatic lease renewal unless proper notice is given.",
+        "Right to contest a rent increase at the TAL.",
+        "Strong protection against eviction/repossession (reprise).",
+        "Right to pay arrears + interest + costs to stop a cancellation for non-payment.",
+        "Right to maintained, habitable premises."
+      ],
+      "key_steps": [
+        "Respond in time to any rent-increase or non-renewal notice (silence can mean acceptance of renewal at old terms, or you must reply to an increase).",
+        "If behind on rent, pay before the TAL hearing/judgment where possible.",
+        "Keep the lease, receipts, and all written notices.",
+        "Apply to or respond at the TAL promptly.",
+        "Use Éducaloi / a tenants' association for help."
+      ],
+      "common_mistakes": [
+        "Not replying to a rent-increase notice in time.",
+        "Assuming you can be evicted quickly (protections are strong).",
+        "Losing the written lease and notices.",
+        "Ignoring a TAL application."
+      ],
+      "when_lawyer": "TAL is accessible without a lawyer; get advice for repossession fights or appeals.",
+      "sources": [
+        {
+          "title": "Civil Code of Québec (lease)",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Civil Code of Québec art.1851–2000, art.1971",
+      "verify": true
+    },
+    {
+      "id": "qc_employment",
+      "jur": "CA-QC",
+      "area": "employment",
+      "title": "Work in Quebec — labour standards and dismissal",
+      "overview": "Work is governed by the Act respecting labour standards (enforced by the CNESST) and the Civil Code. Two key recourses: unpaid wages/standards complaints to the CNESST, and — for employees with 2+ years' service dismissed without good cause — an art.124 complaint, which must be filed within 45 DAYS. The CCQ (art.2091) also requires reasonable notice of termination.",
+      "your_rights": [
+        "Minimum notice of termination (1–8 weeks by service length).",
+        "Reasonable notice under the Civil Code (art.2091).",
+        "Unjust-dismissal recourse (art.124) after 2 years' service — 45-day deadline.",
+        "Recovery of unpaid wages, overtime, vacation via the CNESST.",
+        "Protection from prohibited practices/reprisal."
+      ],
+      "key_steps": [
+        "If dismissed after 2+ years without cause, file the art.124 complaint within 45 days.",
+        "File wage complaints with the CNESST.",
+        "Don't sign a release before getting advice.",
+        "Keep the contract, pay records, and dismissal letter.",
+        "Calculate both statutory and CCQ reasonable notice."
+      ],
+      "common_mistakes": [
+        "Missing the 45-day art.124 deadline.",
+        "Taking only the statutory minimum.",
+        "Signing a release under pressure.",
+        "Not acting on reprisal/prohibited practices."
+      ],
+      "when_lawyer": "Before signing severance, or for dismissal/harassment — consult a Quebec employment avocat; the CNESST may represent you on an art.124 complaint.",
+      "sources": [
+        {
+          "title": "Act respecting labour standards (QC)",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/N-1.1"
+        }
+      ],
+      "statute": "Act respecting labour standards art.124; CCQ art.2091",
+      "verify": true
+    },
+    {
+      "id": "qc_small_claims",
+      "jur": "CA-QC",
+      "area": "small_claims",
+      "title": "Small claims in Quebec — up to $15,000, no lawyers",
+      "overview": "The Small Claims Division of the Court of Québec hears money claims up to $15,000 (before interest). Lawyers cannot represent parties at the hearing, so you present your own case — it's designed to be accessible and inexpensive. The 3-year prescription usually applies.",
+      "your_rights": [
+        "Claims up to $15,000 (before interest).",
+        "Right to present your own case (no lawyer at the hearing).",
+        "Right to a simplified, low-cost procedure.",
+        "Right to enforce a judgment."
+      ],
+      "key_steps": [
+        "Confirm the amount is ≤$15,000 (you can reduce a claim to fit).",
+        "File within the 3-year prescription.",
+        "Organize documents and witnesses yourself.",
+        "Attend the hearing and present clearly.",
+        "After winning, enforce the judgment."
+      ],
+      "common_mistakes": [
+        "Letting prescription (3 years) run out.",
+        "Expecting a lawyer at the hearing (not allowed).",
+        "Suing a party with no assets.",
+        "Disorganized evidence."
+      ],
+      "when_lawyer": "You can't use one at the hearing, but a lawyer or Éducaloi can help you prepare beforehand.",
+      "sources": [
+        {
+          "title": "Quebec Small Claims",
+          "url": "https://www.quebec.ca/en/justice-and-civil-status/small-claims"
+        }
+      ],
+      "statute": "Code of Civil Procedure (QC); CCQ art.2925",
+      "verify": true
+    },
+    {
+      "id": "qc_family",
+      "jur": "CA-QC",
+      "area": "family",
+      "title": "Family law in Quebec — patrimony, children, de facto spouses",
+      "overview": "Married and civil-union spouses share the family patrimony (home, furniture, vehicles, pension/QPP earnings) equally on separation under the Civil Code. De facto spouses (conjoints de fait) have historically had no automatic property or support rights — reforms are extending some rights to parents — so a cohabitation agreement is important. Child support follows Quebec's model; the DPJ handles youth protection.",
+      "your_rights": [
+        "Equal family-patrimony division for married/civil-union spouses.",
+        "Child support under Quebec's guidelines (best interests of the child).",
+        "De facto spouses: limited automatic rights — protect yourself by agreement.",
+        "Right to be heard in any DPJ (youth protection) matter."
+      ],
+      "key_steps": [
+        "Get a written agreement (and a cohabitation agreement if de facto).",
+        "Exchange full financial disclosure.",
+        "Use family mediation (Quebec funds several free sessions).",
+        "For DPJ involvement, get a lawyer and respond to timelines.",
+        "File in the Court of Québec / Superior Court as applicable."
+      ],
+      "common_mistakes": [
+        "Assuming de facto spouses split property like married couples.",
+        "No cohabitation agreement.",
+        "No financial disclosure.",
+        "Ignoring DPJ deadlines."
+      ],
+      "when_lawyer": "For patrimony/property, support disputes, or any DPJ matter — consult a Quebec family avocat; Aide juridique may apply.",
+      "sources": [
+        {
+          "title": "Civil Code of Québec (family)",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Civil Code of Québec (family patrimony); Divorce Act (federal)",
+      "verify": true
+    },
+    {
+      "id": "qc_criminal",
+      "jur": "CA-QC",
+      "area": "criminal",
+      "title": "Charged with a crime in Quebec",
+      "overview": "Criminal law is the federal Criminal Code, so your core rights match the rest of Canada: to be told the charge, to stay silent, and to a lawyer without delay (including free immediate advice). Procedure runs through the Court of Québec / Superior Court, with Aide juridique for eligible accused. You can ask to proceed in English.",
+      "your_rights": [
+        "Right to silence.",
+        "Right to a lawyer without delay + free immediate advice (duty counsel).",
+        "Right to know the charge and to reasonable bail.",
+        "Right to proceed in English.",
+        "Presumption of innocence."
+      ],
+      "key_steps": [
+        "Say: 'I want a lawyer / Je veux un avocat' and stay silent.",
+        "Call Aide juridique (1-800-842-2213) or duty counsel.",
+        "Don't discuss the case except with your lawyer.",
+        "Note officer details and events.",
+        "Attend every court date; obey release conditions."
+      ],
+      "common_mistakes": [
+        "Talking to police without a lawyer.",
+        "Breaching release conditions.",
+        "Assuming a minor charge needs no lawyer.",
+        "Missing a court date."
+      ],
+      "when_lawyer": "Immediately on any arrest or charge — duty counsel first, then a Quebec criminal avocat; apply to Aide juridique.",
+      "sources": [
+        {
+          "title": "Aide juridique Québec",
+          "url": "https://www.csj.qc.ca"
+        }
+      ],
+      "statute": "Criminal Code (federal); Quebec court procedure",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_police",
+      "jur": "CA-QC",
+      "area": "police_rights",
+      "title": "Your rights with police in Quebec",
+      "overview": "Criminal law and the Charter are federal, so your core rights in Quebec match the rest of Canada: freedom from unreasonable search (s.8) and arbitrary detention (s.9), and on arrest/detention the right to know why and to a lawyer without delay (s.10). You can ask to proceed in English. You generally don't have to answer questions.",
+      "your_rights": [
+        "Right to silence.",
+        "On detention/arrest, right to know why and to call a lawyer without delay.",
+        "Protection from unreasonable search (s.8) and arbitrary detention (s.9).",
+        "Right to request English."
+      ],
+      "key_steps": [
+        "Ask: 'Suis-je en état d'arrestation / am I free to go?'",
+        "Say you want a lawyer ('je veux un avocat') and will stay silent.",
+        "Don't resist; keep hands visible.",
+        "Use free duty counsel; contact Aide juridique.",
+        "Note officer details afterward."
+      ],
+      "common_mistakes": [
+        "Answering questions without a lawyer.",
+        "Consenting to a search you could refuse.",
+        "Resisting or fleeing.",
+        "Not asserting the right to counsel."
+      ],
+      "when_lawyer": "After any arrest, detention, or search — exercise your right to a lawyer immediately.",
+      "sources": [
+        {
+          "title": "Charter of Rights (ss.8–10)",
+          "url": "https://laws-lois.justice.gc.ca/eng/const/page-12.html"
+        }
+      ],
+      "statute": "Canadian Charter of Rights and Freedoms, ss.8, 9, 10",
+      "verify": false
+    },
+    {
+      "id": "ca_qc_traffic",
+      "jur": "CA-QC",
+      "area": "traffic",
+      "title": "Traffic tickets & driving offences in Quebec",
+      "overview": "Minor traffic matters fall under Quebec's Highway Safety Code (demerit points on your SAAQ record, fines, insurance impact); you can plead guilty or contest. Impaired or dangerous driving are federal Criminal Code offences with severe, often mandatory penalties — treat those like any criminal charge and get a lawyer.",
+      "your_rights": [
+        "Right to contest a ticket.",
+        "Right to disclosure.",
+        "Right to a lawyer for any Criminal Code driving charge.",
+        "Presumption of innocence."
+      ],
+      "key_steps": [
+        "Note the deadline to contest (plaidoyer).",
+        "Paying = pleading guilty (demerits + insurance).",
+        "For impaired/dangerous driving, get a lawyer now.",
+        "Check the SAAQ demerit/insurance impact.",
+        "Never ignore a ticket."
+      ],
+      "common_mistakes": [
+        "Ignoring a constat d'infraction.",
+        "Paying one you could contest.",
+        "Treating impaired driving lightly.",
+        "Not checking demerit impact."
+      ],
+      "when_lawyer": "For impaired or dangerous driving, or an accident causing injury — get a lawyer right away.",
+      "sources": [
+        {
+          "title": "Quebec Highway Safety Code / SAAQ",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Criminal Code (impaired/dangerous driving); Quebec Highway Safety Code",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_pi",
+      "jur": "CA-QC",
+      "area": "personal_injury",
+      "title": "Injured in an accident in Quebec (incl. no-fault auto)",
+      "overview": "Quebec is distinct: for CAR-accident bodily injuries, a PUBLIC no-fault scheme (SAAQ) pays your benefits regardless of who was at fault, and you generally CANNOT sue the other driver for those injuries. For other injuries (falls, etc.), you may sue in civil liability under the Civil Code. The general prescription (deadline) is 3 years; SAAQ claims have their own short deadlines — act fast.",
+      "your_rights": [
+        "SAAQ compensation for auto-accident bodily injury, regardless of fault.",
+        "Right to claim in civil liability for non-auto injuries.",
+        "Right to your own medical care and records.",
+        "Right to a lawyer before signing anything."
+      ],
+      "key_steps": [
+        "For a car-accident injury, file with the SAAQ promptly (short deadlines).",
+        "For other injuries, document everything and note the 3-year prescription.",
+        "Get medical care; keep records and receipts.",
+        "Don't sign a release without advice.",
+        "Get witness details and photos."
+      ],
+      "common_mistakes": [
+        "Thinking you sue the other driver for auto injuries (you use SAAQ).",
+        "Missing the SAAQ or 3-year deadline.",
+        "Settling before injuries are known.",
+        "No documentation."
+      ],
+      "when_lawyer": "For a serious injury, a denied SAAQ claim, or a non-auto injury claim — consult a Quebec injury lawyer.",
+      "sources": [
+        {
+          "title": "SAAQ / Civil Code of Québec",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Automobile Insurance Act (SAAQ, no-fault); CCQ civil liability; prescription art.2925",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_debt",
+      "jur": "CA-QC",
+      "area": "debt_consumer",
+      "title": "Debt & consumer rights in Quebec",
+      "overview": "Quebec's Consumer Protection Act and the Civil Code give strong protections. Collection agencies are regulated and can't harass you. Many consumer contracts have cancellation rights, and the general prescription on a debt is 3 years — after which it can't be successfully claimed, though a payment or acknowledgment can restart it. The Office de la protection du consommateur (OPC) handles complaints.",
+      "your_rights": [
+        "Protection from harassment by collection agencies.",
+        "Cancellation rights on many consumer contracts.",
+        "A debt is generally prescribed after 3 years.",
+        "Right to complain to the OPC."
+      ],
+      "key_steps": [
+        "Ask for the debt details in writing before paying.",
+        "Check whether the 3-year prescription has run.",
+        "Don't pay or acknowledge an old debt without advice.",
+        "Keep all contracts and correspondence.",
+        "Complain to the OPC about an abusive collector."
+      ],
+      "common_mistakes": [
+        "Restarting prescription by paying a little on an old debt.",
+        "Ignoring a court application (default judgment).",
+        "Not knowing your cancellation rights.",
+        "Giving a collector banking details."
+      ],
+      "when_lawyer": "If you're sued, facing seizure, or the debt isn't yours — get advice; Aide juridique or a clinic may help.",
+      "sources": [
+        {
+          "title": "Consumer Protection Act (Quebec) / OPC",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Consumer Protection Act (QC); CCQ; prescription art.2925",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_estates",
+      "jur": "CA-QC",
+      "area": "wills_estates",
+      "title": "Wills & estates in Quebec (civil law)",
+      "overview": "Quebec estates run under the Civil Code and differ from the rest of Canada. Wills come in three forms — notarial (before a notary, no probate needed), holograph (entirely handwritten and signed), and witnessed. Non-notarial wills must be 'probated' (verified) by a court or notary. The estate is settled by a 'liquidator' (not an 'executor'). Without a will, the Civil Code's rules of legal devolution decide who inherits.",
+      "your_rights": [
+        "Right to make a will (notarial, holograph, or witnessed).",
+        "Right, as liquidator, to settle the estate.",
+        "Heirs' right to an inventory and accounting.",
+        "A surviving spouse/dependants may have protected claims (family patrimony, support)."
+      ],
+      "key_steps": [
+        "Consider a notarial will (no later probate needed).",
+        "Name a liquidator and a replacement.",
+        "Keep beneficiary designations current.",
+        "On a death, do the will search (Chambre des notaires / Barreau), probate a non-notarial will, make an inventory.",
+        "Pay debts before distributing; publish the closing accounts."
+      ],
+      "common_mistakes": [
+        "Assuming common-law 'executor/probate' rules apply (they don't).",
+        "A holograph will that isn't entirely handwritten/signed.",
+        "Skipping the will search registries.",
+        "Distributing before debts are settled."
+      ],
+      "when_lawyer": "For estate planning, a contested will, or liquidator duties — see a Quebec notary or estates lawyer.",
+      "sources": [
+        {
+          "title": "Civil Code of Québec (successions)",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Civil Code of Québec (successions); family patrimony",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_insurance",
+      "jur": "CA-QC",
+      "area": "insurance",
+      "title": "Insurance claims & disputes in Quebec",
+      "overview": "Insurers in Quebec owe a duty of good faith — to handle claims fairly and promptly. If a claim is denied or underpaid, demand the reason and policy wording in writing, appeal internally, and escalate to the ombudsperson/regulator or court. An unreasonable denial can expose the insurer to extra damages.",
+      "your_rights": [
+        "Right to a written reason for a denial and the policy wording.",
+        "Right to a fair, prompt investigation (good faith).",
+        "Right to the insurance ombudsperson and the regulator.",
+        "Possible extra damages for bad-faith handling."
+      ],
+      "key_steps": [
+        "Report the claim promptly and as the policy requires.",
+        "Document the loss — photos, receipts, a log of every contact.",
+        "Get the denial reason and policy terms in writing.",
+        "Appeal in writing, citing the policy.",
+        "Escalate to the ombudsperson/regulator or a lawyer if stonewalled."
+      ],
+      "common_mistakes": [
+        "Missing policy notice/claim deadlines.",
+        "Accepting a denial without the written reason.",
+        "Unrecorded phone-only dealings.",
+        "Not documenting the loss."
+      ],
+      "when_lawyer": "For a large denied claim, suspected bad faith, or a liability claim against you — consult an insurance lawyer.",
+      "sources": [
+        {
+          "title": "Quebec insurance reference",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Quebec insurance law; duty of good faith",
+      "verify": true
+    },
+    {
+      "id": "ca_qc_business",
+      "jur": "CA-QC",
+      "area": "business",
+      "title": "Small business & self-employed in Quebec",
+      "overview": "Running a business in Quebec means picking a structure (sole proprietor = simple but personally liable; corporation = separate entity limiting personal liability), using written contracts, registering/licensing as required, and keeping business and personal finances separate. Put deals in writing, invoice with clear terms, and get advice before signing leases or big contracts.",
+      "your_rights": [
+        "Right to choose a structure that fits your risk.",
+        "Right to enforce written contracts and unpaid invoices.",
+        "Right to limited liability if you properly incorporate and maintain the company.",
+        "Right to sue (small claims within the limit) to collect."
+      ],
+      "key_steps": [
+        "Pick sole prop vs incorporation with tax + legal advice.",
+        "Use written contracts and clear invoices.",
+        "Register the business name and get required licences.",
+        "Keep business and personal money separate.",
+        "For unpaid invoices, demand then sue within the limitation period."
+      ],
+      "common_mistakes": [
+        "Handshake deals.",
+        "Mixing personal and business finances.",
+        "Skipping registration/licences.",
+        "Misclassifying employees as contractors."
+      ],
+      "when_lawyer": "For incorporation, a shareholder/partnership agreement, a major contract, or a dispute — get a business lawyer.",
+      "sources": [
+        {
+          "title": "Quebec small-business reference",
+          "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991"
+        }
+      ],
+      "statute": "Quebec business/corporations law",
+      "verify": true
+    }
+  ]
+}

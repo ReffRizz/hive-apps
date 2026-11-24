@@ -1,0 +1,637 @@
+{
+  "id": "us-ut",
+  "name": "Utah",
+  "flag": "🇺🇸",
+  "country": "United States",
+  "region": "United States",
+  "jur": "US-UT",
+  "version": "1.0",
+  "kind": "state",
+  "note": "Full Utah practice-area pack. Small-claims limit $20,000; at-will employment; fast summary-eviction timelines; federal EEOC 180/300-day deadline. Criminal law routes to federal + state. Verify; not legal advice.",
+  "getLawyer": [
+    {
+      "id": "us_ut_criminal",
+      "when": [
+        "charged with a crime",
+        "i was arrested",
+        "police arrested me",
+        "in custody",
+        "arrested me",
+        "booked into jail"
+      ],
+      "why": "In the US you have the right to remain silent and to a lawyer — if you can't afford one, ask for a public defender. Say \"I am invoking my right to remain silent and I want a lawyer,\" then stop talking. Utah prosecutes under state law; serious federal charges add a federal defender. Do not consent to searches or talk without counsel."
+    },
+    {
+      "id": "us_ut_childprot",
+      "when": [
+        "child protective services",
+        "cps took",
+        "took my kids",
+        "took my children",
+        "removed my child",
+        "child was removed"
+      ],
+      "why": "If Child Protective Services (CPS) removes or threatens to remove a child in Utah, there are fast court hearings (often within days). Get a family/dependency lawyer immediately and ask the court to appoint one if you can't afford it; you have the right to be heard and to reunification services."
+    },
+    {
+      "id": "us_ut_eviction_fast",
+      "when": [
+        "being evicted",
+        "eviction notice",
+        "served eviction",
+        "unlawful detainer",
+        "notice to quit",
+        "summons to court"
+      ],
+      "why": "US evictions move FAST (summary/\"unlawful detainer\" process) — you often have just days to respond in writing or you lose by default. Do not ignore court papers. Respond by the deadline, raise defenses (improper notice, conditions, retaliation), and get a Utah legal-aid or tenant lawyer at once."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "us_ut_eviction",
+      "jur": "US-UT",
+      "area": "housing",
+      "title": "Eviction (summary process) — respond within DAYS",
+      "rule": "Utah evictions use a fast \"summary process / unlawful detainer\" track. After a termination/quit notice, a filed eviction summons usually gives only a few DAYS to answer in writing — miss it and the landlord wins by default. Respond on time, raise any defenses (improper notice, uninhabitable conditions, retaliation, discrimination), and ask about redemption (paying to stay).",
+      "trigger": [
+        "evicting me",
+        "evict me",
+        "eviction notice",
+        "being evicted",
+        "notice to quit",
+        "notice to vacate",
+        "unlawful detainer",
+        "summons",
+        "pay or quit",
+        "my landlord",
+        "keeping my deposit",
+        "withholding my deposit"
+      ],
+      "source": "Utah landlord-tenant law",
+      "verify": true,
+      "urgency": "critical"
+    },
+    {
+      "id": "us_ut_eeoc",
+      "jur": "US-UT",
+      "area": "human_rights",
+      "title": "Job discrimination — EEOC charge within 180/300 days",
+      "rule": "For workplace discrimination (race, sex, age 40+, disability, religion, national origin) or retaliation, you generally must file a charge with the EEOC within 180 DAYS of the act — extended to 300 DAYS where a state/local fair-employment agency exists (most states). This is a strict federal deadline and is usually required before you can sue. File with the EEOC or the Utah civil-rights agency promptly.",
+      "trigger": [
+        "discriminated",
+        "discrimination",
+        "discriminated against me",
+        "because of my race",
+        "because of my disability",
+        "because of my age",
+        "because of my religion",
+        "sexual harassment",
+        "harassment at work",
+        "retaliated",
+        "fired because"
+      ],
+      "source": "42 U.S.C. § 2000e-5(e)(1); EEOC — eeoc.gov/how-file-charge-employment-discrimination",
+      "verify": false,
+      "urgency": "serious"
+    },
+    {
+      "id": "us_ut_wages",
+      "jur": "US-UT",
+      "area": "employment",
+      "title": "Unpaid wages — claim promptly (state + FLSA)",
+      "rule": "Unpaid wages, overtime, or final pay in Utah can be recovered through the state labor agency and the federal Fair Labor Standards Act (FLSA). The FLSA has a 2-year limit (3 years for willful violations); state deadlines vary. File promptly. Note: most US jobs are at-will, so being fired without notice is usually legal UNLESS the reason was illegal.",
+      "trigger": [
+        "didnt pay me",
+        "didn't pay me",
+        "didnt pay my wages",
+        "didn't pay my wages",
+        "pay my wages",
+        "my wages",
+        "unpaid wages",
+        "owed wages",
+        "owe me wages",
+        "owed overtime",
+        "final paycheck",
+        "my paycheck",
+        "wasnt paid",
+        "wasn't paid",
+        "havent been paid",
+        "haven't been paid",
+        "didnt get paid",
+        "didn't get paid",
+        "never paid me",
+        "stole my wages",
+        "wage theft"
+      ],
+      "source": "29 U.S.C. § 255(a) (FLSA); Utah wage law",
+      "verify": false,
+      "urgency": "serious"
+    },
+    {
+      "id": "us_ut_limit",
+      "jur": "US-UT",
+      "area": "civil_general",
+      "title": "Lawsuit — statute of limitations varies (often 2–6 years)",
+      "rule": "Utah's statute of limitations depends on the claim: written contracts, oral contracts, personal injury, and property damage each have their own period (commonly 2–6 years; some shorter). Missing it bars the claim entirely. Confirm the period for your specific claim before relying on it.",
+      "trigger": [
+        "sue someone",
+        "want to sue",
+        "how long to sue",
+        "statute of limitations",
+        "limitation period",
+        "file a lawsuit",
+        "they owe me money"
+      ],
+      "source": "Utah statutes of limitations",
+      "verify": true,
+      "urgency": "serious"
+    }
+  ],
+  "statutes": [
+    {
+      "id": "us_ut_sc",
+      "jur": "US-UT",
+      "act": "Utah small-claims limit",
+      "section": "$20,000",
+      "area": "small_claims",
+      "title": "Money claims up to $20,000",
+      "summary": "Utah's small-claims (or justice/magistrate) court hears money claims up to $20,000. Larger claims go to the regular trial court. Small claims is streamlined and usually used without a lawyer (some states limit or bar lawyers there). Cross-checked against two national charts (Oct 2026); confirm with the court before filing.",
+      "source": "https://www.recordinglaw.com/us-laws/small-claims-court/",
+      "verify": true
+    },
+    {
+      "id": "us_ut_atwill",
+      "jur": "US-UT",
+      "act": "Utah employment law",
+      "section": "at-will",
+      "area": "employment",
+      "title": "At-will employment",
+      "summary": "Utah follows at-will employment: either side can end the job at any time without notice or severance. The limits are the illegal reasons — discrimination, retaliation, or breach of a written contract/handbook promise.",
+      "source": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+    },
+    {
+      "id": "us_ut_eviction",
+      "jur": "US-UT",
+      "act": "Utah landlord-tenant law",
+      "section": "summary process",
+      "area": "housing",
+      "title": "Fast eviction timeline",
+      "summary": "Utah evictions run on a fast summary-process/unlawful-detainer track: a short termination notice, then a court summons with only days to answer. Tenants have defenses (improper notice, uninhabitable conditions, retaliation, discrimination) but must raise them on time or lose by default.",
+      "source": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "type": "emergency",
+      "contact": "911",
+      "note": "Police, fire, ambulance."
+    },
+    {
+      "name": "Utah Small Claims / Justice Court",
+      "type": "court",
+      "contact": "Utah courts",
+      "note": "Money claims up to $20,000 — search the official Utah judiciary site for your county court."
+    },
+    {
+      "name": "Utah Labor / Wage agency",
+      "type": "government",
+      "contact": "Utah government",
+      "note": "Unpaid wages, final pay — search the official state labor site; or US DOL 1-866-487-9243."
+    },
+    {
+      "name": "EEOC (job discrimination)",
+      "type": "government",
+      "contact": "1-800-669-4000",
+      "note": "Federal; 180/300-day charge deadline."
+    },
+    {
+      "name": "Legal aid / referral",
+      "type": "legal_aid",
+      "contact": "LawHelp.org / 211",
+      "note": "Free/low-cost legal help locator; ask the court about a public defender for criminal matters."
+    }
+  ],
+  "book": [
+    {
+      "id": "us_ut_housing",
+      "jur": "US-UT",
+      "area": "housing",
+      "title": "Renting in Utah — tenants and landlords",
+      "overview": "Utah landlord-tenant disputes run through the courts on a FAST summary-process / \"unlawful detainer\" track. After a termination or \"pay or quit\" notice, an eviction summons usually gives only a few days to answer in writing — ignore it and you lose by default. Tenants have real defenses but must raise them on time.",
+      "your_rights": [
+        "Right to proper written notice before an eviction case is filed.",
+        "Right to answer the court summons and raise defenses (improper notice, uninhabitable conditions, retaliation, discrimination).",
+        "Right to a habitable home (implied warranty of habitability in most states).",
+        "Right to the return of your security deposit, minus lawful deductions, within the state's deadline."
+      ],
+      "key_steps": [
+        "Read every notice and court paper; calendar the response deadline (often just days).",
+        "Answer the eviction summons IN WRITING by the deadline.",
+        "Gather photos, texts, receipts, and the lease.",
+        "Raise defenses: bad notice, conditions, retaliation, discrimination, or paying to stay (redemption).",
+        "Get a legal-aid or tenant lawyer fast (LawHelp.org / 211)."
+      ],
+      "common_mistakes": [
+        "Ignoring the summons (automatic loss).",
+        "Assuming you have weeks — US evictions are fast.",
+        "Self-help moves like withholding rent without following the legal steps.",
+        "Not documenting conditions or notices."
+      ],
+      "when_lawyer": "Get a tenant/legal-aid lawyer as soon as you receive a notice or summons — the timelines are short and a default judgment is hard to undo.",
+      "sources": [
+        {
+          "title": "Utah small-claims & courts reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah landlord-tenant law",
+      "verify": true
+    },
+    {
+      "id": "us_ut_employment",
+      "jur": "US-UT",
+      "area": "employment",
+      "title": "Work in Utah — at-will, wages, and discrimination",
+      "overview": "Most US employment is \"at-will\": either side can end it at any time, for any reason or no reason — so there is usually NO severance or notice requirement. BUT you cannot be fired for an ILLEGAL reason: discrimination (race, sex, age 40+, disability, religion, national origin), retaliation for a protected complaint, or in violation of a contract. Unpaid wages are recoverable through the Utah labor agency and the federal FLSA.",
+      "your_rights": [
+        "Unpaid wages, overtime, and final pay are recoverable (state agency + federal FLSA).",
+        "At-will can be ended by either side — but NOT for an illegal reason.",
+        "Protection from discrimination (race, sex, age 40+, disability, religion, national origin) and retaliation.",
+        "Right to file an EEOC charge (180/300-day deadline) before suing for discrimination."
+      ],
+      "key_steps": [
+        "For unpaid wages, file with the state labor agency or US DOL (1-866-487-9243).",
+        "For discrimination/retaliation, file an EEOC charge within 180/300 days.",
+        "Keep pay records, the offer letter/handbook, and a timeline of events.",
+        "Don't sign a severance release without understanding what you give up.",
+        "Check whether a written contract or handbook changes the at-will default."
+      ],
+      "common_mistakes": [
+        "Assuming 'wrongful termination' covers any unfair firing — it usually only covers ILLEGAL reasons.",
+        "Missing the EEOC 180/300-day deadline.",
+        "Not realizing at-will means no notice/severance is required.",
+        "Walking away from unpaid wages."
+      ],
+      "when_lawyer": "For discrimination, retaliation, a contract dispute, or large unpaid wages — get an employment lawyer; many work on contingency.",
+      "sources": [
+        {
+          "title": "Utah employment reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah at-will employment; FLSA; Title VII",
+      "verify": true
+    },
+    {
+      "id": "us_ut_small_claims",
+      "jur": "US-UT",
+      "area": "small_claims",
+      "title": "Suing (and being sued) for money in Utah",
+      "overview": "Utah's small-claims court hears money claims up to $20,000; larger claims go to the regular trial court. It's streamlined and designed for self-represented people (some states restrict lawyers there). Watch the statute of limitations for your claim type.",
+      "your_rights": [
+        "Claims up to $20,000 in the streamlined small-claims process.",
+        "Right to bring or defend a claim yourself.",
+        "Right to present evidence and witnesses.",
+        "Right to enforce a judgment (garnishment, liens) — collection is your job after winning."
+      ],
+      "key_steps": [
+        "Confirm your claim is within $20,000 (you can usually waive the excess).",
+        "File before the statute of limitations runs.",
+        "Gather contracts, invoices, texts, photos, and proof of loss.",
+        "Serve the defendant correctly (strict rules).",
+        "After winning, use collection tools — a judgment isn't self-paying."
+      ],
+      "common_mistakes": [
+        "Missing the statute of limitations.",
+        "Suing a defendant with no assets.",
+        "Improper service (gets the case tossed).",
+        "Assuming the court collects for you."
+      ],
+      "when_lawyer": "Small claims is built for self-representation; get advice for larger claims, complex contracts, or if you're being sued for a lot.",
+      "sources": [
+        {
+          "title": "Utah small-claims reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah small-claims rules",
+      "verify": true
+    },
+    {
+      "id": "us_ut_family",
+      "jur": "US-UT",
+      "area": "family",
+      "title": "Family law in Utah — divorce, custody, support",
+      "overview": "Utah family law (divorce, custody, child/spousal support, property) is state law and handled in state family/domestic courts. Custody is decided on the \"best interests of the child\"; child support follows state guidelines. Property division follows either community-property or equitable-distribution rules depending on the state.",
+      "your_rights": [
+        "Custody/parenting decided on the child's best interests.",
+        "Child support under state guidelines; spousal support/alimony where applicable.",
+        "A share of marital property (community-property or equitable-distribution state).",
+        "Right to a protective/restraining order for safety."
+      ],
+      "key_steps": [
+        "Gather financial records for full disclosure.",
+        "Propose a parenting plan.",
+        "Use mediation where available/required.",
+        "For safety, seek a protective order immediately.",
+        "File in the correct county family court."
+      ],
+      "common_mistakes": [
+        "Hiding assets (sanctions).",
+        "Informal custody deals with no court order.",
+        "Not knowing if you're in a community-property state.",
+        "Withholding a child without an order."
+      ],
+      "when_lawyer": "For contested custody, property, support, or any protective order — get a family lawyer; legal aid may help if you qualify.",
+      "sources": [
+        {
+          "title": "Utah family-law reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah family code",
+      "verify": true
+    },
+    {
+      "id": "us_ut_criminal",
+      "jur": "US-UT",
+      "area": "criminal",
+      "title": "Charged with a crime in Utah",
+      "overview": "In the US your core rights come from the Constitution: the right to remain silent (5th Amendment), the right to a lawyer and a public defender if you can't afford one (6th Amendment), and protection from unreasonable searches (4th Amendment). Utah prosecutes under state law; invoke your rights clearly and stop talking.",
+      "your_rights": [
+        "Right to remain silent — say you're invoking it, then stop.",
+        "Right to a lawyer, and a public defender if you can't afford one.",
+        "Right to refuse consent to a search.",
+        "Right to know the charges and to reasonable bail; presumption of innocence."
+      ],
+      "key_steps": [
+        "Say: 'I am invoking my right to remain silent and I want a lawyer.'",
+        "Do NOT consent to searches; do not resist physically.",
+        "Ask for a public defender if you can't afford counsel.",
+        "Don't discuss the case on jail phones or with anyone but your lawyer.",
+        "Attend every court date; follow bail conditions."
+      ],
+      "common_mistakes": [
+        "Talking to police without a lawyer.",
+        "Consenting to a search.",
+        "Discussing the case on recorded jail calls.",
+        "Missing a court date (warrant issued)."
+      ],
+      "when_lawyer": "Immediately on any arrest or charge — invoke silence, ask for a public defender, and get a Utah criminal lawyer before any statement.",
+      "sources": [
+        {
+          "title": "Utah criminal-law reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "US Constitution (4th/5th/6th Amendments); Utah criminal code",
+      "verify": true
+    },
+    {
+      "id": "us_ut_debt",
+      "jur": "US-UT",
+      "area": "debt_consumer",
+      "title": "Debt & collections in Utah",
+      "overview": "If a debt collector is contacting you, federal law (the Fair Debt Collection Practices Act) gives you real rights: you can demand written validation of the debt, tell the collector to stop contacting you, and be free from harassment, threats, and calls at unreasonable hours. Old debt may be past the statute of limitations, meaning it can't be successfully sued on — but never acknowledge or pay a tiny amount on a stale debt, which can restart the clock.",
+      "your_rights": [
+        "Right to written validation of the debt (what, how much, who the original creditor is).",
+        "Right to tell a collector in writing to stop contacting you.",
+        "Freedom from harassment, false threats, and calls before 8am/after 9pm.",
+        "A time-barred debt (past the SOL) can't be successfully sued on."
+      ],
+      "key_steps": [
+        "Ask for validation in writing before paying anything.",
+        "Send a written 'stop contact' letter if you want calls to end (keep a copy).",
+        "Check whether the debt is past your state's statute of limitations.",
+        "Don't make a payment or admission on an old debt without advice (it can restart the clock).",
+        "Report abusive collectors to the CFPB and your state AG."
+      ],
+      "common_mistakes": [
+        "Paying to make it stop without validating the debt.",
+        "Admitting or partially paying a time-barred debt (restarts it).",
+        "Ignoring a lawsuit summons — that becomes a default judgment and garnishment.",
+        "Giving a collector access to your bank account."
+      ],
+      "when_lawyer": "If you're sued, facing garnishment, or the debt isn't yours — get a consumer lawyer (many offer free consults; FDCPA cases can be fee-shifting).",
+      "sources": [
+        {
+          "title": "Consumer debt rights (FDCPA)",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Fair Debt Collection Practices Act (15 U.S.C. 1692); Utah collection law",
+      "verify": true
+    },
+    {
+      "id": "us_ut_pi",
+      "jur": "US-UT",
+      "area": "personal_injury",
+      "title": "Injured in an accident in Utah",
+      "overview": "If you're hurt in a car crash, a fall, or by someone's carelessness, you may have a personal-injury claim for your medical bills, lost wages, and pain and suffering. The clock is a statute of limitations that varies by state (often 2–3 years), and some states use comparative-fault rules that reduce or bar recovery if you were partly at fault. Document everything early — evidence disappears fast.",
+      "your_rights": [
+        "Right to seek compensation for medical costs, lost income, and pain/suffering.",
+        "Right to your own medical care and records.",
+        "Right to NOT give a recorded statement to the other side's insurer.",
+        "Right to a lawyer before signing any release or settlement."
+      ],
+      "key_steps": [
+        "Get medical attention and keep every bill and record.",
+        "Photograph the scene, injuries, and damage; get witness contacts.",
+        "Report it (police/property owner) and get the report number.",
+        "Do NOT give the other insurer a recorded statement or sign a release without advice.",
+        "Note your state's injury statute of limitations and act well before it."
+      ],
+      "common_mistakes": [
+        "Admitting fault at the scene.",
+        "Giving a recorded statement to the other insurer.",
+        "Accepting a fast, low settlement before you know your full injuries.",
+        "Missing the statute of limitations."
+      ],
+      "when_lawyer": "For any serious injury, disputed fault, or an insurer lowballing you — get a personal-injury lawyer (usually contingency; free consult).",
+      "sources": [
+        {
+          "title": "Utah personal-injury reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah negligence law; statute of limitations",
+      "verify": true
+    },
+    {
+      "id": "us_ut_traffic",
+      "jur": "US-UT",
+      "area": "traffic",
+      "title": "Traffic tickets & driving offences in Utah",
+      "overview": "A traffic ticket in Utah usually gives you the choice to pay (which is a guilty plea, adds points, and can raise insurance) or to contest it in court. Serious offences — DUI/DWI, reckless driving, driving on a suspended licence — are criminal, carry heavy penalties, and you should treat them like any criminal charge (get a lawyer, don't just plead).",
+      "your_rights": [
+        "Right to contest a ticket in court rather than just paying.",
+        "Right to see the evidence against you.",
+        "Right to a lawyer for any criminal traffic charge (DUI, reckless, suspended).",
+        "Presumption of innocence on contested charges."
+      ],
+      "key_steps": [
+        "Note the deadline on the ticket to pay or request a hearing — don't miss it.",
+        "Decide: paying = pleading guilty (points + insurance hit).",
+        "For points/insurance, ask about traffic school or a plea reduction.",
+        "For DUI/reckless/suspended, get a lawyer before doing anything.",
+        "Never ignore a ticket — it can suspend your licence or trigger a warrant."
+      ],
+      "common_mistakes": [
+        "Ignoring a ticket (licence suspension, warrant).",
+        "Paying a ticket you could have reduced or beaten.",
+        "Treating a DUI like an ordinary ticket.",
+        "Not checking the insurance/points consequences first."
+      ],
+      "when_lawyer": "For DUI/DWI, reckless driving, driving while suspended, an accident with injury, or any criminal traffic charge — get a lawyer immediately.",
+      "sources": [
+        {
+          "title": "Utah traffic/driving reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah vehicle/traffic code",
+      "verify": true
+    },
+    {
+      "id": "us_ut_police",
+      "jur": "US-UT",
+      "area": "police_rights",
+      "title": "Your rights with police in Utah",
+      "overview": "Across the US your constitutional rights are the same: you can remain silent, you can refuse consent to a search, and you can ask if you're free to go. Police need a warrant or a recognized exception to search you or your home. Stay calm, keep your hands visible, and never physically resist — assert your rights with your words, and challenge an illegal search later in court, not on the street.",
+      "your_rights": [
+        "Right to remain silent (say it out loud, then stop talking).",
+        "Right to refuse consent to a search of your person, car, or home.",
+        "Right to ask 'Am I free to go?' and to leave if you're not detained.",
+        "Right to a lawyer once arrested; right to not answer questions."
+      ],
+      "key_steps": [
+        "Stay calm, hands visible; don't run or resist.",
+        "Say: 'I don't consent to a search' and 'I want to remain silent.'",
+        "Ask 'Am I being detained, or am I free to go?'",
+        "If arrested, ask for a lawyer and stop talking.",
+        "Record or note badge numbers and what happened, after the fact."
+      ],
+      "common_mistakes": [
+        "Consenting to a search when you didn't have to.",
+        "Trying to talk your way out of it (anything you say can be used).",
+        "Physically resisting (a separate crime, and dangerous).",
+        "Answering questions without a lawyer after arrest."
+      ],
+      "when_lawyer": "After any arrest, search, or use of force — and before answering questions — get a lawyer; a public defender is free if you can't afford one.",
+      "sources": [
+        {
+          "title": "Know-your-rights (US)",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "US Constitution (4th/5th/6th Amendments)",
+      "verify": false
+    },
+    {
+      "id": "us_ut_estates",
+      "jur": "US-UT",
+      "area": "wills_estates",
+      "title": "Wills & estates in Utah",
+      "overview": "A will lets you decide who gets your property and who manages your estate (the executor). Without a valid will you die 'intestate,' and Utah's default rules decide who inherits — which may not be what you'd want. After a death, the estate usually goes through 'probate,' a court process that confirms the will and authorizes the executor to pay debts and distribute what's left.",
+      "your_rights": [
+        "Right to make a will directing who inherits (with formalities met).",
+        "Right, as a named executor, to administer the estate.",
+        "Beneficiaries' right to an accounting of the estate.",
+        "Certain family members may have protected claims against an estate."
+      ],
+      "key_steps": [
+        "Make a valid will (signed and witnessed per state law); keep it safe.",
+        "Name an executor and a backup, and an guardian for minor children.",
+        "Keep beneficiary designations (life insurance, retirement) up to date — they override a will.",
+        "After a death, locate the will and start probate; inventory assets and debts.",
+        "Don't distribute anything until debts, taxes, and the process are handled."
+      ],
+      "common_mistakes": [
+        "No will (intestacy decides for you).",
+        "An improperly signed/witnessed will.",
+        "Forgetting that beneficiary designations beat the will.",
+        "An executor distributing assets before paying debts/taxes (personal liability)."
+      ],
+      "when_lawyer": "For estate planning, a contested will, a complex or insolvent estate, or executor duties you're unsure about — see an estates lawyer.",
+      "sources": [
+        {
+          "title": "Utah wills & estates reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah probate/estates code",
+      "verify": true
+    },
+    {
+      "id": "us_ut_insurance",
+      "jur": "US-UT",
+      "area": "insurance",
+      "title": "Insurance claims & disputes in Utah",
+      "overview": "Insurers in Utah owe you a duty of good faith — to investigate fairly and pay valid claims promptly. If a claim is denied or lowballed, you can demand the reason and policy wording in writing, appeal internally, and escalate to the state insurance regulator or to court. An unreasonable denial can expose the insurer to extra (bad-faith) damages.",
+      "your_rights": [
+        "Right to a written reason for any denial and the policy language relied on.",
+        "Right to a fair, prompt investigation (duty of good faith).",
+        "Right to appeal internally and to the state regulator.",
+        "Possible bad-faith damages for an unreasonable denial."
+      ],
+      "key_steps": [
+        "Report the claim promptly and in the required form.",
+        "Document everything — photos, receipts, a log of every call/letter.",
+        "Get the denial reason and policy wording in writing.",
+        "Appeal in writing; cite the policy terms.",
+        "Escalate to the state insurance department or a lawyer if stonewalled."
+      ],
+      "common_mistakes": [
+        "Missing claim/notice deadlines in the policy.",
+        "Accepting a denial without the written reason.",
+        "Giving a recorded statement without understanding it.",
+        "Not documenting the loss."
+      ],
+      "when_lawyer": "For a large denied claim, suspected bad faith, or a liability claim against you — consult an insurance lawyer; many offer free consults.",
+      "sources": [
+        {
+          "title": "Utah insurance reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah insurance code; duty of good faith",
+      "verify": true
+    },
+    {
+      "id": "us_ut_business",
+      "jur": "US-UT",
+      "area": "business",
+      "title": "Small business & self-employed in Utah",
+      "overview": "Running a business in Utah means choosing a structure (sole proprietor = simple but personally liable; LLC/corporation = separate entity that can limit personal liability), using written contracts, and getting licences/permits you need. Put key deals in writing, invoice clearly, and keep business and personal finances separate — especially if you incorporate, or you can lose the liability shield.",
+      "your_rights": [
+        "Right to choose a business structure that fits your risk.",
+        "Right to enforce written contracts and unpaid invoices.",
+        "Right to limited liability if you properly form and maintain an entity.",
+        "Right to sue (small claims within the limit) to collect debts."
+      ],
+      "key_steps": [
+        "Pick a structure (sole prop / LLC / corporation) with tax + legal advice.",
+        "Use written contracts and clear invoices with payment terms.",
+        "Get required business licences/permits and register as needed.",
+        "Keep business and personal money separate.",
+        "For unpaid invoices, send a demand then sue within the limitation period."
+      ],
+      "common_mistakes": [
+        "Operating on handshake deals.",
+        "Mixing personal and business finances (piercing the corporate veil).",
+        "Skipping licences/permits.",
+        "Misclassifying workers as contractors."
+      ],
+      "when_lawyer": "For incorporation, partnership/shareholder agreements, a major contract, or a business dispute — get a business lawyer.",
+      "sources": [
+        {
+          "title": "Utah small-business reference",
+          "url": "https://www.recordinglaw.com/us-laws/small-claims-court/"
+        }
+      ],
+      "statute": "Utah business/corporations law",
+      "verify": true
+    }
+  ]
+}

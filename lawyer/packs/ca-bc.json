@@ -1,0 +1,636 @@
+{
+  "id": "ca-bc",
+  "name": "British Columbia",
+  "flag": "🇨🇦",
+  "country": "Canada",
+  "region": "Canada",
+  "jur": "CA-BC",
+  "version": "1.0",
+  "kind": "province",
+  "note": "Full BC practice-area pack (common-law). Residential Tenancy Branch, Employment Standards, Civil Resolution Tribunal + Provincial Court small claims, Human Rights Tribunal, Family Law Act, ICBC Enhanced Care. Criminal law is federal (core). Verify; not legal advice.",
+  "getLawyer": [
+    {
+      "id": "bc_criminal_charged",
+      "when": [
+        "charged with a crime in bc",
+        "arrested in bc",
+        "rcmp charged me"
+      ],
+      "why": "Criminal law is federal (Criminal Code), but BC has its own courts and Legal Aid BC. If charged or arrested, say you want a lawyer and stay silent. Call Legal Aid BC (1-866-577-2525) or the Brydges duty-counsel line for free immediate advice; contact a BC criminal lawyer before any statement."
+    },
+    {
+      "id": "bc_child_protection",
+      "when": [
+        "mcfd took my kids",
+        "ministry took my children",
+        "child protection bc",
+        "removed my child"
+      ],
+      "why": "If the Ministry of Children and Family Development (MCFD) removes or threatens to remove a child, this is urgent — there are short court timelines. Get a family/child-protection lawyer and call Legal Aid BC (1-866-577-2525) immediately; you have the right to be heard at the presentation hearing."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "bc_rtb_unpaid_rent",
+      "jur": "CA-BC",
+      "area": "housing",
+      "title": "10-Day Notice (unpaid rent) — 5 days to pay or dispute",
+      "rule": "If a BC landlord serves a 10 Day Notice to End Tenancy for Unpaid Rent/Utilities, the tenant has 5 DAYS to either pay the full amount (which cancels the notice) OR apply to the Residential Tenancy Branch to dispute it. Missing both means the tenancy ends and the landlord can seek an order of possession.",
+      "trigger": [
+        "10 day notice",
+        "unpaid rent",
+        "behind on rent",
+        "eviction notice",
+        "didn't pay rent",
+        "evicting me",
+        "my landlord"
+      ],
+      "source": "BC Residential Tenancy Act s.46; gov.bc.ca — 10 Day Notice",
+      "verify": false,
+      "urgency": "critical"
+    },
+    {
+      "id": "bc_rtb_landlord_use",
+      "jur": "CA-BC",
+      "area": "housing",
+      "title": "4-Month Notice (landlord/purchaser use) — 30 days to dispute",
+      "rule": "A BC landlord ending a tenancy for their own/purchaser's use or major renovation must give 4 MONTHS' notice; the tenant has 30 DAYS from receiving it to dispute at the Residential Tenancy Branch, and is entitled to one month's rent compensation. Bad-faith notices can bring 12 months' rent.",
+      "trigger": [
+        "4 month notice",
+        "landlord wants me out",
+        "landlord's own use",
+        "renovation eviction",
+        "being evicted",
+        "notice to vacate"
+      ],
+      "source": "BC Residential Tenancy Act s.49; gov.bc.ca — landlord notice",
+      "verify": false,
+      "urgency": "serious"
+    },
+    {
+      "id": "bc_esa_complaint",
+      "jur": "CA-BC",
+      "area": "employment",
+      "title": "Employment Standards complaint — within 6 months",
+      "rule": "A complaint to the BC Employment Standards Branch (unpaid wages, overtime, vacation, termination pay) must generally be filed within 6 MONTHS of the employer's last contravention (e.g., the day employment ended).",
+      "trigger": [
+        "didn't pay me",
+        "unpaid wages",
+        "fired me",
+        "i was fired",
+        "without notice",
+        "owed overtime",
+        "wrongful dismissal",
+        "terminated me",
+        "lost my job",
+        "laid off"
+      ],
+      "source": "BC Employment Standards Act s.74",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "bc_hrt_complaint",
+      "jur": "CA-BC",
+      "area": "human_rights",
+      "title": "Human Rights complaint — within 1 year",
+      "rule": "A complaint to the BC Human Rights Tribunal (discrimination in work, housing, or services) must be filed within 1 YEAR of the last incident of discrimination.",
+      "trigger": [
+        "discriminated",
+        "discrimination",
+        "discriminated against me",
+        "because of my disability",
+        "because of my race",
+        "harassment at work",
+        "refused housing",
+        "refused service"
+      ],
+      "source": "BC Human Rights Code s.22",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "bc_limitation_basic",
+      "jur": "CA-BC",
+      "area": "civil_general",
+      "title": "Civil lawsuit — 2-year basic limitation",
+      "rule": "Most BC civil claims (debt, contract, negligence, property damage) must be started within 2 YEARS of the day you discovered (or should have) the claim. A 15-year ultimate limitation also applies. Some claims differ — confirm before relying.",
+      "trigger": [
+        "sue someone",
+        "want to sue",
+        "how long to sue",
+        "limitation period",
+        "statute of limitations",
+        "contract dispute",
+        "they owe me money"
+      ],
+      "source": "BC Limitation Act s.6, s.8, s.21",
+      "verify": true,
+      "urgency": "serious"
+    }
+  ],
+  "statutes": [
+    {
+      "id": "bc_rta",
+      "jur": "CA-BC",
+      "act": "Residential Tenancy Act (BC)",
+      "section": "s.46, s.49",
+      "area": "housing",
+      "title": "Ending a tenancy — notice + dispute",
+      "summary": "Unpaid rent: 10-day notice, tenant has 5 days to pay or dispute at the RTB. Landlord/purchaser use: 4 months' notice + one month's compensation; 30 days to dispute; bad faith = 12 months' rent. Deposits (security + pet) are capped at half a month's rent each.",
+      "source": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02078_01"
+    },
+    {
+      "id": "bc_esa",
+      "jur": "CA-BC",
+      "act": "Employment Standards Act (BC)",
+      "section": "s.63",
+      "area": "employment",
+      "title": "Termination notice / pay",
+      "summary": "After 3 consecutive months: 1 week's notice or pay; after 12 months: 2 weeks; after 3 years: 3 weeks + 1 week per additional year, to a maximum of 8 weeks. This is the statutory minimum — common-law reasonable notice can be much more; get advice.",
+      "source": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/00_96113_01"
+    },
+    {
+      "id": "bc_crt",
+      "jur": "CA-BC",
+      "act": "Civil Resolution Tribunal Act / Small Claims Act (BC)",
+      "section": "small claims",
+      "area": "small_claims",
+      "title": "Where to file a money claim",
+      "summary": "Up to $5,000: the Civil Resolution Tribunal (CRT), mostly online. $5,001–$35,000: BC Provincial Court (Small Claims). Over $35,000: BC Supreme Court. Many CRT disputes (and strata, some motor-vehicle) are handled online without a lawyer.",
+      "source": "https://provincialcourt.bc.ca/navigating-court-case/small-claims",
+      "verify": false
+    },
+    {
+      "id": "bc_icbc",
+      "jur": "CA-BC",
+      "act": "Insurance (Vehicle) Act — Enhanced Care",
+      "section": "no-fault",
+      "area": "personal_injury",
+      "title": "ICBC Enhanced Care (no-fault) since May 1, 2021",
+      "summary": "For crashes on/after May 1, 2021, BC uses a no-fault 'Enhanced Care' model: most injury benefits come from ICBC regardless of fault, and the right to sue for pain and suffering is largely removed (narrow exceptions). Report promptly and track treatment; get advice for serious injuries.",
+      "source": "https://www.icbc.com"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "type": "emergency",
+      "contact": "911",
+      "note": "Police, fire, ambulance."
+    },
+    {
+      "name": "Residential Tenancy Branch (BC)",
+      "type": "tribunal",
+      "contact": "1-800-665-8779",
+      "note": "Tenant/landlord disputes, dispute resolution."
+    },
+    {
+      "name": "Employment Standards Branch (BC)",
+      "type": "government",
+      "contact": "1-833-236-3700",
+      "note": "Unpaid wages, termination pay."
+    },
+    {
+      "name": "BC Human Rights Tribunal",
+      "type": "tribunal",
+      "contact": "1-888-440-8844",
+      "note": "Discrimination complaints (1-year limit)."
+    },
+    {
+      "name": "Legal Aid BC",
+      "type": "legal_aid",
+      "contact": "1-866-577-2525",
+      "note": "Criminal, family, immigration legal aid + free duty counsel."
+    },
+    {
+      "name": "Access Pro Bono (BC)",
+      "type": "legal_aid",
+      "contact": "1-877-762-6664",
+      "note": "Free legal advice clinics."
+    }
+  ],
+  "book": [
+    {
+      "id": "bc_housing",
+      "jur": "CA-BC",
+      "area": "housing",
+      "title": "Renting in BC — tenants and landlords",
+      "overview": "BC tenancies run under the Residential Tenancy Act, enforced by the Residential Tenancy Branch (RTB) — not the courts. Most disputes (evictions, deposits, repairs, rent) are resolved by RTB dispute resolution. Watch the deadlines: a 10-day unpaid-rent notice gives only 5 days to pay or dispute; a 4-month landlord's-use notice gives 30 days to dispute.",
+      "your_rights": [
+        "Deposits capped at half a month's rent each (security + pet).",
+        "Right to dispute any eviction notice at the RTB within the deadline.",
+        "One month's compensation for a landlord's/purchaser's-use eviction; 12 months' rent if it's bad faith.",
+        "Rent can rise only once a year, by no more than the government's annual cap, with proper notice.",
+        "Right to repairs and to emergency repairs."
+      ],
+      "key_steps": [
+        "Read the notice: identify the type and the exact deadline (5 days / 30 days).",
+        "To keep the tenancy on an unpaid-rent notice, pay in full within 5 days OR dispute.",
+        "Apply for RTB dispute resolution online before the deadline; keep proof of service.",
+        "Document everything (photos, texts, the condition inspection report).",
+        "Get the correct RTB form; use Legal Aid BC or TRAC (Tenant Resource & Advisory Centre) for help."
+      ],
+      "common_mistakes": [
+        "Missing the 5-day window on an unpaid-rent notice.",
+        "Ignoring a notice instead of disputing it.",
+        "Not doing the move-in/move-out condition inspection (can forfeit the deposit).",
+        "Paying an illegal rent increase."
+      ],
+      "when_lawyer": "Most RTB matters don't need a lawyer, but get advice for a bad-faith eviction, a large claim, or a Supreme Court judicial review.",
+      "sources": [
+        {
+          "title": "BC Residential Tenancy Act",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02078_01"
+        }
+      ],
+      "statute": "Residential Tenancy Act (BC) s.46, s.49",
+      "verify": true
+    },
+    {
+      "id": "bc_employment",
+      "jur": "CA-BC",
+      "area": "employment",
+      "title": "Work in BC — your rights on the job and at termination",
+      "overview": "The Employment Standards Act sets BC minimums (wages, overtime, vacation, termination). The Employment Standards Branch handles complaints (6-month limit). Statutory termination notice is a floor — if you're let go without cause, common-law 'reasonable notice' is often much larger, so get advice before signing a release.",
+      "your_rights": [
+        "Statutory termination notice/pay: 1 week after 3 months, 2 after 1 year, 3 after 3 years + 1/year to a max of 8.",
+        "Likely more under common law (reasonable notice) if dismissed without cause.",
+        "Unpaid wages, overtime, and vacation pay are recoverable.",
+        "Protection from reprisal for asserting your rights."
+      ],
+      "key_steps": [
+        "Don't sign a severance release right away — get it reviewed.",
+        "Calculate both the statutory minimum AND possible common-law notice.",
+        "File an Employment Standards complaint within 6 months for wage issues.",
+        "Keep pay stubs, the contract, and termination letter.",
+        "For wrongful dismissal above small-claims limits, consider Provincial/Supreme Court."
+      ],
+      "common_mistakes": [
+        "Accepting only the statutory minimum when common-law notice is owed.",
+        "Signing a release under pressure.",
+        "Missing the 6-month complaint window.",
+        "Assuming 'at will' applies — it does not in Canada."
+      ],
+      "when_lawyer": "Before signing any severance/release, or for a without-cause dismissal, constructive dismissal, or discrimination — get an employment lawyer.",
+      "sources": [
+        {
+          "title": "BC Employment Standards Act",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/00_96113_01"
+        }
+      ],
+      "statute": "Employment Standards Act (BC) s.63, s.74",
+      "verify": true
+    },
+    {
+      "id": "bc_small_claims",
+      "jur": "CA-BC",
+      "area": "small_claims",
+      "title": "Suing (and being sued) for money in BC",
+      "overview": "Where you file depends on the amount: up to $5,000 goes to the Civil Resolution Tribunal (CRT, mostly online, no lawyer needed); $5,001–$35,000 goes to BC Provincial Court (Small Claims); over $35,000 goes to BC Supreme Court. The 2-year basic limitation period usually applies.",
+      "your_rights": [
+        "Access to the CRT online for claims up to $5,000.",
+        "Right to bring or defend a Provincial Court small claim yourself.",
+        "Right to a settlement/mediation step before trial.",
+        "Right to enforce a judgment (garnishment, seizure)."
+      ],
+      "key_steps": [
+        "Confirm the amount and pick the right forum (CRT / Provincial / Supreme).",
+        "File within 2 years of discovering the claim.",
+        "Gather contracts, invoices, messages, and proof of loss.",
+        "Try the CRT's negotiation/facilitation steps.",
+        "After winning, use enforcement tools to collect."
+      ],
+      "common_mistakes": [
+        "Filing in the wrong forum for the amount.",
+        "Missing the 2-year limitation period.",
+        "Suing a party with no assets to collect from.",
+        "No documentary proof of the debt or loss."
+      ],
+      "when_lawyer": "CRT/Provincial claims are designed to be self-represented; get advice for Supreme Court claims or complex contracts.",
+      "sources": [
+        {
+          "title": "BC Provincial Court — Small Claims",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "Civil Resolution Tribunal Act; Small Claims Act (BC)",
+      "verify": true
+    },
+    {
+      "id": "bc_family",
+      "jur": "CA-BC",
+      "area": "family",
+      "title": "Family law in BC — separation, children, support",
+      "overview": "BC's Family Law Act governs parenting, guardianship, and property/debt division for married and common-law couples; divorce itself is federal. Provincial Court handles parenting and support (no property); Supreme Court handles divorce and property. Many issues can be resolved by agreement or mediation.",
+      "your_rights": [
+        "Both parents' time with and responsibilities for children are decided on the child's best interests.",
+        "Common-law partners (2+ years, or with a child) share family property/debt.",
+        "Child and spousal support based on the Guidelines.",
+        "Right to mediation and to a written agreement."
+      ],
+      "key_steps": [
+        "Get a parenting plan and a written separation agreement.",
+        "Exchange full financial disclosure.",
+        "Use Family Justice Counsellors / mediation where possible.",
+        "For urgent safety, seek a protection order.",
+        "File in Provincial Court (parenting/support) or Supreme Court (divorce/property)."
+      ],
+      "common_mistakes": [
+        "No financial disclosure.",
+        "Informal agreements with no writing.",
+        "Assuming common-law partners have no property rights (they do in BC).",
+        "Self-removing a child without an order."
+      ],
+      "when_lawyer": "For property division, relocation, protection orders, or any dispute involving children — get a family lawyer; Legal Aid BC may apply.",
+      "sources": [
+        {
+          "title": "BC Family Law Act",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/11025_01"
+        }
+      ],
+      "statute": "Family Law Act (BC)",
+      "verify": true
+    },
+    {
+      "id": "bc_criminal",
+      "jur": "CA-BC",
+      "area": "criminal",
+      "title": "Charged with a crime in BC",
+      "overview": "Criminal law is the federal Criminal Code, but BC has its own courts (Provincial Court / Supreme Court) and Legal Aid BC. Your core rights on arrest are the same across Canada: to be told the charge, to remain silent, and to a lawyer without delay — including free immediate advice.",
+      "your_rights": [
+        "Right to silence — you don't have to answer questions.",
+        "Right to a lawyer without delay, and to free immediate advice (Brydges/duty counsel).",
+        "Right to know the charge and to reasonable bail.",
+        "Presumption of innocence."
+      ],
+      "key_steps": [
+        "Say: 'I want a lawyer and I will remain silent.'",
+        "Call Legal Aid BC (1-866-577-2525) or the duty-counsel line.",
+        "Don't discuss the case with anyone but your lawyer.",
+        "Note officer details and what happened.",
+        "Attend every court date; follow bail/release conditions."
+      ],
+      "common_mistakes": [
+        "Talking to police without a lawyer.",
+        "Breaching release conditions.",
+        "Assuming a minor charge needs no lawyer.",
+        "Missing a court date (new charge)."
+      ],
+      "when_lawyer": "Immediately on any arrest or charge — free duty counsel first, then a BC criminal lawyer; apply to Legal Aid BC.",
+      "sources": [
+        {
+          "title": "Legal Aid BC",
+          "url": "https://legalaid.bc.ca"
+        }
+      ],
+      "statute": "Criminal Code (federal); BC court rules",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_debt",
+      "jur": "CA-BC",
+      "area": "debt_consumer",
+      "title": "Debt & collections in British Columbia",
+      "overview": "If a collection agency is after you, British Columbia's consumer-protection rules limit how and when they can contact you — generally no harassment, no threats, limited call hours, and no discussing the debt with your employer (except to confirm employment). You can usually require written contact only. Old debt may be past the limitation period, so it can't be successfully sued on — but a payment or admission can restart that clock.",
+      "your_rights": [
+        "Freedom from harassment, threats, and calls at unreasonable hours.",
+        "Right to require contact in writing only.",
+        "Collectors generally can't discuss your debt with family/employer.",
+        "A debt past the limitation period can't be successfully sued on."
+      ],
+      "key_steps": [
+        "Ask for the debt details in writing before paying.",
+        "Send a written notice limiting contact to writing.",
+        "Check if the debt is past the limitation period (often ~2 years).",
+        "Don't pay or admit an old debt without advice.",
+        "Complain to your provincial consumer-protection office about abuse."
+      ],
+      "common_mistakes": [
+        "Paying without confirming the debt is yours and in time.",
+        "Restarting the clock by paying a little on an old debt.",
+        "Ignoring a court claim (default judgment + garnishment).",
+        "Giving a collector banking details."
+      ],
+      "when_lawyer": "If you're sued, facing garnishment, or the debt isn't yours — get advice; Legal Aid BC or a legal clinic may help.",
+      "sources": [
+        {
+          "title": "British Columbia consumer-protection reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "British Columbia collection/consumer-protection law",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_pi",
+      "jur": "CA-BC",
+      "area": "personal_injury",
+      "title": "Injured in an accident in British Columbia",
+      "overview": "If you're hurt by someone's carelessness, you may have a claim for treatment, lost income, and pain and suffering. The general limitation period is usually 2 years, but watch for MUCH shorter notice deadlines (e.g., injuries on municipal property or involving a government body). Document everything and get advice early.",
+      "your_rights": [
+        "Right to seek compensation for your injuries and losses.",
+        "Right to your own medical care and records.",
+        "Right not to give the other insurer a recorded statement.",
+        "Right to a lawyer before signing any release."
+      ],
+      "key_steps": [
+        "Get medical care; keep all records and receipts.",
+        "Photograph the scene and injuries; get witnesses.",
+        "Report it; get the incident/police report number.",
+        "Watch for SHORT municipal/government notice deadlines.",
+        "Don't sign a release or take a quick settlement without advice."
+      ],
+      "common_mistakes": [
+        "Missing a short notice deadline.",
+        "Giving the other insurer a recorded statement.",
+        "Settling before injuries are fully known.",
+        "Admitting fault at the scene."
+      ],
+      "when_lawyer": "For any serious injury, disputed fault, or a lowball insurer — get a personal-injury lawyer (usually contingency, free consult).",
+      "sources": [
+        {
+          "title": "British Columbia injury-claim reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "British Columbia negligence law; limitation + notice periods",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_traffic",
+      "jur": "CA-BC",
+      "area": "traffic",
+      "title": "Traffic tickets & driving offences in British Columbia",
+      "overview": "A traffic ticket in British Columbia usually lets you plead guilty (pay, take demerit points, risk higher insurance) or dispute it. Serious matters — impaired driving, dangerous driving, driving while suspended — are Criminal Code offences with severe, often mandatory penalties; treat them like any criminal charge and get a lawyer.",
+      "your_rights": [
+        "Right to dispute a ticket instead of paying.",
+        "Right to disclosure of the evidence.",
+        "Right to a lawyer for any Criminal Code driving charge.",
+        "Presumption of innocence on contested charges."
+      ],
+      "key_steps": [
+        "Note the dispute deadline — don't miss it.",
+        "Remember paying = pleading guilty (points + insurance).",
+        "Consider disputing or a plea discussion for demerit/insurance.",
+        "For impaired/dangerous/suspended driving, get a lawyer now.",
+        "Never ignore a ticket."
+      ],
+      "common_mistakes": [
+        "Ignoring a ticket.",
+        "Paying one you could have fought.",
+        "Treating impaired driving like a parking ticket.",
+        "Not checking demerit/insurance impact."
+      ],
+      "when_lawyer": "For impaired/dangerous driving, driving while suspended, or an accident with injury — get a lawyer right away.",
+      "sources": [
+        {
+          "title": "British Columbia traffic/driving reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "Criminal Code (impaired/dangerous driving); British Columbia highway traffic law",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_police",
+      "jur": "CA-BC",
+      "area": "police_rights",
+      "title": "Your rights with police in British Columbia",
+      "overview": "The Charter protects you across Canada: freedom from unreasonable search (s.8), from arbitrary detention (s.9), and — on arrest/detention — the right to be told why and to speak to a lawyer without delay (s.10). You generally don't have to answer questions. Stay calm, don't resist, assert your rights, and challenge any breach later in court.",
+      "your_rights": [
+        "Right to silence.",
+        "On detention/arrest, right to know why and to call a lawyer without delay.",
+        "Protection from unreasonable search (s.8).",
+        "Protection from arbitrary detention (s.9)."
+      ],
+      "key_steps": [
+        "Ask: 'Am I being detained, or am I free to go?'",
+        "Say you want a lawyer and will stay silent.",
+        "Don't physically resist; keep hands visible.",
+        "Use free 24-hour duty counsel if offered.",
+        "Note what happened and officer details afterward."
+      ],
+      "common_mistakes": [
+        "Answering questions without a lawyer.",
+        "Consenting to a search you could refuse.",
+        "Resisting or fleeing.",
+        "Not clearly asserting the right to counsel."
+      ],
+      "when_lawyer": "After any arrest, detention, or search — exercise your right to a lawyer immediately; free duty counsel is available 24/7.",
+      "sources": [
+        {
+          "title": "Charter of Rights (ss.8–10)",
+          "url": "https://laws-lois.justice.gc.ca/eng/const/page-12.html"
+        }
+      ],
+      "statute": "Canadian Charter of Rights and Freedoms, ss.8, 9, 10",
+      "verify": false
+    },
+    {
+      "id": "ca_bc_estates",
+      "jur": "CA-BC",
+      "area": "wills_estates",
+      "title": "Wills & estates in British Columbia",
+      "overview": "A will directs who inherits and names the executor. Without a valid will you die 'intestate' and British Columbia's rules decide who inherits — often not what you'd choose, and common-law partners may get nothing automatically. Estates are usually probated (the court confirms the will and executor) before debts are paid and gifts distributed.",
+      "your_rights": [
+        "Right to make a valid, witnessed will.",
+        "Right, as executor, to administer the estate.",
+        "Beneficiaries' right to an accounting.",
+        "Spouses/dependants may have protected claims."
+      ],
+      "key_steps": [
+        "Make a valid will; name an executor, backup, and guardian for minor kids.",
+        "Keep beneficiary designations current (they can bypass the will).",
+        "Store the will safely; tell your executor where it is.",
+        "After a death, locate the will and apply for probate; inventory assets/debts.",
+        "Pay debts and taxes BEFORE distributing."
+      ],
+      "common_mistakes": [
+        "Dying without a will.",
+        "An improperly witnessed will.",
+        "Assuming a common-law partner inherits automatically.",
+        "Distributing before debts/taxes are cleared."
+      ],
+      "when_lawyer": "For estate planning, a contested will, or executor duties — see a wills & estates lawyer; Legal Aid BC may help those who qualify.",
+      "sources": [
+        {
+          "title": "British Columbia wills & estates reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "British Columbia wills/estates & probate law",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_insurance",
+      "jur": "CA-BC",
+      "area": "insurance",
+      "title": "Insurance claims & disputes in British Columbia",
+      "overview": "Insurers in British Columbia owe a duty of good faith — to handle claims fairly and promptly. If a claim is denied or underpaid, demand the reason and policy wording in writing, appeal internally, and escalate to the ombudsperson/regulator or court. An unreasonable denial can expose the insurer to extra damages.",
+      "your_rights": [
+        "Right to a written reason for a denial and the policy wording.",
+        "Right to a fair, prompt investigation (good faith).",
+        "Right to the insurance ombudsperson and the regulator.",
+        "Possible extra damages for bad-faith handling."
+      ],
+      "key_steps": [
+        "Report the claim promptly and as the policy requires.",
+        "Document the loss — photos, receipts, a log of every contact.",
+        "Get the denial reason and policy terms in writing.",
+        "Appeal in writing, citing the policy.",
+        "Escalate to the ombudsperson/regulator or a lawyer if stonewalled."
+      ],
+      "common_mistakes": [
+        "Missing policy notice/claim deadlines.",
+        "Accepting a denial without the written reason.",
+        "Unrecorded phone-only dealings.",
+        "Not documenting the loss."
+      ],
+      "when_lawyer": "For a large denied claim, suspected bad faith, or a liability claim against you — consult an insurance lawyer.",
+      "sources": [
+        {
+          "title": "British Columbia insurance reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "British Columbia insurance law; duty of good faith",
+      "verify": true
+    },
+    {
+      "id": "ca_bc_business",
+      "jur": "CA-BC",
+      "area": "business",
+      "title": "Small business & self-employed in British Columbia",
+      "overview": "Running a business in British Columbia means picking a structure (sole proprietor = simple but personally liable; corporation = separate entity limiting personal liability), using written contracts, registering/licensing as required, and keeping business and personal finances separate. Put deals in writing, invoice with clear terms, and get advice before signing leases or big contracts.",
+      "your_rights": [
+        "Right to choose a structure that fits your risk.",
+        "Right to enforce written contracts and unpaid invoices.",
+        "Right to limited liability if you properly incorporate and maintain the company.",
+        "Right to sue (small claims within the limit) to collect."
+      ],
+      "key_steps": [
+        "Pick sole prop vs incorporation with tax + legal advice.",
+        "Use written contracts and clear invoices.",
+        "Register the business name and get required licences.",
+        "Keep business and personal money separate.",
+        "For unpaid invoices, demand then sue within the limitation period."
+      ],
+      "common_mistakes": [
+        "Handshake deals.",
+        "Mixing personal and business finances.",
+        "Skipping registration/licences.",
+        "Misclassifying employees as contractors."
+      ],
+      "when_lawyer": "For incorporation, a shareholder/partnership agreement, a major contract, or a dispute — get a business lawyer.",
+      "sources": [
+        {
+          "title": "British Columbia small-business reference",
+          "url": "https://provincialcourt.bc.ca/navigating-court-case/small-claims"
+        }
+      ],
+      "statute": "British Columbia business/corporations law",
+      "verify": true
+    }
+  ]
+}

@@ -1,0 +1,2319 @@
+{
+  "schema": "hive.doctor.careplans/v1",
+  "title": "HIVE Doctor — Typical Care Pathways (reference)",
+  "author": "Jeff",
+  "version": "0.1.0",
+  "updated": "2026-11-14",
+  "review_status": "UNVERIFIED",
+  "safety": "Typical care pathways for education only — not a personal prescription or treatment plan. No individual doses are given; for any medicine, follow your label and your prescriber. Your own clinician decides your actual plan, which may differ for good reasons. Emergencies: call your local number (911/112/999). Pending clinician sign-off.",
+  "stage_order": [
+    "confirm",
+    "treatment",
+    "duration",
+    "side_effects",
+    "followup",
+    "recovery"
+  ],
+  "stage_labels": {
+    "confirm": "Confirming what it is",
+    "treatment": "Typical treatment",
+    "duration": "How long it usually takes",
+    "side_effects": "Possible side effects of treatment",
+    "followup": "Follow-up & check-ins",
+    "recovery": "Recovery — and when it's over"
+  },
+  "generic_note": "No detailed pathway is written for this one yet. Here is the general shape of care — your clinician will tailor it.",
+  "plans": {
+    "uri": {
+      "confirm": "Usually recognised from the story and a quick look at throat, ears and chest; tests are rarely needed.",
+      "treatment": "Supportive care: rest, fluids, and over-the-counter symptom relief (pain/fever relievers, decongestants, saline rinses). Antibiotics do not help a viral cold.",
+      "duration": "Most colds ease within 7–10 days; a lingering cough can last 2–3 weeks.",
+      "side_effects": "OTC decongestants can cause a racing heart or poor sleep; overusing decongestant nose sprays causes rebound congestion.",
+      "followup": "No routine follow-up needed. Re-check if a high fever returns, breathing gets hard, or symptoms last beyond ~10 days.",
+      "recovery": "You're better when energy, appetite and breathing are back to normal. See a clinician if it turns into ear, sinus or chest pain."
+    },
+    "influenza": {
+      "confirm": "Recognised from sudden fever, aches and cough in flu season; a nasal swab can confirm it if it changes treatment.",
+      "treatment": "Rest, fluids and fever/pain relief. Antiviral medicine (a neuraminidase-type, e.g. oseltamivir-class) may be offered early, especially if you're high-risk.",
+      "duration": "The worst usually passes in 3–5 days; full energy can take 1–2 weeks.",
+      "side_effects": "Antivirals can cause nausea; fever relievers can upset the stomach if taken without food.",
+      "followup": "Re-check if you improve then worsen again (possible chest infection), or if breathing becomes difficult.",
+      "recovery": "Recovered when fever is gone for 24h without medicine and you can do normal activity. High-risk people should have a low threshold to be seen."
+    },
+    "covid": {
+      "confirm": "A rapid antigen or PCR test confirms it; a clinician checks oxygen levels if breathing is a concern.",
+      "treatment": "Rest, fluids, fever/pain relief. Antiviral pills may be offered early to higher-risk people. Oxygen or hospital care only if levels drop.",
+      "duration": "Most mild cases improve over 5–10 days; some symptoms (taste, fatigue) can linger.",
+      "side_effects": "Antivirals can interact with other medicines and may cause an odd taste or stomach upset — pharmacist should check your list.",
+      "followup": "Watch oxygen if you have a monitor; re-check for worsening breathlessness or chest pain.",
+      "recovery": "Better when fever settles and energy returns. Persistent or new breathlessness, or symptoms dragging past a few weeks, deserves a review."
+    },
+    "bronchitis": {
+      "confirm": "Diagnosed from a cough after a cold with a clear chest exam; a chest X-ray is used only to rule out pneumonia.",
+      "treatment": "Mostly supportive — fluids, rest, honey or cough soothers. Antibiotics usually don't help unless a bacterial infection is found.",
+      "duration": "The cough commonly lasts 2–3 weeks even once you feel otherwise well.",
+      "side_effects": "Cough medicines can cause drowsiness; antibiotics (if given) can cause stomach upset or thrush.",
+      "followup": "Re-check if you develop fever and breathlessness, cough up blood, or the cough lasts beyond 3–4 weeks.",
+      "recovery": "Resolved when the cough fades and breathing is easy. A cough past 8 weeks needs further assessment."
+    },
+    "sinusitis": {
+      "confirm": "Based on facial pain/pressure, blocked nose and discharge; imaging is reserved for severe or recurring cases.",
+      "treatment": "Saline rinses, steam, decongestants and pain relief. A steroid nasal spray helps many. Antibiotics only if it's severe or not settling after ~10 days.",
+      "duration": "Viral sinusitis usually clears in 1–2 weeks.",
+      "side_effects": "Decongestant sprays cause rebound stuffiness if used more than a few days; steroid sprays can cause minor nosebleeds.",
+      "followup": "Re-check for swelling around the eye, severe headache, or symptoms lasting beyond 10 days (may need antibiotics).",
+      "recovery": "Better when pressure and discharge clear. Frequent return warrants an ENT review."
+    },
+    "strep": {
+      "confirm": "A throat swab or rapid strep test confirms it — important because it looks like a viral sore throat.",
+      "treatment": "A full course of penicillin-class antibiotic (or an alternative if allergic) plus pain/fever relief. Finish the whole course.",
+      "duration": "Fever and pain usually improve within 1–2 days of antibiotics; the course runs about 10 days.",
+      "side_effects": "Antibiotics can cause diarrhoea, rash or thrush; tell your prescriber about any penicillin allergy.",
+      "followup": "Re-check if not improving in 2–3 days, or if rash, joint pain or dark urine appear.",
+      "recovery": "No longer contagious after ~24h of antibiotics and when you feel well. Completing the course protects the heart and kidneys."
+    },
+    "tonsillitis": {
+      "confirm": "Exam of the throat; a swab sorts bacterial (strep) from viral causes.",
+      "treatment": "Pain/fever relief and fluids for viral cases; antibiotics when strep is confirmed. Surgery (tonsillectomy) only for frequent, disabling attacks.",
+      "duration": "Symptoms usually settle within a week.",
+      "side_effects": "Same as antibiotics above; strong painkillers can cause constipation.",
+      "followup": "Re-check for drooling, trouble opening the mouth, or one-sided swelling (possible abscess — urgent).",
+      "recovery": "Recovered when swallowing is comfortable. Repeated attacks each year is the trigger for an ENT discussion."
+    },
+    "pneumonia": {
+      "confirm": "Confirmed with a chest exam, oxygen reading and usually a chest X-ray; bloods may be taken.",
+      "treatment": "Antibiotics (class chosen by the clinician), fluids, rest and fever relief. More severe cases need hospital care and oxygen.",
+      "duration": "Mild pneumonia improves over 1–2 weeks; tiredness and cough can linger 4–6 weeks.",
+      "side_effects": "Antibiotics can cause stomach upset or diarrhoea; report any rash or breathing trouble.",
+      "followup": "A review and sometimes a repeat X-ray at 6 weeks to confirm clearing, especially in smokers and older adults.",
+      "recovery": "Better as fever, breathlessness and appetite normalise. Seek urgent care for rising breathlessness, confusion or blue lips."
+    },
+    "asthma_exac": {
+      "confirm": "Recognised from wheeze, cough and tight chest; a peak-flow or oxygen reading grades severity.",
+      "treatment": "Reliever inhaler (short-acting bronchodilator) through a spacer, often a short steroid course, and an urgent review. Severe attacks need emergency care.",
+      "duration": "A mild flare settles over days with treatment; the steroid course is usually short.",
+      "side_effects": "Reliever inhalers can cause shakiness and a fast heart; steroid tablets can disturb sleep and mood over a short course.",
+      "followup": "Review within 48h of a flare, and an asthma-plan check to adjust the preventer inhaler.",
+      "recovery": "Controlled when you need the reliever rarely and sleep isn't broken by symptoms. Call emergency services if the reliever isn't working or speaking is hard."
+    },
+    "copd_exac": {
+      "confirm": "From worsening breathlessness, sputum change and oxygen level in someone with known COPD.",
+      "treatment": "Increased inhalers/nebuliser, often a short steroid course, antibiotics if sputum is infected, and oxygen if levels are low.",
+      "duration": "A flare typically improves over 1–2 weeks with treatment.",
+      "side_effects": "Steroids can raise blood sugar and disturb sleep short-term; inhalers can cause tremor and dry mouth.",
+      "followup": "Review to confirm recovery and optimise the inhaler/rescue-pack plan; pulmonary rehab helps.",
+      "recovery": "Back to your usual baseline breathing. Seek urgent help for severe breathlessness, drowsiness or blue lips."
+    },
+    "allergic_rhinitis": {
+      "confirm": "Clinical — sneezing, itch and a clear runny nose with seasonal or trigger pattern; allergy testing only if unclear.",
+      "treatment": "Avoid triggers, non-drowsy antihistamines, and a steroid nasal spray (the most effective single treatment). Saline rinses help.",
+      "duration": "Relief within days; nasal sprays work best after a week of regular use and through the season.",
+      "side_effects": "Older antihistamines cause drowsiness; steroid sprays can cause minor nosebleeds or throat irritation.",
+      "followup": "Review if symptoms aren't controlled — technique and add-on treatments can be adjusted.",
+      "recovery": "Well-controlled means clear nose and eyes on treatment. Persistent one-sided symptoms should be checked."
+    },
+    "croup": {
+      "confirm": "Recognised from a barking cough and harsh noisy breathing in a young child; usually a clinical diagnosis.",
+      "treatment": "Calm the child; a single dose of steroid (clinician-given) settles most. Severe cases need hospital nebulised adrenaline and oxygen.",
+      "duration": "The barking cough usually eases within a few days.",
+      "side_effects": "The steroid dose is single and well-tolerated; report any worsening stridor.",
+      "followup": "Re-check urgently for noisy breathing at rest, drooling, or the child struggling to breathe.",
+      "recovery": "Better when breathing is quiet and the child is feeding and playing. Night symptoms often ease with cool air."
+    },
+    "gerd": {
+      "confirm": "Often diagnosed from typical burning reflux; a trial of acid suppression confirms it. Endoscopy if alarm features (weight loss, swallowing trouble, bleeding).",
+      "treatment": "Smaller meals, avoiding late eating and triggers, raising the bed head, weight loss if relevant, plus antacids or an acid-reducing medicine (H2 blocker or proton-pump inhibitor).",
+      "duration": "Symptoms often improve within 1–2 weeks; acid-reducers are reviewed after about 4–8 weeks.",
+      "side_effects": "PPIs can cause headache or bowel changes and aren't meant for indefinite use without review; antacids can affect other medicines' absorption.",
+      "followup": "Review at 4–8 weeks to step down treatment; endoscopy if symptoms persist or alarm features appear.",
+      "recovery": "Controlled when reflux is occasional on lifestyle measures. New swallowing trouble or weight loss needs prompt review."
+    },
+    "gastritis_ulcer": {
+      "confirm": "Suspected from gnawing upper-tummy pain; tested for H. pylori (breath/stool) and sometimes endoscopy.",
+      "treatment": "Acid-reducing medicine (PPI), stopping anti-inflammatory painkillers and smoking, and a specific antibiotic course if H. pylori is found.",
+      "duration": "Pain often eases within 1–2 weeks; ulcers heal over 4–8 weeks on treatment.",
+      "side_effects": "PPIs as above; the H. pylori antibiotic course can cause a metallic taste, nausea and must avoid alcohol.",
+      "followup": "Confirm H. pylori clearance after treatment; repeat endoscopy for stomach ulcers to confirm healing.",
+      "recovery": "Healed when pain is gone and any infection cleared. Black stools, vomiting blood or sudden severe pain are emergencies."
+    },
+    "gastroenteritis": {
+      "confirm": "Clinical — vomiting and/or diarrhoea, usually viral; stool tests only for severe, bloody or prolonged cases.",
+      "treatment": "The priority is fluids and salts (oral rehydration). Eat as tolerated. Anti-sickness or anti-diarrhoea medicine occasionally; antibiotics only for specific infections.",
+      "duration": "Most cases settle in 2–4 days; diarrhoea can lag a few extra days.",
+      "side_effects": "Anti-diarrhoea medicines aren't used if there's high fever or blood in stool; rehydration salts are the safest mainstay.",
+      "followup": "Re-check for signs of dehydration (little urine, dizziness), blood in stool, or symptoms beyond a week.",
+      "recovery": "Recovered when you keep fluids down and bowels normalise. Babies, older and frail people dehydrate fast — lower threshold to be seen."
+    },
+    "ibs": {
+      "confirm": "A positive clinical diagnosis from the pattern, after simple tests rule out coeliac, infection and inflammation.",
+      "treatment": "Diet adjustments (fibre tuning, a trial low-FODMAP approach with guidance), stress management, and medicines aimed at the main symptom (cramp, constipation or diarrhoea).",
+      "duration": "A long-term condition managed in flares; diet changes show effect over several weeks.",
+      "side_effects": "Antispasmodics can cause dry mouth; laxatives or anti-diarrhoeals are matched to the symptom and adjusted.",
+      "followup": "Review after a diet trial to see what helped; re-check if weight loss, bleeding or night symptoms appear (not typical of IBS).",
+      "recovery": "Managed when flares are fewer and milder. New alarm symptoms always warrant re-assessment."
+    },
+    "constipation": {
+      "confirm": "Clinical; tests only if there are alarm features (bleeding, weight loss, new onset in older adults).",
+      "treatment": "More fluid, fibre and movement first; then a laxative (bulk, osmotic or stimulant) chosen for the situation. Review medicines that constipate.",
+      "duration": "Improvement over days to a couple of weeks as habits and laxatives take effect.",
+      "side_effects": "Stimulant laxatives can cause cramps; osmotic ones can cause bloating — the type is adjusted to comfort.",
+      "followup": "Re-check for a persistent change in bowel habit, bleeding, or weight loss.",
+      "recovery": "Resolved when stools are soft and regular without straining. Persistent change over weeks needs assessment."
+    },
+    "hemorrhoids": {
+      "confirm": "Diagnosed on examination; a clinician checks there's no other cause of bleeding.",
+      "treatment": "Fibre, fluids and not straining; soothing creams and short courses of topical treatment. Procedures (banding) or surgery for stubborn cases.",
+      "duration": "Flares often settle within 1–2 weeks with self-care.",
+      "side_effects": "Steroid-containing creams are used only short-term to avoid skin thinning.",
+      "followup": "Re-check if bleeding continues, there's a change in bowel habit, or you're over 40 with new bleeding (needs assessment).",
+      "recovery": "Better as bleeding and lumps settle. Don't assume all rectal bleeding is piles — new or persistent bleeding is checked properly."
+    },
+    "gallstones": {
+      "confirm": "Confirmed with an ultrasound; bloods check the liver and for infection.",
+      "treatment": "Pain relief and avoiding fatty triggers for simple colic; keyhole gallbladder removal is the definitive treatment for recurrent or complicated stones.",
+      "duration": "An attack settles over hours; surgery is planned electively unless there's infection.",
+      "side_effects": "Strong painkillers can cause nausea and constipation; after surgery some people have looser stools for a while.",
+      "followup": "Surgical review to plan removal; urgent return for fever, jaundice or constant severe pain (infection/blockage).",
+      "recovery": "Resolved once the gallbladder is removed or attacks stop. Fever with the pain means possible infection — be seen urgently."
+    },
+    "appendicitis": {
+      "confirm": "Suspected from migrating right-lower-tummy pain; confirmed with exam, bloods and ultrasound or CT.",
+      "treatment": "This usually needs surgery (appendix removal) with antibiotics; some selected cases are treated with antibiotics alone in hospital.",
+      "duration": "Recovery after keyhole surgery is typically 1–2 weeks.",
+      "side_effects": "Post-op: wound soreness, temporary bowel sluggishness; antibiotics can upset the stomach.",
+      "followup": "Wound check and return if fever, spreading pain or wound redness develop.",
+      "recovery": "Recovered when eating, moving and wounds heal. Sudden severe worsening before surgery can mean rupture — emergency care."
+    },
+    "diverticulitis": {
+      "confirm": "Suspected from left-lower-tummy pain and fever; confirmed with bloods and CT.",
+      "treatment": "Mild cases: rest, fluids and sometimes antibiotics as an outpatient. Severe cases need hospital antibiotics; abscesses or perforation need drainage or surgery.",
+      "duration": "Mild flares improve over about a week.",
+      "side_effects": "Antibiotics can cause diarrhoea; a temporary lower-fibre diet is used during the acute flare then fibre is increased.",
+      "followup": "A colonoscopy is usually arranged weeks later to check the bowel once settled.",
+      "recovery": "Resolved when pain and fever clear. Increasing pain, high fever or inability to pass stool/gas needs urgent review."
+    },
+    "hepatitis": {
+      "confirm": "From jaundice, fatigue and liver blood tests; viral screens, ultrasound and medication/alcohol review find the cause.",
+      "treatment": "Depends on cause: rest and supportive care for many viral cases, specific antivirals for hepatitis B/C, and removing the trigger (alcohol, a medicine).",
+      "duration": "Acute viral hepatitis often improves over weeks; chronic forms need long-term specialist care.",
+      "side_effects": "Antivirals are specialist-monitored; avoid alcohol and check every medicine (even paracetamol dose) with your clinician.",
+      "followup": "Repeat liver tests to confirm recovery and specialist referral for chronic infection.",
+      "recovery": "Recovered when liver tests normalise and energy returns. Confusion, severe vomiting or deepening jaundice needs urgent care."
+    },
+    "celiac": {
+      "confirm": "Blood antibody tests while still eating gluten, confirmed by a gut biopsy.",
+      "treatment": "A strict lifelong gluten-free diet is the whole treatment; a dietitian helps, and deficiencies (iron, B12, vitamin D) are corrected.",
+      "duration": "Symptoms improve over weeks to months once gluten is removed; the gut lining heals over months.",
+      "side_effects": "No drug side effects — the challenge is label-reading and avoiding hidden gluten and cross-contamination.",
+      "followup": "Repeat antibodies and nutrient checks to confirm healing and adherence; bone-density check over time.",
+      "recovery": "Well when symptoms resolve and antibodies normalise on a gluten-free diet. Accidental gluten causes a temporary relapse."
+    },
+    "uti": {
+      "confirm": "A urine dipstick and sometimes a culture confirm infection and guide the antibiotic.",
+      "treatment": "A short antibiotic course for confirmed infection, plus fluids and pain relief. Simple cases in women are often treated on symptoms.",
+      "duration": "Symptoms usually improve within 1–2 days; the course is typically short (3 days for simple cases).",
+      "side_effects": "Antibiotics can cause thrush, nausea or rash; drink plenty of fluids.",
+      "followup": "Re-check if no better in 48h, if there's back pain and fever (kidney infection), or infections keep returning.",
+      "recovery": "Resolved when burning and urgency clear. Men, children and pregnancy need a culture and closer follow-up."
+    },
+    "pyelonephritis": {
+      "confirm": "From flank pain, fever and urine findings; bloods, culture and sometimes imaging.",
+      "treatment": "A longer antibiotic course; fluids and pain/fever relief. Severe cases or vomiting need hospital IV antibiotics.",
+      "duration": "Fever settles over 2–3 days on the right antibiotic; the course runs 7–14 days.",
+      "side_effects": "Antibiotics as above; report worsening pain or persistent fever.",
+      "followup": "Follow-up to confirm clearance and, for recurring cases, imaging to check for stones or obstruction.",
+      "recovery": "Better as fever and flank pain clear. Not improving in 48–72h, or feeling very unwell, means urgent reassessment."
+    },
+    "kidney_stone": {
+      "confirm": "Confirmed with a CT (or ultrasound); urine checked for blood and infection.",
+      "treatment": "Strong pain relief (anti-inflammatory type often first), fluids, and a medicine to help small stones pass. Larger stones may need shockwave treatment or a scope procedure.",
+      "duration": "Many small stones pass within 1–4 weeks.",
+      "side_effects": "Anti-inflammatory painkillers can irritate the stomach and aren't for everyone; the stone-passing medicine can cause dizziness.",
+      "followup": "Review to check the stone passed and, for recurrent stones, tests to prevent new ones.",
+      "recovery": "Resolved when the stone passes and pain stops. Fever with a stone is an emergency (blocked, infected kidney)."
+    },
+    "bph": {
+      "confirm": "From urinary symptoms in older men; exam, urine test, a PSA discussion and flow assessment.",
+      "treatment": "Watchful waiting for mild cases; medicines that relax the prostate (alpha-blockers) or shrink it (5-alpha-reductase type). Surgery for severe or complicated cases.",
+      "duration": "Alpha-blockers help within days; shrinking medicines take months.",
+      "side_effects": "Alpha-blockers can cause dizziness on standing and affect ejaculation; shrinking medicines can lower libido.",
+      "followup": "Review symptom scores and rule out other causes; sudden inability to pass urine is an emergency.",
+      "recovery": "Managed when flow and night-time trips improve. Blood in urine or complete retention needs prompt assessment."
+    },
+    "prostatitis": {
+      "confirm": "From pelvic/perineal pain and urinary symptoms; urine tests and exam; bloods if feverish.",
+      "treatment": "A longer antibiotic course for bacterial cases, pain relief, and measures for chronic pelvic pain. Acute severe cases may need hospital care.",
+      "duration": "Acute cases improve over days but the antibiotic course is often 2–4 weeks.",
+      "side_effects": "Long antibiotic courses can cause gut upset and thrush; chronic cases may need combined approaches.",
+      "followup": "Review to confirm clearance; chronic pelvic pain benefits from a broader plan.",
+      "recovery": "Better as pain and urinary symptoms settle. High fever and feeling very unwell means urgent care."
+    },
+    "sti_urethritis": {
+      "confirm": "Confirmed with urine or swab tests; partners are tested too.",
+      "treatment": "Targeted antibiotics for the specific infection, given by a sexual-health service; avoiding sex until treated and partners managed.",
+      "duration": "Symptoms usually clear within about a week of the right treatment.",
+      "side_effects": "Antibiotics can cause stomach upset; a test-of-cure is done for certain infections.",
+      "followup": "Partner notification and re-testing as advised; a full sexual-health screen is offered.",
+      "recovery": "Resolved when symptoms clear and tests confirm cure. Confidential care is the norm — being seen early prevents complications."
+    },
+    "pid": {
+      "confirm": "From pelvic pain and tenderness in women; swabs, pregnancy test and sometimes ultrasound.",
+      "treatment": "A combination antibiotic course started promptly (often before results) to protect fertility; pain relief; partner treatment.",
+      "duration": "Symptoms improve over days; the antibiotic course runs about 2 weeks.",
+      "side_effects": "Combination antibiotics can cause nausea and thrush; avoid alcohol with certain ones.",
+      "followup": "Review at 48–72h to confirm improvement; re-check if not better (may need hospital care).",
+      "recovery": "Better as pain and fever settle. Early treatment matters because delay risks fertility; severe pain or fever needs urgent care."
+    },
+    "migraine": {
+      "confirm": "A clinical diagnosis from the pattern; scans only if there are red-flag features.",
+      "treatment": "Treat attacks early with pain relievers or a triptan, rest in a dark room, and anti-sickness medicine. Frequent attacks: preventers and trigger/lifestyle work.",
+      "duration": "An attack lasts 4–72 hours; preventers take 6–8 weeks to show benefit.",
+      "side_effects": "Triptans can cause chest tightness or tingling and aren't for everyone; overusing acute painkillers causes medication-overuse headache.",
+      "followup": "Keep a headache diary; review preventers after a couple of months. Re-check for any new neurological change.",
+      "recovery": "Controlled when attacks are fewer and respond to treatment. A sudden 'worst-ever' headache is an emergency."
+    },
+    "tension_ha": {
+      "confirm": "Clinical — a band-like, pressing headache without migraine features.",
+      "treatment": "Simple pain relief used sparingly, posture and screen breaks, hydration, sleep and stress management.",
+      "duration": "Individual headaches settle in hours; the pattern improves as triggers are addressed.",
+      "side_effects": "Frequent painkiller use (more than ~2 days/week) can itself cause rebound headaches.",
+      "followup": "Review if headaches become frequent or change in character.",
+      "recovery": "Better as frequency drops with lifestyle measures. New features (fever, weakness, visual loss) change the picture and need review."
+    },
+    "vertigo": {
+      "confirm": "From the spinning pattern and bedside tests; the clinician checks it's inner-ear, not central.",
+      "treatment": "For BPPV, specific repositioning manoeuvres (e.g. Epley) are highly effective; short courses of anti-sickness medicine for bad spells; balance exercises.",
+      "duration": "BPPV often resolves within days to a few weeks, sometimes in one session of manoeuvres.",
+      "side_effects": "Anti-sickness/vertigo medicines cause drowsiness and are used only short-term (they slow recovery if overused).",
+      "followup": "Review if it persists, recurs, or comes with hearing loss, weakness or slurred speech (needs urgent assessment).",
+      "recovery": "Recovered when the spinning stops and balance returns. Sudden vertigo with neurological signs is treated as an emergency."
+    },
+    "sciatica": {
+      "confirm": "From leg pain in a nerve pattern; exam. Imaging (MRI) only if severe, persistent, or red flags.",
+      "treatment": "Stay active, pain relief (anti-inflammatory and/or nerve-pain medicine), and physiotherapy. Injections or surgery for stubborn or severe nerve compression.",
+      "duration": "Most cases improve substantially over 4–6 weeks.",
+      "side_effects": "Nerve-pain medicines can cause drowsiness and dizziness and are increased slowly; anti-inflammatories can irritate the stomach.",
+      "followup": "Review at a few weeks; urgent review for leg weakness, numbness in the saddle area, or bladder/bowel changes.",
+      "recovery": "Better as pain eases and movement returns. Saddle numbness or loss of bladder control is an emergency (cauda equina)."
+    },
+    "concussion": {
+      "confirm": "A clinical diagnosis after a head injury; a CT scan is used if there are warning features.",
+      "treatment": "Physical and mental rest at first, then a gradual, stepwise return to activity and screens; simple pain relief for headache.",
+      "duration": "Most people recover within 2 weeks; some symptoms linger longer.",
+      "side_effects": "Avoid alcohol and sedatives early; reintroduce exercise gradually to avoid setbacks.",
+      "followup": "Re-check for worsening headache, repeated vomiting, drowsiness, confusion or weakness (urgent).",
+      "recovery": "Recovered when symptoms clear at rest and with activity. No return to contact sport until fully symptom-free and cleared."
+    },
+    "bells_palsy": {
+      "confirm": "A clinical diagnosis of one-sided facial weakness after ruling out stroke and other causes.",
+      "treatment": "A steroid course started early improves recovery; eye protection (drops, taping at night) is essential while the eye won't close.",
+      "duration": "Most people start recovering within 2–3 weeks and many fully recover over 3–6 months.",
+      "side_effects": "Short steroid courses can disturb sleep and mood and raise blood sugar temporarily.",
+      "followup": "Review to confirm recovery; refer if no improvement or if the eye is at risk.",
+      "recovery": "Recovered as facial movement returns. Protecting the eye prevents lasting damage; sudden onset is checked urgently to exclude stroke."
+    },
+    "stroke": {
+      "confirm": "An emergency — recognised with the FAST signs and confirmed by an urgent brain scan in hospital.",
+      "treatment": "Time-critical hospital treatment: clot-busting medicine or clot-removal for suitable clots, then a stroke-unit, rehabilitation and prevention medicines.",
+      "duration": "Treatment windows are measured in hours; rehabilitation continues for weeks to months.",
+      "side_effects": "Clot-busting carries a bleeding risk weighed by the stroke team; prevention medicines (blood thinners, blood-pressure and cholesterol drugs) have their own monitoring.",
+      "followup": "Structured rehab and a prevention plan (blood pressure, rhythm, cholesterol, lifestyle) with regular review.",
+      "recovery": "The priority is calling emergency services at the first sign — 'time is brain'. Do not wait to see if it passes."
+    },
+    "low_back": {
+      "confirm": "Usually a clinical diagnosis; imaging only for red flags or pain that won't settle.",
+      "treatment": "Stay active and keep moving, short-term pain relief, heat, and exercises/physiotherapy. Bed rest is discouraged.",
+      "duration": "Most episodes improve markedly within 2–6 weeks.",
+      "side_effects": "Anti-inflammatory painkillers can irritate the stomach; muscle relaxants cause drowsiness and are short-term.",
+      "followup": "Review if no better after 6 weeks; urgent review for leg weakness, saddle numbness or bladder/bowel changes.",
+      "recovery": "Better as movement and comfort return. Building core strength and activity reduces future episodes."
+    },
+    "sprain": {
+      "confirm": "Clinical; an X-ray only if a fracture is suspected (unable to weight-bear, bony tenderness).",
+      "treatment": "The PRICE approach — protect, rest, ice, compression, elevation — early, then gentle movement and strengthening. Pain relief as needed.",
+      "duration": "Mild sprains settle in 1–2 weeks; more severe ones take 4–6 weeks.",
+      "side_effects": "Ice is used for short periods to avoid skin damage; avoid heavy loading too early.",
+      "followup": "Review if you can't bear weight, it's not improving, or the joint feels unstable.",
+      "recovery": "Recovered when the joint is pain-free, strong and stable. Returning to sport too soon risks re-injury."
+    },
+    "fracture": {
+      "confirm": "Confirmed with an X-ray (sometimes CT); the clinician checks blood flow and nerves around it.",
+      "treatment": "Realignment if needed, then a cast, splint or surgery (pins/plates) depending on the break; pain relief throughout.",
+      "duration": "Most simple fractures heal over 6–8 weeks; some take longer.",
+      "side_effects": "Immobilisation can stiffen the joint — physiotherapy follows; watch a cast for tightness, numbness or colour change.",
+      "followup": "Repeat X-rays to confirm healing and a rehab plan to restore strength and movement.",
+      "recovery": "Healed when the bone is solid on X-ray and function returns. Increasing pain, numbness or a cold limb in a cast is urgent."
+    },
+    "gout": {
+      "confirm": "From the sudden hot, swollen joint; confirmed by joint-fluid crystals or a raised urate blood level.",
+      "treatment": "For an attack: anti-inflammatory medicine, colchicine, or a short steroid course, plus rest. Long-term: urate-lowering medicine for recurrent attacks.",
+      "duration": "An attack settles over about a week with treatment; urate-lowering therapy is long-term.",
+      "side_effects": "Colchicine commonly causes diarrhoea; anti-inflammatories can affect the stomach and kidneys; urate-lowering drugs can trigger a flare when first started.",
+      "followup": "Review to decide on prevention; blood tests to reach a urate target and protect joints and kidneys.",
+      "recovery": "Controlled when attacks stop and urate is in target range. Diet and alcohol moderation help, but medicine does the heavy lifting."
+    },
+    "osteoarthritis": {
+      "confirm": "From the pattern and exam; X-rays support it but severity on scans doesn't always match symptoms.",
+      "treatment": "Exercise and weight management (the most effective measures), pain relief (topical first, then oral), and joint replacement for severe, limiting cases.",
+      "duration": "A long-term condition managed over years; exercise benefits build over weeks.",
+      "side_effects": "Oral anti-inflammatories carry stomach, kidney and heart cautions with long use — topical forms are preferred where possible.",
+      "followup": "Review to adjust pain control and refer for surgery when daily life is badly limited.",
+      "recovery": "Managed when pain allows normal activity. Staying strong and active protects the joints better than rest."
+    },
+    "ra": {
+      "confirm": "From the pattern of joint swelling; bloods (inflammation markers, antibodies) and sometimes imaging; a rheumatologist confirms.",
+      "treatment": "Disease-modifying medicines (DMARDs such as methotrexate-class) started early to protect joints, with steroids to bridge flares; physiotherapy.",
+      "duration": "DMARDs take 6–12 weeks to work fully; this is long-term specialist care.",
+      "side_effects": "DMARDs need regular blood monitoring (liver, blood counts) and raise infection risk; steroids have their own effects.",
+      "followup": "Regular rheumatology review and blood tests to track disease activity and medicine safety.",
+      "recovery": "Controlled when joints are not swollen and function is preserved. Early treatment prevents joint damage."
+    },
+    "plantar_fasciitis": {
+      "confirm": "A clinical diagnosis from first-step heel pain; imaging rarely needed.",
+      "treatment": "Calf and foot stretches, supportive footwear and insoles, activity modification, and pain relief; injections or other treatments for stubborn cases.",
+      "duration": "Often improves over weeks to a few months with consistent stretching.",
+      "side_effects": "Steroid injections are limited in number (can weaken the fascia); anti-inflammatories carry the usual cautions.",
+      "followup": "Review if no better after a few months of self-care.",
+      "recovery": "Better as morning pain fades with stretching and good footwear. Patience and consistency are the main treatment."
+    },
+    "carpal_tunnel": {
+      "confirm": "From hand tingling in a nerve pattern; confirmed with nerve-conduction tests if surgery is considered.",
+      "treatment": "A night wrist splint first, activity changes, sometimes a steroid injection; a small release operation for persistent or severe cases.",
+      "duration": "Splinting helps over weeks; surgery gives lasting relief when needed.",
+      "side_effects": "Injections can cause temporary pain; after surgery there's short-term soreness and a few weeks' recovery.",
+      "followup": "Review if numbness is constant or the hand is weakening (don't delay surgery if the nerve is at risk).",
+      "recovery": "Better as tingling and night symptoms settle. Constant numbness or muscle wasting means the nerve needs prompt attention."
+    },
+    "cellulitis": {
+      "confirm": "A clinical diagnosis of a spreading, hot, red area; the border is often marked to track it; bloods if feverish.",
+      "treatment": "Antibiotics (oral for mild, IV in hospital for severe), elevation of the limb, and pain relief. The source (e.g. athlete's foot, a cut) is treated too.",
+      "duration": "Redness should start settling within 2–3 days of antibiotics; the course runs about a week.",
+      "side_effects": "Antibiotics can cause gut upset or thrush; redness can briefly look worse before it improves.",
+      "followup": "Review at 48h to confirm it's improving; urgent return if it spreads past the marked line, or with fever and feeling very unwell.",
+      "recovery": "Resolved when redness, heat and swelling clear. Rapidly spreading redness, severe pain or feeling very unwell needs urgent care."
+    },
+    "shingles": {
+      "confirm": "A clinical diagnosis from the one-sided blistering rash in a band; swabs only if unclear.",
+      "treatment": "Antiviral medicine started early (ideally within 72h), pain relief (including nerve-pain medicine if needed), and keeping the rash clean.",
+      "duration": "The rash crusts over 7–10 days; nerve pain can linger weeks to months in some.",
+      "side_effects": "Antivirals need plenty of fluids; nerve-pain medicines cause drowsiness and are increased slowly.",
+      "followup": "Review for severe pain, rash near the eye (urgent), or widespread rash.",
+      "recovery": "Better as blisters crust and pain fades. A rash near the eye or in someone immune-suppressed needs urgent attention."
+    },
+    "urticaria": {
+      "confirm": "A clinical diagnosis of raised itchy weals; tests only for persistent or triggered cases.",
+      "treatment": "Non-drowsy antihistamines (sometimes at higher clinician-directed doses), avoiding triggers, and a short steroid course for severe flares.",
+      "duration": "Acute hives often settle within days to weeks; chronic forms are managed longer.",
+      "side_effects": "Older antihistamines cause drowsiness; the newer ones are preferred by day.",
+      "followup": "Review if hives persist beyond 6 weeks or come with swelling of lips/tongue or breathing trouble (emergency).",
+      "recovery": "Resolved when weals stop appearing. Throat/tongue swelling or breathing difficulty is anaphylaxis — call emergency services."
+    },
+    "eczema": {
+      "confirm": "A clinical diagnosis from the itchy, dry, flaring rash in typical sites.",
+      "treatment": "Frequent emollients (the foundation), topical steroids for flares matched to body area, trigger avoidance, and treating any skin infection.",
+      "duration": "Flares settle over days to weeks with treatment; it's a long-term relapsing condition.",
+      "side_effects": "Topical steroids used correctly are safe; overuse on the face/folds can thin skin, so strength is matched to the site.",
+      "followup": "Review if not controlled, if the skin becomes weepy/crusted (infection), or for a stepped-up plan.",
+      "recovery": "Controlled when skin is comfortable and flares are infrequent. Daily moisturising even when clear prevents flares."
+    },
+    "abscess": {
+      "confirm": "A clinical diagnosis of a tender, fluctuant lump; ultrasound if deep.",
+      "treatment": "The main treatment is drainage (incision) of the pus; antibiotics if surrounding infection or fever. Pain relief and dressing changes after.",
+      "duration": "Pain eases quickly after drainage; the cavity heals over 1–2 weeks with dressings.",
+      "side_effects": "Antibiotics (if used) can upset the stomach; the wound is left to heal from the base with packing/dressings.",
+      "followup": "Wound review and dressing changes; return for spreading redness or fever.",
+      "recovery": "Healed when the cavity closes and redness clears. Drainage, not antibiotics alone, is usually what cures an abscess."
+    },
+    "impetigo": {
+      "confirm": "A clinical diagnosis from the golden-crusted sores; a swab if widespread or not clearing.",
+      "treatment": "Topical antibiotic or antiseptic for localised cases; oral antibiotics if widespread. Good hygiene to limit spread.",
+      "duration": "Usually clears within about a week of treatment.",
+      "side_effects": "Topical antibiotics can irritate; oral ones can upset the stomach.",
+      "followup": "Keep off school/work until crusts heal or 48h of antibiotics; review if spreading or not improving.",
+      "recovery": "Resolved when sores crust and heal. It's contagious — separate towels and good handwashing matter."
+    },
+    "acne": {
+      "confirm": "A clinical diagnosis graded by severity and type (blackheads, spots, cysts).",
+      "treatment": "Topical treatments (benzoyl peroxide, retinoids, antibiotic combos) for mild/moderate; oral antibiotics or hormonal treatment for moderate; specialist oral retinoid for severe.",
+      "duration": "Treatments take 6–8 weeks to show benefit and months for full effect.",
+      "side_effects": "Topicals cause dryness and sun sensitivity; oral retinoids need specialist monitoring and strict pregnancy precautions.",
+      "followup": "Review at 2–3 months to judge response and step treatment up or down.",
+      "recovery": "Improved when spots and inflammation settle; consistency is key, and scarring is prevented by treating early."
+    },
+    "ringworm": {
+      "confirm": "A clinical diagnosis from the ring-shaped scaly patch; a skin scraping if unclear.",
+      "treatment": "Topical antifungal cream for skin; antifungal tablets for scalp or nail involvement. Keep the area clean and dry.",
+      "duration": "Skin ringworm usually clears in 2–4 weeks; nails and scalp take months.",
+      "side_effects": "Topical antifungals can irritate; oral antifungals need liver monitoring for long courses.",
+      "followup": "Review if not improving or if scalp/nails are involved (need tablets).",
+      "recovery": "Resolved when the rash clears; continue cream a little past clearing to prevent return. It's contagious by contact."
+    },
+    "contact_dermatitis": {
+      "confirm": "A clinical diagnosis from the pattern; patch testing identifies the allergen in persistent cases.",
+      "treatment": "Identify and avoid the trigger, emollients, and a topical steroid for the flare; barrier protection (e.g. gloves) where relevant.",
+      "duration": "Settles over 1–3 weeks once the trigger is removed.",
+      "side_effects": "Topical steroid cautions as above — matched to the body area and used short-term for flares.",
+      "followup": "Review if it keeps returning (patch testing) or becomes infected.",
+      "recovery": "Resolved when the rash clears and the trigger is avoided. Finding the cause is what prevents recurrence."
+    },
+    "new_diabetes": {
+      "confirm": "Confirmed with blood glucose and HbA1c tests; type is determined with further tests.",
+      "treatment": "Type 2: lifestyle (diet, activity, weight) plus medicines (often metformin-class first). Type 1: insulin from diagnosis. Education and glucose monitoring throughout.",
+      "duration": "Glucose improves over weeks to months; this is lifelong management.",
+      "side_effects": "Metformin can cause gut upset early (eases with time/food); insulin and some others can cause low blood sugar.",
+      "followup": "Regular reviews: HbA1c every few months, plus eye, foot, kidney and blood-pressure checks.",
+      "recovery": "Well-controlled when glucose/HbA1c are in target and you feel well. Very high sugar with vomiting/drowsiness is an emergency (DKA)."
+    },
+    "hypothyroid": {
+      "confirm": "Confirmed with thyroid blood tests (TSH and T4).",
+      "treatment": "Thyroid hormone replacement (levothyroxine), taken on an empty stomach, with the dose adjusted to blood tests.",
+      "duration": "Symptoms improve over weeks to a couple of months as levels normalise.",
+      "side_effects": "Too much replacement causes palpitations and shakiness; the dose is fine-tuned to avoid over- or under-treatment.",
+      "followup": "Recheck thyroid levels about 6–8 weeks after any dose change, then yearly once stable.",
+      "recovery": "Well when energy, weight and mood settle and bloods are in range. It's usually lifelong but very manageable."
+    },
+    "hyperthyroid": {
+      "confirm": "Confirmed with thyroid blood tests; further tests (antibodies, scan) find the cause.",
+      "treatment": "Anti-thyroid medicine to calm the gland, a beta-blocker for symptoms, and sometimes radioiodine or surgery as definitive treatment.",
+      "duration": "Symptoms ease over weeks; definitive treatment is planned by a specialist.",
+      "side_effects": "Anti-thyroid drugs rarely drop white cells — a sore throat/fever on them needs an urgent blood test; beta-blockers can cause tiredness.",
+      "followup": "Regular thyroid bloods to adjust treatment; specialist (endocrine) review.",
+      "recovery": "Controlled as heart rate, weight and anxiety settle and bloods normalise. Eye symptoms need separate specialist care."
+    },
+    "hypoglycemia": {
+      "confirm": "Recognised from symptoms with a low glucose reading that improves after sugar.",
+      "treatment": "Immediate fast-acting sugar (juice, glucose), then a longer-acting snack; glucagon for someone who can't swallow. Then find and fix the cause.",
+      "duration": "Symptoms reverse within minutes of sugar; the underlying cause guides prevention.",
+      "side_effects": "Over-treating can swing sugar high; recurrent lows mean a medicine review (especially insulin/sulfonylureas).",
+      "followup": "Review medicines and patterns if lows recur; carry fast sugar and consider a glucose alert plan.",
+      "recovery": "Resolved once glucose and alertness recover. Someone drowsy or unable to swallow needs emergency help and glucagon."
+    },
+    "depression": {
+      "confirm": "A clinical assessment using the story and validated questionnaires; bloods to exclude contributors (e.g. thyroid, anaemia).",
+      "treatment": "Talking therapy (such as CBT), lifestyle and social support for milder cases; antidepressant medicine added for moderate–severe cases; combined care works best.",
+      "duration": "Therapy and medicines typically take 4–6 weeks to show clear benefit.",
+      "side_effects": "Antidepressants can cause early nausea, sleep and sometimes mood changes in the first weeks — early review matters; they're stopped gradually, not abruptly.",
+      "followup": "Early review (1–2 weeks) to check safety and side effects, then regular follow-up; continue treatment well after recovery to prevent relapse.",
+      "recovery": "Better as mood, sleep, interest and energy return. Any thoughts of self-harm mean reaching out now — crisis lines and urgent care are there for this."
+    },
+    "anxiety_disorder": {
+      "confirm": "A clinical assessment with questionnaires; bloods/caffeine/thyroid considered as contributors.",
+      "treatment": "Talking therapy (CBT is first-line), lifestyle measures (sleep, caffeine, exercise, breathing skills), and medication (often an SSRI-type) for moderate–severe cases.",
+      "duration": "Therapy skills build over weeks; medicines take 4–6 weeks, sometimes with a brief early increase in anxiety.",
+      "side_effects": "SSRIs can cause early jitteriness, nausea and sleep changes that usually settle; they're tapered slowly when stopping.",
+      "followup": "Early review for side effects and safety, then regular follow-up to adjust the plan.",
+      "recovery": "Better as worry becomes manageable and avoidance eases. Learned skills keep working long-term; relapses respond to the same tools."
+    },
+    "panic_attack": {
+      "confirm": "A clinical diagnosis after excluding physical causes when needed (heart, thyroid).",
+      "treatment": "Learning the cycle and grounding/breathing techniques, CBT for recurrent attacks, and treating any underlying anxiety disorder.",
+      "duration": "Individual attacks peak within ~10 minutes and pass; the pattern improves with CBT over weeks.",
+      "side_effects": "Avoid relying on sedatives — they can worsen the cycle long-term; the skills are the durable treatment.",
+      "followup": "Review if attacks are frequent or life is restricted by avoidance.",
+      "recovery": "Controlled as attacks become rarer and less frightening. Understanding that an attack is not dangerous is a big part of recovery."
+    },
+    "insomnia": {
+      "confirm": "A clinical assessment of sleep patterns and contributors (caffeine, screens, pain, mood, shift work).",
+      "treatment": "Sleep-hygiene and CBT-for-insomnia (the most effective treatment); medicines only short-term and sparingly for specific situations.",
+      "duration": "CBT-I shows benefit over a few weeks and lasts.",
+      "side_effects": "Sleeping tablets cause daytime grogginess and dependence with regular use — they're not a long-term fix.",
+      "followup": "Review to reinforce the plan and address underlying causes (mood, pain, breathing).",
+      "recovery": "Better as sleep becomes reliable without medication. Treating the cause (stress, pain, apnoea) matters most."
+    },
+    "anemia": {
+      "confirm": "Confirmed on a full blood count; further tests (iron, B12/folate, and a search for a cause) follow.",
+      "treatment": "Treat the cause and replace what's missing — iron for iron-deficiency, B12/folate injections or tablets as needed; occasionally transfusion if severe.",
+      "duration": "Energy improves over weeks; blood counts recover over 1–3 months on treatment.",
+      "side_effects": "Iron tablets commonly cause constipation and dark stools; taking with vitamin C and not with tea helps absorption.",
+      "followup": "Repeat blood counts to confirm recovery, and investigate the cause (especially iron deficiency in adults — the bowel is checked).",
+      "recovery": "Recovered when counts normalise and energy returns. Finding why you became anaemic is as important as the iron itself."
+    },
+    "iron_deficiency": {
+      "confirm": "Confirmed with blood count and iron studies (ferritin); the cause (diet, periods, gut loss) is sought.",
+      "treatment": "Iron replacement (tablets usually; infusion if not tolerated or absorbed), plus treating the source of loss and iron-rich foods.",
+      "duration": "Ferritin rebuilds over about 3 months; continue iron a while after levels normalise to restock stores.",
+      "side_effects": "Iron tablets cause constipation, dark stools and nausea — alternate-day dosing can help absorption and tolerance.",
+      "followup": "Recheck iron and blood count; in adults, bowel investigation looks for a hidden source of loss.",
+      "recovery": "Recovered when stores and counts are restored. Treating only the iron without finding the cause risks it returning."
+    },
+    "dehydration": {
+      "confirm": "Recognised clinically (thirst, dark urine, dizziness, dry mouth); bloods for severe cases.",
+      "treatment": "Oral rehydration with fluids and salts for mild–moderate cases; IV fluids in hospital for severe dehydration. Treat the cause (vomiting, diarrhoea, heat).",
+      "duration": "Mild dehydration corrects within hours of steady fluids.",
+      "side_effects": "Plain water alone isn't ideal for big losses — rehydration salts replace sodium and glucose too.",
+      "followup": "Re-check for little/no urine, confusion or dizziness on standing (needs urgent care).",
+      "recovery": "Recovered when urine lightens and energy returns. Babies, older and frail people need a low threshold for medical help."
+    },
+    "mono": {
+      "confirm": "Suspected from sore throat, big glands and fatigue; a blood test (monospot/EBV) confirms it.",
+      "treatment": "Supportive care — rest, fluids and pain/fever relief. Antibiotics don't help and a particular one can cause a rash in mono.",
+      "duration": "The acute illness lasts about 2 weeks; fatigue can linger for weeks to a couple of months.",
+      "side_effects": "Avoid contact sport for several weeks because the spleen can enlarge and is at risk of injury.",
+      "followup": "Review for severe swallowing/breathing trouble, tummy pain (spleen), or prolonged symptoms.",
+      "recovery": "Recovered as energy returns gradually. Don't rush back to heavy exercise until cleared, to protect the spleen."
+    },
+    "vitd_deficiency": {
+      "confirm": "Confirmed with a vitamin D blood test; calcium and related levels checked.",
+      "treatment": "Vitamin D supplementation (a loading course then maintenance), sensible sun exposure and dietary sources.",
+      "duration": "Levels rebuild over 2–3 months; aches and fatigue ease gradually.",
+      "side_effects": "Vitamin D is safe at recommended doses; very high self-dosing can raise calcium harmfully, so follow the recommended amount.",
+      "followup": "Recheck levels after the loading course if symptoms were significant, then maintain.",
+      "recovery": "Better as levels normalise and symptoms (aches, tiredness) lift. Maintenance keeps it from returning, especially in winter."
+    },
+    "conjunctivitis": {
+      "confirm": "A clinical diagnosis distinguishing viral, bacterial and allergic types.",
+      "treatment": "Most viral and mild bacterial cases settle with hygiene and lubricating drops; antibiotic drops for clearly bacterial cases; antihistamine drops for allergic.",
+      "duration": "Viral cases clear over 1–2 weeks; bacterial cases improve within days on drops.",
+      "side_effects": "Antibiotic drops can sting; it's contagious, so handwashing and not sharing towels matter.",
+      "followup": "Review for eye pain, light sensitivity or vision change (not simple conjunctivitis — needs urgent eye assessment).",
+      "recovery": "Resolved when redness and discharge clear. Pain or blurred vision means a different, more serious problem — be seen."
+    },
+    "otitis_media": {
+      "confirm": "A clinical diagnosis using an otoscope to view the eardrum.",
+      "treatment": "Pain relief and fluids first — many clear on their own; antibiotics for younger children, severe cases, or no improvement in 2–3 days.",
+      "duration": "Pain usually settles within a few days.",
+      "side_effects": "Antibiotics (if used) can cause diarrhoea; a brief ear discharge can occur if the drum bursts and usually heals.",
+      "followup": "Review if pain persists beyond a few days, hearing stays down for weeks, or infections keep recurring.",
+      "recovery": "Better as pain and fever settle. Persistent hearing loss ('glue ear') after infections is checked and followed up."
+    },
+    "epistaxis": {
+      "confirm": "A clinical assessment to find the bleeding point and any cause (dryness, medicines, blood pressure).",
+      "treatment": "First aid — lean forward and pinch the soft part of the nose for 10–15 minutes. Persistent bleeds may need cautery or packing; treat dryness afterwards.",
+      "duration": "Most nosebleeds stop within 10–20 minutes of correct pressure.",
+      "side_effects": "Cautery can leave the nose tender; moisturising ointment prevents recrudescence; avoid picking and heavy nose-blowing after.",
+      "followup": "Review for bleeds that won't stop after 20 minutes of pressure, frequent heavy bleeds, or if on blood thinners.",
+      "recovery": "Resolved when bleeding stops and the lining heals. Heavy bleeding that won't stop, or feeling faint, needs urgent care."
+    },
+    "hypertensive_urgency": {
+      "confirm": "Confirmed with repeated blood-pressure readings; checks for organ effects (heart, kidneys, eyes).",
+      "treatment": "Gradual, controlled lowering of blood pressure — usually by starting or adjusting regular medicines, not sudden drops; treat any cause. Emergency symptoms mean hospital care.",
+      "duration": "Blood pressure is brought down over days to weeks (not minutes) unless there are emergency features.",
+      "side_effects": "Blood-pressure medicines can cause dizziness, ankle swelling or a cough depending on the class; the regimen is tailored.",
+      "followup": "Close follow-up to confirm control and monitor kidneys and blood tests; home readings help.",
+      "recovery": "Controlled as readings reach target without side effects. Chest pain, severe headache, breathlessness or neurological signs are an emergency."
+    },
+    "afib": {
+      "confirm": "Confirmed on an ECG; bloods (thyroid, electrolytes) and sometimes a heart scan find contributors.",
+      "treatment": "Two aims: control the rate/rhythm (medicines or a procedure) and prevent stroke (blood thinner if risk warrants). Treat triggers (thyroid, alcohol, sleep apnoea).",
+      "duration": "Rate control helps within days; a rhythm/ablation plan is specialist-led over weeks to months.",
+      "side_effects": "Blood thinners raise bleeding risk and need the right choice/monitoring; rate-control drugs can cause tiredness or a slow pulse.",
+      "followup": "Regular review of rate, symptoms and stroke-prevention; monitoring for the chosen blood thinner.",
+      "recovery": "Managed when the rate is controlled, symptoms settle and stroke risk is covered. Sudden breathlessness, chest pain or fainting needs urgent care."
+    },
+    "angina_stable": {
+      "confirm": "From exertional chest tightness; confirmed with ECG, blood tests and stress or imaging tests; sometimes angiography.",
+      "treatment": "Medicines to protect the heart and ease symptoms (a quick-relief nitrate spray, plus heart-rate/blood-flow and risk-lowering drugs), and procedures (stent or bypass) for significant narrowing. Risk-factor control throughout.",
+      "duration": "Symptom medicines help quickly; the prevention plan is long-term.",
+      "side_effects": "Nitrates can cause headache and light-headedness; other heart drugs can slow the pulse or lower blood pressure.",
+      "followup": "Cardiology review, risk-factor targets (blood pressure, cholesterol, smoking, diabetes) and a plan for what to do during an attack.",
+      "recovery": "Stable when symptoms are predictable and controlled. Chest pain at rest, or pain not easing with rest/spray, is treated as a possible heart attack — call emergency services."
+    },
+    "heart_failure": {
+      "confirm": "Confirmed with an echocardiogram, a blood marker (BNP) and clinical signs; the cause is sought.",
+      "treatment": "Medicines that improve survival and symptoms (several classes used together), fluid/salt management with diuretics, and treating the underlying cause; devices for selected patients.",
+      "duration": "Symptoms improve over weeks as medicines are built up; this is long-term care.",
+      "side_effects": "Diuretics can affect kidneys and salts; the core medicines are increased slowly with blood-pressure and blood-test monitoring.",
+      "followup": "Regular review with weight monitoring (a quick weight gain signals fluid), blood tests and medicine up-titration.",
+      "recovery": "Managed when breathing, swelling and energy are stable on treatment. Rapid weight gain, worsening breathlessness or swelling needs prompt review."
+    },
+    "anaphylaxis": {
+      "confirm": "A clinical emergency diagnosis — sudden breathing, throat, skin and circulation symptoms after a trigger.",
+      "treatment": "Adrenaline (epinephrine) auto-injector into the outer thigh immediately, call emergency services, lie flat with legs raised; repeat adrenaline if needed. Hospital observation follows.",
+      "duration": "Adrenaline works within minutes; observation is needed because symptoms can return hours later.",
+      "side_effects": "Adrenaline can cause a racing heart and shakiness — that's expected and far safer than withholding it.",
+      "followup": "Allergy-clinic referral, an adrenaline auto-injector prescription and a written action plan; carry two devices.",
+      "recovery": "The rule is adrenaline first, questions later — never wait. After recovery, trigger avoidance and carrying auto-injectors prevents the next one."
+    },
+    "pulmonary_embolism": {
+      "confirm": "Confirmed in hospital with a blood test (D-dimer) and usually a CT scan of the lung arteries (CTPA) or a lung perfusion scan; an ultrasound may check the leg for a clot.",
+      "treatment": "Treated with blood-thinning medicine (anticoagulation); a large, life-threatening clot may need clot-busting drugs or a procedure. This is hospital care, not something to manage at home.",
+      "duration": "Blood thinners are usually taken for at least 3 months, sometimes longer or lifelong depending on the cause.",
+      "side_effects": "Blood thinners raise the risk of bleeding — report unusual bruising, black or bloody stools, or heavy bleeding. Some types need regular blood tests.",
+      "followup": "Follow-up checks the dose and looks for an underlying cause. Seek urgent help if breathlessness or chest pain returns.",
+      "recovery": "Many people recover fully over weeks to months; some have lingering breathlessness. Preventing future clots — moving on long trips, staying active after surgery — matters."
+    },
+    "cauda_equina": {
+      "confirm": "Confirmed urgently with an MRI scan of the spine; a bladder scan may check how well the bladder empties.",
+      "treatment": "Usually emergency surgery to take pressure off the nerves (decompression), ideally within hours. Hospital care.",
+      "duration": "Surgery is prompt; recovery of nerve function depends on how quickly the pressure was relieved and can take months.",
+      "side_effects": "Surgery carries the usual risks; some bladder, bowel or sexual symptoms can persist despite a good operation.",
+      "followup": "Follow-up with spinal, urology and physiotherapy teams, often with bladder and bowel rehabilitation.",
+      "recovery": "The earlier the pressure is relieved, the better the chance of recovery; outcomes range from full recovery to lasting changes."
+    },
+    "testicular_torsion": {
+      "confirm": "Often diagnosed from the story and examination; an urgent ultrasound may check blood flow, but treatment should not be delayed for tests when torsion is strongly suspected.",
+      "treatment": "Emergency surgery to untwist and stitch the testicle in place (and usually the other side too). Hospital care.",
+      "duration": "Surgery is immediate; recovery from the operation takes about two weeks.",
+      "side_effects": "If the blood supply was cut off for too long the testicle may not survive and may need to be removed; surgery carries the usual risks.",
+      "followup": "A follow-up checks healing; fertility is usually preserved when the other testicle is healthy.",
+      "recovery": "Full recovery is common when treated quickly; fixing both testicles lowers the chance of it happening again."
+    },
+    "nec_fasc": {
+      "confirm": "Diagnosed urgently by surgeons; blood tests and scans support it, but an operation to look at the tissue is often both the test and the treatment.",
+      "treatment": "Emergency surgery to remove dead tissue, strong antibiotics into a vein, and intensive-care support. Hospital care.",
+      "duration": "Often several operations and weeks in hospital; some people need skin grafts.",
+      "side_effects": "Major surgery with possible tissue or limb loss and a long recovery.",
+      "followup": "Follow-up with surgical, wound-care and rehabilitation teams.",
+      "recovery": "Survival and recovery depend heavily on how fast treatment started; rehabilitation can be lengthy."
+    },
+    "ectopic": {
+      "confirm": "Confirmed with a pregnancy blood test (hCG, often repeated) and a transvaginal ultrasound; sometimes a short period of monitoring.",
+      "treatment": "Depending on size and stability: close monitoring, medicine (methotrexate) to stop the pregnancy growing, or surgery (often keyhole). A ruptured ectopic is emergency surgery. Hospital care.",
+      "duration": "Medicine needs weeks of blood-test follow-up; surgical recovery takes about two weeks.",
+      "side_effects": "Methotrexate can cause nausea and means avoiding pregnancy for a few months; surgery carries the usual risks.",
+      "followup": "Blood tests confirm the pregnancy hormone falls to zero; future pregnancies should be checked early.",
+      "recovery": "Most people recover well and many go on to have healthy pregnancies, though the risk of another ectopic is a little higher."
+    },
+    "acs": {
+      "confirm": "ECG and blood tests (troponin) in hospital, sometimes followed by angiography to look at the heart's arteries.",
+      "treatment": "Emergency hospital care: aspirin and other medicines, oxygen if needed, and procedures (a stent) or clot-busting drugs to restore blood flow. Call your local emergency number now.",
+      "duration": "Hospital stay of a few days; recovery over weeks.",
+      "side_effects": "Blood thinners raise bleeding risk; procedures carry their own risks.",
+      "followup": "Cardiology follow-up, cardiac rehabilitation, and control of blood pressure, cholesterol and smoking.",
+      "recovery": "Many return to normal activity; report any return of chest pain or breathlessness at once."
+    },
+    "meningitis": {
+      "confirm": "Urgent hospital assessment, usually with blood tests and a lumbar puncture.",
+      "treatment": "Immediate antibiotics into a vein (plus antivirals if needed) and intensive-care support for severe cases. Call your local emergency number now.",
+      "duration": "Hospital stay of days to weeks depending on severity.",
+      "side_effects": "Some antibiotics can cause reactions; severe disease can leave lasting effects.",
+      "followup": "Follow-up checks hearing, and for any after-effects; close contacts may need preventive antibiotics or vaccination.",
+      "recovery": "Most who are treated early recover well; recovery from severe disease can be slow."
+    },
+    "sepsis": {
+      "confirm": "Hospital tests — blood cultures, lactate, and a search for the source of infection.",
+      "treatment": "Urgent antibiotics into a vein, fluids, oxygen and organ support in hospital. Call your local emergency number now.",
+      "duration": "Hospital stay of days to weeks; full recovery can take months.",
+      "side_effects": "Strong antibiotics and intensive care carry risks; some have lasting tiredness ('post-sepsis').",
+      "followup": "Follow-up looks for the source and for after-effects; rehabilitation may be needed.",
+      "recovery": "Early treatment greatly improves survival; recovery of energy can be gradual."
+    },
+    "dka": {
+      "confirm": "Hospital blood and urine tests for glucose, ketones and acid levels.",
+      "treatment": "Hospital treatment with fluids into a vein, insulin, and careful replacement of salts. Call your local emergency number now.",
+      "duration": "Usually a hospital stay of one to several days.",
+      "side_effects": "Blood sugar and potassium need close monitoring during treatment.",
+      "followup": "Diabetes-team review of insulin and sick-day rules to prevent it happening again.",
+      "recovery": "People recover fully with prompt treatment; learning the early warning signs helps prevent a repeat."
+    },
+    "heat_stroke": {
+      "confirm": "Recognised from a very high body temperature with confusion or collapse after heat exposure.",
+      "treatment": "Rapid cooling and fluids in hospital; organ support if needed. Call your local emergency number now and start cooling meanwhile.",
+      "duration": "Hospital stay varies with severity.",
+      "side_effects": "Very high temperatures can injure organs.",
+      "followup": "Follow-up checks organ function; avoid further heat until cleared.",
+      "recovery": "Prompt cooling is life-saving; recovery depends on how high and how long the temperature ran."
+    },
+    "hypothermia": {
+      "confirm": "Recognised from a low body temperature with shivering, confusion or drowsiness after cold exposure.",
+      "treatment": "Gentle warming and hospital monitoring (the heart is sensitive when cold). Call your local emergency number; warm gently and handle the person carefully.",
+      "duration": "Depends on severity.",
+      "side_effects": "Rapid or rough handling can trigger dangerous heart rhythms.",
+      "followup": "Follow-up checks for complications and addresses why it happened.",
+      "recovery": "Most recover with careful warming."
+    },
+    "acute_glaucoma": {
+      "confirm": "Urgent eye assessment measuring the pressure inside the eye.",
+      "treatment": "Emergency eye-clinic treatment: drops and medicines to lower the pressure, then often laser. Seek emergency eye care now — sightsaving is time-critical.",
+      "duration": "Treatment is urgent; the laser is quick.",
+      "side_effects": "Pressure-lowering medicines have side effects; discuss with the eye team.",
+      "followup": "Eye-clinic follow-up, and treatment of the other eye to prevent an attack.",
+      "recovery": "Vision is usually preserved if treated quickly; delay risks lasting loss."
+    },
+    "aortic_dissection": {
+      "confirm": "Hospital imaging (usually a CT scan) of the main artery.",
+      "treatment": "Emergency hospital care — blood-pressure control and often urgent surgery. Call your local emergency number now.",
+      "duration": "Major hospital and intensive-care stay.",
+      "side_effects": "Surgery and blood-pressure drugs carry significant risks.",
+      "followup": "Lifelong blood-pressure control and scan follow-up.",
+      "recovery": "Survival depends on speed of treatment; recovery from surgery is lengthy."
+    },
+    "co_poisoning": {
+      "confirm": "A blood test for carbon-monoxide levels; the story (several people or pets affected, better away from home) is a strong clue.",
+      "treatment": "Get into fresh air at once and call your local emergency number; hospital gives high-flow oxygen.",
+      "duration": "Oxygen for hours; symptoms may linger.",
+      "side_effects": "High levels can affect the heart and brain.",
+      "followup": "Have the source (boiler, heater, exhaust) checked and fit a CO alarm before returning.",
+      "recovery": "Most recover with oxygen; some have delayed symptoms, so follow-up matters."
+    },
+    "opioid_overdose": {
+      "confirm": "Recognised from very slow or stopped breathing, pinpoint pupils and unresponsiveness.",
+      "treatment": "Call your local emergency number now; give naloxone if available and rescue breaths; stay until help arrives.",
+      "duration": "Naloxone works within minutes but can wear off before the opioid does.",
+      "side_effects": "Naloxone can trigger sudden withdrawal; repeat doses may be needed.",
+      "followup": "After recovery, offer links to addiction support and a take-home naloxone kit.",
+      "recovery": "Breathing usually returns with naloxone; the person still needs hospital review as it can wear off."
+    },
+    "poisoning_overdose": {
+      "confirm": "Hospital assessment; what and how much was taken, and when, guides treatment.",
+      "treatment": "Call your local emergency number or Poison Control now; keep packaging. Hospital may give antidotes, charcoal or supportive care. Do not make the person vomit.",
+      "duration": "Depends on the substance.",
+      "side_effects": "Varies with the poison and antidote.",
+      "followup": "Mental-health support if the overdose was intentional.",
+      "recovery": "Many recover fully with prompt treatment; some poisons act with delay, so early help is vital."
+    },
+    "snakebite": {
+      "confirm": "Hospital identifies the bite and watches for venom effects.",
+      "treatment": "Keep still and calm, keep the limb below the heart, remove tight items, and get to hospital fast; antivenom is given if needed. Don't cut, suck or use a tourniquet.",
+      "duration": "Hospital observation for hours; antivenom as needed.",
+      "side_effects": "Antivenom can cause reactions, given under supervision.",
+      "followup": "Wound care and a tetanus check.",
+      "recovery": "Most recover with prompt care; outcome depends on the snake and the time to treatment."
+    },
+    "septic_arthritis": {
+      "confirm": "Hospital test drawing fluid from the joint, plus blood tests.",
+      "treatment": "Hospital antibiotics into a vein and often washing out the joint. Seek emergency care now.",
+      "duration": "Hospital stay of days; antibiotics for weeks.",
+      "side_effects": "Prolonged antibiotics and joint washout carry risks.",
+      "followup": "Physiotherapy and joint follow-up.",
+      "recovery": "Early treatment protects the joint; delay can cause lasting damage."
+    },
+    "gbs": {
+      "confirm": "Hospital nerve tests and sometimes a lumbar puncture.",
+      "treatment": "Hospital treatment (immunoglobulin or plasma exchange) and close monitoring of breathing. Seek emergency care now.",
+      "duration": "Weeks in hospital; recovery over months.",
+      "side_effects": "Treatments and immobility carry risks; breathing may need support.",
+      "followup": "Rehabilitation and neurology follow-up.",
+      "recovery": "Most improve substantially, though recovery can be slow."
+    },
+    "addisonian_crisis": {
+      "confirm": "Hospital blood tests (salts, glucose, cortisol).",
+      "treatment": "Emergency steroids (hydrocortisone) and fluids into a vein. Call your local emergency number now.",
+      "duration": "Hospital stay of days.",
+      "side_effects": "Steroid dosing is adjusted carefully.",
+      "followup": "Endocrine follow-up, a steroid emergency card and sick-day dosing education.",
+      "recovery": "People recover quickly with steroids; prevention of future crises is key."
+    },
+    "burn_major": {
+      "confirm": "Hospital assessment of burn depth and area.",
+      "treatment": "Emergency care: cool the burn with running water, cover loosely, and call your local emergency number. Hospital gives fluids, pain relief and wound/graft care.",
+      "duration": "Hospital stay and healing over weeks to months.",
+      "side_effects": "Infection and scarring risks; grafts may be needed.",
+      "followup": "Burns-team follow-up, dressings and physiotherapy.",
+      "recovery": "Recovery depends on size and depth; rehabilitation can be lengthy."
+    },
+    "retinal_detachment": {
+      "confirm": "Urgent eye examination of the retina.",
+      "treatment": "Urgent eye surgery (laser or an operation) to reattach the retina. Seek emergency eye care now.",
+      "duration": "Surgery is prompt; vision settles over weeks.",
+      "side_effects": "Surgery carries risks; some vision change may remain.",
+      "followup": "Eye-clinic follow-up.",
+      "recovery": "The sooner it is fixed, the better the chance of saving sight."
+    },
+    "labor": {
+      "confirm": "Recognised from regular strengthening contractions, waters breaking, or a 'show'.",
+      "treatment": "Maternity care: contact your midwife or maternity unit. Call emergency services for very fast labour, heavy bleeding, or the baby's cord or a limb showing.",
+      "duration": "Varies widely.",
+      "side_effects": "Not applicable.",
+      "followup": "Routine postnatal checks for parent and baby.",
+      "recovery": "Most labours proceed safely with maternity support."
+    },
+    "threatened_miscarriage": {
+      "confirm": "Assessed with a pregnancy review and usually an ultrasound.",
+      "treatment": "Seek same-day assessment (early-pregnancy unit). Heavy bleeding with faintness is an emergency — call your local emergency number.",
+      "duration": "Varies.",
+      "side_effects": "Not applicable.",
+      "followup": "Follow-up scans and emotional support.",
+      "recovery": "Many pregnancies with early bleeding continue; support matters whatever the outcome."
+    },
+    "hyperemesis": {
+      "confirm": "Assessed for dehydration and ketones in pregnancy.",
+      "treatment": "Hospital or day-unit fluids into a vein and anti-sickness medicine safe in pregnancy.",
+      "duration": "May settle over weeks; some need repeated treatment.",
+      "side_effects": "Anti-sickness medicines are chosen for pregnancy safety.",
+      "followup": "Maternity follow-up and monitoring of weight and hydration.",
+      "recovery": "Usually eases as pregnancy progresses."
+    },
+    "febrile_seizure": {
+      "confirm": "Recognised from a short seizure during a fever in a young child.",
+      "treatment": "Keep the child safe on their side, time the seizure, and call emergency services if it lasts over 5 minutes or they don't recover. Treat the fever and find its cause.",
+      "duration": "Most last under a few minutes.",
+      "side_effects": "Not applicable.",
+      "followup": "A doctor should check the cause of the fever.",
+      "recovery": "Simple febrile seizures are usually harmless and most children grow out of them."
+    },
+    "bronchiolitis": {
+      "confirm": "Recognised in infants from a cold leading to fast, wheezy, laboured breathing and feeding trouble.",
+      "treatment": "Mostly supportive — small frequent feeds and monitoring. Seek emergency care for fast or struggling breathing, pauses in breathing, or poor feeding/fewer wet nappies.",
+      "duration": "Usually 1–2 weeks; cough can linger.",
+      "side_effects": "Not applicable.",
+      "followup": "Re-check if breathing worsens or feeding drops.",
+      "recovery": "Most infants recover fully at home; a few need hospital oxygen or feeding support."
+    },
+    "alcohol_withdrawal": {
+      "confirm": "Assessed from the drinking history and symptoms (tremor, sweats, agitation).",
+      "treatment": "Medically supervised withdrawal with medicines (benzodiazepines) and vitamins; severe withdrawal (fits, confusion) is an emergency — call your local emergency number.",
+      "duration": "Acute withdrawal lasts days.",
+      "side_effects": "Withdrawal medicines are used short-term under supervision.",
+      "followup": "Links to alcohol support and relapse prevention.",
+      "recovery": "Safe withdrawal is very achievable with support; going it alone can be dangerous."
+    },
+    "heat_exhaustion": {
+      "confirm": "Recognised from heavy sweating, feeling faint, headache and nausea in the heat.",
+      "treatment": "Move to a cool place, lie down, raise the legs, sip fluids, and cool the skin. If no better in 30 minutes, or confusion/collapse develops, call your local emergency number (heat stroke).",
+      "duration": "Usually improves within 30 minutes of cooling.",
+      "side_effects": "Not applicable.",
+      "followup": "Rest and rehydrate; avoid further heat that day.",
+      "recovery": "Full recovery is usual if cooled early."
+    },
+    "frostbite": {
+      "confirm": "Recognised from cold, hard, white or numb skin after cold exposure.",
+      "treatment": "Get out of the cold; rewarm gently in warm (not hot) water; do not rub or refreeze. Seek urgent care — deep frostbite needs hospital treatment.",
+      "duration": "Rewarming takes 30+ minutes; healing over weeks.",
+      "side_effects": "Rewarming can be painful; deep injury may lose tissue.",
+      "followup": "Wound care and follow-up for deeper injury.",
+      "recovery": "Superficial frostbite recovers; deep frostbite can cause lasting damage."
+    },
+    "travel_fever": {
+      "confirm": "Assessed with blood tests (malaria must be excluded) based on where you travelled.",
+      "treatment": "See a doctor urgently; some travel infections (like malaria) need specific prompt treatment.",
+      "duration": "Depends on the cause.",
+      "side_effects": "Varies with the diagnosis and medicines.",
+      "followup": "Follow-up with results; tell any clinician your travel history.",
+      "recovery": "Most travel fevers are treatable, especially when caught early."
+    },
+    "animal_bite": {
+      "confirm": "Assessed for wound depth, infection and tetanus/rabies risk.",
+      "treatment": "Clean the wound well with running water and soap; see a clinician — antibiotics, a tetanus booster, or rabies prevention may be needed.",
+      "duration": "Wound heals over days to weeks.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Wound re-check; watch for spreading redness.",
+      "recovery": "Most bites heal well with cleaning and the right prevention."
+    },
+    "dvt": {
+      "confirm": "An ultrasound of the leg and a blood test (D-dimer).",
+      "treatment": "Blood-thinning medicine (anticoagulation); seek same-day assessment. Sudden breathlessness or chest pain means a possible clot to the lungs — call emergency services.",
+      "duration": "Blood thinners for at least 3 months.",
+      "side_effects": "Blood thinners raise bleeding risk; report unusual bleeding or bruising.",
+      "followup": "Dose checks and a look for an underlying cause.",
+      "recovery": "Most clots resolve on treatment; some leave leg swelling or aching."
+    },
+    "seizure": {
+      "confirm": "Assessed from the description; tests may include brain imaging and an EEG.",
+      "treatment": "Protect the person, cushion the head, don't restrain or put anything in the mouth, time it, and call emergency services if it lasts over 5 minutes, repeats, or is a first seizure.",
+      "duration": "Most seizures stop within minutes.",
+      "side_effects": "Anti-seizure medicines (if started) have side effects discussed with a specialist.",
+      "followup": "Neurology follow-up; driving and safety advice.",
+      "recovery": "Many causes are treatable; a single seizure does not always mean epilepsy."
+    },
+    "burn": {
+      "confirm": "Assessed by size, depth and location.",
+      "treatment": "Cool under running water for 20 minutes, remove jewellery, cover loosely with cling film or a clean non-fluffy cloth; see a clinician for anything larger than a coin, deep, or on the face, hands or genitals.",
+      "duration": "Minor burns heal in 1–2 weeks.",
+      "side_effects": "Infection risk; blisters should not be burst.",
+      "followup": "Dressing changes and a wound re-check.",
+      "recovery": "Superficial burns heal well; deeper burns may scar and need specialist care."
+    },
+    "ptsd": {
+      "confirm": "Recognised from re-experiencing, avoidance and being on edge after trauma.",
+      "treatment": "Trauma-focused talking therapy (such as CBT or EMDR) is first-line; some benefit from medication. A mental-health service can guide this.",
+      "duration": "Therapy runs over weeks to months.",
+      "side_effects": "Any medication's effects are reviewed with the prescriber.",
+      "followup": "Regular therapy review; crisis support if distress peaks.",
+      "recovery": "Many people improve markedly with the right therapy."
+    },
+    "grief": {
+      "confirm": "A normal, if painful, response to loss — not an illness.",
+      "treatment": "Support from people you trust, routines, and time; bereavement counselling helps many. Seek help if grief feels stuck, or with thoughts of self-harm.",
+      "duration": "Grief eases gradually and in waves, over months.",
+      "side_effects": "Not applicable.",
+      "followup": "Check in with yourself and loved ones; counselling if needed.",
+      "recovery": "There is no fixed timeline; support helps you carry it."
+    },
+    "pleurisy": {
+      "confirm": "Recognised from sharp chest pain worse on breathing; a clinician checks for a cause.",
+      "treatment": "Treat the underlying cause (often a viral infection); anti-inflammatory pain relief helps. Sudden breathlessness needs urgent review (to exclude a clot).",
+      "duration": "Often settles over 1–2 weeks with the cause.",
+      "side_effects": "Anti-inflammatories can irritate the stomach.",
+      "followup": "Re-check if breathless or not improving.",
+      "recovery": "Most cases settle once the cause is treated."
+    },
+    "tb": {
+      "confirm": "Tests include a chest X-ray and sputum samples; see a doctor.",
+      "treatment": "A supervised course of several antibiotics for months; TB services coordinate care and trace contacts.",
+      "duration": "Treatment usually lasts at least 6 months.",
+      "side_effects": "TB antibiotics can affect the liver and eyes; monitored during treatment.",
+      "followup": "Regular follow-up to confirm cure and support adherence.",
+      "recovery": "TB is curable with the full course; stopping early risks resistance."
+    },
+    "pericarditis": {
+      "confirm": "Assessed with an ECG and sometimes an ultrasound of the heart.",
+      "treatment": "Anti-inflammatory medicines (and colchicine); see a clinician. Severe breathlessness or faintness needs emergency care.",
+      "duration": "Often improves over weeks.",
+      "side_effects": "Anti-inflammatories can irritate the stomach and kidneys.",
+      "followup": "Follow-up to confirm resolution and watch for fluid around the heart.",
+      "recovery": "Most recover fully; it can recur in some."
+    },
+    "pad": {
+      "confirm": "Assessed by comparing pulses and blood pressure in the legs and arms.",
+      "treatment": "Stopping smoking, supervised exercise, and medicines for cholesterol and blood pressure; severe cases may need a procedure. A cold, pale, painful leg is an emergency.",
+      "duration": "A long-term condition managed over time.",
+      "side_effects": "Medicines for cholesterol/blood pressure have manageable side effects.",
+      "followup": "Regular vascular and risk-factor review.",
+      "recovery": "Symptoms often improve with exercise and risk-factor control."
+    },
+    "pancreatitis": {
+      "confirm": "Hospital blood tests (amylase/lipase) and sometimes a scan.",
+      "treatment": "Hospital care: fluids into a vein, pain relief, and treating the cause (often gallstones or alcohol). Seek urgent assessment.",
+      "duration": "Hospital stay of days; longer if severe.",
+      "side_effects": "Severe cases can affect other organs.",
+      "followup": "Follow-up addresses the cause (gallbladder surgery, alcohol support).",
+      "recovery": "Mild cases recover in days; severe pancreatitis is serious and needs intensive care."
+    },
+    "cholecystitis": {
+      "confirm": "An ultrasound of the gallbladder and blood tests.",
+      "treatment": "Hospital antibiotics and pain relief, often followed by surgery to remove the gallbladder. Seek urgent assessment.",
+      "duration": "Hospital stay of days; surgery may be planned.",
+      "side_effects": "Surgery carries the usual risks.",
+      "followup": "Surgical follow-up; a low-fat diet helps meanwhile.",
+      "recovery": "Removing the gallbladder usually cures it; most live normally without one."
+    },
+    "cluster_headache": {
+      "confirm": "Recognised from severe one-sided pain around the eye in bouts, with a watering eye or blocked nose.",
+      "treatment": "Specific treatments (high-flow oxygen, triptan injections/sprays) and preventers; a doctor or neurologist guides this.",
+      "duration": "Attacks last weeks to months in clusters.",
+      "side_effects": "Triptans aren't for everyone (e.g. heart disease); discussed with a clinician.",
+      "followup": "Neurology review to tune treatment.",
+      "recovery": "Attacks are severe but treatable, and clusters settle between bouts."
+    },
+    "gca": {
+      "confirm": "Urgent blood tests and sometimes a temporal-artery biopsy or scan.",
+      "treatment": "Start steroids urgently on suspicion — do not wait — to protect sight; see a doctor the same day.",
+      "duration": "Steroids are tapered over many months.",
+      "side_effects": "Long steroid courses need bone and sugar protection and monitoring.",
+      "followup": "Rheumatology follow-up and steroid tapering.",
+      "recovery": "Prompt steroids protect vision; delay risks sudden sight loss."
+    },
+    "parkinson": {
+      "confirm": "A clinical diagnosis by a neurologist from the movement pattern.",
+      "treatment": "Medicines that boost dopamine, plus physiotherapy and speech/occupational therapy, tailored over time.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Parkinson's medicines have effects that are balanced carefully.",
+      "followup": "Regular neurology and therapy review.",
+      "recovery": "Treatment can control symptoms well for a long time."
+    },
+    "dementia": {
+      "confirm": "Assessment of memory and thinking, with tests to exclude reversible causes; sudden confusion is different and urgent.",
+      "treatment": "Treating reversible contributors, some medicines, and practical and social support for the person and carers.",
+      "duration": "A long-term condition; support needs grow over time.",
+      "side_effects": "Dementia medicines have modest effects and side effects reviewed by a specialist.",
+      "followup": "Memory-service follow-up and carer support.",
+      "recovery": "While not curable, the right support greatly improves quality of life."
+    },
+    "polymyalgia": {
+      "confirm": "Recognised from shoulder/hip stiffness in older adults, with blood tests.",
+      "treatment": "A course of steroids usually brings quick relief; a doctor guides tapering.",
+      "duration": "Steroids tapered over months to a couple of years.",
+      "side_effects": "Long steroid courses need bone/sugar protection and monitoring.",
+      "followup": "Regular review; watch for giant cell arteritis symptoms (headache, jaw ache, vision change).",
+      "recovery": "Symptoms often improve dramatically with treatment."
+    },
+    "scabies": {
+      "confirm": "Recognised from intense itch (worse at night) and a rash, often between the fingers.",
+      "treatment": "A treatment cream or lotion applied over the whole body, repeated after a week; treat close contacts and wash bedding/clothes hot.",
+      "duration": "Itch can linger 2–4 weeks after successful treatment.",
+      "side_effects": "Creams can irritate the skin.",
+      "followup": "Re-treat if new spots appear after a few weeks.",
+      "recovery": "Fully curable; itch fading over weeks doesn't mean treatment failed."
+    },
+    "measles": {
+      "confirm": "Recognised from fever, cough, red eyes and a spreading rash; confirmed by a saliva/blood test. Tell the clinic before visiting.",
+      "treatment": "Mostly supportive — rest, fluids, fever relief; stay away from others. Seek urgent care for breathing trouble, drowsiness or fits.",
+      "duration": "Usually 7–10 days.",
+      "side_effects": "Not applicable.",
+      "followup": "Public-health follow-up; check vaccination of contacts.",
+      "recovery": "Most recover fully; vaccination prevents it and protects others."
+    },
+    "lyme": {
+      "confirm": "Recognised from a spreading 'bullseye' rash after a tick bite; blood tests support later stages.",
+      "treatment": "A course of antibiotics; see a clinician promptly, especially with the rash.",
+      "duration": "Antibiotics for 2–4 weeks.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Follow-up if symptoms persist.",
+      "recovery": "Early treatment usually cures it; untreated it can affect joints, heart or nerves."
+    },
+    "bipolar": {
+      "confirm": "A mental-health assessment of mood highs and lows over time.",
+      "treatment": "Mood-stabilising medication and talking therapy, coordinated by a mental-health service; crisis support when needed.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Mood stabilisers need monitoring (bloods, etc.).",
+      "followup": "Regular psychiatric review and relapse planning.",
+      "recovery": "Many people live full lives with the right treatment and support."
+    },
+    "psychosis": {
+      "confirm": "An urgent mental-health assessment.",
+      "treatment": "Antipsychotic medication and psychological and social support; early-intervention services help. Seek urgent help, especially if there is risk to self or others.",
+      "duration": "Early treatment over months; longer-term support varies.",
+      "side_effects": "Antipsychotics have side effects monitored by the team.",
+      "followup": "Regular mental-health follow-up.",
+      "recovery": "Early treatment improves outcomes; many recover well."
+    },
+    "eating_disorder": {
+      "confirm": "A compassionate assessment of eating, thoughts and physical health.",
+      "treatment": "Specialist eating-disorder support combining therapy, nutrition and medical monitoring. Reaching out early helps.",
+      "duration": "Recovery takes time and support.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular review of physical health and progress.",
+      "recovery": "Recovery is possible; you deserve support. In the US, the National Alliance for Eating Disorders helpline can help."
+    },
+    "hiv_acute": {
+      "confirm": "A blood test; a short flu-like illness weeks after possible exposure is the clue.",
+      "treatment": "See a clinician for testing; modern HIV treatment is highly effective and started early. Emergency preventive medicine (PEP) only helps within 72 hours of exposure.",
+      "duration": "Testing is quick; treatment is lifelong and effective.",
+      "side_effects": "Modern medicines are well tolerated.",
+      "followup": "Sexual-health clinic follow-up and partner notification support.",
+      "recovery": "With treatment, people live long, healthy lives and can become non-infectious."
+    },
+    "scarlet_fever": {
+      "confirm": "Recognised from a sandpaper rash, sore throat and 'strawberry tongue'.",
+      "treatment": "A course of antibiotics; see a clinician. Keep away from others until 24 hours of antibiotics.",
+      "duration": "Improves within a week on antibiotics.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Re-check if not improving or if joint pains or dark urine follow.",
+      "recovery": "Fully treatable; antibiotics also prevent rare complications."
+    },
+    "ca_warn_breast": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a breast change (lump, skin or nipple change), a clinician arranges a breast examination and usually a mammogram and/or ultrasound.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_colorectal": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a change in bowel habit or bleeding, a clinician arranges a stool test and usually a camera test (colonoscopy).",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_lung": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a cough lasting over 3 weeks or coughing blood, a clinician arranges a chest X-ray and possibly a CT scan.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_skin": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a changing mole or new odd skin lesion, a clinician arranges a skin examination (dermoscopy) and possibly a biopsy.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_lump": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a new or growing lump or swollen gland, a clinician arranges an examination and usually an ultrasound, sometimes a biopsy.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_urinary": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For blood in the urine, a clinician arranges a urine test and usually a scan and bladder camera (cystoscopy).",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_gynae": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For abnormal bleeding (after sex, between periods, or after menopause), a clinician arranges a pelvic examination and ultrasound, sometimes a biopsy.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_swallow": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For new difficulty swallowing, a clinician arranges a camera test (endoscopy).",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_jaundice": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For painless yellowing of skin/eyes, a clinician arranges urgent blood tests and a scan.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_oral": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a mouth ulcer or sore lasting over 3 weeks, a clinician arranges an examination and possibly a biopsy.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_testicular": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a testicular lump or swelling, a clinician arranges an examination and an ultrasound.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_systemic": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For unexplained weight loss, night sweats or persistent tiredness, a clinician arranges blood tests and examination to find a cause.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_ovarian": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For persistent bloating, early fullness or pelvic discomfort, a clinician arranges an examination, a blood test (CA125) and an ultrasound.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_stomach": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For persistent indigestion with weight loss, a clinician arranges a camera test (endoscopy).",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "ca_warn_brain": {
+      "confirm": "This is a 'worth getting checked' flag, not a diagnosis. For a new, persistent or progressive headache with neurological signs, a clinician arranges a neurological examination and brain imaging.",
+      "treatment": "There is no treatment until a cause is found. The step is assessment: most such changes turn out not to be cancer, but checking early is what matters.",
+      "duration": "Assessment is usually arranged within weeks (sooner for urgent-referral features).",
+      "side_effects": "Not applicable at this stage.",
+      "followup": "Attend the referral and any tests; chase results if you don't hear back.",
+      "recovery": "Finding a cause early gives the best options whatever it turns out to be."
+    },
+    "laryngitis": {
+      "confirm": "Recognised from a hoarse voice and sore throat, usually with a cold.",
+      "treatment": "Rest the voice, fluids, steam and warm drinks; it is usually viral so antibiotics don't help.",
+      "duration": "Usually clears in 1–2 weeks.",
+      "side_effects": "Not applicable.",
+      "followup": "See a clinician if hoarseness lasts over 3 weeks.",
+      "recovery": "Voice returns fully; persistent hoarseness should be checked."
+    },
+    "lactose": {
+      "confirm": "Recognised from bloating, wind and loose stools after milk; a trial of avoiding lactose helps confirm.",
+      "treatment": "Cut back lactose, use lactose-free products, or take lactase enzyme drops; a dietitian can help keep calcium up.",
+      "duration": "Symptoms ease within days of reducing lactose.",
+      "side_effects": "Not applicable.",
+      "followup": "Review diet to stay balanced in calcium and vitamin D.",
+      "recovery": "Well managed by diet; many tolerate small amounts."
+    },
+    "anal_fissure": {
+      "confirm": "Recognised from sharp pain and bright blood on wiping after a hard stool.",
+      "treatment": "Soften stools (fibre, fluids), warm baths, and a soothing/relaxing ointment; most heal without surgery.",
+      "duration": "Many heal within a few weeks.",
+      "side_effects": "Ointments can cause headache or local irritation.",
+      "followup": "See a clinician if not healing in 6 weeks or bleeding changes.",
+      "recovery": "Usually heals fully with stool-softening measures."
+    },
+    "ovarian_cyst": {
+      "confirm": "Often found on an ultrasound; many cause no symptoms.",
+      "treatment": "Most simple cysts need only watchful waiting with a repeat scan; some need removal. Sudden severe one-sided pain with faintness is an emergency (possible twist or rupture).",
+      "duration": "Many resolve on their own over weeks to months.",
+      "side_effects": "Not applicable for watchful waiting.",
+      "followup": "A follow-up scan checks resolution.",
+      "recovery": "Most are harmless and settle without treatment."
+    },
+    "dysmenorrhea": {
+      "confirm": "Recognised from cramping pain with periods.",
+      "treatment": "Anti-inflammatory pain relief, heat, and gentle exercise; hormonal contraception can reduce period pain.",
+      "duration": "Eases as the period ends; preventers work cycle to cycle.",
+      "side_effects": "Anti-inflammatories can irritate the stomach.",
+      "followup": "See a clinician if pain is severe, worsening, or new (to check for causes like endometriosis).",
+      "recovery": "Usually well controlled with simple measures."
+    },
+    "trigeminal_neuralgia": {
+      "confirm": "Recognised from brief, electric-shock face pains triggered by touch, chewing or wind.",
+      "treatment": "Specific nerve medicines (such as carbamazepine), not ordinary painkillers; a neurologist may consider procedures.",
+      "duration": "Often comes in bouts with remissions.",
+      "side_effects": "Nerve medicines cause drowsiness and need monitoring.",
+      "followup": "Neurology review to tune treatment.",
+      "recovery": "Most get good control with the right medicine."
+    },
+    "fibromyalgia": {
+      "confirm": "A clinical diagnosis of widespread pain, poor sleep and fatigue, after excluding other causes.",
+      "treatment": "Graded exercise, sleep and stress management, pacing, and sometimes medicines for pain or sleep.",
+      "duration": "A long-term condition managed over time.",
+      "side_effects": "Any medicines' effects are reviewed with the prescriber.",
+      "followup": "Regular review to adjust the plan.",
+      "recovery": "Symptoms often improve with an active, paced self-management approach."
+    },
+    "lupus": {
+      "confirm": "Blood tests and the pattern of symptoms; assessed by a rheumatologist.",
+      "treatment": "Medicines that calm the immune system (such as hydroxychloroquine and, in flares, steroids), plus sun protection.",
+      "duration": "A long-term condition with flares and remissions.",
+      "side_effects": "Immune medicines need monitoring (bloods, eyes).",
+      "followup": "Regular rheumatology review.",
+      "recovery": "Well-managed lupus allows a full life; flares are treated as they come."
+    },
+    "sjogrens": {
+      "confirm": "Blood tests and tests of tear and saliva production.",
+      "treatment": "Artificial tears, saliva substitutes and good dental care; sometimes immune-calming medicines.",
+      "duration": "A long-term condition managed with daily care.",
+      "side_effects": "Any immune medicines are monitored.",
+      "followup": "Eye and dental follow-up.",
+      "recovery": "Symptoms are managed well with daily measures."
+    },
+    "raynauds": {
+      "confirm": "Recognised from fingers/toes turning white then blue then red in the cold.",
+      "treatment": "Keep warm (gloves, layers), avoid smoking; severe cases may need medicines that open blood vessels. New, one-sided or ulcerating changes need review.",
+      "duration": "A long-term tendency managed by staying warm.",
+      "side_effects": "Vessel-opening medicines can cause headache or flushing.",
+      "followup": "Review if attacks are severe or skin breaks down.",
+      "recovery": "Most manage well with warmth; secondary causes need treatment."
+    },
+    "myasthenia": {
+      "confirm": "Nerve/muscle tests and antibody blood tests by a neurologist.",
+      "treatment": "Medicines that improve nerve-muscle signalling and immune-calming treatment. Sudden breathing or swallowing weakness is an emergency.",
+      "duration": "A long-term condition; treatment is tailored.",
+      "side_effects": "Medicines need monitoring; some drugs worsen it and are avoided.",
+      "followup": "Regular neurology review.",
+      "recovery": "Many achieve good control; watch for breathing/swallowing changes."
+    },
+    "menopause": {
+      "confirm": "Usually recognised from the pattern of periods and symptoms around midlife.",
+      "treatment": "Lifestyle measures, and hormone therapy (HRT) or non-hormonal options discussed with a clinician based on your health.",
+      "duration": "Symptoms span months to years.",
+      "side_effects": "HRT's benefits and risks are weighed individually.",
+      "followup": "Review to adjust treatment and check bone and heart health.",
+      "recovery": "Symptoms are very treatable; many feel much better with the right plan."
+    },
+    "pcos": {
+      "confirm": "Based on the pattern (irregular periods, excess hair/acne) with blood tests and sometimes an ultrasound.",
+      "treatment": "Weight and lifestyle measures, hormonal treatment to regulate periods, and specific help for fertility, hair or sugar as needed.",
+      "duration": "A long-term condition managed over time.",
+      "side_effects": "Hormonal and other medicines have individual side effects.",
+      "followup": "Regular review of periods, sugar and heart-risk factors.",
+      "recovery": "Symptoms are manageable, and fertility is often achievable with help."
+    },
+    "endometriosis": {
+      "confirm": "Suspected from painful periods and pelvic pain; often confirmed by a specialist, sometimes with keyhole surgery.",
+      "treatment": "Pain relief, hormonal treatment to quiet the tissue, and sometimes surgery; fertility support if needed.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Hormonal treatments have individual side effects.",
+      "followup": "Gynaecology review to tune the plan.",
+      "recovery": "Symptoms can be well controlled; care is tailored to your goals."
+    },
+    "mastitis": {
+      "confirm": "Recognised from a red, painful, hot area of breast with flu-like feelings, often when breastfeeding.",
+      "treatment": "Keep milk flowing (feed/express), rest, fluids and pain relief; antibiotics if not improving in 12–24h or unwell. Seek care if a tense lump or abscess forms.",
+      "duration": "Often improves within a day or two of good drainage/antibiotics.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Re-check if a lump persists after the infection settles.",
+      "recovery": "Most settles quickly; breastfeeding can usually continue."
+    },
+    "cushings": {
+      "confirm": "Blood, urine or saliva cortisol tests and scans, guided by an endocrinologist.",
+      "treatment": "Treating the cause (often stopping a steroid cause, or surgery for a gland/tumour cause).",
+      "duration": "Depends on the cause; recovery over months.",
+      "side_effects": "Treatment and steroid adjustments need careful monitoring.",
+      "followup": "Endocrine follow-up.",
+      "recovery": "Many features reverse once the cause is treated."
+    },
+    "bleeding_disorder": {
+      "confirm": "Blood tests of clotting and platelets.",
+      "treatment": "Depends on the cause — from stopping a contributing drug to specific clotting treatments; avoid aspirin/NSAIDs until assessed.",
+      "duration": "Varies with the cause.",
+      "side_effects": "Treatments are specific to the disorder.",
+      "followup": "Haematology follow-up.",
+      "recovery": "Many causes are very manageable once identified."
+    },
+    "menorrhagia": {
+      "confirm": "Assessed with blood tests (for anaemia) and sometimes a scan.",
+      "treatment": "Options include anti-inflammatory and tranexamic acid tablets during periods, hormonal treatments (including the hormonal coil), and procedures if needed.",
+      "duration": "Treatments work cycle to cycle.",
+      "side_effects": "Each option has its own side effects, discussed with a clinician.",
+      "followup": "Review for anaemia and treatment response.",
+      "recovery": "Bleeding is usually reduced well with treatment."
+    },
+    "ectopic_beats": {
+      "confirm": "Often recognised from occasional 'skipped' or extra beats; an ECG or monitor can confirm.",
+      "treatment": "Usually no treatment needed; cut caffeine, alcohol and stress. Seek review if they come with fainting, chest pain or breathlessness.",
+      "duration": "Often come and go.",
+      "side_effects": "Not applicable.",
+      "followup": "Review if frequent or with worrying symptoms.",
+      "recovery": "Usually harmless in a healthy heart."
+    },
+    "vasovagal": {
+      "confirm": "Recognised from a simple faint with warning (hot, dizzy, tunnel vision), often on standing, pain or emotion.",
+      "treatment": "Lie down and raise the legs at the first warning; stay hydrated; rise slowly. Review if faints are frequent, without warning, or with chest pain/palpitations.",
+      "duration": "Recovery within minutes.",
+      "side_effects": "Not applicable.",
+      "followup": "Review if the pattern changes.",
+      "recovery": "Simple faints are common and benign when the pattern is typical."
+    },
+    "coldsore": {
+      "confirm": "Recognised from a tingling then blistering sore on the lip.",
+      "treatment": "Antiviral cream at the first tingle can shorten it; it heals on its own. Avoid kissing/sharing while active, especially around newborns.",
+      "duration": "Usually heals in 7–10 days.",
+      "side_effects": "Creams may irritate; antiviral tablets for frequent cases.",
+      "followup": "See a clinician if very frequent, severe, or near the eye.",
+      "recovery": "Heals fully; the virus stays dormant and can recur."
+    },
+    "b12_deficiency": {
+      "confirm": "A blood test for B12 and folate.",
+      "treatment": "B12 by injection or tablets (and folate if low), plus addressing the cause (diet or absorption).",
+      "duration": "Symptoms improve over weeks to months.",
+      "side_effects": "Injections sting briefly; otherwise well tolerated.",
+      "followup": "Repeat bloods to confirm response; some need lifelong treatment.",
+      "recovery": "Tiredness and nerve symptoms usually improve with treatment."
+    },
+    "malnutrition": {
+      "confirm": "Assessed from weight loss, poor intake, and blood tests.",
+      "treatment": "Build up nourishment gradually with help from a dietitian; treat underlying causes; refeed carefully under supervision if severe.",
+      "duration": "Recovery over weeks to months.",
+      "side_effects": "Rapid refeeding can be dangerous and is monitored.",
+      "followup": "Dietitian and medical follow-up.",
+      "recovery": "Nutrition and strength usually recover with support."
+    },
+    "failure_to_thrive": {
+      "confirm": "Recognised from an infant not gaining weight along their growth curve; assessed by the child's clinician.",
+      "treatment": "Feeding support and treating any underlying cause, guided by a paediatric team and dietitian.",
+      "duration": "Recovery over weeks to months with support.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular weight and growth checks.",
+      "recovery": "Most catch up with the right feeding and care."
+    },
+    "scurvy": {
+      "confirm": "Recognised from bleeding gums, bruising and tiredness with very low vitamin C intake; a blood test confirms.",
+      "treatment": "Vitamin C replacement and a balanced diet with fruit and vegetables.",
+      "duration": "Symptoms improve within days to weeks.",
+      "side_effects": "Not applicable.",
+      "followup": "Review diet to prevent recurrence.",
+      "recovery": "Recovery is rapid and complete with vitamin C."
+    },
+    "weight_health": {
+      "confirm": "A supportive look at eating, activity and overall health — not a judgement.",
+      "treatment": "Realistic, kind changes to food and movement, with support; a clinician or dietitian can help set healthy, sustainable goals.",
+      "duration": "Healthy change is gradual.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular check-ins on goals and wellbeing.",
+      "recovery": "Small sustainable steps work best; you deserve support, not shame."
+    },
+    "laceration": {
+      "confirm": "Assessed for depth, bleeding, nerve/tendon involvement and contamination.",
+      "treatment": "Press firmly to stop bleeding and clean the wound; deep, gaping, or dirty wounds (or those on the face/hands) may need closure, antibiotics or a tetanus booster — see a clinician. Heavy bleeding that won't stop is an emergency.",
+      "duration": "Minor cuts heal in 1–2 weeks.",
+      "side_effects": "Infection risk; watch for spreading redness.",
+      "followup": "Wound/stitch check and removal if needed.",
+      "recovery": "Most cuts heal well with cleaning and, if needed, closure."
+    },
+    "genital_injury": {
+      "confirm": "Assessed gently for bleeding, bruising, and trouble passing urine.",
+      "treatment": "Seek same-day care for significant bleeding, swelling, or trouble urinating; ice and support help meanwhile. Sudden severe testicle pain is an emergency.",
+      "duration": "Minor injuries settle over days.",
+      "side_effects": "Not applicable.",
+      "followup": "Review if pain, swelling or urinary trouble persists.",
+      "recovery": "Most minor injuries heal well; prompt care protects function."
+    },
+    "dental": {
+      "confirm": "Assessed by a dentist; an X-ray may be needed.",
+      "treatment": "See a dentist; meanwhile pain relief and avoiding very hot/cold helps. Facial swelling with fever or trouble swallowing/breathing is an emergency.",
+      "duration": "Depends on the problem.",
+      "side_effects": "Not applicable.",
+      "followup": "Dental follow-up and treatment of the cause.",
+      "recovery": "Most dental problems are very treatable once seen."
+    },
+    "urinary_incontinence": {
+      "confirm": "Assessed from the pattern; a urine test rules out infection; a bladder diary helps.",
+      "treatment": "Pelvic-floor exercises, bladder training, fluid/caffeine adjustments, and sometimes medicines or specialist referral.",
+      "duration": "Improvement over weeks of exercises.",
+      "side_effects": "Any medicines' effects are reviewed with the prescriber.",
+      "followup": "Review progress; refer if not improving.",
+      "recovery": "Many improve a lot with pelvic-floor work and simple changes."
+    },
+    "neck_strain": {
+      "confirm": "Recognised from muscular neck pain after posture, sleep or minor strain.",
+      "treatment": "Keep gently moving, heat, posture breaks, and simple pain relief; most settles without tests. Numbness/weakness in the arms or after a significant injury needs review.",
+      "duration": "Usually eases within 1–2 weeks.",
+      "side_effects": "Pain relievers have the usual cautions.",
+      "followup": "Review if not improving or with arm symptoms.",
+      "recovery": "Most neck strain resolves with gentle movement."
+    },
+    "breast_pain_cond": {
+      "confirm": "Assessed from the pattern (often cyclical) and an examination.",
+      "treatment": "Reassurance, a supportive bra, and simple pain relief; cyclical pain often eases. A new lump, skin change or one-sided persistent pain should be checked.",
+      "duration": "Cyclical pain varies with the cycle.",
+      "side_effects": "Not applicable.",
+      "followup": "Examination and, if needed, imaging for focal changes.",
+      "recovery": "Most breast pain is benign and settles."
+    },
+    "nail_hair": {
+      "confirm": "Assessed by looking at the nails/scalp; sometimes a sample is taken.",
+      "treatment": "Depends on the cause (fungal, inflammatory, deficiency); treatments range from creams to tablets to addressing a deficiency.",
+      "duration": "Nails and hair grow slowly, so change takes months.",
+      "side_effects": "Any tablets (e.g. antifungals) need monitoring.",
+      "followup": "Review response over months.",
+      "recovery": "Many nail and hair problems improve with the right, patient treatment."
+    },
+    "insect_sting": {
+      "confirm": "Recognised from local pain, redness and swelling after a sting.",
+      "treatment": "Remove the sting if visible, clean, cool and use antihistamine/pain relief. Throat/tongue swelling, wheeze or faintness is anaphylaxis — call emergency services.",
+      "duration": "Local reactions settle over hours to days.",
+      "side_effects": "Antihistamines can cause drowsiness.",
+      "followup": "Watch for spreading infection over following days.",
+      "recovery": "Most stings settle quickly; know the anaphylaxis warning signs."
+    },
+    "child_unsettled": {
+      "confirm": "A careful look for a cause (hunger, wind, temperature, illness) and for danger signs.",
+      "treatment": "Comfort measures and feeding/winding; seek care for a high fever, poor feeding, fewer wet nappies, a rash that doesn't fade, breathing trouble, or a floppy/very drowsy child.",
+      "duration": "Varies with the cause.",
+      "side_effects": "Not applicable.",
+      "followup": "Re-check if not settling or danger signs appear.",
+      "recovery": "Most unsettled spells are benign, but danger signs always need prompt care."
+    },
+    "non_healing_wound": {
+      "confirm": "Assessed for cause (circulation, diabetes, pressure, infection); swabs or blood tests may be needed.",
+      "treatment": "Good wound care, treating the cause, and specialist/tissue-viability input; a sore that won't heal over weeks should always be checked.",
+      "duration": "Healing can take weeks to months.",
+      "side_effects": "Depends on treatment.",
+      "followup": "Regular wound review.",
+      "recovery": "Most heal with the cause addressed; a persistent non-healing sore needs a proper check."
+    },
+    "erectile_dysfunction": {
+      "confirm": "Assessed from the history and a check of heart-risk factors, hormones and medicines (it can be an early heart-risk sign).",
+      "treatment": "Lifestyle changes, reviewing medicines, treating causes, and medicines such as tablets that improve blood flow.",
+      "duration": "Treatment works over weeks.",
+      "side_effects": "ED tablets aren't for everyone (e.g. certain heart medicines); discussed with a clinician.",
+      "followup": "Review response and heart-risk factors.",
+      "recovery": "Often very treatable once the cause is addressed."
+    },
+    "thrush": {
+      "confirm": "Recognised from itch and thick white discharge; a swab if unclear or recurrent.",
+      "treatment": "Antifungal cream or a tablet; avoid irritants. Recurrent thrush should be reviewed.",
+      "duration": "Usually clears in days.",
+      "side_effects": "Creams may irritate briefly.",
+      "followup": "Review if frequent or not improving.",
+      "recovery": "Clears readily with antifungal treatment."
+    },
+    "bv": {
+      "confirm": "Recognised from a thin grey discharge with a fishy smell; a swab or pH test can confirm.",
+      "treatment": "A short course of specific antibiotics (tablets or gel); avoid douching and harsh soaps.",
+      "duration": "Improves within days of treatment.",
+      "side_effects": "Antibiotics can upset the stomach; avoid alcohol with some.",
+      "followup": "Review if it keeps returning.",
+      "recovery": "Treats well; recurrence is common and retreatable."
+    },
+    "sti_cervicitis": {
+      "confirm": "Sexual-health testing (swabs and urine/blood tests).",
+      "treatment": "Specific antibiotics for the infection found, plus testing and treating partners; a sexual-health clinic can do this confidentially and free in many places.",
+      "duration": "Many infections clear with one course.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "A test of cure for some infections; partner notification.",
+      "recovery": "Most STIs are curable or very manageable; testing protects you and others."
+    },
+    "late_period": {
+      "confirm": "Consider pregnancy first (a test), then stress, weight change, illness or hormonal causes.",
+      "treatment": "A pregnancy test; if negative and periods stay irregular, a clinician can look for a cause.",
+      "duration": "Often a one-off; review if it persists.",
+      "side_effects": "Not applicable.",
+      "followup": "See a clinician if periods stay irregular or stop.",
+      "recovery": "Usually benign once pregnancy is excluded; persistent change deserves a check."
+    },
+    "self_harm_support": {
+      "confirm": "This is support, not a diagnosis — you reached out, and that matters.",
+      "treatment": "Reach out to someone you trust or a crisis line; a clinician or therapist can help with what's underneath. In the US/Canada you can call or text 988.",
+      "duration": "Support is ongoing and at your pace.",
+      "side_effects": "Not applicable.",
+      "followup": "A safety plan and regular support help.",
+      "recovery": "Things can get better with support; you don't have to manage this alone."
+    },
+    "disordered_eating": {
+      "confirm": "A gentle, non-judgemental look at eating patterns and feelings.",
+      "treatment": "Talking to a clinician or an eating-disorder service early; support combines therapy and, where needed, nutrition and medical care.",
+      "duration": "Recovery takes time and support.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular supportive review.",
+      "recovery": "Recovery is possible; in the US the National Alliance for Eating Disorders helpline can help."
+    },
+    "dissociation_cond": {
+      "confirm": "Recognised from feeling detached, unreal or 'not here', often linked to stress or trauma.",
+      "treatment": "Grounding techniques, reducing stress, and talking therapy; a mental-health service can help, especially if it follows trauma.",
+      "duration": "Episodes often ease with grounding and support.",
+      "side_effects": "Not applicable.",
+      "followup": "Therapy review if it persists or disrupts life.",
+      "recovery": "Usually improves with support and skills; it's a common stress response."
+    },
+    "gingivitis": {
+      "confirm": "Recognised from red, swollen gums that bleed when brushing.",
+      "treatment": "Thorough but gentle brushing and daily flossing, and a dental/hygienist clean; it reverses with good gum care.",
+      "duration": "Improves within 1–2 weeks of good care.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular dental check-ups.",
+      "recovery": "Fully reversible early; untreated it can progress to gum disease."
+    },
+    "multiple_sclerosis": {
+      "confirm": "A neurologist assesses the pattern, with an MRI scan and sometimes a lumbar puncture.",
+      "treatment": "Treating relapses (often steroids) and, where MS is confirmed, long-term medicines that reduce attacks, plus physiotherapy and symptom care.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Disease-modifying medicines need monitoring; discuss with the specialist.",
+      "followup": "Regular neurology review.",
+      "recovery": "Many people live full lives; early specialist care helps protect function."
+    },
+    "encephalitis": {
+      "confirm": "Urgent hospital assessment — brain imaging, a lumbar puncture and blood tests.",
+      "treatment": "Hospital antiviral or other treatment and intensive support, started urgently. Call your local emergency number now.",
+      "duration": "Hospital stay of days to weeks; recovery over months.",
+      "side_effects": "Treatments and intensive care carry risks.",
+      "followup": "Neurology follow-up and rehabilitation for any after-effects.",
+      "recovery": "Early treatment improves outcomes; recovery varies."
+    },
+    "peripheral_neuropathy": {
+      "confirm": "Blood tests (including sugar and B12) and an examination; sometimes nerve tests.",
+      "treatment": "Treating the cause (e.g. sugar control, B12), and medicines for nerve pain if needed.",
+      "duration": "Depends on the cause; nerves recover slowly.",
+      "side_effects": "Nerve-pain medicines can cause drowsiness.",
+      "followup": "Review of the cause and symptom control.",
+      "recovery": "Often stabilises or improves once the cause is treated."
+    },
+    "essential_tremor": {
+      "confirm": "A clinical assessment of when the tremor happens.",
+      "treatment": "Often none is needed; if it affects daily life, certain medicines can reduce it.",
+      "duration": "A long-term, usually stable tendency.",
+      "side_effects": "Tremor medicines have individual side effects.",
+      "followup": "Review if it worsens or affects daily tasks.",
+      "recovery": "Usually not dangerous and often manageable."
+    },
+    "labyrinthitis": {
+      "confirm": "Recognised from the story and an examination of eye movements and balance.",
+      "treatment": "Rest, fluids, and short-term medicines for the spinning/nausea; balance exercises help recovery.",
+      "duration": "Worst for a few days; settles over 2–6 weeks.",
+      "side_effects": "Anti-sickness/vertigo medicines can cause drowsiness.",
+      "followup": "Review if not improving or hearing is affected.",
+      "recovery": "Most recover fully; balance exercises speed it up."
+    },
+    "menieres": {
+      "confirm": "ENT assessment with hearing tests.",
+      "treatment": "Low-salt diet, medicines to reduce attacks, and treatments for acute vertigo; some need specialist procedures.",
+      "duration": "A long-term condition with attacks and quiet spells.",
+      "side_effects": "Medicines have individual side effects.",
+      "followup": "ENT follow-up and hearing monitoring.",
+      "recovery": "Attacks are managed well in most; hearing can change over time."
+    },
+    "restless_legs_syndrome": {
+      "confirm": "A clinical diagnosis; blood tests check iron.",
+      "treatment": "Iron if low, lifestyle measures (caffeine, alcohol), and specific medicines if severe.",
+      "duration": "A long-term tendency, often manageable.",
+      "side_effects": "Restless-legs medicines have individual side effects.",
+      "followup": "Review response and iron levels.",
+      "recovery": "Often improves a lot once iron and triggers are addressed."
+    },
+    "pneumothorax": {
+      "confirm": "A chest X-ray (sometimes a CT) confirms it.",
+      "treatment": "Small ones may just be watched; larger ones need the air drained in hospital.",
+      "duration": "Hospital stay varies; healing over days to weeks.",
+      "side_effects": "Drain procedures carry risks; it can recur.",
+      "followup": "Follow-up X-ray; avoid flying/diving until cleared.",
+      "recovery": "Most recover fully; some need surgery to prevent recurrence."
+    },
+    "pertussis": {
+      "confirm": "Recognised from the cough pattern; a swab or blood test can confirm.",
+      "treatment": "Antibiotics (most useful early) and keeping away from babies; rest and fluids.",
+      "duration": "Cough can linger for weeks ('100-day cough').",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Public-health follow-up; protect and vaccinate contacts.",
+      "recovery": "Most adults recover fully; vaccination protects babies."
+    },
+    "epiglottitis": {
+      "confirm": "Assessed urgently in hospital by specialists who protect the airway first.",
+      "treatment": "Emergency airway care, antibiotics and intensive monitoring. Call your local emergency number now.",
+      "duration": "Hospital/intensive-care stay of days.",
+      "side_effects": "Significant illness; airway procedures carry risks.",
+      "followup": "ENT follow-up.",
+      "recovery": "With prompt airway care, recovery is usual."
+    },
+    "sleep_apnea": {
+      "confirm": "A sleep study (home or in a lab).",
+      "treatment": "Weight and lifestyle measures and often a CPAP breathing device at night; a dental device for milder cases.",
+      "duration": "A long-term condition, well controlled with treatment.",
+      "side_effects": "CPAP takes getting used to; support helps.",
+      "followup": "Sleep-clinic follow-up to fine-tune treatment.",
+      "recovery": "Energy, mood and heart risk improve a lot with treatment."
+    },
+    "svt": {
+      "confirm": "An ECG during an episode, or a heart monitor, confirms it.",
+      "treatment": "Simple techniques (bearing down, cold water) can stop an attack; some need medicines or a curative procedure (ablation).",
+      "duration": "Attacks come and go; ablation can be a long-term fix.",
+      "side_effects": "Rhythm medicines have individual side effects.",
+      "followup": "Cardiology review to decide on long-term treatment.",
+      "recovery": "Very manageable; ablation cures many cases."
+    },
+    "costochondritis": {
+      "confirm": "A clinical diagnosis once heart and lung causes are considered.",
+      "treatment": "Anti-inflammatory pain relief, heat, and avoiding aggravating activity.",
+      "duration": "Usually settles over a few weeks.",
+      "side_effects": "Anti-inflammatories can irritate the stomach.",
+      "followup": "Review if not improving or red flags appear.",
+      "recovery": "Resolves fully in most."
+    },
+    "postural_hypotension": {
+      "confirm": "Checking blood pressure lying and standing.",
+      "treatment": "Stand slowly, keep hydrated, review medicines; some need added measures.",
+      "duration": "Often improves once the cause is addressed.",
+      "side_effects": "Not applicable.",
+      "followup": "Review medicines and blood pressure.",
+      "recovery": "Usually well controlled with simple measures."
+    },
+    "otitis_externa": {
+      "confirm": "Looking in the ear canal.",
+      "treatment": "Prescription ear drops and keeping the ear dry; painkillers for comfort.",
+      "duration": "Improves within days of drops.",
+      "side_effects": "Drops can sting briefly.",
+      "followup": "Review if not improving or recurring.",
+      "recovery": "Clears well with treatment; keep ears dry to prevent it."
+    },
+    "quinsy": {
+      "confirm": "Examined by a clinician/ENT; sometimes a scan.",
+      "treatment": "Draining the abscess and antibiotics, usually in hospital.",
+      "duration": "Improves quickly once drained; antibiotics for about a week.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "ENT follow-up; recurrent cases may need tonsil removal.",
+      "recovery": "Recovers well with prompt treatment."
+    },
+    "tinnitus": {
+      "confirm": "A hearing test and examination; sometimes a scan for one-sided tinnitus.",
+      "treatment": "Treating any cause, protecting hearing, and sound-therapy or support for bother; no single cure.",
+      "duration": "Often eases or becomes less noticeable over time.",
+      "side_effects": "Not applicable.",
+      "followup": "Audiology follow-up if needed.",
+      "recovery": "Many people habituate and are much less bothered over time."
+    },
+    "sudden_hearing_loss": {
+      "confirm": "Urgent hearing tests and ENT assessment.",
+      "treatment": "Often steroids, started as early as possible; treat any cause found.",
+      "duration": "Treatment is urgent; recovery over weeks.",
+      "side_effects": "Steroids have side effects reviewed by the clinician.",
+      "followup": "ENT/audiology follow-up.",
+      "recovery": "Early treatment improves the chance of recovering hearing."
+    },
+    "glue_ear": {
+      "confirm": "Examining the ears and a hearing test.",
+      "treatment": "Often watchful waiting for a few months; some children need small grommets (ear tubes).",
+      "duration": "Frequently clears within 3 months.",
+      "side_effects": "Grommet surgery carries minor risks.",
+      "followup": "Hearing and speech follow-up.",
+      "recovery": "Most children recover fully; hearing returns when fluid clears."
+    },
+    "inguinal_hernia": {
+      "confirm": "Usually recognised on examination; sometimes an ultrasound.",
+      "treatment": "Many are watched; a repair (often keyhole) is offered if it's growing, painful, or at risk. A trapped hernia is emergency surgery.",
+      "duration": "Elective repair is planned; recovery over weeks.",
+      "side_effects": "Surgery carries the usual risks.",
+      "followup": "Surgical review; return urgently for trapped-hernia signs.",
+      "recovery": "Repair is usually very successful."
+    },
+    "bowel_obstruction": {
+      "confirm": "Hospital examination, blood tests and imaging (X-ray/CT).",
+      "treatment": "Hospital care: rest the bowel (nothing by mouth, a tube, fluids into a vein); some need surgery.",
+      "duration": "Hospital stay of days; longer if surgery is needed.",
+      "side_effects": "Surgery and procedures carry risks.",
+      "followup": "Follow-up addresses the cause.",
+      "recovery": "Many settle with rest; surgery is needed for some causes."
+    },
+    "ibd": {
+      "confirm": "Stool tests, blood tests and usually a camera test (colonoscopy) with biopsies.",
+      "treatment": "Medicines that calm inflammation, specialist diet support, and sometimes surgery; tailored by a gastroenterologist.",
+      "duration": "A long-term condition with flares and remissions.",
+      "side_effects": "Immune-calming medicines need monitoring.",
+      "followup": "Regular gastroenterology review.",
+      "recovery": "Well-managed IBD allows a full life; flares are treated as they come."
+    },
+    "ckd": {
+      "confirm": "Blood tests (kidney function) and a urine test; sometimes a scan.",
+      "treatment": "Controlling blood pressure, sugar and diet, and protecting the kidneys with specific medicines; advanced cases see a kidney specialist.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Medicines are monitored with blood tests.",
+      "followup": "Regular kidney-function review.",
+      "recovery": "Progression is often slowed a lot with good control."
+    },
+    "epididymitis": {
+      "confirm": "Examination and urine tests; sometimes an ultrasound to exclude torsion.",
+      "treatment": "Antibiotics, pain relief, rest and support; STI testing where relevant.",
+      "duration": "Pain eases over days; swelling can take weeks.",
+      "side_effects": "Antibiotics can upset the stomach.",
+      "followup": "Review if not improving; treat partners if an STI.",
+      "recovery": "Recovers well with treatment."
+    },
+    "overactive_bladder": {
+      "confirm": "A bladder diary and a urine test to exclude infection.",
+      "treatment": "Bladder training, cutting caffeine, pelvic-floor exercises, and medicines if needed.",
+      "duration": "Improves over weeks of training.",
+      "side_effects": "Bladder medicines can cause dry mouth/constipation.",
+      "followup": "Review progress; refer if not improving.",
+      "recovery": "Most improve substantially."
+    },
+    "scrotal_swelling": {
+      "confirm": "Examination and usually an ultrasound.",
+      "treatment": "Often just reassurance and monitoring; some are treated if large, uncomfortable, or affecting fertility.",
+      "duration": "Varies; many need no treatment.",
+      "side_effects": "Any procedure carries the usual risks.",
+      "followup": "Review if growing or uncomfortable.",
+      "recovery": "Usually benign and manageable."
+    },
+    "fibroids": {
+      "confirm": "A pelvic examination and ultrasound.",
+      "treatment": "Options range from medicines that reduce bleeding to procedures or surgery, depending on size and symptoms.",
+      "duration": "A long-term condition; fibroids often shrink after menopause.",
+      "side_effects": "Treatments have individual side effects.",
+      "followup": "Gynaecology review to choose treatment.",
+      "recovery": "Symptoms are usually well controlled."
+    },
+    "pelvic_organ_prolapse": {
+      "confirm": "A pelvic examination.",
+      "treatment": "Pelvic-floor physiotherapy, a vaginal pessary, or surgery depending on severity and your wishes.",
+      "duration": "A long-term condition, well managed.",
+      "side_effects": "Pessaries/surgery carry minor risks.",
+      "followup": "Review to adjust treatment.",
+      "recovery": "Symptoms usually improve a lot with treatment."
+    },
+    "ovarian_torsion": {
+      "confirm": "Urgent assessment with an ultrasound (Doppler).",
+      "treatment": "Emergency keyhole surgery to untwist and save the ovary.",
+      "duration": "Surgery is immediate; recovery over a couple of weeks.",
+      "side_effects": "Surgery carries the usual risks.",
+      "followup": "Gynaecology follow-up.",
+      "recovery": "The ovary is usually saved if treated quickly."
+    },
+    "preeclampsia": {
+      "confirm": "Maternity assessment of blood pressure, urine protein and blood tests, with baby monitoring.",
+      "treatment": "Close monitoring, blood-pressure treatment, and timing delivery when needed — the definitive treatment is giving birth. Hospital care.",
+      "duration": "Resolves after delivery; monitored closely before and after.",
+      "side_effects": "Blood-pressure medicines are chosen for pregnancy safety.",
+      "followup": "Maternity follow-up; blood pressure is checked after birth too.",
+      "recovery": "Most recover fully after delivery with good monitoring."
+    },
+    "gestational_diabetes": {
+      "confirm": "A glucose test in pregnancy.",
+      "treatment": "Diet and activity advice, blood-sugar monitoring, and medicine (sometimes insulin) if needed; extra baby monitoring.",
+      "duration": "Usually resolves after birth; raises future diabetes risk.",
+      "side_effects": "Insulin/medicine is managed by the team.",
+      "followup": "Postnatal sugar check and future-risk advice.",
+      "recovery": "Most pregnancies go well with good control."
+    },
+    "psoriasis": {
+      "confirm": "Usually recognised by its appearance.",
+      "treatment": "Moisturisers and prescription creams first; light therapy or tablets/injections for more severe disease.",
+      "duration": "A long-term condition with flares and quiet spells.",
+      "side_effects": "Some treatments need monitoring.",
+      "followup": "Dermatology review for stubborn cases; watch for joint symptoms.",
+      "recovery": "Well controlled in most with the right treatment."
+    },
+    "rosacea": {
+      "confirm": "Recognised by its appearance and triggers.",
+      "treatment": "Trigger avoidance, gentle skincare and sun protection, plus prescription creams or antibiotics.",
+      "duration": "A long-term condition, well managed.",
+      "side_effects": "Treatments have individual side effects.",
+      "followup": "Review to adjust treatment.",
+      "recovery": "Redness and bumps usually improve with treatment."
+    },
+    "fungal_nail": {
+      "confirm": "A nail clipping can confirm the fungus.",
+      "treatment": "Antifungal nail paint for mild cases, or tablets for more; treatment is long.",
+      "duration": "Nails grow slowly, so cure takes 6–12 months.",
+      "side_effects": "Antifungal tablets need monitoring.",
+      "followup": "Review response over months.",
+      "recovery": "Usually clears with patient treatment."
+    },
+    "warts": {
+      "confirm": "Recognised by appearance.",
+      "treatment": "Over-the-counter salicylic acid or freezing; many resolve untreated.",
+      "duration": "Can take weeks to months to clear.",
+      "side_effects": "Treatments can irritate nearby skin.",
+      "followup": "See a clinician if unsure of the diagnosis.",
+      "recovery": "Harmless and usually clears in time."
+    },
+    "hand_foot_mouth": {
+      "confirm": "Recognised by the typical spots.",
+      "treatment": "Supportive care — fluids, pain/fever relief; it is viral so antibiotics don't help.",
+      "duration": "Usually 7–10 days.",
+      "side_effects": "Not applicable.",
+      "followup": "Re-check if not drinking or very unwell.",
+      "recovery": "Children recover fully."
+    },
+    "cataracts": {
+      "confirm": "An eye examination by an optician or ophthalmologist.",
+      "treatment": "A short, very effective operation to replace the cloudy lens, when vision affects daily life.",
+      "duration": "Surgery is quick; vision improves within weeks.",
+      "side_effects": "Surgery carries small risks.",
+      "followup": "Eye follow-up after surgery.",
+      "recovery": "Vision is usually restored well."
+    },
+    "macular_degeneration": {
+      "confirm": "An eye examination and retinal scans.",
+      "treatment": "Monitoring and lifestyle measures for the common 'dry' type; eye injections can help the 'wet' type if caught early.",
+      "duration": "A long-term condition; early treatment protects sight.",
+      "side_effects": "Eye injections carry small risks.",
+      "followup": "Regular eye follow-up; use an Amsler grid at home.",
+      "recovery": "Early treatment gives the best chance of preserving vision."
+    },
+    "stye": {
+      "confirm": "Recognised by appearance.",
+      "treatment": "Warm compresses; avoid squeezing. A clinician can help if it won't settle.",
+      "duration": "Usually clears within 1–2 weeks.",
+      "side_effects": "Not applicable.",
+      "followup": "See a clinician if it grows or recurs.",
+      "recovery": "Settles fully in most."
+    },
+    "corneal_abrasion": {
+      "confirm": "An eye examination, often with a dye to show the scratch.",
+      "treatment": "Lubricating or antibiotic drops; most heal in a day or two. Don't wear contact lenses until healed.",
+      "duration": "Usually heals within 24–48 hours.",
+      "side_effects": "Drops can sting briefly.",
+      "followup": "Review if not improving.",
+      "recovery": "Heals fully in most, quickly."
+    },
+    "subconjunctival_hemorrhage": {
+      "confirm": "Recognised by appearance; blood pressure may be checked.",
+      "treatment": "No treatment needed; it clears like a bruise.",
+      "duration": "Fades over 1–2 weeks.",
+      "side_effects": "Not applicable.",
+      "followup": "See a clinician if it recurs or you're on blood thinners.",
+      "recovery": "Harmless and self-resolving in most."
+    },
+    "bursitis": {
+      "confirm": "A clinical diagnosis; fluid may be drawn if infection is suspected.",
+      "treatment": "Rest, ice, padding, and anti-inflammatory pain relief; a clinician can drain or inject stubborn cases.",
+      "duration": "Usually settles over 1–3 weeks.",
+      "side_effects": "Anti-inflammatories can irritate the stomach.",
+      "followup": "Review if not improving or if infected.",
+      "recovery": "Resolves well with rest."
+    },
+    "frozen_shoulder": {
+      "confirm": "A clinical diagnosis from the stiffness pattern.",
+      "treatment": "Physiotherapy, pain relief, and sometimes a steroid injection; it recovers in stages.",
+      "duration": "Can take months to a couple of years.",
+      "side_effects": "Injections carry small risks.",
+      "followup": "Physiotherapy review.",
+      "recovery": "Most regain good movement over time."
+    },
+    "ankylosing_spondylitis": {
+      "confirm": "Blood tests and imaging (X-ray/MRI) assessed by rheumatology.",
+      "treatment": "Regular exercise and physiotherapy, anti-inflammatories, and specialist medicines for more active disease.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Medicines need monitoring.",
+      "followup": "Rheumatology follow-up.",
+      "recovery": "Staying active keeps the spine mobile; treatment controls symptoms well."
+    },
+    "osteoporosis": {
+      "confirm": "A bone-density (DEXA) scan and blood tests.",
+      "treatment": "Calcium and vitamin D, weight-bearing exercise, and bone-strengthening medicines; treat any cause.",
+      "duration": "A long-term condition managed over years.",
+      "side_effects": "Bone medicines have specific instructions and side effects.",
+      "followup": "Review bone density and fracture risk.",
+      "recovery": "Treatment substantially lowers future fracture risk."
+    },
+    "tennis_elbow": {
+      "confirm": "A clinical diagnosis from the tender spot and grip pain.",
+      "treatment": "Relative rest, a brace, pain relief and physiotherapy; stubborn cases have other options.",
+      "duration": "Usually improves over weeks to months.",
+      "side_effects": "Anti-inflammatories can irritate the stomach.",
+      "followup": "Physiotherapy review.",
+      "recovery": "Most recover fully with load management."
+    },
+    "ocd": {
+      "confirm": "A mental-health assessment of the thoughts and rituals.",
+      "treatment": "Talking therapy (CBT with exposure and response prevention) and, for some, medication.",
+      "duration": "Therapy runs over weeks to months.",
+      "side_effects": "Any medication's effects are reviewed with the prescriber.",
+      "followup": "Regular therapy review.",
+      "recovery": "Many improve a great deal with the right therapy."
+    },
+    "postnatal_depression": {
+      "confirm": "A supportive assessment by your GP, midwife or health visitor.",
+      "treatment": "Support, talking therapy, and medication where needed (options are compatible with breastfeeding).",
+      "duration": "Improves over weeks to months with support.",
+      "side_effects": "Any medication is chosen with feeding in mind.",
+      "followup": "Regular review; involve people you trust.",
+      "recovery": "Most recover fully with support — you don't have to manage alone."
+    },
+    "chickenpox": {
+      "confirm": "Recognised by the typical rash.",
+      "treatment": "Supportive care — cooling lotions, antihistamines for itch, fluids and fever relief; antivirals for some at-risk people.",
+      "duration": "Usually 1–2 weeks; contagious until spots crust over.",
+      "side_effects": "Not applicable.",
+      "followup": "Re-check if very unwell or spots look infected.",
+      "recovery": "Most recover fully; vaccination is available in some places."
+    },
+    "mumps": {
+      "confirm": "Recognised from the swelling; a saliva/blood test can confirm.",
+      "treatment": "Supportive care — rest, fluids, pain/fever relief; stay away from others.",
+      "duration": "Usually about a week.",
+      "side_effects": "Not applicable.",
+      "followup": "Public-health follow-up; check vaccination of contacts.",
+      "recovery": "Most recover fully; vaccination prevents it."
+    },
+    "chemical_ingestion": {
+      "confirm": "Hospital assessment; the product and amount guide treatment, so bring the container.",
+      "treatment": "Emergency care; some chemicals have specific treatments. Do not induce vomiting. In the US and Canada call Poison Control 1-800-222-1222; elsewhere call your local poison centre or emergency number.",
+      "duration": "Depends on the substance.",
+      "side_effects": "Varies with the chemical and treatment.",
+      "followup": "Follow-up for any throat or stomach injury.",
+      "recovery": "Prompt poison-centre advice greatly improves outcomes."
+    },
+    "poison_ingestion": {
+      "confirm": "Hospital/Poison-Control assessment; identifying the substance guides treatment.",
+      "treatment": "Emergency care, antidotes for some poisons, and supportive treatment. In the US and Canada call Poison Control 1-800-222-1222; elsewhere call your local poison centre or emergency number.",
+      "duration": "Depends on the poison.",
+      "side_effects": "Varies with the substance and antidote.",
+      "followup": "Follow-up as advised; some poisons act with delay.",
+      "recovery": "Early poison-centre advice is often life-saving."
+    },
+    "alcohol_poisoning": {
+      "confirm": "Recognised from the story and level of responsiveness.",
+      "treatment": "Emergency hospital care: monitoring, fluids, and protecting the airway. Call your local emergency number now.",
+      "duration": "Hospital observation for hours.",
+      "side_effects": "Not applicable.",
+      "followup": "Support for alcohol use where wanted.",
+      "recovery": "Most recover with prompt care; it can be fatal if ignored."
+    },
+    "dental_trauma": {
+      "confirm": "A dentist assesses the tooth and may X-ray it.",
+      "treatment": "Re-implanting or splinting a knocked-out tooth (best within an hour), or repairing a chip/filling.",
+      "duration": "Prompt for trauma; repairs are quick.",
+      "side_effects": "Dental procedures carry minor risks.",
+      "followup": "Dental follow-up.",
+      "recovery": "A quickly re-implanted tooth can often be saved."
+    },
+    "child_limb_problem": {
+      "confirm": "Examination, sometimes an X-ray or blood tests/ultrasound.",
+      "treatment": "Depends on the cause — from rest for a minor strain to urgent treatment for infection or fracture.",
+      "duration": "Varies with the cause.",
+      "side_effects": "Depends on treatment.",
+      "followup": "Review until walking/using the limb normally.",
+      "recovery": "Most causes do well when found and treated early."
+    },
+    "orbital_eye": {
+      "confirm": "Urgent eye/ENT assessment, often with a scan.",
+      "treatment": "Depends on the cause — steroids for optic neuritis, or urgent antibiotics (sometimes surgery) for orbital infection.",
+      "duration": "Treatment is urgent; recovery over weeks.",
+      "side_effects": "Treatments carry risks reviewed by the specialist.",
+      "followup": "Eye follow-up.",
+      "recovery": "Early treatment protects vision."
+    },
+    "bradycardia_cond": {
+      "confirm": "An ECG, and sometimes a heart monitor, to check the rhythm.",
+      "treatment": "Reviewing medicines that slow the heart, treating any cause, and sometimes a pacemaker.",
+      "duration": "Depends on the cause.",
+      "side_effects": "Any procedure carries risks.",
+      "followup": "Cardiology review.",
+      "recovery": "Often very treatable once the cause is found."
+    },
+    "chemical_burn": {
+      "confirm": "Assessed by the depth and the chemical involved.",
+      "treatment": "Prolonged irrigation first, then wound/eye care; some chemicals need specific treatment.",
+      "duration": "Healing over days to weeks depending on depth.",
+      "side_effects": "Scarring risk with deeper burns.",
+      "followup": "Wound or eye follow-up.",
+      "recovery": "Early, thorough rinsing greatly reduces damage."
+    },
+    "electric_injury": {
+      "confirm": "Assessment of the heart (ECG) and for entry/exit burns.",
+      "treatment": "Monitoring the heart rhythm and treating burns; most minor household shocks need a check and reassurance.",
+      "duration": "Monitoring for hours; burns heal over weeks.",
+      "side_effects": "Depends on injuries.",
+      "followup": "Follow-up for burns or rhythm concerns.",
+      "recovery": "Most recover fully; the main risks are rhythm problems and deep burns."
+    },
+    "near_drowning": {
+      "confirm": "Assessment of breathing and oxygen, sometimes a chest X-ray.",
+      "treatment": "Oxygen and observation; more support if the lungs are affected.",
+      "duration": "Observation for several hours to a day.",
+      "side_effects": "Depends on severity.",
+      "followup": "Follow-up if the lungs were affected.",
+      "recovery": "Most recover fully; observation catches delayed breathing problems."
+    },
+    "hyperglycemia": {
+      "confirm": "A blood sugar and ketone check.",
+      "treatment": "Follow your sick-day rules, fluids, and insulin adjustment as advised; DKA needs emergency hospital care.",
+      "duration": "Depends on the cause.",
+      "side_effects": "Insulin changes are guided by your team.",
+      "followup": "Diabetes-team review of control.",
+      "recovery": "Usually settles with prompt management; learn the DKA warning signs."
+    },
+    "hypoxia": {
+      "confirm": "Oxygen measurement and assessment of breathing; a chest X-ray or blood tests may follow.",
+      "treatment": "Oxygen and treating the cause in hospital. Call your local emergency number for severe breathlessness or blue lips.",
+      "duration": "Depends on the cause.",
+      "side_effects": "Depends on treatment.",
+      "followup": "Follow-up for the underlying cause.",
+      "recovery": "Depends on the cause; low oxygen always needs prompt assessment."
+    },
+    "missed_dialysis_cond": {
+      "confirm": "Assessment of fluid, potassium and kidney bloods.",
+      "treatment": "Rescheduling dialysis urgently; emergency treatment if potassium or fluid is dangerous.",
+      "duration": "Addressed at the next session.",
+      "side_effects": "Not applicable.",
+      "followup": "Renal-unit follow-up.",
+      "recovery": "Usually manageable if dealt with promptly."
+    },
+    "priapism": {
+      "confirm": "Urgent urology assessment; a blood sample from the penis guides treatment.",
+      "treatment": "Draining blood and medicines to reverse it; some need a procedure. Time matters.",
+      "duration": "Treated urgently; recovery over days.",
+      "side_effects": "Procedures carry risks.",
+      "followup": "Urology follow-up to find a cause.",
+      "recovery": "Treated quickly, outcomes are good; delay risks lasting problems."
+    },
+    "paraphimosis": {
+      "confirm": "A clinical diagnosis.",
+      "treatment": "Reducing the foreskin (sometimes after local measures or a small procedure); circumcision may be advised later.",
+      "duration": "Treated urgently; recovery over days.",
+      "side_effects": "Procedures carry minor risks.",
+      "followup": "Urology follow-up.",
+      "recovery": "Reduced promptly, it resolves well."
+    },
+    "omphalitis": {
+      "confirm": "Urgent assessment of the baby, with blood tests.",
+      "treatment": "Hospital antibiotics into a vein; babies are watched closely.",
+      "duration": "Hospital stay of days.",
+      "side_effects": "Antibiotics carry minor risks.",
+      "followup": "Paediatric follow-up.",
+      "recovery": "Early treatment gives a full recovery."
+    },
+    "gangrene": {
+      "confirm": "Urgent surgical assessment, blood tests and scans.",
+      "treatment": "Emergency care: antibiotics, restoring blood flow, and removing dead tissue; sometimes amputation.",
+      "duration": "Hospital stay and recovery over weeks.",
+      "side_effects": "Major surgery with possible tissue loss.",
+      "followup": "Surgical and wound follow-up.",
+      "recovery": "Outcome depends on how fast treatment starts."
+    },
+    "exertional_syncope_cond": {
+      "confirm": "Heart tests — an ECG, sometimes an echocardiogram and monitoring.",
+      "treatment": "Depends on the cause; avoid strenuous exertion until assessed.",
+      "duration": "Assessment over days to weeks.",
+      "side_effects": "Depends on treatment.",
+      "followup": "Cardiology review.",
+      "recovery": "Many causes are treatable once found."
+    },
+    "gambling_disorder": {
+      "confirm": "A supportive conversation about the impact and any linked low mood or anxiety.",
+      "treatment": "Talking therapy (CBT), support groups, and practical money safeguards; treat any depression/anxiety.",
+      "duration": "Recovery is a journey with support.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular support and review.",
+      "recovery": "Many people regain control with the right help."
+    },
+    "tuberculosis": {
+      "confirm": "A chest X-ray and sputum tests; a skin or blood test may be used.",
+      "treatment": "A combination of antibiotics taken for about 6 months — finishing the full course is what cures it and stops spread.",
+      "duration": "Months of treatment; most feel better within weeks.",
+      "side_effects": "Medicines can affect the liver and need monitoring.",
+      "followup": "Regular review and support to complete treatment; close contacts are checked.",
+      "recovery": "Curable when treatment is completed fully."
+    },
+    "rsv_bronchiolitis": {
+      "confirm": "A clinical check of breathing and oxygen.",
+      "treatment": "Mostly supportive — small frequent feeds, keeping airways clear; some babies need oxygen or help feeding in hospital.",
+      "duration": "Worst around days 3-5, easing over 1-2 weeks.",
+      "side_effects": "Not applicable.",
+      "followup": "Review if breathing or feeding worsens.",
+      "recovery": "Most babies recover fully."
+    },
+    "norovirus": {
+      "confirm": "Usually recognised from the pattern; no test needed.",
+      "treatment": "Fluids in small frequent sips, rest; oral rehydration salts help. Antidiarrhoeals are generally avoided.",
+      "duration": "Settles in 1-3 days.",
+      "side_effects": "Not applicable.",
+      "followup": "Seek care if you can't keep fluids down or show dehydration.",
+      "recovery": "Full recovery is usual."
+    },
+    "head_lice": {
+      "confirm": "Finding live lice on wet-combing confirms it.",
+      "treatment": "Wet-combing every few days, or a pharmacy lotion repeated as directed; treat the same day as household contacts who also have them.",
+      "duration": "Combing continues over about 2 weeks.",
+      "side_effects": "Lotions can irritate the scalp.",
+      "followup": "Re-check after treatment.",
+      "recovery": "Clears with correct treatment."
+    },
+    "malaria": {
+      "confirm": "An urgent blood test (repeated if first is negative).",
+      "treatment": "Antimalarial medicines; severe cases are treated in hospital.",
+      "duration": "Treated over days; severe disease needs intensive care.",
+      "side_effects": "Medicines have side effects.",
+      "followup": "Follow-up to confirm clearance.",
+      "recovery": "Treated early, most recover fully; delay is dangerous."
+    },
+    "dengue": {
+      "confirm": "A blood test and monitoring, especially of platelets.",
+      "treatment": "Supportive care — fluids and paracetamol; watch for warning signs. Avoid NSAIDs/aspirin.",
+      "duration": "Fever 2-7 days; warning phase as fever falls.",
+      "side_effects": "Not applicable.",
+      "followup": "Close review during the warning window.",
+      "recovery": "Most recover fully with careful monitoring."
+    },
+    "typhoid": {
+      "confirm": "Blood (and sometimes stool) cultures.",
+      "treatment": "A course of antibiotics; some need hospital care.",
+      "duration": "Improves over days on treatment.",
+      "side_effects": "Antibiotic side effects possible.",
+      "followup": "Follow-up to confirm clearance; household hygiene advice.",
+      "recovery": "Treated promptly, recovery is good."
+    },
+    "rubella": {
+      "confirm": "Diagnosis is clinical, confirmed by a blood test; pregnancy is checked.",
+      "treatment": "Supportive care — rest and fluids; there is no specific antiviral.",
+      "duration": "Rash clears in a few days.",
+      "side_effects": "Not applicable.",
+      "followup": "Public-health notification; pregnant contacts are advised.",
+      "recovery": "Full recovery; prevented by MMR vaccination."
+    },
+    "androgenetic_alopecia": {
+      "confirm": "A clinical look at the pattern; bloods if another cause is suspected.",
+      "treatment": "Options discussed with a clinician (e.g. topical minoxidil); no treatment is also a valid choice.",
+      "duration": "Any treatment is ongoing; effects take months.",
+      "side_effects": "Topical treatments can irritate the scalp.",
+      "followup": "Review progress over months.",
+      "recovery": "A normal part of ageing for many; treatments can slow it for some."
+    },
+    "alopecia_areata": {
+      "confirm": "A clinical examination; sometimes blood tests.",
+      "treatment": "Options include steroid creams or injections; many patches regrow on their own.",
+      "duration": "Regrowth over months is common.",
+      "side_effects": "Steroid treatments have local side effects.",
+      "followup": "Dermatology review for widespread loss.",
+      "recovery": "Often regrows, though it can recur."
+    },
+    "telogen_effluvium": {
+      "confirm": "A history of a trigger 2-4 months earlier; bloods if prolonged.",
+      "treatment": "No specific treatment needed — address the trigger, eat well; be gentle with the hair.",
+      "duration": "Regrows over 6-12 months.",
+      "side_effects": "Not applicable.",
+      "followup": "Review if it lasts beyond 6 months.",
+      "recovery": "Hair density usually returns to normal."
+    },
+    "sleep_disorder": {
+      "confirm": "A sleep history; sometimes a sleep study or specialist review.",
+      "treatment": "Depends on the cause — sleep hygiene, a dental night guard for grinding, or sleep-clinic treatment for narcolepsy/REM behaviour disorder.",
+      "duration": "Assessment over weeks.",
+      "side_effects": "Depends on treatment.",
+      "followup": "GP then sleep clinic if needed.",
+      "recovery": "Many sleep disorders improve with the right diagnosis."
+    },
+    "alcohol_use_disorder": {
+      "confirm": "A supportive conversation about your drinking and any linked low mood or anxiety.",
+      "treatment": "Structured support, counselling, and sometimes medication; medically supervised withdrawal if you drink heavily daily.",
+      "duration": "Recovery is a journey with support.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular review; treat linked depression/anxiety.",
+      "recovery": "Many people cut down or stop with the right help."
+    },
+    "breastfeeding_support": {
+      "confirm": "A feeding assessment by a midwife, health visitor or lactation specialist.",
+      "treatment": "Positioning and latch help, feeding support, treating any thrush or mastitis; formula top-ups if needed — fed is best.",
+      "duration": "Usually improves within days of good support.",
+      "side_effects": "Not applicable.",
+      "followup": "Ongoing feeding support.",
+      "recovery": "Most feeding problems resolve with help."
+    },
+    "postnatal_wound_infection": {
+      "confirm": "A look at the wound and your temperature; sometimes a swab.",
+      "treatment": "Antibiotics and wound care; occasionally the wound needs draining.",
+      "duration": "Improves over days on treatment.",
+      "side_effects": "Antibiotic side effects possible.",
+      "followup": "Midwife/GP follow-up.",
+      "recovery": "Treated promptly, heals well."
+    },
+    "post_dates_pregnancy": {
+      "confirm": "Midwife checks of you and the baby (movements, sometimes a scan/monitoring).",
+      "treatment": "Monitoring, a membrane sweep, and planned induction if needed.",
+      "duration": "Managed until baby arrives.",
+      "side_effects": "Discussed with your midwife.",
+      "followup": "Regular maternity checks.",
+      "recovery": "Routine situation with close monitoring."
+    },
+    "benign_skin_lesion": {
+      "confirm": "A clinical look; a dermatologist confirms anything uncertain.",
+      "treatment": "Usually none; removal is possible if it bothers you or to confirm the diagnosis.",
+      "duration": "Stable over time.",
+      "side_effects": "Removal carries minor scarring.",
+      "followup": "Review if it changes.",
+      "recovery": "Benign lesions are harmless; the key is watching for change."
+    },
+    "developmental_concern": {
+      "confirm": "A developmental review by a GP, health visitor or paediatrician.",
+      "treatment": "Depends on findings — speech and language therapy, early-years support, physiotherapy, or reassurance and monitoring.",
+      "duration": "Support is ongoing.",
+      "side_effects": "Not applicable.",
+      "followup": "Regular developmental checks.",
+      "recovery": "Early support improves outcomes; many concerns resolve or are well supported."
+    },
+    "enuresis": {
+      "confirm": "A GP review; a urine test if infection or diabetes is possible.",
+      "treatment": "Reassurance, fluid timing, a bedwetting alarm, sometimes desmopressin; treat any constipation.",
+      "duration": "Improves over months.",
+      "side_effects": "Medication side effects possible.",
+      "followup": "GP follow-up.",
+      "recovery": "Most children become dry with time and support."
+    },
+    "catheter_problem": {
+      "confirm": "A check of the catheter and bladder; sometimes a bladder scan.",
+      "treatment": "Flushing or changing the catheter by a nurse; treat any infection.",
+      "duration": "Resolved once draining is restored.",
+      "side_effects": "Minor discomfort on change.",
+      "followup": "District nurse follow-up.",
+      "recovery": "Resolves once the catheter drains again."
+    },
+    "occupational_exposure": {
+      "confirm": "A GP review with an occupational history; targeted tests (e.g. blood lead) as indicated.",
+      "treatment": "Removing the exposure, specific treatment if a level is high, and workplace controls.",
+      "duration": "Depends on exposure.",
+      "side_effects": "Depends on treatment.",
+      "followup": "GP and occupational health follow-up.",
+      "recovery": "Outcomes are good when exposure is identified and stopped."
+    },
+    "contraception_concern": {
+      "confirm": "A clinical check, sometimes an examination or scan to confirm placement.",
+      "treatment": "Reassurance, repositioning or replacing a coil, or switching method as you prefer.",
+      "duration": "Resolved at the appointment.",
+      "side_effects": "Minor discomfort on examination.",
+      "followup": "Sexual-health/GP follow-up.",
+      "recovery": "Easily sorted with a check."
+    },
+    "acute_urinary_retention": {
+      "confirm": "A bladder scan and examination; blood tests for kidney function.",
+      "treatment": "Draining the bladder with a catheter for relief, then finding and treating the cause (prostate, medication, infection).",
+      "duration": "Relief is immediate once drained; follow-up over weeks.",
+      "side_effects": "Catheter carries minor infection risk.",
+      "followup": "Urology review.",
+      "recovery": "Good once the cause is treated."
+    },
+    "melena_gi_bleed": {
+      "confirm": "Assessment of your pulse and blood pressure, blood tests, and usually a camera test (endoscopy) to find the source.",
+      "treatment": "Fluids/transfusion if needed and treatment of the cause (e.g. an ulcer) at endoscopy; stopping any contributing medicines.",
+      "duration": "Urgent care over hours to days.",
+      "side_effects": "Procedures carry small risks.",
+      "followup": "Gastroenterology follow-up.",
+      "recovery": "Good when the bleeding source is found and treated early."
+    },
+    "raised_icp_infant": {
+      "confirm": "Urgent assessment of the baby, often with blood tests, a scan and sometimes a lumbar puncture.",
+      "treatment": "Depends on the cause — antibiotics for infection, and measures to relieve pressure; babies are watched closely in hospital.",
+      "duration": "Hospital care.",
+      "side_effects": "Procedures carry risks.",
+      "followup": "Paediatric follow-up.",
+      "recovery": "Best when treated early — do not wait."
+    },
+    "perianal_lump_derm": {
+      "confirm": "A clinician looks at the area; an abscess is diagnosed by examination.",
+      "treatment": "Warm salt-water (sitz) baths, keeping the area clean and dry; a clinician may drain an abscess (a small procedure) and prescribe antibiotics if infection is spreading. A pilonidal sinus that keeps coming back can need minor surgery.",
+      "duration": "Simple cases ease over days; an abscess settles after drainage.",
+      "side_effects": "Drainage is done with numbing; minor soreness after.",
+      "followup": "See a clinician if it grows, keeps returning, or you develop fever.",
+      "recovery": "Good — most resolve fully; recurrent pilonidal disease may need referral."
+    }
+  },
+  "counts": {
+    "plans": 286
+  }
+}

@@ -1,0 +1,4979 @@
+{
+  "schema": "hive.doctor.medsafety/v1",
+  "title": "HIVE Doctor — Medication Safety Reference",
+  "author": "Jeff",
+  "version": "0.1.0",
+  "updated": "2026-11-24",
+  "review_status": "UNVERIFIED",
+  "safety": "A reference safety-net only. It flags well-known serious interactions and duplicate medicines so you can raise them with a professional — especially when more than one doctor is prescribing. It is NOT a complete interaction checker, never says a combination is safe, and gives no doses. Never start, stop or change a medicine based on this — ask your pharmacist or doctor. Emergencies: call your local number (911/112/999). Pending clinician sign-off.",
+  "severity_order": [
+    "contraindicated",
+    "major",
+    "moderate"
+  ],
+  "severity_label": {
+    "contraindicated": "Should not be combined",
+    "major": "Serious — get it reviewed",
+    "moderate": "Caution — worth checking"
+  },
+  "drugs": {
+    "warfarin": {
+      "name": "warfarin",
+      "cls": "anticoagulant",
+      "syn": [
+        "warfarin",
+        "coumadin",
+        "jantoven"
+      ],
+      "food_note": "Keep vitamin-K foods (leafy greens) STEADY week to week rather than swinging; tell your INR clinic. Avoid large cranberry/alcohol swings."
+    },
+    "apixaban": {
+      "name": "apixaban",
+      "cls": "doac",
+      "syn": [
+        "apixaban",
+        "eliquis"
+      ]
+    },
+    "rivaroxaban": {
+      "name": "rivaroxaban",
+      "cls": "doac",
+      "syn": [
+        "rivaroxaban",
+        "xarelto"
+      ]
+    },
+    "dabigatran": {
+      "name": "dabigatran",
+      "cls": "doac",
+      "syn": [
+        "dabigatran",
+        "pradaxa"
+      ]
+    },
+    "edoxaban": {
+      "name": "edoxaban",
+      "cls": "doac",
+      "syn": [
+        "edoxaban",
+        "lixiana",
+        "savaysa"
+      ]
+    },
+    "aspirin": {
+      "name": "aspirin",
+      "cls": "antiplatelet",
+      "syn": [
+        "aspirin",
+        "asa",
+        "acetylsalicylic",
+        "ecotrin"
+      ]
+    },
+    "clopidogrel": {
+      "name": "clopidogrel",
+      "cls": "antiplatelet",
+      "syn": [
+        "clopidogrel",
+        "plavix"
+      ]
+    },
+    "ibuprofen": {
+      "name": "ibuprofen",
+      "cls": "nsaid",
+      "syn": [
+        "ibuprofen",
+        "advil",
+        "motrin",
+        "nurofen",
+        "brufen"
+      ],
+      "with_food": true
+    },
+    "naproxen": {
+      "name": "naproxen",
+      "cls": "nsaid",
+      "syn": [
+        "naproxen",
+        "aleve",
+        "naprosyn"
+      ],
+      "with_food": true
+    },
+    "diclofenac": {
+      "name": "diclofenac",
+      "cls": "nsaid",
+      "syn": [
+        "diclofenac",
+        "voltaren",
+        "voltarol"
+      ],
+      "with_food": true
+    },
+    "celecoxib": {
+      "name": "celecoxib",
+      "cls": "nsaid",
+      "syn": [
+        "celecoxib",
+        "celebrex"
+      ],
+      "with_food": true
+    },
+    "meloxicam": {
+      "name": "meloxicam",
+      "cls": "nsaid",
+      "syn": [
+        "meloxicam",
+        "mobic"
+      ],
+      "with_food": true
+    },
+    "sertraline": {
+      "name": "sertraline",
+      "cls": "ssri_snri",
+      "syn": [
+        "sertraline",
+        "zoloft",
+        "lustral"
+      ]
+    },
+    "fluoxetine": {
+      "name": "fluoxetine",
+      "cls": "ssri_snri",
+      "syn": [
+        "fluoxetine",
+        "prozac"
+      ]
+    },
+    "citalopram": {
+      "name": "citalopram",
+      "cls": "ssri_snri",
+      "syn": [
+        "citalopram",
+        "celexa",
+        "cipramil"
+      ]
+    },
+    "escitalopram": {
+      "name": "escitalopram",
+      "cls": "ssri_snri",
+      "syn": [
+        "escitalopram",
+        "lexapro",
+        "cipralex"
+      ]
+    },
+    "paroxetine": {
+      "name": "paroxetine",
+      "cls": "ssri_snri",
+      "syn": [
+        "paroxetine",
+        "paxil",
+        "seroxat"
+      ]
+    },
+    "venlafaxine": {
+      "name": "venlafaxine",
+      "cls": "ssri_snri",
+      "syn": [
+        "venlafaxine",
+        "effexor"
+      ]
+    },
+    "duloxetine": {
+      "name": "duloxetine",
+      "cls": "ssri_snri",
+      "syn": [
+        "duloxetine",
+        "cymbalta"
+      ]
+    },
+    "phenelzine": {
+      "name": "phenelzine",
+      "cls": "maoi",
+      "syn": [
+        "phenelzine",
+        "nardil"
+      ]
+    },
+    "tranylcypromine": {
+      "name": "tranylcypromine",
+      "cls": "maoi",
+      "syn": [
+        "tranylcypromine",
+        "parnate"
+      ]
+    },
+    "selegiline": {
+      "name": "selegiline",
+      "cls": "maoi",
+      "syn": [
+        "selegiline",
+        "eldepryl"
+      ]
+    },
+    "linezolid": {
+      "name": "linezolid",
+      "cls": "maoi",
+      "syn": [
+        "linezolid",
+        "zyvox"
+      ]
+    },
+    "sumatriptan": {
+      "name": "sumatriptan",
+      "cls": "triptan",
+      "syn": [
+        "sumatriptan",
+        "imitrex",
+        "imigran"
+      ]
+    },
+    "rizatriptan": {
+      "name": "rizatriptan",
+      "cls": "triptan",
+      "syn": [
+        "rizatriptan",
+        "maxalt"
+      ]
+    },
+    "codeine": {
+      "name": "codeine",
+      "cls": "opioid",
+      "syn": [
+        "codeine"
+      ]
+    },
+    "tramadol": {
+      "name": "tramadol",
+      "cls": "opioid_serotonergic",
+      "syn": [
+        "tramadol",
+        "ultram"
+      ]
+    },
+    "morphine": {
+      "name": "morphine",
+      "cls": "opioid",
+      "syn": [
+        "morphine",
+        "ms contin"
+      ]
+    },
+    "oxycodone": {
+      "name": "oxycodone",
+      "cls": "opioid",
+      "syn": [
+        "oxycodone",
+        "oxycontin",
+        "percocet"
+      ]
+    },
+    "fentanyl": {
+      "name": "fentanyl",
+      "cls": "opioid",
+      "syn": [
+        "fentanyl"
+      ]
+    },
+    "hydrocodone": {
+      "name": "hydrocodone",
+      "cls": "opioid",
+      "syn": [
+        "hydrocodone",
+        "vicodin",
+        "norco"
+      ]
+    },
+    "diazepam": {
+      "name": "diazepam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "diazepam",
+        "valium"
+      ]
+    },
+    "lorazepam": {
+      "name": "lorazepam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "lorazepam",
+        "ativan"
+      ]
+    },
+    "alprazolam": {
+      "name": "alprazolam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "alprazolam",
+        "xanax"
+      ]
+    },
+    "clonazepam": {
+      "name": "clonazepam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "clonazepam",
+        "klonopin",
+        "rivotril"
+      ]
+    },
+    "zopiclone": {
+      "name": "zopiclone",
+      "cls": "zdrug",
+      "syn": [
+        "zopiclone",
+        "imovane"
+      ]
+    },
+    "zolpidem": {
+      "name": "zolpidem",
+      "cls": "zdrug",
+      "syn": [
+        "zolpidem",
+        "ambien"
+      ]
+    },
+    "lisinopril": {
+      "name": "lisinopril",
+      "cls": "ace",
+      "syn": [
+        "lisinopril",
+        "zestril",
+        "prinivil"
+      ]
+    },
+    "ramipril": {
+      "name": "ramipril",
+      "cls": "ace",
+      "syn": [
+        "ramipril",
+        "altace"
+      ]
+    },
+    "enalapril": {
+      "name": "enalapril",
+      "cls": "ace",
+      "syn": [
+        "enalapril",
+        "vasotec"
+      ]
+    },
+    "perindopril": {
+      "name": "perindopril",
+      "cls": "ace",
+      "syn": [
+        "perindopril",
+        "coversyl"
+      ]
+    },
+    "losartan": {
+      "name": "losartan",
+      "cls": "arb",
+      "syn": [
+        "losartan",
+        "cozaar"
+      ]
+    },
+    "candesartan": {
+      "name": "candesartan",
+      "cls": "arb",
+      "syn": [
+        "candesartan",
+        "atacand"
+      ]
+    },
+    "valsartan": {
+      "name": "valsartan",
+      "cls": "arb",
+      "syn": [
+        "valsartan",
+        "diovan"
+      ]
+    },
+    "irbesartan": {
+      "name": "irbesartan",
+      "cls": "arb",
+      "syn": [
+        "irbesartan",
+        "avapro"
+      ]
+    },
+    "spironolactone": {
+      "name": "spironolactone",
+      "cls": "k_sparing",
+      "syn": [
+        "spironolactone",
+        "aldactone"
+      ]
+    },
+    "amiloride": {
+      "name": "amiloride",
+      "cls": "k_sparing",
+      "syn": [
+        "amiloride"
+      ]
+    },
+    "potassium": {
+      "name": "potassium supplement",
+      "cls": "potassium",
+      "syn": [
+        "potassium",
+        "sando-k",
+        "slow-k",
+        "k-dur"
+      ]
+    },
+    "furosemide": {
+      "name": "furosemide",
+      "cls": "diuretic",
+      "syn": [
+        "furosemide",
+        "lasix",
+        "frusemide"
+      ]
+    },
+    "bendroflumethiazide": {
+      "name": "bendroflumethiazide",
+      "cls": "diuretic",
+      "syn": [
+        "bendroflumethiazide",
+        "bendrofluazide"
+      ]
+    },
+    "hydrochlorothiazide": {
+      "name": "hydrochlorothiazide",
+      "cls": "diuretic",
+      "syn": [
+        "hydrochlorothiazide",
+        "hctz"
+      ]
+    },
+    "indapamide": {
+      "name": "indapamide",
+      "cls": "diuretic",
+      "syn": [
+        "indapamide"
+      ]
+    },
+    "metoprolol": {
+      "name": "metoprolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "metoprolol",
+        "lopressor",
+        "toprol"
+      ]
+    },
+    "bisoprolol": {
+      "name": "bisoprolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "bisoprolol",
+        "zebeta",
+        "cardicor"
+      ]
+    },
+    "atenolol": {
+      "name": "atenolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "atenolol",
+        "tenormin"
+      ]
+    },
+    "propranolol": {
+      "name": "propranolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "propranolol",
+        "inderal"
+      ]
+    },
+    "carvedilol": {
+      "name": "carvedilol",
+      "cls": "beta_blocker",
+      "syn": [
+        "carvedilol",
+        "coreg"
+      ]
+    },
+    "verapamil": {
+      "name": "verapamil",
+      "cls": "ccb_rate",
+      "syn": [
+        "verapamil",
+        "isoptin",
+        "calan"
+      ],
+      "grapefruit": true
+    },
+    "diltiazem": {
+      "name": "diltiazem",
+      "cls": "ccb_rate",
+      "syn": [
+        "diltiazem",
+        "cardizem",
+        "tiazac"
+      ],
+      "grapefruit": true
+    },
+    "isosorbide": {
+      "name": "isosorbide (nitrate)",
+      "cls": "nitrate",
+      "syn": [
+        "isosorbide",
+        "imdur",
+        "ismo"
+      ]
+    },
+    "gtn": {
+      "name": "nitroglycerin (GTN)",
+      "cls": "nitrate",
+      "syn": [
+        "nitroglycerin",
+        "glyceryl trinitrate",
+        "gtn",
+        "nitrolingual",
+        "nitrostat"
+      ]
+    },
+    "sildenafil": {
+      "name": "sildenafil",
+      "cls": "pde5",
+      "syn": [
+        "sildenafil",
+        "viagra",
+        "revatio"
+      ]
+    },
+    "tadalafil": {
+      "name": "tadalafil",
+      "cls": "pde5",
+      "syn": [
+        "tadalafil",
+        "cialis"
+      ]
+    },
+    "vardenafil": {
+      "name": "vardenafil",
+      "cls": "pde5",
+      "syn": [
+        "vardenafil",
+        "levitra"
+      ]
+    },
+    "atorvastatin": {
+      "name": "atorvastatin",
+      "cls": "statin",
+      "syn": [
+        "atorvastatin",
+        "lipitor"
+      ],
+      "grapefruit": true
+    },
+    "simvastatin": {
+      "name": "simvastatin",
+      "cls": "statin_cyp",
+      "syn": [
+        "simvastatin",
+        "zocor"
+      ],
+      "grapefruit": true
+    },
+    "rosuvastatin": {
+      "name": "rosuvastatin",
+      "cls": "statin",
+      "syn": [
+        "rosuvastatin",
+        "crestor"
+      ]
+    },
+    "pravastatin": {
+      "name": "pravastatin",
+      "cls": "statin",
+      "syn": [
+        "pravastatin",
+        "pravachol"
+      ]
+    },
+    "clarithromycin": {
+      "name": "clarithromycin",
+      "cls": "macrolide",
+      "syn": [
+        "clarithromycin",
+        "biaxin",
+        "klaricid"
+      ]
+    },
+    "erythromycin": {
+      "name": "erythromycin",
+      "cls": "macrolide",
+      "syn": [
+        "erythromycin"
+      ]
+    },
+    "azithromycin": {
+      "name": "azithromycin",
+      "cls": "macrolide",
+      "syn": [
+        "azithromycin",
+        "zithromax",
+        "z-pack"
+      ]
+    },
+    "metformin": {
+      "name": "metformin",
+      "cls": "biguanide",
+      "syn": [
+        "metformin",
+        "glucophage"
+      ],
+      "with_food": true
+    },
+    "gliclazide": {
+      "name": "gliclazide",
+      "cls": "sulfonylurea",
+      "syn": [
+        "gliclazide"
+      ]
+    },
+    "glipizide": {
+      "name": "glipizide",
+      "cls": "sulfonylurea",
+      "syn": [
+        "glipizide"
+      ]
+    },
+    "glimepiride": {
+      "name": "glimepiride",
+      "cls": "sulfonylurea",
+      "syn": [
+        "glimepiride",
+        "amaryl"
+      ]
+    },
+    "insulin": {
+      "name": "insulin",
+      "cls": "insulin",
+      "syn": [
+        "insulin",
+        "lantus",
+        "humalog",
+        "novorapid",
+        "novolog"
+      ]
+    },
+    "omeprazole": {
+      "name": "omeprazole",
+      "cls": "ppi",
+      "syn": [
+        "omeprazole",
+        "prilosec",
+        "losec"
+      ]
+    },
+    "pantoprazole": {
+      "name": "pantoprazole",
+      "cls": "ppi",
+      "syn": [
+        "pantoprazole",
+        "protonix"
+      ]
+    },
+    "esomeprazole": {
+      "name": "esomeprazole",
+      "cls": "ppi",
+      "syn": [
+        "esomeprazole",
+        "nexium"
+      ]
+    },
+    "lansoprazole": {
+      "name": "lansoprazole",
+      "cls": "ppi",
+      "syn": [
+        "lansoprazole",
+        "prevacid"
+      ]
+    },
+    "methotrexate": {
+      "name": "methotrexate",
+      "cls": "methotrexate",
+      "syn": [
+        "methotrexate"
+      ]
+    },
+    "lithium": {
+      "name": "lithium",
+      "cls": "lithium",
+      "syn": [
+        "lithium",
+        "lithobid",
+        "priadel"
+      ]
+    },
+    "digoxin": {
+      "name": "digoxin",
+      "cls": "digoxin",
+      "syn": [
+        "digoxin",
+        "lanoxin"
+      ]
+    },
+    "levothyroxine": {
+      "name": "levothyroxine",
+      "cls": "thyroid",
+      "syn": [
+        "levothyroxine",
+        "synthroid",
+        "levoxyl",
+        "eltroxin"
+      ],
+      "empty_stomach": true,
+      "separate_from": "calcium, iron, antacids and coffee — separate by ~4 hours"
+    },
+    "allopurinol": {
+      "name": "allopurinol",
+      "cls": "xanthine_ox",
+      "syn": [
+        "allopurinol",
+        "zyloprim"
+      ],
+      "with_food": true
+    },
+    "azathioprine": {
+      "name": "azathioprine",
+      "cls": "thiopurine",
+      "syn": [
+        "azathioprine",
+        "imuran"
+      ]
+    },
+    "prednisone": {
+      "name": "prednisone/prednisolone",
+      "cls": "steroid",
+      "syn": [
+        "prednisone",
+        "prednisolone"
+      ],
+      "with_food": true
+    },
+    "trimethoprim": {
+      "name": "trimethoprim",
+      "cls": "antibiotic",
+      "syn": [
+        "trimethoprim",
+        "bactrim",
+        "septra",
+        "co-trimoxazole"
+      ],
+      "with_food": true
+    },
+    "ciprofloxacin": {
+      "name": "ciprofloxacin",
+      "cls": "fluoroquinolone",
+      "syn": [
+        "ciprofloxacin",
+        "cipro"
+      ],
+      "separate_from": "dairy, calcium, iron and antacids — separate by 2-4 hours"
+    },
+    "diphenhydramine": {
+      "name": "diphenhydramine",
+      "cls": "antihistamine_sedating",
+      "syn": [
+        "diphenhydramine",
+        "benadryl"
+      ]
+    },
+    "cetirizine": {
+      "name": "cetirizine",
+      "cls": "antihistamine",
+      "syn": [
+        "cetirizine",
+        "zyrtec"
+      ]
+    },
+    "loratadine": {
+      "name": "loratadine",
+      "cls": "antihistamine",
+      "syn": [
+        "loratadine",
+        "claritin"
+      ]
+    },
+    "paracetamol": {
+      "name": "paracetamol/acetaminophen",
+      "cls": "paracetamol",
+      "syn": [
+        "paracetamol",
+        "acetaminophen",
+        "tylenol",
+        "panadol"
+      ]
+    },
+    "generic_antibiotic": {
+      "name": "an antibiotic",
+      "cls": "antibiotic",
+      "syn": [
+        "antibiotic",
+        "antibiotics",
+        "a course of antibiotics"
+      ]
+    },
+    "metronidazole": {
+      "name": "metronidazole",
+      "cls": "nitroimidazole",
+      "syn": [
+        "metronidazole",
+        "flagyl"
+      ],
+      "food_note": "avoid all alcohol while taking this and for several days after — the combination can cause flushing, throbbing headache, vomiting and a racing heart."
+    },
+    "tinidazole": {
+      "name": "tinidazole",
+      "cls": "nitroimidazole",
+      "syn": [
+        "tinidazole"
+      ],
+      "food_note": "avoid all alcohol while taking this and for several days after — the combination can cause flushing, throbbing headache, vomiting and a racing heart."
+    },
+    "felodipine": {
+      "name": "felodipine",
+      "cls": "ccb_dihydro",
+      "syn": [
+        "felodipine"
+      ],
+      "grapefruit": true
+    },
+    "nifedipine": {
+      "name": "nifedipine",
+      "cls": "ccb_dihydro",
+      "syn": [
+        "nifedipine"
+      ],
+      "grapefruit": true
+    },
+    "amlodipine": {
+      "name": "amlodipine",
+      "cls": "ccb_dihydro",
+      "syn": [
+        "amlodipine",
+        "norvasc"
+      ],
+      "grapefruit": true
+    },
+    "amiodarone": {
+      "name": "amiodarone",
+      "cls": "antiarrhythmic",
+      "syn": [
+        "amiodarone"
+      ],
+      "grapefruit": true
+    },
+    "buspirone": {
+      "name": "buspirone",
+      "cls": "anxiolytic",
+      "syn": [
+        "buspirone",
+        "buspar"
+      ],
+      "grapefruit": true
+    },
+    "cyclosporine": {
+      "name": "cyclosporine",
+      "cls": "immunosuppressant",
+      "syn": [
+        "cyclosporine",
+        "ciclosporin"
+      ],
+      "grapefruit": true
+    },
+    "tacrolimus": {
+      "name": "tacrolimus",
+      "cls": "immunosuppressant",
+      "syn": [
+        "tacrolimus",
+        "prograf"
+      ],
+      "grapefruit": true
+    },
+    "doxycycline": {
+      "name": "doxycycline",
+      "cls": "tetracycline",
+      "syn": [
+        "doxycycline"
+      ],
+      "separate_from": "dairy, calcium, iron and antacids — separate by 2-4 hours"
+    },
+    "tetracycline": {
+      "name": "tetracycline",
+      "cls": "tetracycline",
+      "syn": [
+        "tetracycline"
+      ],
+      "separate_from": "dairy, calcium, iron and antacids — separate by 2-4 hours"
+    },
+    "methylphenidate": {
+      "name": "methylphenidate",
+      "cls": "stimulant",
+      "syn": [
+        "methylphenidate",
+        "ritalin",
+        "concerta"
+      ]
+    },
+    "alendronate": {
+      "name": "alendronate",
+      "cls": "bisphosphonate",
+      "syn": [
+        "alendronate",
+        "fosamax"
+      ],
+      "empty_stomach": true
+    },
+    "alcohol_ingredient": {
+      "name": "alcohol",
+      "cls": "alcohol",
+      "syn": [
+        "alcohol",
+        "drinking",
+        "beer",
+        "wine",
+        "spirits"
+      ]
+    },
+    "abiraterone": {
+      "name": "abiraterone",
+      "cls": "other",
+      "syn": [
+        "abiraterone"
+      ],
+      "ref": "drug_abiraterone"
+    },
+    "acamprosate": {
+      "name": "acamprosate",
+      "cls": "other",
+      "syn": [
+        "acamprosate"
+      ],
+      "ref": "drug_acamprosate"
+    },
+    "acitretin": {
+      "name": "acitretin",
+      "cls": "other",
+      "syn": [
+        "acitretin"
+      ],
+      "ref": "drug_acitretin"
+    },
+    "acyclovir": {
+      "name": "acyclovir",
+      "cls": "other",
+      "syn": [
+        "acyclovir"
+      ],
+      "ref": "drug_acyclovir"
+    },
+    "adalimumab": {
+      "name": "adalimumab",
+      "cls": "biologic_immuno",
+      "syn": [
+        "adalimumab",
+        "idacio"
+      ],
+      "ref": "drug_adalimumab"
+    },
+    "adapalene": {
+      "name": "adapalene",
+      "cls": "other",
+      "syn": [
+        "adapalene"
+      ],
+      "ref": "drug_adapalene"
+    },
+    "adenosine": {
+      "name": "adenosine",
+      "cls": "other",
+      "syn": [
+        "adenosine",
+        "tissen nf 10"
+      ],
+      "ref": "drug_adenosine"
+    },
+    "albendazole": {
+      "name": "albendazole",
+      "cls": "other",
+      "syn": [
+        "albendazole"
+      ],
+      "ref": "drug_albendazole"
+    },
+    "albuterol": {
+      "name": "albuterol",
+      "cls": "beta2_agonist",
+      "syn": [
+        "albuterol"
+      ],
+      "ref": "drug_albuterol"
+    },
+    "alfuzosin": {
+      "name": "alfuzosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "alfuzosin"
+      ],
+      "ref": "drug_alfuzosin"
+    },
+    "amantadine": {
+      "name": "amantadine",
+      "cls": "other",
+      "syn": [
+        "amantadine"
+      ],
+      "ref": "drug_amantadine"
+    },
+    "amitriptyline": {
+      "name": "amitriptyline",
+      "cls": "tca",
+      "syn": [
+        "amitriptyline"
+      ],
+      "ref": "drug_amitriptyline"
+    },
+    "amoxicillin": {
+      "name": "amoxicillin",
+      "cls": "other",
+      "syn": [
+        "amoxicillin"
+      ],
+      "ref": "drug_amoxicillin"
+    },
+    "amphetamine": {
+      "name": "amphetamine",
+      "cls": "stimulant",
+      "syn": [
+        "amphetamine"
+      ],
+      "ref": "drug_amphetamine"
+    },
+    "ampicillin": {
+      "name": "ampicillin",
+      "cls": "other",
+      "syn": [
+        "ampicillin"
+      ],
+      "ref": "drug_ampicillin"
+    },
+    "anastrozole": {
+      "name": "anastrozole",
+      "cls": "other",
+      "syn": [
+        "anastrozole"
+      ],
+      "ref": "drug_anastrozole"
+    },
+    "apremilast": {
+      "name": "apremilast",
+      "cls": "other",
+      "syn": [
+        "apremilast",
+        "otezla"
+      ],
+      "ref": "drug_apremilast"
+    },
+    "aprepitant": {
+      "name": "aprepitant",
+      "cls": "other",
+      "syn": [
+        "aprepitant"
+      ],
+      "ref": "drug_aprepitant"
+    },
+    "aripiprazole": {
+      "name": "aripiprazole",
+      "cls": "antipsychotic",
+      "syn": [
+        "aripiprazole"
+      ],
+      "ref": "drug_aripiprazole"
+    },
+    "armodafinil": {
+      "name": "armodafinil",
+      "cls": "other",
+      "syn": [
+        "armodafinil"
+      ],
+      "ref": "drug_armodafinil"
+    },
+    "asenapine": {
+      "name": "asenapine",
+      "cls": "antipsychotic",
+      "syn": [
+        "asenapine"
+      ],
+      "ref": "drug_asenapine"
+    },
+    "atomoxetine": {
+      "name": "atomoxetine",
+      "cls": "other",
+      "syn": [
+        "atomoxetine"
+      ],
+      "ref": "drug_atomoxetine"
+    },
+    "avanafil": {
+      "name": "avanafil",
+      "cls": "pde5",
+      "syn": [
+        "avanafil"
+      ],
+      "ref": "drug_avanafil"
+    },
+    "azelaic_acid": {
+      "name": "azelaic acid",
+      "cls": "other",
+      "syn": [
+        "azelaic acid"
+      ],
+      "ref": "drug_azelaic_acid"
+    },
+    "azelastine": {
+      "name": "azelastine",
+      "cls": "other",
+      "syn": [
+        "azelastine"
+      ],
+      "ref": "drug_azelastine"
+    },
+    "bacitracin": {
+      "name": "bacitracin",
+      "cls": "other",
+      "syn": [
+        "bacitracin"
+      ],
+      "ref": "drug_bacitracin"
+    },
+    "baclofen": {
+      "name": "baclofen",
+      "cls": "other",
+      "syn": [
+        "baclofen"
+      ],
+      "ref": "drug_baclofen"
+    },
+    "baloxavir_marboxil": {
+      "name": "baloxavir marboxil",
+      "cls": "other",
+      "syn": [
+        "baloxavir marboxil",
+        "xofluza"
+      ],
+      "ref": "drug_baloxavir_marboxil"
+    },
+    "beclomethasone": {
+      "name": "beclomethasone",
+      "cls": "other",
+      "syn": [
+        "beclomethasone",
+        "qvar redihaler"
+      ],
+      "ref": "drug_beclomethasone"
+    },
+    "benazepril": {
+      "name": "benazepril",
+      "cls": "ace",
+      "syn": [
+        "benazepril"
+      ],
+      "ref": "drug_benazepril"
+    },
+    "benzonatate": {
+      "name": "benzonatate",
+      "cls": "other",
+      "syn": [
+        "benzonatate"
+      ],
+      "ref": "drug_benzonatate"
+    },
+    "benzoyl_peroxide": {
+      "name": "benzoyl peroxide",
+      "cls": "other",
+      "syn": [
+        "benzoyl peroxide",
+        "dr. zenovia acne cleanser"
+      ],
+      "ref": "drug_benzoyl_peroxide"
+    },
+    "benztropine": {
+      "name": "benztropine",
+      "cls": "anticholinergic",
+      "syn": [
+        "benztropine"
+      ],
+      "ref": "drug_benztropine"
+    },
+    "betamethasone": {
+      "name": "betamethasone",
+      "cls": "other",
+      "syn": [
+        "betamethasone"
+      ],
+      "ref": "drug_betamethasone"
+    },
+    "bethanechol": {
+      "name": "bethanechol",
+      "cls": "other",
+      "syn": [
+        "bethanechol"
+      ],
+      "ref": "drug_bethanechol"
+    },
+    "bicalutamide": {
+      "name": "bicalutamide",
+      "cls": "other",
+      "syn": [
+        "bicalutamide"
+      ],
+      "ref": "drug_bicalutamide"
+    },
+    "bimatoprost": {
+      "name": "bimatoprost",
+      "cls": "other",
+      "syn": [
+        "bimatoprost"
+      ],
+      "ref": "drug_bimatoprost"
+    },
+    "bisacodyl": {
+      "name": "bisacodyl",
+      "cls": "other",
+      "syn": [
+        "bisacodyl",
+        "walgreens gentle laxative"
+      ],
+      "ref": "drug_bisacodyl"
+    },
+    "bismuth_subsalicylate": {
+      "name": "bismuth subsalicylate",
+      "cls": "other",
+      "syn": [
+        "bismuth subsalicylate"
+      ],
+      "ref": "drug_bismuth_subsalicylate"
+    },
+    "brexpiprazole": {
+      "name": "brexpiprazole",
+      "cls": "antipsychotic",
+      "syn": [
+        "brexpiprazole",
+        "rexulti"
+      ],
+      "ref": "drug_brexpiprazole"
+    },
+    "brimonidine": {
+      "name": "brimonidine",
+      "cls": "other",
+      "syn": [
+        "brimonidine"
+      ],
+      "ref": "drug_brimonidine"
+    },
+    "brivaracetam": {
+      "name": "brivaracetam",
+      "cls": "aed_cns",
+      "syn": [
+        "brivaracetam"
+      ],
+      "ref": "drug_brivaracetam"
+    },
+    "bromocriptine": {
+      "name": "bromocriptine",
+      "cls": "other",
+      "syn": [
+        "bromocriptine"
+      ],
+      "ref": "drug_bromocriptine"
+    },
+    "budesonide": {
+      "name": "budesonide",
+      "cls": "other",
+      "syn": [
+        "budesonide"
+      ],
+      "ref": "drug_budesonide"
+    },
+    "bumetanide": {
+      "name": "bumetanide",
+      "cls": "diuretic",
+      "syn": [
+        "bumetanide"
+      ],
+      "ref": "drug_bumetanide"
+    },
+    "bupivacaine": {
+      "name": "bupivacaine",
+      "cls": "other",
+      "syn": [
+        "bupivacaine"
+      ],
+      "ref": "drug_bupivacaine"
+    },
+    "buprenorphine": {
+      "name": "buprenorphine",
+      "cls": "opioid",
+      "syn": [
+        "buprenorphine"
+      ],
+      "ref": "drug_buprenorphine"
+    },
+    "bupropion": {
+      "name": "bupropion",
+      "cls": "antidepressant_other",
+      "syn": [
+        "bupropion"
+      ],
+      "ref": "drug_bupropion"
+    },
+    "butorphanol": {
+      "name": "butorphanol",
+      "cls": "opioid",
+      "syn": [
+        "butorphanol"
+      ],
+      "ref": "drug_butorphanol"
+    },
+    "cabergoline": {
+      "name": "cabergoline",
+      "cls": "other",
+      "syn": [
+        "cabergoline"
+      ],
+      "ref": "drug_cabergoline"
+    },
+    "calcipotriene": {
+      "name": "calcipotriene",
+      "cls": "other",
+      "syn": [
+        "calcipotriene"
+      ],
+      "ref": "drug_calcipotriene"
+    },
+    "calcitriol": {
+      "name": "calcitriol",
+      "cls": "other",
+      "syn": [
+        "calcitriol"
+      ],
+      "ref": "drug_calcitriol"
+    },
+    "canagliflozin": {
+      "name": "canagliflozin",
+      "cls": "sglt2",
+      "syn": [
+        "canagliflozin",
+        "invokana"
+      ],
+      "ref": "drug_canagliflozin"
+    },
+    "capecitabine": {
+      "name": "capecitabine",
+      "cls": "other",
+      "syn": [
+        "capecitabine"
+      ],
+      "ref": "drug_capecitabine"
+    },
+    "capsaicin": {
+      "name": "capsaicin",
+      "cls": "other",
+      "syn": [
+        "capsaicin"
+      ],
+      "ref": "drug_capsaicin"
+    },
+    "carbamazepine": {
+      "name": "carbamazepine",
+      "cls": "enzyme_inducer_aed",
+      "syn": [
+        "carbamazepine"
+      ],
+      "ref": "drug_carbamazepine"
+    },
+    "carbamide_peroxide": {
+      "name": "carbamide peroxide",
+      "cls": "other",
+      "syn": [
+        "carbamide peroxide",
+        "leader earwax removal drops earwax removal aid"
+      ],
+      "ref": "drug_carbamide_peroxide"
+    },
+    "cariprazine": {
+      "name": "cariprazine",
+      "cls": "antipsychotic",
+      "syn": [
+        "cariprazine",
+        "vraylar"
+      ],
+      "ref": "drug_cariprazine"
+    },
+    "carisoprodol": {
+      "name": "carisoprodol",
+      "cls": "other",
+      "syn": [
+        "carisoprodol"
+      ],
+      "ref": "drug_carisoprodol"
+    },
+    "cefdinir": {
+      "name": "cefdinir",
+      "cls": "other",
+      "syn": [
+        "cefdinir"
+      ],
+      "ref": "drug_cefdinir"
+    },
+    "cefpodoxime": {
+      "name": "cefpodoxime",
+      "cls": "other",
+      "syn": [
+        "cefpodoxime"
+      ],
+      "ref": "drug_cefpodoxime"
+    },
+    "cephalexin": {
+      "name": "cephalexin",
+      "cls": "other",
+      "syn": [
+        "cephalexin"
+      ],
+      "ref": "drug_cephalexin"
+    },
+    "chloroquine": {
+      "name": "chloroquine",
+      "cls": "other",
+      "syn": [
+        "chloroquine"
+      ],
+      "ref": "drug_chloroquine"
+    },
+    "chlorpheniramine": {
+      "name": "chlorpheniramine",
+      "cls": "antihistamine_sedating",
+      "syn": [
+        "chlorpheniramine",
+        "sprinsol"
+      ],
+      "ref": "drug_chlorpheniramine"
+    },
+    "chlorpromazine": {
+      "name": "chlorpromazine",
+      "cls": "antipsychotic",
+      "syn": [
+        "chlorpromazine"
+      ],
+      "ref": "drug_chlorpromazine"
+    },
+    "chlorthalidone": {
+      "name": "chlorthalidone",
+      "cls": "diuretic",
+      "syn": [
+        "chlorthalidone"
+      ],
+      "ref": "drug_chlorthalidone"
+    },
+    "cholestyramine": {
+      "name": "cholestyramine",
+      "cls": "other",
+      "syn": [
+        "cholestyramine"
+      ],
+      "ref": "drug_cholestyramine"
+    },
+    "ciclesonide": {
+      "name": "ciclesonide",
+      "cls": "other",
+      "syn": [
+        "ciclesonide",
+        "omnaris"
+      ],
+      "ref": "drug_ciclesonide"
+    },
+    "ciclopirox": {
+      "name": "ciclopirox",
+      "cls": "other",
+      "syn": [
+        "ciclopirox"
+      ],
+      "ref": "drug_ciclopirox"
+    },
+    "cilostazol": {
+      "name": "cilostazol",
+      "cls": "antiplatelet",
+      "syn": [
+        "cilostazol"
+      ],
+      "ref": "drug_cilostazol"
+    },
+    "cinacalcet": {
+      "name": "cinacalcet",
+      "cls": "other",
+      "syn": [
+        "cinacalcet"
+      ],
+      "ref": "drug_cinacalcet"
+    },
+    "clindamycin": {
+      "name": "clindamycin",
+      "cls": "other",
+      "syn": [
+        "clindamycin"
+      ],
+      "ref": "drug_clindamycin"
+    },
+    "clobazam": {
+      "name": "clobazam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "clobazam"
+      ],
+      "ref": "drug_clobazam"
+    },
+    "clobetasol": {
+      "name": "clobetasol",
+      "cls": "other",
+      "syn": [
+        "clobetasol"
+      ],
+      "ref": "drug_clobetasol"
+    },
+    "clomiphene": {
+      "name": "clomiphene",
+      "cls": "other",
+      "syn": [
+        "clomiphene"
+      ],
+      "ref": "drug_clomiphene"
+    },
+    "clomipramine": {
+      "name": "clomipramine",
+      "cls": "tca",
+      "syn": [
+        "clomipramine"
+      ],
+      "ref": "drug_clomipramine"
+    },
+    "clonidine": {
+      "name": "clonidine",
+      "cls": "alpha2_agonist",
+      "syn": [
+        "clonidine"
+      ],
+      "ref": "drug_clonidine"
+    },
+    "clotrimazole": {
+      "name": "clotrimazole",
+      "cls": "other",
+      "syn": [
+        "clotrimazole"
+      ],
+      "ref": "drug_clotrimazole"
+    },
+    "clozapine": {
+      "name": "clozapine",
+      "cls": "antipsychotic",
+      "syn": [
+        "clozapine"
+      ],
+      "ref": "drug_clozapine"
+    },
+    "colchicine": {
+      "name": "colchicine",
+      "cls": "other",
+      "syn": [
+        "colchicine"
+      ],
+      "ref": "drug_colchicine"
+    },
+    "crisaborole": {
+      "name": "crisaborole",
+      "cls": "other",
+      "syn": [
+        "crisaborole",
+        "eucrisa"
+      ],
+      "ref": "drug_crisaborole"
+    },
+    "cromolyn": {
+      "name": "cromolyn",
+      "cls": "other",
+      "syn": [
+        "cromolyn",
+        "gastrocrom"
+      ],
+      "ref": "drug_cromolyn"
+    },
+    "cyclobenzaprine": {
+      "name": "cyclobenzaprine",
+      "cls": "other",
+      "syn": [
+        "cyclobenzaprine"
+      ],
+      "ref": "drug_cyclobenzaprine"
+    },
+    "cyclopentolate": {
+      "name": "cyclopentolate",
+      "cls": "other",
+      "syn": [
+        "cyclopentolate",
+        "cyclogyl"
+      ],
+      "ref": "drug_cyclopentolate"
+    },
+    "dapagliflozin": {
+      "name": "dapagliflozin",
+      "cls": "sglt2",
+      "syn": [
+        "dapagliflozin",
+        "farxiga"
+      ],
+      "ref": "drug_dapagliflozin"
+    },
+    "darifenacin": {
+      "name": "darifenacin",
+      "cls": "anticholinergic",
+      "syn": [
+        "darifenacin"
+      ],
+      "ref": "drug_darifenacin"
+    },
+    "darunavir": {
+      "name": "darunavir",
+      "cls": "other",
+      "syn": [
+        "darunavir"
+      ],
+      "ref": "drug_darunavir"
+    },
+    "denosumab": {
+      "name": "denosumab",
+      "cls": "other",
+      "syn": [
+        "denosumab",
+        "conexxence"
+      ],
+      "ref": "drug_denosumab"
+    },
+    "desipramine": {
+      "name": "desipramine",
+      "cls": "tca",
+      "syn": [
+        "desipramine"
+      ],
+      "ref": "drug_desipramine"
+    },
+    "desloratadine": {
+      "name": "desloratadine",
+      "cls": "antihistamine",
+      "syn": [
+        "desloratadine"
+      ],
+      "ref": "drug_desloratadine"
+    },
+    "desmopressin": {
+      "name": "desmopressin",
+      "cls": "other",
+      "syn": [
+        "desmopressin"
+      ],
+      "ref": "drug_desmopressin"
+    },
+    "desonide": {
+      "name": "desonide",
+      "cls": "other",
+      "syn": [
+        "desonide"
+      ],
+      "ref": "drug_desonide"
+    },
+    "desvenlafaxine": {
+      "name": "desvenlafaxine",
+      "cls": "ssri_snri",
+      "syn": [
+        "desvenlafaxine"
+      ],
+      "ref": "drug_desvenlafaxine"
+    },
+    "dexamethasone": {
+      "name": "dexamethasone",
+      "cls": "steroid",
+      "syn": [
+        "dexamethasone"
+      ],
+      "ref": "drug_dexamethasone"
+    },
+    "dexlansoprazole": {
+      "name": "dexlansoprazole",
+      "cls": "ppi",
+      "syn": [
+        "dexlansoprazole"
+      ],
+      "ref": "drug_dexlansoprazole"
+    },
+    "dexmethylphenidate": {
+      "name": "dexmethylphenidate",
+      "cls": "stimulant",
+      "syn": [
+        "dexmethylphenidate"
+      ],
+      "ref": "drug_dexmethylphenidate"
+    },
+    "dextroamphetamine": {
+      "name": "dextroamphetamine",
+      "cls": "stimulant",
+      "syn": [
+        "dextroamphetamine",
+        "xelstrym"
+      ],
+      "ref": "drug_dextroamphetamine"
+    },
+    "dextromethorphan": {
+      "name": "dextromethorphan",
+      "cls": "other",
+      "syn": [
+        "dextromethorphan",
+        "delsym"
+      ],
+      "ref": "drug_dextromethorphan"
+    },
+    "dicloxacillin": {
+      "name": "dicloxacillin",
+      "cls": "other",
+      "syn": [
+        "dicloxacillin"
+      ],
+      "ref": "drug_dicloxacillin"
+    },
+    "dicyclomine": {
+      "name": "dicyclomine",
+      "cls": "anticholinergic",
+      "syn": [
+        "dicyclomine"
+      ],
+      "ref": "drug_dicyclomine"
+    },
+    "dipyridamole": {
+      "name": "dipyridamole",
+      "cls": "antiplatelet",
+      "syn": [
+        "dipyridamole"
+      ],
+      "ref": "drug_dipyridamole"
+    },
+    "disulfiram": {
+      "name": "disulfiram",
+      "cls": "other",
+      "syn": [
+        "disulfiram"
+      ],
+      "ref": "drug_disulfiram",
+      "food_note": "avoid all alcohol while taking this and for several days after — the combination can cause flushing, throbbing headache, vomiting and a racing heart."
+    },
+    "docusate": {
+      "name": "docusate",
+      "cls": "other",
+      "syn": [
+        "docusate"
+      ],
+      "ref": "drug_docusate"
+    },
+    "dolutegravir": {
+      "name": "dolutegravir",
+      "cls": "other",
+      "syn": [
+        "dolutegravir",
+        "tivicay"
+      ],
+      "ref": "drug_dolutegravir"
+    },
+    "donepezil": {
+      "name": "donepezil",
+      "cls": "cholinesterase_inhibitor",
+      "syn": [
+        "donepezil"
+      ],
+      "ref": "drug_donepezil"
+    },
+    "dorzolamide": {
+      "name": "dorzolamide",
+      "cls": "other",
+      "syn": [
+        "dorzolamide"
+      ],
+      "ref": "drug_dorzolamide"
+    },
+    "doxazosin": {
+      "name": "doxazosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "doxazosin"
+      ],
+      "ref": "drug_doxazosin"
+    },
+    "doxepin": {
+      "name": "doxepin",
+      "cls": "tca",
+      "syn": [
+        "doxepin"
+      ],
+      "ref": "drug_doxepin"
+    },
+    "dronabinol": {
+      "name": "dronabinol",
+      "cls": "other",
+      "syn": [
+        "dronabinol",
+        "syndros"
+      ],
+      "ref": "drug_dronabinol"
+    },
+    "dulaglutide": {
+      "name": "dulaglutide",
+      "cls": "glp1",
+      "syn": [
+        "dulaglutide",
+        "trulicity"
+      ],
+      "ref": "drug_dulaglutide"
+    },
+    "dupilumab": {
+      "name": "dupilumab",
+      "cls": "biologic_immuno",
+      "syn": [
+        "dupilumab",
+        "dupixent"
+      ],
+      "ref": "drug_dupilumab"
+    },
+    "dutasteride": {
+      "name": "dutasteride",
+      "cls": "other",
+      "syn": [
+        "dutasteride"
+      ],
+      "ref": "drug_dutasteride"
+    },
+    "efavirenz": {
+      "name": "efavirenz",
+      "cls": "other",
+      "syn": [
+        "efavirenz"
+      ],
+      "ref": "drug_efavirenz"
+    },
+    "efinaconazole": {
+      "name": "efinaconazole",
+      "cls": "other",
+      "syn": [
+        "efinaconazole",
+        "jublia"
+      ],
+      "ref": "drug_efinaconazole"
+    },
+    "eletriptan": {
+      "name": "eletriptan",
+      "cls": "triptan",
+      "syn": [
+        "eletriptan"
+      ],
+      "ref": "drug_eletriptan"
+    },
+    "empagliflozin": {
+      "name": "empagliflozin",
+      "cls": "sglt2",
+      "syn": [
+        "empagliflozin",
+        "jardiance"
+      ],
+      "ref": "drug_empagliflozin"
+    },
+    "enoxaparin": {
+      "name": "enoxaparin",
+      "cls": "anticoagulant",
+      "syn": [
+        "enoxaparin"
+      ],
+      "ref": "drug_enoxaparin"
+    },
+    "entacapone": {
+      "name": "entacapone",
+      "cls": "other",
+      "syn": [
+        "entacapone"
+      ],
+      "ref": "drug_entacapone"
+    },
+    "entecavir": {
+      "name": "entecavir",
+      "cls": "other",
+      "syn": [
+        "entecavir"
+      ],
+      "ref": "drug_entecavir"
+    },
+    "enzalutamide": {
+      "name": "enzalutamide",
+      "cls": "other",
+      "syn": [
+        "enzalutamide",
+        "xtandi"
+      ],
+      "ref": "drug_enzalutamide"
+    },
+    "eplerenone": {
+      "name": "eplerenone",
+      "cls": "k_sparing",
+      "syn": [
+        "eplerenone",
+        "inspra"
+      ],
+      "ref": "drug_eplerenone"
+    },
+    "erenumab": {
+      "name": "erenumab",
+      "cls": "other",
+      "syn": [
+        "erenumab",
+        "aimovig"
+      ],
+      "ref": "drug_erenumab"
+    },
+    "ergocalciferol": {
+      "name": "ergocalciferol",
+      "cls": "other",
+      "syn": [
+        "ergocalciferol"
+      ],
+      "ref": "drug_ergocalciferol"
+    },
+    "esketamine": {
+      "name": "esketamine",
+      "cls": "other",
+      "syn": [
+        "esketamine",
+        "spravato"
+      ],
+      "ref": "drug_esketamine"
+    },
+    "esmolol": {
+      "name": "esmolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "esmolol"
+      ],
+      "ref": "drug_esmolol"
+    },
+    "estradiol": {
+      "name": "estradiol",
+      "cls": "other",
+      "syn": [
+        "estradiol"
+      ],
+      "ref": "drug_estradiol"
+    },
+    "eszopiclone": {
+      "name": "eszopiclone",
+      "cls": "zdrug",
+      "syn": [
+        "eszopiclone"
+      ],
+      "ref": "drug_eszopiclone"
+    },
+    "etanercept": {
+      "name": "etanercept",
+      "cls": "biologic_immuno",
+      "syn": [
+        "etanercept",
+        "enbrel"
+      ],
+      "ref": "drug_etanercept"
+    },
+    "ethambutol": {
+      "name": "ethambutol",
+      "cls": "other",
+      "syn": [
+        "ethambutol"
+      ],
+      "ref": "drug_ethambutol"
+    },
+    "ethosuximide": {
+      "name": "ethosuximide",
+      "cls": "aed_cns",
+      "syn": [
+        "ethosuximide",
+        "zarontin"
+      ],
+      "ref": "drug_ethosuximide"
+    },
+    "etodolac": {
+      "name": "etodolac",
+      "cls": "nsaid",
+      "syn": [
+        "etodolac"
+      ],
+      "ref": "drug_etodolac"
+    },
+    "etonogestrel": {
+      "name": "etonogestrel",
+      "cls": "other",
+      "syn": [
+        "etonogestrel",
+        "nexplanon"
+      ],
+      "ref": "drug_etonogestrel"
+    },
+    "exemestane": {
+      "name": "exemestane",
+      "cls": "other",
+      "syn": [
+        "exemestane"
+      ],
+      "ref": "drug_exemestane"
+    },
+    "exenatide": {
+      "name": "exenatide",
+      "cls": "glp1",
+      "syn": [
+        "exenatide",
+        "byetta"
+      ],
+      "ref": "drug_exenatide"
+    },
+    "ezetimibe": {
+      "name": "ezetimibe",
+      "cls": "other",
+      "syn": [
+        "ezetimibe"
+      ],
+      "ref": "drug_ezetimibe"
+    },
+    "famciclovir": {
+      "name": "famciclovir",
+      "cls": "other",
+      "syn": [
+        "famciclovir"
+      ],
+      "ref": "drug_famciclovir"
+    },
+    "famotidine": {
+      "name": "famotidine",
+      "cls": "acid_reducer",
+      "syn": [
+        "famotidine"
+      ],
+      "ref": "drug_famotidine"
+    },
+    "febuxostat": {
+      "name": "febuxostat",
+      "cls": "xanthine_ox",
+      "syn": [
+        "febuxostat"
+      ],
+      "ref": "drug_febuxostat"
+    },
+    "fenofibrate": {
+      "name": "fenofibrate",
+      "cls": "other",
+      "syn": [
+        "fenofibrate"
+      ],
+      "ref": "drug_fenofibrate"
+    },
+    "ferrous_sulfate": {
+      "name": "ferrous sulfate",
+      "cls": "other",
+      "syn": [
+        "ferrous sulfate",
+        "ferrum sulphuricum"
+      ],
+      "ref": "drug_ferrous_sulfate"
+    },
+    "fesoterodine": {
+      "name": "fesoterodine",
+      "cls": "anticholinergic",
+      "syn": [
+        "fesoterodine"
+      ],
+      "ref": "drug_fesoterodine"
+    },
+    "fexofenadine": {
+      "name": "fexofenadine",
+      "cls": "antihistamine",
+      "syn": [
+        "fexofenadine"
+      ],
+      "ref": "drug_fexofenadine"
+    },
+    "finasteride": {
+      "name": "finasteride",
+      "cls": "other",
+      "syn": [
+        "finasteride"
+      ],
+      "ref": "drug_finasteride"
+    },
+    "flecainide": {
+      "name": "flecainide",
+      "cls": "antiarrhythmic",
+      "syn": [
+        "flecainide"
+      ],
+      "ref": "drug_flecainide"
+    },
+    "fluconazole": {
+      "name": "fluconazole",
+      "cls": "azole_antifungal",
+      "syn": [
+        "fluconazole"
+      ],
+      "ref": "drug_fluconazole"
+    },
+    "fluorouracil": {
+      "name": "fluorouracil",
+      "cls": "other",
+      "syn": [
+        "fluorouracil"
+      ],
+      "ref": "drug_fluorouracil"
+    },
+    "fluphenazine": {
+      "name": "fluphenazine",
+      "cls": "antipsychotic",
+      "syn": [
+        "fluphenazine"
+      ],
+      "ref": "drug_fluphenazine"
+    },
+    "fluticasone": {
+      "name": "fluticasone",
+      "cls": "other",
+      "syn": [
+        "fluticasone"
+      ],
+      "ref": "drug_fluticasone"
+    },
+    "fluvoxamine": {
+      "name": "fluvoxamine",
+      "cls": "ssri_snri",
+      "syn": [
+        "fluvoxamine"
+      ],
+      "ref": "drug_fluvoxamine"
+    },
+    "folic_acid": {
+      "name": "folic acid",
+      "cls": "other",
+      "syn": [
+        "folic acid"
+      ],
+      "ref": "drug_folic_acid"
+    },
+    "fondaparinux": {
+      "name": "fondaparinux",
+      "cls": "anticoagulant",
+      "syn": [
+        "fondaparinux"
+      ],
+      "ref": "drug_fondaparinux"
+    },
+    "formoterol": {
+      "name": "formoterol",
+      "cls": "beta2_agonist",
+      "syn": [
+        "formoterol"
+      ],
+      "ref": "drug_formoterol"
+    },
+    "fosfomycin": {
+      "name": "fosfomycin",
+      "cls": "other",
+      "syn": [
+        "fosfomycin"
+      ],
+      "ref": "drug_fosfomycin"
+    },
+    "gabapentin": {
+      "name": "gabapentin",
+      "cls": "gabapentinoid",
+      "syn": [
+        "gabapentin"
+      ],
+      "ref": "drug_gabapentin"
+    },
+    "galantamine": {
+      "name": "galantamine",
+      "cls": "cholinesterase_inhibitor",
+      "syn": [
+        "galantamine"
+      ],
+      "ref": "drug_galantamine"
+    },
+    "galcanezumab": {
+      "name": "galcanezumab",
+      "cls": "other",
+      "syn": [
+        "galcanezumab",
+        "emgality"
+      ],
+      "ref": "drug_galcanezumab"
+    },
+    "gemfibrozil": {
+      "name": "gemfibrozil",
+      "cls": "other",
+      "syn": [
+        "gemfibrozil"
+      ],
+      "ref": "drug_gemfibrozil"
+    },
+    "glucagon": {
+      "name": "glucagon",
+      "cls": "other",
+      "syn": [
+        "glucagon"
+      ],
+      "ref": "drug_glucagon"
+    },
+    "glyburide": {
+      "name": "glyburide",
+      "cls": "sulfonylurea",
+      "syn": [
+        "glyburide"
+      ],
+      "ref": "drug_glyburide"
+    },
+    "granisetron": {
+      "name": "granisetron",
+      "cls": "other",
+      "syn": [
+        "granisetron",
+        "sancuso"
+      ],
+      "ref": "drug_granisetron"
+    },
+    "griseofulvin": {
+      "name": "griseofulvin",
+      "cls": "other",
+      "syn": [
+        "griseofulvin"
+      ],
+      "ref": "drug_griseofulvin"
+    },
+    "guaifenesin": {
+      "name": "guaifenesin",
+      "cls": "other",
+      "syn": [
+        "guaifenesin"
+      ],
+      "ref": "drug_guaifenesin"
+    },
+    "guanfacine": {
+      "name": "guanfacine",
+      "cls": "alpha2_agonist",
+      "syn": [
+        "guanfacine"
+      ],
+      "ref": "drug_guanfacine"
+    },
+    "halobetasol": {
+      "name": "halobetasol",
+      "cls": "other",
+      "syn": [
+        "halobetasol"
+      ],
+      "ref": "drug_halobetasol"
+    },
+    "haloperidol": {
+      "name": "haloperidol",
+      "cls": "antipsychotic",
+      "syn": [
+        "haloperidol"
+      ],
+      "ref": "drug_haloperidol"
+    },
+    "hydralazine": {
+      "name": "hydralazine",
+      "cls": "other",
+      "syn": [
+        "hydralazine"
+      ],
+      "ref": "drug_hydralazine"
+    },
+    "hydrocortisone": {
+      "name": "hydrocortisone",
+      "cls": "other",
+      "syn": [
+        "hydrocortisone",
+        "anti itch"
+      ],
+      "ref": "drug_hydrocortisone"
+    },
+    "hydromorphone": {
+      "name": "hydromorphone",
+      "cls": "opioid",
+      "syn": [
+        "hydromorphone"
+      ],
+      "ref": "drug_hydromorphone"
+    },
+    "hydroquinone": {
+      "name": "hydroquinone",
+      "cls": "other",
+      "syn": [
+        "hydroquinone",
+        "obagi-c rx system c-clarifying serum normal to oily skin lightening serum with vitamin c"
+      ],
+      "ref": "drug_hydroquinone"
+    },
+    "hydroxychloroquine": {
+      "name": "hydroxychloroquine",
+      "cls": "other",
+      "syn": [
+        "hydroxychloroquine"
+      ],
+      "ref": "drug_hydroxychloroquine"
+    },
+    "hydroxyurea": {
+      "name": "hydroxyurea",
+      "cls": "other",
+      "syn": [
+        "hydroxyurea"
+      ],
+      "ref": "drug_hydroxyurea"
+    },
+    "hydroxyzine": {
+      "name": "hydroxyzine",
+      "cls": "antihistamine_sedating",
+      "syn": [
+        "hydroxyzine"
+      ],
+      "ref": "drug_hydroxyzine"
+    },
+    "hyoscyamine": {
+      "name": "hyoscyamine",
+      "cls": "anticholinergic",
+      "syn": [
+        "hyoscyamine",
+        "hyosyne"
+      ],
+      "ref": "drug_hyoscyamine"
+    },
+    "ibandronate": {
+      "name": "ibandronate",
+      "cls": "bisphosphonate",
+      "syn": [
+        "ibandronate"
+      ],
+      "ref": "drug_ibandronate",
+      "empty_stomach": true
+    },
+    "icosapent_ethyl": {
+      "name": "icosapent ethyl",
+      "cls": "other",
+      "syn": [
+        "icosapent ethyl"
+      ],
+      "ref": "drug_icosapent_ethyl"
+    },
+    "imatinib": {
+      "name": "imatinib",
+      "cls": "other",
+      "syn": [
+        "imatinib"
+      ],
+      "ref": "drug_imatinib"
+    },
+    "imipramine": {
+      "name": "imipramine",
+      "cls": "tca",
+      "syn": [
+        "imipramine"
+      ],
+      "ref": "drug_imipramine"
+    },
+    "imiquimod": {
+      "name": "imiquimod",
+      "cls": "other",
+      "syn": [
+        "imiquimod"
+      ],
+      "ref": "drug_imiquimod"
+    },
+    "indomethacin": {
+      "name": "indomethacin",
+      "cls": "nsaid",
+      "syn": [
+        "indomethacin"
+      ],
+      "ref": "drug_indomethacin"
+    },
+    "insulin_degludec": {
+      "name": "insulin degludec",
+      "cls": "insulin",
+      "syn": [
+        "insulin degludec",
+        "tresiba"
+      ],
+      "ref": "drug_insulin_degludec"
+    },
+    "insulin_detemir": {
+      "name": "insulin detemir",
+      "cls": "insulin",
+      "syn": [
+        "insulin detemir",
+        "levemir"
+      ],
+      "ref": "drug_insulin_detemir"
+    },
+    "insulin_glargine": {
+      "name": "insulin glargine",
+      "cls": "insulin",
+      "syn": [
+        "insulin glargine",
+        "basaglar kwikpen"
+      ],
+      "ref": "drug_insulin_glargine"
+    },
+    "insulin_human": {
+      "name": "insulin human",
+      "cls": "insulin",
+      "syn": [
+        "insulin human",
+        "afrezza"
+      ],
+      "ref": "drug_insulin_human"
+    },
+    "isoniazid": {
+      "name": "isoniazid",
+      "cls": "other",
+      "syn": [
+        "isoniazid"
+      ],
+      "ref": "drug_isoniazid"
+    },
+    "isosorbide_mononitrate": {
+      "name": "isosorbide mononitrate",
+      "cls": "nitrate",
+      "syn": [
+        "isosorbide mononitrate"
+      ],
+      "ref": "drug_isosorbide_mononitrate"
+    },
+    "isotretinoin": {
+      "name": "isotretinoin",
+      "cls": "other",
+      "syn": [
+        "isotretinoin"
+      ],
+      "ref": "drug_isotretinoin"
+    },
+    "itraconazole": {
+      "name": "itraconazole",
+      "cls": "azole_antifungal",
+      "syn": [
+        "itraconazole"
+      ],
+      "ref": "drug_itraconazole"
+    },
+    "ivermectin": {
+      "name": "ivermectin",
+      "cls": "other",
+      "syn": [
+        "ivermectin"
+      ],
+      "ref": "drug_ivermectin"
+    },
+    "ketoconazole": {
+      "name": "ketoconazole",
+      "cls": "azole_antifungal",
+      "syn": [
+        "ketoconazole"
+      ],
+      "ref": "drug_ketoconazole"
+    },
+    "ketoprofen": {
+      "name": "ketoprofen",
+      "cls": "nsaid",
+      "syn": [
+        "ketoprofen"
+      ],
+      "ref": "drug_ketoprofen"
+    },
+    "ketorolac": {
+      "name": "ketorolac",
+      "cls": "nsaid",
+      "syn": [
+        "ketorolac"
+      ],
+      "ref": "drug_ketorolac"
+    },
+    "labetalol": {
+      "name": "labetalol",
+      "cls": "beta_blocker",
+      "syn": [
+        "labetalol"
+      ],
+      "ref": "drug_labetalol"
+    },
+    "lactulose": {
+      "name": "lactulose",
+      "cls": "other",
+      "syn": [
+        "lactulose",
+        "enulose"
+      ],
+      "ref": "drug_lactulose"
+    },
+    "lamotrigine": {
+      "name": "lamotrigine",
+      "cls": "aed_cns",
+      "syn": [
+        "lamotrigine"
+      ],
+      "ref": "drug_lamotrigine"
+    },
+    "latanoprost": {
+      "name": "latanoprost",
+      "cls": "other",
+      "syn": [
+        "latanoprost"
+      ],
+      "ref": "drug_latanoprost"
+    },
+    "leflunomide": {
+      "name": "leflunomide",
+      "cls": "dmard_immuno",
+      "syn": [
+        "leflunomide"
+      ],
+      "ref": "drug_leflunomide"
+    },
+    "letrozole": {
+      "name": "letrozole",
+      "cls": "other",
+      "syn": [
+        "letrozole"
+      ],
+      "ref": "drug_letrozole"
+    },
+    "leuprolide": {
+      "name": "leuprolide",
+      "cls": "other",
+      "syn": [
+        "leuprolide",
+        "camcevi etm"
+      ],
+      "ref": "drug_leuprolide"
+    },
+    "levalbuterol": {
+      "name": "levalbuterol",
+      "cls": "beta2_agonist",
+      "syn": [
+        "levalbuterol"
+      ],
+      "ref": "drug_levalbuterol"
+    },
+    "levetiracetam": {
+      "name": "levetiracetam",
+      "cls": "aed_cns",
+      "syn": [
+        "levetiracetam"
+      ],
+      "ref": "drug_levetiracetam"
+    },
+    "levocetirizine": {
+      "name": "levocetirizine",
+      "cls": "antihistamine",
+      "syn": [
+        "levocetirizine"
+      ],
+      "ref": "drug_levocetirizine"
+    },
+    "levofloxacin": {
+      "name": "levofloxacin",
+      "cls": "fluoroquinolone",
+      "syn": [
+        "levofloxacin"
+      ],
+      "ref": "drug_levofloxacin"
+    },
+    "levomilnacipran": {
+      "name": "levomilnacipran",
+      "cls": "ssri_snri",
+      "syn": [
+        "levomilnacipran",
+        "fetzima"
+      ],
+      "ref": "drug_levomilnacipran"
+    },
+    "levonorgestrel": {
+      "name": "levonorgestrel",
+      "cls": "other",
+      "syn": [
+        "levonorgestrel",
+        "postday one-step"
+      ],
+      "ref": "drug_levonorgestrel"
+    },
+    "lidocaine": {
+      "name": "lidocaine",
+      "cls": "other",
+      "syn": [
+        "lidocaine"
+      ],
+      "ref": "drug_lidocaine"
+    },
+    "linaclotide": {
+      "name": "linaclotide",
+      "cls": "other",
+      "syn": [
+        "linaclotide",
+        "linzess"
+      ],
+      "ref": "drug_linaclotide"
+    },
+    "linagliptin": {
+      "name": "linagliptin",
+      "cls": "dpp4",
+      "syn": [
+        "linagliptin",
+        "tradjenta"
+      ],
+      "ref": "drug_linagliptin"
+    },
+    "liothyronine": {
+      "name": "liothyronine",
+      "cls": "thyroid",
+      "syn": [
+        "liothyronine"
+      ],
+      "ref": "drug_liothyronine"
+    },
+    "liraglutide": {
+      "name": "liraglutide",
+      "cls": "glp1",
+      "syn": [
+        "liraglutide"
+      ],
+      "ref": "drug_liraglutide"
+    },
+    "lisdexamfetamine": {
+      "name": "lisdexamfetamine",
+      "cls": "stimulant",
+      "syn": [
+        "lisdexamfetamine"
+      ],
+      "ref": "drug_lisdexamfetamine"
+    },
+    "lofexidine": {
+      "name": "lofexidine",
+      "cls": "other",
+      "syn": [
+        "lofexidine"
+      ],
+      "ref": "drug_lofexidine"
+    },
+    "loperamide": {
+      "name": "loperamide",
+      "cls": "other",
+      "syn": [
+        "loperamide",
+        "anti diarrheal"
+      ],
+      "ref": "drug_loperamide"
+    },
+    "lovastatin": {
+      "name": "lovastatin",
+      "cls": "statin_cyp",
+      "syn": [
+        "lovastatin"
+      ],
+      "ref": "drug_lovastatin",
+      "grapefruit": true
+    },
+    "lubiprostone": {
+      "name": "lubiprostone",
+      "cls": "other",
+      "syn": [
+        "lubiprostone"
+      ],
+      "ref": "drug_lubiprostone"
+    },
+    "lurasidone": {
+      "name": "lurasidone",
+      "cls": "antipsychotic",
+      "syn": [
+        "lurasidone"
+      ],
+      "ref": "drug_lurasidone"
+    },
+    "magnesium_sulfate": {
+      "name": "magnesium sulfate",
+      "cls": "other",
+      "syn": [
+        "magnesium sulfate",
+        "epsom salt"
+      ],
+      "ref": "drug_magnesium_sulfate"
+    },
+    "malathion": {
+      "name": "malathion",
+      "cls": "other",
+      "syn": [
+        "malathion",
+        "ovide"
+      ],
+      "ref": "drug_malathion"
+    },
+    "mebendazole": {
+      "name": "mebendazole",
+      "cls": "other",
+      "syn": [
+        "mebendazole",
+        "vermox"
+      ],
+      "ref": "drug_mebendazole"
+    },
+    "meclizine": {
+      "name": "meclizine",
+      "cls": "other",
+      "syn": [
+        "meclizine"
+      ],
+      "ref": "drug_meclizine"
+    },
+    "mefloquine": {
+      "name": "mefloquine",
+      "cls": "other",
+      "syn": [
+        "mefloquine"
+      ],
+      "ref": "drug_mefloquine"
+    },
+    "megestrol": {
+      "name": "megestrol",
+      "cls": "other",
+      "syn": [
+        "megestrol"
+      ],
+      "ref": "drug_megestrol"
+    },
+    "memantine": {
+      "name": "memantine",
+      "cls": "other",
+      "syn": [
+        "memantine"
+      ],
+      "ref": "drug_memantine"
+    },
+    "menthol": {
+      "name": "menthol",
+      "cls": "other",
+      "syn": [
+        "menthol",
+        "equate honey lemon cough drops"
+      ],
+      "ref": "drug_menthol"
+    },
+    "mesalamine": {
+      "name": "mesalamine",
+      "cls": "aminosalicylate",
+      "syn": [
+        "mesalamine"
+      ],
+      "ref": "drug_mesalamine"
+    },
+    "metaxalone": {
+      "name": "metaxalone",
+      "cls": "other",
+      "syn": [
+        "metaxalone"
+      ],
+      "ref": "drug_metaxalone"
+    },
+    "methadone": {
+      "name": "methadone",
+      "cls": "opioid",
+      "syn": [
+        "methadone"
+      ],
+      "ref": "drug_methadone"
+    },
+    "methenamine": {
+      "name": "methenamine",
+      "cls": "other",
+      "syn": [
+        "methenamine"
+      ],
+      "ref": "drug_methenamine"
+    },
+    "methimazole": {
+      "name": "methimazole",
+      "cls": "antithyroid",
+      "syn": [
+        "methimazole"
+      ],
+      "ref": "drug_methimazole"
+    },
+    "methocarbamol": {
+      "name": "methocarbamol",
+      "cls": "other",
+      "syn": [
+        "methocarbamol"
+      ],
+      "ref": "drug_methocarbamol"
+    },
+    "methylergonovine": {
+      "name": "methylergonovine",
+      "cls": "other",
+      "syn": [
+        "methylergonovine"
+      ],
+      "ref": "drug_methylergonovine"
+    },
+    "methylnaltrexone": {
+      "name": "methylnaltrexone",
+      "cls": "other",
+      "syn": [
+        "methylnaltrexone",
+        "relistor"
+      ],
+      "ref": "drug_methylnaltrexone"
+    },
+    "methylprednisolone": {
+      "name": "methylprednisolone",
+      "cls": "steroid",
+      "syn": [
+        "methylprednisolone"
+      ],
+      "ref": "drug_methylprednisolone"
+    },
+    "metoclopramide": {
+      "name": "metoclopramide",
+      "cls": "other",
+      "syn": [
+        "metoclopramide"
+      ],
+      "ref": "drug_metoclopramide"
+    },
+    "metolazone": {
+      "name": "metolazone",
+      "cls": "diuretic",
+      "syn": [
+        "metolazone"
+      ],
+      "ref": "drug_metolazone"
+    },
+    "miconazole": {
+      "name": "miconazole",
+      "cls": "other",
+      "syn": [
+        "miconazole",
+        "antifungal"
+      ]
+    },
+    "midazolam": {
+      "name": "midazolam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "midazolam"
+      ],
+      "ref": "drug_midazolam"
+    },
+    "mifepristone": {
+      "name": "mifepristone",
+      "cls": "other",
+      "syn": [
+        "mifepristone",
+        "korlym"
+      ],
+      "ref": "drug_mifepristone"
+    },
+    "minocycline": {
+      "name": "minocycline",
+      "cls": "tetracycline",
+      "syn": [
+        "minocycline",
+        "zilxi"
+      ],
+      "ref": "drug_minocycline"
+    },
+    "minoxidil": {
+      "name": "minoxidil",
+      "cls": "other",
+      "syn": [
+        "minoxidil",
+        "hair regrowth treatment"
+      ],
+      "ref": "drug_minoxidil"
+    },
+    "mirabegron": {
+      "name": "mirabegron",
+      "cls": "other",
+      "syn": [
+        "mirabegron"
+      ],
+      "ref": "drug_mirabegron"
+    },
+    "mirtazapine": {
+      "name": "mirtazapine",
+      "cls": "antidepressant_other",
+      "syn": [
+        "mirtazapine"
+      ],
+      "ref": "drug_mirtazapine"
+    },
+    "misoprostol": {
+      "name": "misoprostol",
+      "cls": "other",
+      "syn": [
+        "misoprostol"
+      ],
+      "ref": "drug_misoprostol"
+    },
+    "modafinil": {
+      "name": "modafinil",
+      "cls": "other",
+      "syn": [
+        "modafinil"
+      ],
+      "ref": "drug_modafinil"
+    },
+    "mometasone": {
+      "name": "mometasone",
+      "cls": "other",
+      "syn": [
+        "mometasone"
+      ],
+      "ref": "drug_mometasone"
+    },
+    "montelukast": {
+      "name": "montelukast",
+      "cls": "other",
+      "syn": [
+        "montelukast"
+      ],
+      "ref": "drug_montelukast"
+    },
+    "moxifloxacin": {
+      "name": "moxifloxacin",
+      "cls": "fluoroquinolone",
+      "syn": [
+        "moxifloxacin"
+      ],
+      "ref": "drug_moxifloxacin"
+    },
+    "mupirocin": {
+      "name": "mupirocin",
+      "cls": "other",
+      "syn": [
+        "mupirocin"
+      ],
+      "ref": "drug_mupirocin"
+    },
+    "mycophenolate_mofetil": {
+      "name": "mycophenolate mofetil",
+      "cls": "dmard_immuno",
+      "syn": [
+        "mycophenolate mofetil"
+      ],
+      "ref": "drug_mycophenolate_mofetil"
+    },
+    "nabumetone": {
+      "name": "nabumetone",
+      "cls": "nsaid",
+      "syn": [
+        "nabumetone"
+      ],
+      "ref": "drug_nabumetone"
+    },
+    "nalbuphine": {
+      "name": "nalbuphine",
+      "cls": "opioid",
+      "syn": [
+        "nalbuphine"
+      ],
+      "ref": "drug_nalbuphine"
+    },
+    "naloxegol": {
+      "name": "naloxegol",
+      "cls": "other",
+      "syn": [
+        "naloxegol",
+        "movantik"
+      ],
+      "ref": "drug_naloxegol"
+    },
+    "naloxone": {
+      "name": "naloxone",
+      "cls": "other",
+      "syn": [
+        "naloxone"
+      ],
+      "ref": "drug_naloxone"
+    },
+    "naltrexone": {
+      "name": "naltrexone",
+      "cls": "other",
+      "syn": [
+        "naltrexone"
+      ],
+      "ref": "drug_naltrexone"
+    },
+    "naratriptan": {
+      "name": "naratriptan",
+      "cls": "triptan",
+      "syn": [
+        "naratriptan"
+      ],
+      "ref": "drug_naratriptan"
+    },
+    "nebivolol": {
+      "name": "nebivolol",
+      "cls": "beta_blocker",
+      "syn": [
+        "nebivolol"
+      ],
+      "ref": "drug_nebivolol"
+    },
+    "niacin": {
+      "name": "niacin",
+      "cls": "other",
+      "syn": [
+        "niacin"
+      ],
+      "ref": "drug_niacin"
+    },
+    "nicardipine": {
+      "name": "nicardipine",
+      "cls": "ccb_dihydro",
+      "syn": [
+        "nicardipine"
+      ],
+      "ref": "drug_nicardipine",
+      "grapefruit": true
+    },
+    "nicotine": {
+      "name": "nicotine",
+      "cls": "other",
+      "syn": [
+        "nicotine"
+      ],
+      "ref": "drug_nicotine"
+    },
+    "nitazoxanide": {
+      "name": "nitazoxanide",
+      "cls": "other",
+      "syn": [
+        "nitazoxanide"
+      ],
+      "ref": "drug_nitazoxanide"
+    },
+    "nitrofurantoin": {
+      "name": "nitrofurantoin",
+      "cls": "other",
+      "syn": [
+        "nitrofurantoin"
+      ],
+      "ref": "drug_nitrofurantoin"
+    },
+    "norethindrone": {
+      "name": "norethindrone",
+      "cls": "other",
+      "syn": [
+        "norethindrone",
+        "incassia"
+      ],
+      "ref": "drug_norethindrone"
+    },
+    "nortriptyline": {
+      "name": "nortriptyline",
+      "cls": "tca",
+      "syn": [
+        "nortriptyline"
+      ],
+      "ref": "drug_nortriptyline"
+    },
+    "nystatin": {
+      "name": "nystatin",
+      "cls": "other",
+      "syn": [
+        "nystatin",
+        "nyamyc"
+      ],
+      "ref": "drug_nystatin"
+    },
+    "ofloxacin": {
+      "name": "ofloxacin",
+      "cls": "fluoroquinolone",
+      "syn": [
+        "ofloxacin"
+      ],
+      "ref": "drug_ofloxacin"
+    },
+    "olanzapine": {
+      "name": "olanzapine",
+      "cls": "antipsychotic",
+      "syn": [
+        "olanzapine"
+      ],
+      "ref": "drug_olanzapine"
+    },
+    "olmesartan": {
+      "name": "olmesartan",
+      "cls": "arb",
+      "syn": [
+        "olmesartan"
+      ],
+      "ref": "drug_olmesartan"
+    },
+    "olopatadine": {
+      "name": "olopatadine",
+      "cls": "other",
+      "syn": [
+        "olopatadine"
+      ],
+      "ref": "drug_olopatadine"
+    },
+    "ondansetron": {
+      "name": "ondansetron",
+      "cls": "qt_prolonging",
+      "syn": [
+        "ondansetron"
+      ],
+      "ref": "drug_ondansetron"
+    },
+    "oseltamivir": {
+      "name": "oseltamivir",
+      "cls": "other",
+      "syn": [
+        "oseltamivir"
+      ],
+      "ref": "drug_oseltamivir"
+    },
+    "ospemifene": {
+      "name": "ospemifene",
+      "cls": "other",
+      "syn": [
+        "ospemifene",
+        "osphena"
+      ],
+      "ref": "drug_ospemifene"
+    },
+    "oxcarbazepine": {
+      "name": "oxcarbazepine",
+      "cls": "enzyme_inducer_aed",
+      "syn": [
+        "oxcarbazepine"
+      ],
+      "ref": "drug_oxcarbazepine"
+    },
+    "oxybutynin": {
+      "name": "oxybutynin",
+      "cls": "anticholinergic",
+      "syn": [
+        "oxybutynin"
+      ],
+      "ref": "drug_oxybutynin"
+    },
+    "oxymetazoline": {
+      "name": "oxymetazoline",
+      "cls": "other",
+      "syn": [
+        "oxymetazoline"
+      ],
+      "ref": "drug_oxymetazoline"
+    },
+    "oxymorphone": {
+      "name": "oxymorphone",
+      "cls": "opioid",
+      "syn": [
+        "oxymorphone"
+      ],
+      "ref": "drug_oxymorphone"
+    },
+    "paliperidone": {
+      "name": "paliperidone",
+      "cls": "antipsychotic",
+      "syn": [
+        "paliperidone"
+      ],
+      "ref": "drug_paliperidone"
+    },
+    "pancrelipase": {
+      "name": "pancrelipase",
+      "cls": "other",
+      "syn": [
+        "pancrelipase",
+        "creon"
+      ],
+      "ref": "drug_pancrelipase"
+    },
+    "penicillin_v": {
+      "name": "penicillin v",
+      "cls": "other",
+      "syn": [
+        "penicillin v"
+      ],
+      "ref": "drug_penicillin_V"
+    },
+    "pentoxifylline": {
+      "name": "pentoxifylline",
+      "cls": "other",
+      "syn": [
+        "pentoxifylline"
+      ],
+      "ref": "drug_pentoxifylline"
+    },
+    "perampanel": {
+      "name": "perampanel",
+      "cls": "aed_cns",
+      "syn": [
+        "perampanel"
+      ],
+      "ref": "drug_perampanel"
+    },
+    "permethrin": {
+      "name": "permethrin",
+      "cls": "other",
+      "syn": [
+        "permethrin",
+        "good sense lice killing creme rinse"
+      ],
+      "ref": "drug_permethrin"
+    },
+    "perphenazine": {
+      "name": "perphenazine",
+      "cls": "antipsychotic",
+      "syn": [
+        "perphenazine"
+      ],
+      "ref": "drug_perphenazine"
+    },
+    "phenazopyridine": {
+      "name": "phenazopyridine",
+      "cls": "other",
+      "syn": [
+        "phenazopyridine"
+      ],
+      "ref": "drug_phenazopyridine"
+    },
+    "phenobarbital": {
+      "name": "phenobarbital",
+      "cls": "enzyme_inducer_aed",
+      "syn": [
+        "phenobarbital"
+      ],
+      "ref": "drug_phenobarbital"
+    },
+    "phenylephrine": {
+      "name": "phenylephrine",
+      "cls": "other",
+      "syn": [
+        "phenylephrine",
+        "goodmeds non-drowsy nasal decongestant pe"
+      ],
+      "ref": "drug_phenylephrine"
+    },
+    "pilocarpine": {
+      "name": "pilocarpine",
+      "cls": "other",
+      "syn": [
+        "pilocarpine"
+      ],
+      "ref": "drug_pilocarpine"
+    },
+    "pimecrolimus": {
+      "name": "pimecrolimus",
+      "cls": "other",
+      "syn": [
+        "pimecrolimus"
+      ],
+      "ref": "drug_pimecrolimus"
+    },
+    "pioglitazone": {
+      "name": "pioglitazone",
+      "cls": "tzd",
+      "syn": [
+        "pioglitazone"
+      ],
+      "ref": "drug_pioglitazone"
+    },
+    "piroxicam": {
+      "name": "piroxicam",
+      "cls": "nsaid",
+      "syn": [
+        "piroxicam"
+      ],
+      "ref": "drug_piroxicam"
+    },
+    "pitavastatin": {
+      "name": "pitavastatin",
+      "cls": "statin",
+      "syn": [
+        "pitavastatin"
+      ],
+      "ref": "drug_pitavastatin"
+    },
+    "podofilox": {
+      "name": "podofilox",
+      "cls": "other",
+      "syn": [
+        "podofilox"
+      ],
+      "ref": "drug_podofilox"
+    },
+    "polyethylene_glycol_3350": {
+      "name": "polyethylene glycol 3350",
+      "cls": "other",
+      "syn": [
+        "polyethylene glycol 3350",
+        "purelax"
+      ],
+      "ref": "drug_polyethylene_glycol_3350"
+    },
+    "potassium_chloride": {
+      "name": "potassium chloride",
+      "cls": "other",
+      "syn": [
+        "potassium chloride"
+      ],
+      "ref": "drug_potassium_chloride"
+    },
+    "pramipexole": {
+      "name": "pramipexole",
+      "cls": "other",
+      "syn": [
+        "pramipexole"
+      ],
+      "ref": "drug_pramipexole"
+    },
+    "prasugrel": {
+      "name": "prasugrel",
+      "cls": "antiplatelet",
+      "syn": [
+        "prasugrel"
+      ],
+      "ref": "drug_prasugrel"
+    },
+    "praziquantel": {
+      "name": "praziquantel",
+      "cls": "other",
+      "syn": [
+        "praziquantel"
+      ],
+      "ref": "drug_praziquantel"
+    },
+    "prazosin": {
+      "name": "prazosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "prazosin"
+      ],
+      "ref": "drug_prazosin"
+    },
+    "pregabalin": {
+      "name": "pregabalin",
+      "cls": "gabapentinoid",
+      "syn": [
+        "pregabalin"
+      ],
+      "ref": "drug_pregabalin"
+    },
+    "primidone": {
+      "name": "primidone",
+      "cls": "enzyme_inducer_aed",
+      "syn": [
+        "primidone"
+      ],
+      "ref": "drug_primidone"
+    },
+    "probenecid": {
+      "name": "probenecid",
+      "cls": "other",
+      "syn": [
+        "probenecid"
+      ],
+      "ref": "drug_probenecid"
+    },
+    "prochlorperazine": {
+      "name": "prochlorperazine",
+      "cls": "antipsychotic",
+      "syn": [
+        "prochlorperazine"
+      ],
+      "ref": "drug_prochlorperazine"
+    },
+    "progesterone": {
+      "name": "progesterone",
+      "cls": "other",
+      "syn": [
+        "progesterone"
+      ],
+      "ref": "drug_progesterone"
+    },
+    "promethazine": {
+      "name": "promethazine",
+      "cls": "antihistamine_sedating",
+      "syn": [
+        "promethazine"
+      ],
+      "ref": "drug_promethazine"
+    },
+    "propylthiouracil": {
+      "name": "propylthiouracil",
+      "cls": "antithyroid",
+      "syn": [
+        "propylthiouracil"
+      ],
+      "ref": "drug_propylthiouracil"
+    },
+    "pseudoephedrine": {
+      "name": "pseudoephedrine",
+      "cls": "other",
+      "syn": [
+        "pseudoephedrine"
+      ],
+      "ref": "drug_pseudoephedrine"
+    },
+    "pyrantel": {
+      "name": "pyrantel",
+      "cls": "other",
+      "syn": [
+        "pyrantel",
+        "mebendamax pinworm"
+      ],
+      "ref": "drug_pyrantel"
+    },
+    "pyrazinamide": {
+      "name": "pyrazinamide",
+      "cls": "other",
+      "syn": [
+        "pyrazinamide"
+      ],
+      "ref": "drug_pyrazinamide"
+    },
+    "pyridostigmine": {
+      "name": "pyridostigmine",
+      "cls": "cholinesterase_inhibitor",
+      "syn": [
+        "pyridostigmine"
+      ],
+      "ref": "drug_pyridostigmine"
+    },
+    "quetiapine": {
+      "name": "quetiapine",
+      "cls": "antipsychotic",
+      "syn": [
+        "quetiapine"
+      ],
+      "ref": "drug_quetiapine"
+    },
+    "quinapril": {
+      "name": "quinapril",
+      "cls": "ace",
+      "syn": [
+        "quinapril"
+      ],
+      "ref": "drug_quinapril"
+    },
+    "rabeprazole": {
+      "name": "rabeprazole",
+      "cls": "ppi",
+      "syn": [
+        "rabeprazole"
+      ],
+      "ref": "drug_rabeprazole"
+    },
+    "raloxifene": {
+      "name": "raloxifene",
+      "cls": "other",
+      "syn": [
+        "raloxifene"
+      ],
+      "ref": "drug_raloxifene"
+    },
+    "ramelteon": {
+      "name": "ramelteon",
+      "cls": "other",
+      "syn": [
+        "ramelteon"
+      ],
+      "ref": "drug_ramelteon"
+    },
+    "ranolazine": {
+      "name": "ranolazine",
+      "cls": "qt_prolonging",
+      "syn": [
+        "ranolazine"
+      ],
+      "ref": "drug_ranolazine",
+      "grapefruit": true
+    },
+    "rasagiline": {
+      "name": "rasagiline",
+      "cls": "maoi",
+      "syn": [
+        "rasagiline"
+      ],
+      "ref": "drug_rasagiline"
+    },
+    "repaglinide": {
+      "name": "repaglinide",
+      "cls": "glinide",
+      "syn": [
+        "repaglinide"
+      ],
+      "ref": "drug_repaglinide"
+    },
+    "rifampin": {
+      "name": "rifampin",
+      "cls": "other",
+      "syn": [
+        "rifampin"
+      ],
+      "ref": "drug_rifampin"
+    },
+    "rifaximin": {
+      "name": "rifaximin",
+      "cls": "other",
+      "syn": [
+        "rifaximin",
+        "xifaxan"
+      ],
+      "ref": "drug_rifaximin"
+    },
+    "rimegepant": {
+      "name": "rimegepant",
+      "cls": "other",
+      "syn": [
+        "rimegepant",
+        "nurtec odt"
+      ],
+      "ref": "drug_rimegepant"
+    },
+    "risedronate": {
+      "name": "risedronate",
+      "cls": "bisphosphonate",
+      "syn": [
+        "risedronate",
+        "actonel"
+      ],
+      "ref": "drug_risedronate",
+      "empty_stomach": true
+    },
+    "risperidone": {
+      "name": "risperidone",
+      "cls": "antipsychotic",
+      "syn": [
+        "risperidone"
+      ],
+      "ref": "drug_risperidone"
+    },
+    "rivastigmine": {
+      "name": "rivastigmine",
+      "cls": "cholinesterase_inhibitor",
+      "syn": [
+        "rivastigmine",
+        "exelon"
+      ],
+      "ref": "drug_rivastigmine"
+    },
+    "roflumilast": {
+      "name": "roflumilast",
+      "cls": "other",
+      "syn": [
+        "roflumilast"
+      ],
+      "ref": "drug_roflumilast"
+    },
+    "ropinirole": {
+      "name": "ropinirole",
+      "cls": "other",
+      "syn": [
+        "ropinirole"
+      ],
+      "ref": "drug_ropinirole"
+    },
+    "salicylic_acid": {
+      "name": "salicylic acid",
+      "cls": "other",
+      "syn": [
+        "salicylic acid",
+        "quick action"
+      ],
+      "ref": "drug_salicylic_acid"
+    },
+    "salmeterol": {
+      "name": "salmeterol",
+      "cls": "beta2_agonist",
+      "syn": [
+        "salmeterol"
+      ],
+      "ref": "drug_salmeterol"
+    },
+    "saxagliptin": {
+      "name": "saxagliptin",
+      "cls": "dpp4",
+      "syn": [
+        "saxagliptin"
+      ],
+      "ref": "drug_saxagliptin"
+    },
+    "secukinumab": {
+      "name": "secukinumab",
+      "cls": "biologic_immuno",
+      "syn": [
+        "secukinumab",
+        "cosentyx"
+      ],
+      "ref": "drug_secukinumab"
+    },
+    "selenium_sulfide": {
+      "name": "selenium sulfide",
+      "cls": "other",
+      "syn": [
+        "selenium sulfide",
+        "walgreens dandruff maximum strength anti-dandruff"
+      ],
+      "ref": "drug_selenium_sulfide"
+    },
+    "semaglutide": {
+      "name": "semaglutide",
+      "cls": "glp1",
+      "syn": [
+        "semaglutide",
+        "ozempic"
+      ],
+      "ref": "drug_semaglutide"
+    },
+    "senna": {
+      "name": "senna",
+      "cls": "other",
+      "syn": [
+        "senna"
+      ],
+      "ref": "drug_senna"
+    },
+    "sennosides": {
+      "name": "sennosides",
+      "cls": "other",
+      "syn": [
+        "sennosides",
+        "gericare senna syrup"
+      ],
+      "ref": "drug_sennosides"
+    },
+    "sevelamer": {
+      "name": "sevelamer",
+      "cls": "other",
+      "syn": [
+        "sevelamer"
+      ],
+      "ref": "drug_sevelamer"
+    },
+    "sevoflurane": {
+      "name": "sevoflurane",
+      "cls": "other",
+      "syn": [
+        "sevoflurane"
+      ],
+      "ref": "drug_sevoflurane"
+    },
+    "silodosin": {
+      "name": "silodosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "silodosin"
+      ],
+      "ref": "drug_silodosin"
+    },
+    "silver_sulfadiazine": {
+      "name": "silver sulfadiazine",
+      "cls": "other",
+      "syn": [
+        "silver sulfadiazine"
+      ],
+      "ref": "drug_silver_sulfadiazine"
+    },
+    "simethicone": {
+      "name": "simethicone",
+      "cls": "other",
+      "syn": [
+        "simethicone",
+        "gas relief ultra strength"
+      ],
+      "ref": "drug_simethicone"
+    },
+    "sirolimus": {
+      "name": "sirolimus",
+      "cls": "immunosuppressant",
+      "syn": [
+        "sirolimus"
+      ],
+      "ref": "drug_sirolimus",
+      "grapefruit": true
+    },
+    "sitagliptin": {
+      "name": "sitagliptin",
+      "cls": "dpp4",
+      "syn": [
+        "sitagliptin",
+        "januvia"
+      ],
+      "ref": "drug_sitagliptin"
+    },
+    "solifenacin": {
+      "name": "solifenacin",
+      "cls": "anticholinergic",
+      "syn": [
+        "solifenacin"
+      ],
+      "ref": "drug_solifenacin"
+    },
+    "sotalol": {
+      "name": "sotalol",
+      "cls": "beta_blocker",
+      "syn": [
+        "sotalol"
+      ],
+      "ref": "drug_sotalol"
+    },
+    "spinosad": {
+      "name": "spinosad",
+      "cls": "other",
+      "syn": [
+        "spinosad"
+      ],
+      "ref": "drug_spinosad"
+    },
+    "sucralfate": {
+      "name": "sucralfate",
+      "cls": "acid_reducer",
+      "syn": [
+        "sucralfate"
+      ],
+      "ref": "drug_sucralfate"
+    },
+    "sulfacetamide": {
+      "name": "sulfacetamide",
+      "cls": "other",
+      "syn": [
+        "sulfacetamide",
+        "ovaceplus plus"
+      ],
+      "ref": "drug_sulfacetamide"
+    },
+    "sulfasalazine": {
+      "name": "sulfasalazine",
+      "cls": "aminosalicylate",
+      "syn": [
+        "sulfasalazine"
+      ],
+      "ref": "drug_sulfasalazine"
+    },
+    "suvorexant": {
+      "name": "suvorexant",
+      "cls": "other",
+      "syn": [
+        "suvorexant",
+        "belsomra"
+      ],
+      "ref": "drug_suvorexant"
+    },
+    "tamoxifen": {
+      "name": "tamoxifen",
+      "cls": "other",
+      "syn": [
+        "tamoxifen",
+        "soltamox"
+      ],
+      "ref": "drug_tamoxifen"
+    },
+    "tamsulosin": {
+      "name": "tamsulosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "tamsulosin"
+      ],
+      "ref": "drug_tamsulosin"
+    },
+    "tapentadol": {
+      "name": "tapentadol",
+      "cls": "opioid",
+      "syn": [
+        "tapentadol"
+      ],
+      "ref": "drug_tapentadol"
+    },
+    "tazarotene": {
+      "name": "tazarotene",
+      "cls": "other",
+      "syn": [
+        "tazarotene",
+        "tazorac"
+      ],
+      "ref": "drug_tazarotene"
+    },
+    "telmisartan": {
+      "name": "telmisartan",
+      "cls": "arb",
+      "syn": [
+        "telmisartan"
+      ],
+      "ref": "drug_telmisartan"
+    },
+    "temazepam": {
+      "name": "temazepam",
+      "cls": "benzodiazepine",
+      "syn": [
+        "temazepam"
+      ],
+      "ref": "drug_temazepam"
+    },
+    "tenecteplase": {
+      "name": "tenecteplase",
+      "cls": "other",
+      "syn": [
+        "tenecteplase",
+        "tnkase"
+      ],
+      "ref": "drug_tenecteplase"
+    },
+    "tenofovir_disoproxil_fumarate": {
+      "name": "tenofovir disoproxil fumarate",
+      "cls": "other",
+      "syn": [
+        "tenofovir disoproxil fumarate"
+      ],
+      "ref": "drug_tenofovir_disoproxil_fumarate"
+    },
+    "terazosin": {
+      "name": "terazosin",
+      "cls": "alpha_blocker",
+      "syn": [
+        "terazosin"
+      ],
+      "ref": "drug_terazosin"
+    },
+    "terbinafine": {
+      "name": "terbinafine",
+      "cls": "other",
+      "syn": [
+        "terbinafine"
+      ],
+      "ref": "drug_terbinafine"
+    },
+    "terbutaline": {
+      "name": "terbutaline",
+      "cls": "beta2_agonist",
+      "syn": [
+        "terbutaline"
+      ],
+      "ref": "drug_terbutaline"
+    },
+    "teriparatide": {
+      "name": "teriparatide",
+      "cls": "other",
+      "syn": [
+        "teriparatide"
+      ],
+      "ref": "drug_teriparatide"
+    },
+    "testosterone": {
+      "name": "testosterone",
+      "cls": "other",
+      "syn": [
+        "testosterone",
+        "testopel"
+      ],
+      "ref": "drug_testosterone"
+    },
+    "theophylline": {
+      "name": "theophylline",
+      "cls": "theophylline",
+      "syn": [
+        "theophylline"
+      ],
+      "ref": "drug_theophylline"
+    },
+    "ticagrelor": {
+      "name": "ticagrelor",
+      "cls": "antiplatelet",
+      "syn": [
+        "ticagrelor"
+      ],
+      "ref": "drug_ticagrelor"
+    },
+    "timolol": {
+      "name": "timolol",
+      "cls": "other",
+      "syn": [
+        "timolol",
+        "betimol"
+      ],
+      "ref": "drug_timolol"
+    },
+    "tiotropium": {
+      "name": "tiotropium",
+      "cls": "anticholinergic_resp",
+      "syn": [
+        "tiotropium"
+      ],
+      "ref": "drug_tiotropium"
+    },
+    "tirzepatide": {
+      "name": "tirzepatide",
+      "cls": "glp1",
+      "syn": [
+        "tirzepatide",
+        "mounjaro"
+      ],
+      "ref": "drug_tirzepatide"
+    },
+    "tizanidine": {
+      "name": "tizanidine",
+      "cls": "other",
+      "syn": [
+        "tizanidine"
+      ],
+      "ref": "drug_tizanidine"
+    },
+    "tofacitinib": {
+      "name": "tofacitinib",
+      "cls": "dmard_immuno",
+      "syn": [
+        "tofacitinib"
+      ],
+      "ref": "drug_tofacitinib"
+    },
+    "tolterodine": {
+      "name": "tolterodine",
+      "cls": "anticholinergic",
+      "syn": [
+        "tolterodine"
+      ],
+      "ref": "drug_tolterodine"
+    },
+    "topiramate": {
+      "name": "topiramate",
+      "cls": "aed_cns",
+      "syn": [
+        "topiramate"
+      ],
+      "ref": "drug_topiramate"
+    },
+    "torsemide": {
+      "name": "torsemide",
+      "cls": "diuretic",
+      "syn": [
+        "torsemide"
+      ],
+      "ref": "drug_torsemide"
+    },
+    "travoprost": {
+      "name": "travoprost",
+      "cls": "other",
+      "syn": [
+        "travoprost"
+      ],
+      "ref": "drug_travoprost"
+    },
+    "trazodone": {
+      "name": "trazodone",
+      "cls": "antidepressant_other",
+      "syn": [
+        "trazodone"
+      ],
+      "ref": "drug_trazodone"
+    },
+    "tretinoin": {
+      "name": "tretinoin",
+      "cls": "other",
+      "syn": [
+        "tretinoin"
+      ],
+      "ref": "drug_tretinoin"
+    },
+    "triamcinolone": {
+      "name": "triamcinolone",
+      "cls": "other",
+      "syn": [
+        "triamcinolone"
+      ],
+      "ref": "drug_triamcinolone"
+    },
+    "triamterene": {
+      "name": "triamterene",
+      "cls": "k_sparing",
+      "syn": [
+        "triamterene"
+      ],
+      "ref": "drug_triamterene"
+    },
+    "trihexyphenidyl": {
+      "name": "trihexyphenidyl",
+      "cls": "anticholinergic",
+      "syn": [
+        "trihexyphenidyl"
+      ],
+      "ref": "drug_trihexyphenidyl"
+    },
+    "trospium": {
+      "name": "trospium",
+      "cls": "anticholinergic",
+      "syn": [
+        "trospium"
+      ],
+      "ref": "drug_trospium"
+    },
+    "ubrogepant": {
+      "name": "ubrogepant",
+      "cls": "other",
+      "syn": [
+        "ubrogepant",
+        "ubrelvy"
+      ],
+      "ref": "drug_ubrogepant"
+    },
+    "ulipristal": {
+      "name": "ulipristal",
+      "cls": "other",
+      "syn": [
+        "ulipristal"
+      ],
+      "ref": "drug_ulipristal"
+    },
+    "umeclidinium": {
+      "name": "umeclidinium",
+      "cls": "anticholinergic_resp",
+      "syn": [
+        "umeclidinium"
+      ],
+      "ref": "drug_umeclidinium"
+    },
+    "urea": {
+      "name": "urea",
+      "cls": "other",
+      "syn": [
+        "urea"
+      ],
+      "ref": "drug_urea"
+    },
+    "ursodiol": {
+      "name": "ursodiol",
+      "cls": "other",
+      "syn": [
+        "ursodiol"
+      ],
+      "ref": "drug_ursodiol"
+    },
+    "ustekinumab": {
+      "name": "ustekinumab",
+      "cls": "biologic_immuno",
+      "syn": [
+        "ustekinumab"
+      ],
+      "ref": "drug_ustekinumab"
+    },
+    "valacyclovir": {
+      "name": "valacyclovir",
+      "cls": "other",
+      "syn": [
+        "valacyclovir"
+      ],
+      "ref": "drug_valacyclovir"
+    },
+    "varenicline": {
+      "name": "varenicline",
+      "cls": "other",
+      "syn": [
+        "varenicline"
+      ],
+      "ref": "drug_varenicline"
+    },
+    "vedolizumab": {
+      "name": "vedolizumab",
+      "cls": "biologic_immuno",
+      "syn": [
+        "vedolizumab",
+        "entyvio"
+      ],
+      "ref": "drug_vedolizumab"
+    },
+    "vilazodone": {
+      "name": "vilazodone",
+      "cls": "ssri_snri",
+      "syn": [
+        "vilazodone"
+      ],
+      "ref": "drug_vilazodone"
+    },
+    "viloxazine": {
+      "name": "viloxazine",
+      "cls": "other",
+      "syn": [
+        "viloxazine",
+        "qelbree"
+      ],
+      "ref": "drug_viloxazine"
+    },
+    "vortioxetine": {
+      "name": "vortioxetine",
+      "cls": "ssri_snri",
+      "syn": [
+        "vortioxetine",
+        "trintellix"
+      ],
+      "ref": "drug_vortioxetine"
+    },
+    "zafirlukast": {
+      "name": "zafirlukast",
+      "cls": "other",
+      "syn": [
+        "zafirlukast"
+      ],
+      "ref": "drug_zafirlukast"
+    },
+    "zaleplon": {
+      "name": "zaleplon",
+      "cls": "zdrug",
+      "syn": [
+        "zaleplon"
+      ],
+      "ref": "drug_zaleplon"
+    },
+    "ziprasidone": {
+      "name": "ziprasidone",
+      "cls": "antipsychotic",
+      "syn": [
+        "ziprasidone"
+      ],
+      "ref": "drug_ziprasidone"
+    },
+    "zolmitriptan": {
+      "name": "zolmitriptan",
+      "cls": "triptan",
+      "syn": [
+        "zolmitriptan"
+      ],
+      "ref": "drug_zolmitriptan"
+    },
+    "zonisamide": {
+      "name": "zonisamide",
+      "cls": "aed_cns",
+      "syn": [
+        "zonisamide"
+      ],
+      "ref": "drug_zonisamide"
+    }
+  },
+  "interactions": [
+    {
+      "a": "drug:warfarin",
+      "b": "cls:nsaid",
+      "severity": "major",
+      "effect": "a much higher risk of serious bleeding (stomach and elsewhere)",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "cls:antiplatelet",
+      "severity": "major",
+      "effect": "a higher risk of serious bleeding",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:doac",
+      "b": "cls:nsaid",
+      "severity": "major",
+      "effect": "a higher risk of serious bleeding",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:doac",
+      "b": "cls:antiplatelet",
+      "severity": "major",
+      "effect": "a higher risk of serious bleeding",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:anticoagulant",
+      "b": "cls:doac",
+      "severity": "contraindicated",
+      "effect": "two blood thinners together — dangerous bleeding risk; these are not normally used together",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:aspirin",
+      "b": "cls:nsaid",
+      "severity": "moderate",
+      "effect": "more stomach irritation and bleeding risk, and aspirin may work less well for the heart",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "cls:macrolide",
+      "severity": "major",
+      "effect": "the antibiotic can raise warfarin levels and the bleeding risk — INR needs checking",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "drug:trimethoprim",
+      "severity": "major",
+      "effect": "a raised bleeding risk (INR can climb)",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "cls:maoi",
+      "severity": "contraindicated",
+      "effect": "serotonin syndrome — a dangerous reaction; these must not be combined and need a gap between them",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "cls:triptan",
+      "severity": "moderate",
+      "effect": "a small risk of serotonin syndrome when combined",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "drug:tramadol",
+      "severity": "major",
+      "effect": "a higher risk of serotonin syndrome and seizures",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:maoi",
+      "b": "drug:tramadol",
+      "severity": "contraindicated",
+      "effect": "serotonin syndrome risk — should not be combined",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:maoi",
+      "b": "cls:triptan",
+      "severity": "major",
+      "effect": "serotonin syndrome risk",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "cls:nsaid",
+      "severity": "moderate",
+      "effect": "a higher risk of stomach bleeding",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "cls:anticoagulant",
+      "severity": "moderate",
+      "effect": "a higher risk of bleeding",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:opioid",
+      "b": "cls:benzodiazepine",
+      "severity": "major",
+      "effect": "heavy sedation and slowed breathing — a dangerous combination",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:opioid_serotonergic",
+      "b": "cls:benzodiazepine",
+      "severity": "major",
+      "effect": "heavy sedation and slowed breathing",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:opioid",
+      "b": "cls:zdrug",
+      "severity": "major",
+      "effect": "excess sedation and slowed breathing",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:benzodiazepine",
+      "b": "cls:zdrug",
+      "severity": "moderate",
+      "effect": "additive sedation — risk of over-sedation and falls",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "cls:arb",
+      "severity": "major",
+      "effect": "together they strain the kidneys and raise potassium — usually avoided as a pair",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "cls:k_sparing",
+      "severity": "moderate",
+      "effect": "potassium can rise to dangerous levels — needs blood monitoring",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:arb",
+      "b": "cls:k_sparing",
+      "severity": "moderate",
+      "effect": "potassium can rise to dangerous levels — needs blood monitoring",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "cls:potassium",
+      "severity": "moderate",
+      "effect": "potassium can rise too high",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:arb",
+      "b": "cls:potassium",
+      "severity": "moderate",
+      "effect": "potassium can rise too high",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:nitrate",
+      "b": "cls:pde5",
+      "severity": "contraindicated",
+      "effect": "a sudden, dangerous drop in blood pressure — these must never be taken together",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:beta_blocker",
+      "b": "cls:ccb_rate",
+      "severity": "major",
+      "effect": "the heart rate can drop too low or the heart can be over-slowed",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:simvastatin",
+      "b": "cls:macrolide",
+      "severity": "major",
+      "effect": "a higher risk of muscle breakdown (myopathy)",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:statin_cyp",
+      "b": "drug:verapamil",
+      "severity": "moderate",
+      "effect": "higher statin levels and muscle-damage risk",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:methotrexate",
+      "b": "cls:nsaid",
+      "severity": "major",
+      "effect": "methotrexate can build up to toxic levels",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:methotrexate",
+      "b": "drug:trimethoprim",
+      "severity": "contraindicated",
+      "effect": "severe bone-marrow toxicity — should not be combined",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:lithium",
+      "b": "cls:nsaid",
+      "severity": "major",
+      "effect": "lithium can rise to toxic levels",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:lithium",
+      "b": "cls:ace",
+      "severity": "major",
+      "effect": "lithium can rise to toxic levels",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:lithium",
+      "b": "cls:arb",
+      "severity": "major",
+      "effect": "lithium can rise to toxic levels",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:lithium",
+      "b": "cls:diuretic",
+      "severity": "major",
+      "effect": "lithium can rise to toxic levels",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:digoxin",
+      "b": "cls:diuretic",
+      "severity": "moderate",
+      "effect": "diuretics can lower potassium and trigger digoxin toxicity",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "cls:nsaid",
+      "severity": "moderate",
+      "effect": "together with a water pill this strains the kidneys (the 'triple whammy')",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:arb",
+      "b": "cls:nsaid",
+      "severity": "moderate",
+      "effect": "together with a water pill this strains the kidneys (the 'triple whammy')",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:allopurinol",
+      "b": "drug:azathioprine",
+      "severity": "major",
+      "effect": "a dangerous rise in azathioprine toxicity",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:sulfonylurea",
+      "b": "cls:ssri_snri",
+      "severity": "moderate",
+      "effect": "blood sugar can drop lower than expected",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:levothyroxine",
+      "b": "cls:ppi",
+      "severity": "moderate",
+      "effect": "stomach acid changes can reduce thyroid-tablet absorption",
+      "advice": "Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "cls:fluoroquinolone",
+      "severity": "major",
+      "effect": "the antibiotic can raise warfarin levels and the risk of bleeding (INR can climb)",
+      "advice": "Don't stop or change anything yourself — tell the prescriber you take warfarin and ask for an INR check."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "cls:antibiotic",
+      "severity": "major",
+      "effect": "many antibiotics can raise warfarin's effect and the risk of bleeding (INR can climb)",
+      "advice": "Don't stop or change anything yourself — tell the prescriber you take warfarin and ask for an INR check soon after starting."
+    },
+    {
+      "a": "cls:nitroimidazole",
+      "b": "drug:alcohol_ingredient",
+      "severity": "moderate",
+      "effect": "a disulfiram-like reaction — flushing, pounding headache, nausea and vomiting",
+      "advice": "Avoid alcohol during the course and for ~3 days after. Ask your pharmacist."
+    },
+    {
+      "a": "drug:clopidogrel",
+      "b": "drug:omeprazole",
+      "severity": "moderate",
+      "effect": "omeprazole may blunt clopidogrel's anti-clotting effect",
+      "advice": "If you need stomach protection, pantoprazole or an H2-blocker is often preferred — ask your prescriber."
+    },
+    {
+      "a": "drug:clopidogrel",
+      "b": "drug:esomeprazole",
+      "severity": "moderate",
+      "effect": "esomeprazole may blunt clopidogrel's anti-clotting effect",
+      "advice": "Pantoprazole or an H2-blocker is often preferred — ask your prescriber."
+    },
+    {
+      "a": "drug:simvastatin",
+      "b": "drug:amiodarone",
+      "severity": "major",
+      "effect": "higher statin levels and risk of serious muscle breakdown (rhabdomyolysis)",
+      "advice": "Watch for severe muscle pain, weakness or dark urine; a dose limit may be needed. Ask your prescriber."
+    },
+    {
+      "a": "cls:stimulant",
+      "b": "cls:maoi",
+      "severity": "contraindicated",
+      "effect": "a dangerous blood-pressure spike (hypertensive crisis)",
+      "advice": "Stimulants must not be combined with MAOIs. Do not combine."
+    },
+    {
+      "a": "drug:digoxin",
+      "b": "drug:amiodarone",
+      "severity": "major",
+      "effect": "amiodarone raises digoxin levels toward toxicity (nausea, vision changes, dangerous rhythms)",
+      "advice": "Digoxin dose usually needs reducing and monitoring — ask your prescriber."
+    },
+    {
+      "a": "cls:tca",
+      "b": "cls:maoi",
+      "severity": "major",
+      "effect": "serotonin syndrome and dangerous blood-pressure swings",
+      "advice": "Generally not combined. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ssri_snri",
+      "b": "cls:tca",
+      "severity": "moderate",
+      "effect": "added serotonin effect and higher levels of the older antidepressant",
+      "advice": "Watch for agitation, tremor or confusion. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antidepressant_other",
+      "b": "cls:maoi",
+      "severity": "major",
+      "effect": "serotonin syndrome or dangerous blood pressure",
+      "advice": "Generally not combined. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:bupropion",
+      "b": "cls:maoi",
+      "severity": "major",
+      "effect": "dangerously high blood pressure",
+      "advice": "Not used together. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:anticoagulant",
+      "b": "cls:nsaid",
+      "severity": "major",
+      "effect": "a much higher risk of serious bleeding",
+      "advice": "Avoid where possible. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:anticoagulant",
+      "b": "cls:antiplatelet",
+      "severity": "major",
+      "effect": "a much higher risk of serious bleeding",
+      "advice": "Only combined deliberately and monitored. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:warfarin",
+      "b": "cls:ssri_snri",
+      "severity": "moderate",
+      "effect": "a higher bleeding risk",
+      "advice": "Watch for bruising or bleeding. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:opioid",
+      "b": "cls:gabapentinoid",
+      "severity": "major",
+      "effect": "severe sleepiness and slowed or stopped breathing",
+      "advice": "This combination carries a boxed warning. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:benzodiazepine",
+      "b": "cls:gabapentinoid",
+      "severity": "moderate",
+      "effect": "added drowsiness and slowed breathing",
+      "advice": "Watch for heavy sedation. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:benzodiazepine",
+      "b": "cls:tca",
+      "severity": "moderate",
+      "effect": "added drowsiness",
+      "advice": "Take care with driving and falls. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antihistamine_sedating",
+      "b": "cls:opioid",
+      "severity": "moderate",
+      "effect": "added drowsiness and slowed breathing",
+      "advice": "Take care. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antihistamine_sedating",
+      "b": "cls:benzodiazepine",
+      "severity": "moderate",
+      "effect": "added drowsiness",
+      "advice": "Take care with driving and falls. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:gabapentinoid",
+      "b": "cls:antihistamine_sedating",
+      "severity": "moderate",
+      "effect": "added drowsiness",
+      "advice": "Take care. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:tca",
+      "b": "cls:anticholinergic",
+      "severity": "moderate",
+      "effect": "added anticholinergic load: dry mouth, constipation, confusion, urinary retention, especially in older adults",
+      "advice": "Watch closely. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antipsychotic",
+      "b": "cls:anticholinergic",
+      "severity": "moderate",
+      "effect": "added anticholinergic load and sedation",
+      "advice": "Watch closely. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:anticholinergic",
+      "b": "cls:cholinesterase_inhibitor",
+      "severity": "moderate",
+      "effect": "they work against each other (one blocks, one boosts the same system)",
+      "advice": "Ask whether both are really needed. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antipsychotic",
+      "b": "cls:macrolide",
+      "severity": "moderate",
+      "effect": "a longer QT interval (a heart-rhythm risk)",
+      "advice": "Watch, especially with other QT drugs. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:antipsychotic",
+      "b": "cls:fluoroquinolone",
+      "severity": "moderate",
+      "effect": "a longer QT interval",
+      "advice": "Watch, especially with other QT drugs. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:qt_prolonging",
+      "b": "cls:macrolide",
+      "severity": "moderate",
+      "effect": "a longer QT interval",
+      "advice": "Watch for palpitations or fainting. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:tca",
+      "b": "cls:antiarrhythmic",
+      "severity": "moderate",
+      "effect": "a longer QT interval and rhythm effects",
+      "advice": "Watch closely. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:azole_antifungal",
+      "b": "cls:statin_cyp",
+      "severity": "major",
+      "effect": "much higher statin levels and a risk of muscle breakdown",
+      "advice": "Some statins are avoided with these antifungals. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:azole_antifungal",
+      "b": "drug:warfarin",
+      "severity": "major",
+      "effect": "a higher bleeding risk",
+      "advice": "Needs closer monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:azole_antifungal",
+      "b": "cls:benzodiazepine",
+      "severity": "moderate",
+      "effect": "higher levels of some benzodiazepines and more sedation",
+      "advice": "Watch. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:azole_antifungal",
+      "b": "drug:colchicine",
+      "severity": "major",
+      "effect": "dangerously high colchicine levels",
+      "advice": "Generally not combined, especially with kidney or liver problems. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:macrolide",
+      "b": "cls:statin_cyp",
+      "severity": "major",
+      "effect": "much higher statin levels and a risk of muscle breakdown",
+      "advice": "Some statins are paused during a macrolide course. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:macrolide",
+      "b": "drug:colchicine",
+      "severity": "major",
+      "effect": "dangerously high colchicine levels",
+      "advice": "Needs caution. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:enzyme_inducer_aed",
+      "b": "drug:warfarin",
+      "severity": "moderate",
+      "effect": "changed warfarin effect",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:enzyme_inducer_aed",
+      "b": "cls:doac",
+      "severity": "moderate",
+      "effect": "lower blood-thinner levels and less protection from clots",
+      "advice": "Ask for review. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:rifampin",
+      "b": "cls:doac",
+      "severity": "major",
+      "effect": "much lower blood-thinner levels",
+      "advice": "Generally avoided together. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:rifampin",
+      "b": "drug:warfarin",
+      "severity": "moderate",
+      "effect": "changed warfarin effect",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "drug:potassium_chloride",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs potassium checks. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:arb",
+      "b": "drug:potassium_chloride",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs potassium checks. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:ace",
+      "b": "drug:spironolactone",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs potassium checks. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:diuretic",
+      "b": "cls:nsaid",
+      "severity": "moderate",
+      "effect": "the water pill may work less well and the kidneys may suffer",
+      "advice": "Watch. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:insulin",
+      "b": "cls:sulfonylurea",
+      "severity": "moderate",
+      "effect": "a higher chance of low blood sugar",
+      "advice": "Watch for lows. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:insulin",
+      "b": "cls:glinide",
+      "severity": "moderate",
+      "effect": "a higher chance of low blood sugar",
+      "advice": "Watch for lows. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:sulfonylurea",
+      "b": "cls:glp1",
+      "severity": "moderate",
+      "effect": "a higher chance of low blood sugar",
+      "advice": "The sulfonylurea dose is often reduced by the prescriber. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:alpha_blocker",
+      "b": "cls:pde5",
+      "severity": "moderate",
+      "effect": "a sudden drop in blood pressure (dizziness, fainting)",
+      "advice": "Started low and separated in time. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:alpha_blocker",
+      "b": "cls:beta_blocker",
+      "severity": "moderate",
+      "effect": "a drop in blood pressure, especially the first dose",
+      "advice": "Watch for dizziness. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:alpha2_agonist",
+      "b": "cls:beta_blocker",
+      "severity": "moderate",
+      "effect": "a risk of rebound high blood pressure if clonidine is stopped suddenly",
+      "advice": "Never stop clonidine abruptly. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:theophylline",
+      "b": "cls:fluoroquinolone",
+      "severity": "major",
+      "effect": "higher theophylline levels, which can become toxic",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:theophylline",
+      "b": "cls:macrolide",
+      "severity": "moderate",
+      "effect": "higher theophylline levels",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:levothyroxine",
+      "b": "drug:ferrous_sulfate",
+      "severity": "moderate",
+      "effect": "less thyroid medicine absorbed",
+      "advice": "Separate them by several hours. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:xanthine_ox",
+      "b": "cls:dmard_immuno",
+      "severity": "major",
+      "effect": "dangerously high levels of azathioprine or mercaptopurine",
+      "advice": "Generally not combined, or the dose is cut sharply. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:maoi",
+      "b": "drug:pseudoephedrine",
+      "severity": "major",
+      "effect": "a dangerous rise in blood pressure",
+      "advice": "Not used together. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:biologic_immuno",
+      "b": "cls:dmard_immuno",
+      "severity": "moderate",
+      "effect": "a higher risk of infection",
+      "advice": "Watched closely by the specialist. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "cls:steroid",
+      "b": "cls:biologic_immuno",
+      "severity": "moderate",
+      "effect": "a higher risk of infection",
+      "advice": "Watched by the specialist. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:digoxin",
+      "b": "cls:ccb_rate",
+      "severity": "moderate",
+      "effect": "higher digoxin levels and a slower heart rate",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:amiodarone",
+      "b": "drug:warfarin",
+      "severity": "major",
+      "effect": "a higher bleeding risk (amiodarone raises warfarin's effect)",
+      "advice": "The warfarin dose is usually reduced; needs INR checks. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:amiodarone",
+      "b": "cls:statin_cyp",
+      "severity": "major",
+      "effect": "a higher risk of muscle breakdown",
+      "advice": "Statin dose is limited with amiodarone. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:amiodarone",
+      "b": "cls:beta_blocker",
+      "severity": "moderate",
+      "effect": "a very slow heart rate",
+      "advice": "Watch pulse and for dizziness. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:trimethoprim",
+      "b": "cls:ace",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs a potassium check. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:trimethoprim",
+      "b": "cls:arb",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs a potassium check. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:trimethoprim",
+      "b": "cls:k_sparing",
+      "severity": "moderate",
+      "effect": "high potassium",
+      "advice": "Needs a potassium check. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    },
+    {
+      "a": "drug:digoxin",
+      "b": "drug:spironolactone",
+      "severity": "moderate",
+      "effect": "higher digoxin levels",
+      "advice": "Needs monitoring. Don't stop or change anything yourself — ask your pharmacist or doctor to review the full list."
+    }
+  ],
+  "duplicate_classes": {
+    "nsaid": "two anti-inflammatory painkillers (NSAIDs)",
+    "ssri_snri": "two antidepressants from the same family",
+    "ace": "two ACE-inhibitor blood-pressure medicines",
+    "arb": "two ARB blood-pressure medicines",
+    "benzodiazepine": "two benzodiazepine sedatives",
+    "ppi": "two acid-reducing medicines (PPIs)",
+    "opioid": "two opioid painkillers",
+    "statin": "two cholesterol statins",
+    "beta_blocker": "two beta-blockers",
+    "antihistamine_sedating": "two sedating antihistamines",
+    "triptan": "two migraine triptans",
+    "tca": "two tricyclic antidepressants",
+    "antipsychotic": "two antipsychotics",
+    "gabapentinoid": "two gabapentinoids (gabapentin or pregabalin)",
+    "anticholinergic": "two bladder or antispasm anticholinergics",
+    "insulin": "two long-acting insulins",
+    "alpha_blocker": "two alpha-blockers",
+    "aed_cns": "two anti-seizure medicines",
+    "sglt2": "two SGLT2 diabetes medicines",
+    "glp1": "two GLP-1 diabetes medicines"
+  },
+  "same_ingredient_note": {
+    "paracetamol": "Paracetamol (acetaminophen) is hidden inside many cold, flu and pain combo products — check labels so you don't double up, which can harm the liver."
+  },
+  "counts": {
+    "drugs": 500,
+    "interactions": 103,
+    "duplicate_families": 11,
+    "grapefruit_flagged": 15,
+    "counteract_foods": 5,
+    "classified": 290
+  },
+  "food": {
+    "grapefruit": {
+      "what": "Grapefruit and grapefruit juice (also Seville oranges and pomelo) block an enzyme (CYP3A4) that clears many medicines. With it blocked, more drug reaches your blood — like an accidental overdose. The effect lasts a day or more, so taking them hours apart does NOT avoid it.",
+      "advice": "If any medicine on your list is flagged for grapefruit, avoid grapefruit while on it unless your pharmacist says otherwise. Not every drug in a class is affected — check yours.",
+      "source": "FDA consumer guidance on grapefruit–drug interactions"
+    },
+    "counteract": [
+      {
+        "food": "Vitamin-K greens (kale, spinach, broccoli)",
+        "drug": "warfarin",
+        "effect": "reduce warfarin's effect",
+        "advice": "Keep intake steady; don't swing. (Not the newer blood thinners.)"
+      },
+      {
+        "food": "Dairy / calcium / iron / antacids",
+        "drug": "doxycycline, tetracycline, ciprofloxacin, levothyroxine",
+        "effect": "bind the drug and block absorption so it doesn't work",
+        "advice": "Separate by 2-4 hours (levothyroxine ~4h)."
+      },
+      {
+        "food": "Alcohol",
+        "drug": "metronidazole / tinidazole",
+        "effect": "flushing, headache, nausea, vomiting",
+        "advice": "Avoid alcohol during and ~3 days after."
+      },
+      {
+        "food": "Tyramine (aged cheese, cured meat, fermented foods, draft beer)",
+        "drug": "MAOIs (phenelzine, tranylcypromine)",
+        "effect": "dangerous blood-pressure spike",
+        "advice": "Follow the strict diet your prescriber gives."
+      },
+      {
+        "food": "Coffee / caffeine",
+        "drug": "levothyroxine",
+        "effect": "reduces absorption",
+        "advice": "Separate by ~4 hours; take thyroid pill on an empty stomach."
+      }
+    ],
+    "timing_note": "Your own medicine's leaflet or pharmacist gives the exact instruction for your version. Food flags here are general label patterns."
+  },
+  "unclassified_note": "This medicine is recorded on your list, but HIVE Doctor holds no interaction rules for it yet. Its absence from the warnings below does not mean it is free of interactions — ask a pharmacist to check the whole list."
+}

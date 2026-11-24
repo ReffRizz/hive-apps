@@ -1,0 +1,423 @@
+{
+  "schema": "hive.doctor.interactions/v1",
+  "title": "HIVE Doctor — Medication Interaction & Food Reference",
+  "review_status": "UNVERIFIED — awaiting clinician/pharmacist sign-off",
+  "policy": "This layer helps people who take several medications or see more than one prescriber spot POSSIBLE interactions and food effects, and brings them to a pharmacist/doctor. It is a reference, not a clearance to combine or skip anything. A pharmacist seeing your FULL list (including over-the-counter drugs, supplements, and herbal products) is the single best check — pharmacists do this free. Never start, stop, or change a dose based on this list alone. Interaction facts here are qualitative (from FDA label class warnings and standard references), not dosing.",
+  "med_tracker": {
+    "intent": "The app can hold a private list of what you take — type each medication (and OTC drugs, vitamins, and supplements) in, or tell HIVE Doctor. The list is stored locally on your device only. HIVE Doctor then flags any known interaction PAIRS among your list, plus food cautions, so you can show your pharmacist.",
+    "privacy": "Your medication list stays in your browser's local storage on this device. It is not uploaded, not shared, and not visible to anyone else. Clearing your browser data removes it.",
+    "how": "Add each item by its generic name if you can (e.g., 'warfarin', 'ibuprofen', 'sertraline'). The checker matches on generic and common brand names and reports pairs to review. An empty result does NOT mean 'no interactions exist' — only that none are in this reference; still confirm with a pharmacist.",
+    "disclaimer": "Not a substitute for a pharmacist's review or your doctor's advice. If you ever have severe symptoms after a dose (trouble breathing, swelling, chest pain, severe bleeding, confusion), seek emergency care."
+  },
+  "pairs": [
+    {
+      "a": [
+        "warfarin",
+        "blood thinner",
+        "anticoagulant"
+      ],
+      "b": [
+        "ibuprofen",
+        "naproxen",
+        "nsaid",
+        "aspirin",
+        "diclofenac",
+        "aspirin"
+      ],
+      "severity": "major",
+      "effect": "Raises bleeding risk markedly — NSAIDs irritate the stomach and affect platelets on top of the blood thinner. Watch for black/tarry stools, unusual bruising, or blood in urine. Ask your prescriber before combining; acetaminophen is often preferred for pain.",
+      "source": "FDA label class warnings / MedlinePlus"
+    },
+    {
+      "a": [
+        "warfarin",
+        "anticoagulant"
+      ],
+      "b": [
+        "vitamin k",
+        "leafy greens",
+        "kale",
+        "spinach",
+        "broccoli"
+      ],
+      "severity": "note",
+      "effect": "Vitamin K–rich foods can reduce warfarin's effect. You don't have to avoid greens — keep your intake STEADY week to week rather than swinging, and tell the clinic managing your INR. (This applies to warfarin, not the newer blood thinners.)",
+      "source": "MedlinePlus / anticoagulation guidance"
+    },
+    {
+      "a": [
+        "warfarin",
+        "anticoagulant",
+        "apixaban",
+        "rivaroxaban"
+      ],
+      "b": [
+        "aspirin",
+        "clopidogrel",
+        "antiplatelet"
+      ],
+      "severity": "major",
+      "effect": "Two blood-affecting drugs together sharply raise bleeding risk. Only combine if a doctor specifically directs it.",
+      "source": "FDA label class warnings"
+    },
+    {
+      "a": [
+        "ssri",
+        "sertraline",
+        "fluoxetine",
+        "citalopram",
+        "escitalopram",
+        "paroxetine",
+        "snri",
+        "venlafaxine",
+        "duloxetine"
+      ],
+      "b": [
+        "maoi",
+        "tramadol",
+        "triptan",
+        "sumatriptan",
+        "linezolid",
+        "st john's wort",
+        "another ssri",
+        "another antidepressant"
+      ],
+      "severity": "major",
+      "effect": "Combining serotonergic drugs can cause SEROTONIN SYNDROME — agitation, fast heartbeat, high temperature, tremor, sweating, and confusion, which can be life-threatening. MAOIs must not be combined with SSRIs/SNRIs at all. Seek urgent care for these symptoms.",
+      "source": "FDA label class warnings / MedlinePlus"
+    },
+    {
+      "a": [
+        "ssri",
+        "snri",
+        "antidepressant",
+        "sertraline",
+        "fluoxetine"
+      ],
+      "b": [
+        "ibuprofen",
+        "nsaid",
+        "naproxen",
+        "aspirin",
+        "warfarin",
+        "blood thinner"
+      ],
+      "severity": "moderate",
+      "effect": "SSRIs/SNRIs plus NSAIDs or blood thinners raise bleeding risk (especially stomach bleeding). Watch for black stools; ask about stomach protection or acetaminophen instead.",
+      "source": "FDA label class warnings"
+    },
+    {
+      "a": [
+        "maoi",
+        "phenelzine",
+        "tranylcypromine",
+        "linezolid"
+      ],
+      "b": [
+        "tyramine",
+        "aged cheese",
+        "cured meat",
+        "fermented",
+        "soy sauce",
+        "draft beer"
+      ],
+      "severity": "major",
+      "effect": "MAOIs plus tyramine-rich foods can cause a dangerous blood-pressure spike (hypertensive crisis) — severe headache, chest pain. A strict diet is required; follow the specific list your prescriber gives.",
+      "source": "MedlinePlus / MAOI label"
+    },
+    {
+      "a": [
+        "ace inhibitor",
+        "lisinopril",
+        "ramipril",
+        "enalapril",
+        "arb",
+        "losartan",
+        "valsartan"
+      ],
+      "b": [
+        "potassium",
+        "salt substitute",
+        "spironolactone",
+        "potassium supplement"
+      ],
+      "severity": "moderate",
+      "effect": "These blood-pressure drugs raise potassium; adding potassium supplements or salt substitutes (often potassium chloride) can push it too high, affecting the heart rhythm. Ask before using salt substitutes.",
+      "source": "FDA label class warnings"
+    },
+    {
+      "a": [
+        "ace inhibitor",
+        "arb",
+        "lisinopril",
+        "losartan",
+        "diuretic",
+        "water pill"
+      ],
+      "b": [
+        "ibuprofen",
+        "nsaid",
+        "naproxen"
+      ],
+      "severity": "moderate",
+      "effect": "The 'triple whammy' — an ACE/ARB + a diuretic + an NSAID — can injure the kidneys, especially in older adults or when dehydrated. Use NSAIDs sparingly and stay hydrated; prefer acetaminophen.",
+      "source": "MedlinePlus / renal safety guidance"
+    },
+    {
+      "a": [
+        "statin",
+        "atorvastatin",
+        "simvastatin",
+        "lovastatin",
+        "rosuvastatin"
+      ],
+      "b": [
+        "grapefruit",
+        "grapefruit juice"
+      ],
+      "severity": "moderate",
+      "effect": "Grapefruit blocks an enzyme (CYP3A4) that clears some statins (simvastatin, lovastatin, and atorvastatin most), raising drug levels and the risk of muscle damage. Avoid grapefruit with those; check which statin you take.",
+      "source": "FDA grapefruit guidance / label"
+    },
+    {
+      "a": [
+        "statin",
+        "simvastatin",
+        "atorvastatin"
+      ],
+      "b": [
+        "clarithromycin",
+        "erythromycin",
+        "itraconazole",
+        "ketoconazole",
+        "gemfibrozil",
+        "fibrate"
+      ],
+      "severity": "major",
+      "effect": "These raise statin levels and the risk of serious muscle breakdown (rhabdomyolysis) — watch for severe muscle pain, weakness, or dark urine. Dose limits or a pause may be needed; ask your prescriber.",
+      "source": "FDA label class warnings"
+    },
+    {
+      "a": [
+        "metformin"
+      ],
+      "b": [
+        "contrast dye",
+        "iodinated contrast",
+        "ct scan dye",
+        "alcohol"
+      ],
+      "severity": "moderate",
+      "effect": "Metformin is usually paused around procedures using IV contrast dye (kidney stress can raise the rare risk of lactic acidosis), and heavy alcohol adds to that risk. Tell the imaging team you take metformin.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "opioid",
+        "oxycodone",
+        "hydromorphone",
+        "morphine",
+        "fentanyl",
+        "codeine",
+        "tramadol",
+        "hydrocodone"
+      ],
+      "b": [
+        "benzodiazepine",
+        "alprazolam",
+        "diazepam",
+        "lorazepam",
+        "clonazepam",
+        "alcohol",
+        "gabapentin",
+        "pregabalin",
+        "zolpidem",
+        "sedative"
+      ],
+      "severity": "major",
+      "effect": "BOXED-WARNING combination: opioids plus benzodiazepines, alcohol, or other sedatives stack up and can stop breathing — profound sedation, respiratory depression, coma, and death. This is a leading cause of overdose. Only combine if a doctor specifically manages it; discuss naloxone.",
+      "source": "FDA boxed warnings"
+    },
+    {
+      "a": [
+        "benzodiazepine",
+        "alcohol",
+        "sedative"
+      ],
+      "b": [
+        "antihistamine",
+        "diphenhydramine",
+        "benadryl",
+        "muscle relaxant",
+        "cyclobenzaprine"
+      ],
+      "severity": "moderate",
+      "effect": "Multiple sedating drugs together cause heavy drowsiness and impair breathing, driving, and balance (fall/accident risk, especially in older adults).",
+      "source": "MedlinePlus"
+    },
+    {
+      "a": [
+        "levothyroxine",
+        "thyroid"
+      ],
+      "b": [
+        "calcium",
+        "iron",
+        "antacid",
+        "calcium supplement",
+        "iron supplement",
+        "coffee"
+      ],
+      "severity": "note",
+      "effect": "Calcium, iron, antacids, and coffee reduce levothyroxine absorption. Take levothyroxine on an empty stomach and separate it from these by about 4 hours.",
+      "source": "FDA label / MedlinePlus"
+    },
+    {
+      "a": [
+        "tetracycline",
+        "doxycycline",
+        "ciprofloxacin",
+        "levofloxacin",
+        "quinolone",
+        "antibiotic"
+      ],
+      "b": [
+        "calcium",
+        "iron",
+        "antacid",
+        "dairy",
+        "milk",
+        "magnesium",
+        "zinc"
+      ],
+      "severity": "moderate",
+      "effect": "Calcium, iron, antacids, and dairy bind these antibiotics and block absorption, so they don't work. Separate the antibiotic from them by 2-4 hours (check your specific drug's instructions).",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "potassium-sparing diuretic",
+        "spironolactone",
+        "amiloride",
+        "triamterene"
+      ],
+      "b": [
+        "ace inhibitor",
+        "arb",
+        "potassium",
+        "nsaid"
+      ],
+      "severity": "moderate",
+      "effect": "Raises the risk of high potassium (dangerous for the heart). Needs blood-level monitoring; avoid extra potassium.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "clopidogrel",
+        "plavix"
+      ],
+      "b": [
+        "omeprazole",
+        "esomeprazole",
+        "proton pump inhibitor",
+        "ppi"
+      ],
+      "severity": "moderate",
+      "effect": "Some PPIs (omeprazole, esomeprazole) may reduce clopidogrel's anti-clotting effect. If you need stomach protection, pantoprazole or an H2-blocker is often preferred — ask your prescriber.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "digoxin"
+      ],
+      "b": [
+        "diuretic",
+        "water pill",
+        "amiodarone",
+        "verapamil"
+      ],
+      "severity": "major",
+      "effect": "These can raise digoxin levels or lower potassium, causing toxicity (nausea, vision changes, dangerous heart rhythms). Digoxin needs careful monitoring.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "lithium"
+      ],
+      "b": [
+        "nsaid",
+        "ibuprofen",
+        "naproxen",
+        "ace inhibitor",
+        "arb",
+        "diuretic",
+        "thiazide"
+      ],
+      "severity": "major",
+      "effect": "These raise lithium levels toward toxicity (tremor, confusion, vomiting, unsteadiness). Lithium has a narrow safe range and needs blood monitoring; avoid adding NSAIDs without advice.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "metronidazole",
+        "flagyl",
+        "tinidazole"
+      ],
+      "b": [
+        "alcohol"
+      ],
+      "severity": "moderate",
+      "effect": "Alcohol with metronidazole/tinidazole can cause a 'disulfiram' reaction — flushing, pounding headache, nausea, and vomiting. Avoid alcohol during and for a few days after the course.",
+      "source": "FDA label"
+    },
+    {
+      "a": [
+        "sildenafil",
+        "viagra",
+        "tadalafil",
+        "cialis",
+        "pde5"
+      ],
+      "b": [
+        "nitrate",
+        "nitroglycerin",
+        "isosorbide",
+        "poppers"
+      ],
+      "severity": "major",
+      "effect": "ED drugs plus nitrates (heart chest-pain medicines, or 'poppers') can cause a sudden, dangerous drop in blood pressure. Never combine. Tell emergency staff if you've taken an ED drug.",
+      "source": "FDA label"
+    }
+  ],
+  "grapefruit": {
+    "what_it_does": "Grapefruit (and grapefruit juice, also Seville oranges and pomelo) blocks an intestinal enzyme called CYP3A4 that normally breaks down many medicines. With the enzyme blocked, more of the drug reaches the blood — effectively an unplanned overdose — which can cause side effects or toxicity. The effect can last a day or more, so 'taking them at different times' does NOT avoid it.",
+    "affected_examples": "Some statins (simvastatin, lovastatin, atorvastatin), some blood-pressure drugs (certain calcium-channel blockers like felodipine, nifedipine), some anti-anxiety/sleep drugs (buspirone, some benzodiazepines), certain immune-suppressants (cyclosporine, tacrolimus), some heart-rhythm drugs (amiodarone), and others. Not all drugs in a class are affected.",
+    "advice": "Check each medicine's label or ask your pharmacist whether to avoid grapefruit. When in doubt, keep grapefruit off the menu while on a flagged drug.",
+    "source": "FDA consumer guidance on grapefruit–drug interactions"
+  },
+  "food_timing": {
+    "take_with_food": [
+      "NSAIDs (ibuprofen, naproxen) — reduce stomach irritation",
+      "Prednisone/corticosteroids — reduce stomach upset",
+      "Metformin — reduce nausea/diarrhea",
+      "Amoxicillin-clavulanate — reduce stomach upset",
+      "Many iron supplements can upset the stomach — taking with a little food helps absorption is lower; follow the label"
+    ],
+    "take_on_empty_stomach": [
+      "Levothyroxine — 30-60 min before breakfast, with water",
+      "Some antibiotics work best empty (e.g., certain penicillins) — check the label",
+      "Bisphosphonates (alendronate) — first thing, with plain water, stay upright 30-60 min",
+      "Sucralfate — before meals"
+    ],
+    "separate_from": [
+      "Levothyroxine from calcium/iron/antacids/coffee by ~4 hours",
+      "Tetracyclines/quinolones from dairy/calcium/iron/antacids by 2-4 hours"
+    ],
+    "note": "These are general label patterns. Your exact medicine's leaflet, or your pharmacist, gives the right instruction for YOUR version."
+  },
+  "counts": {
+    "pairs": 21,
+    "grapefruit_examples": 1,
+    "food_timing_rules": 11
+  }
+}

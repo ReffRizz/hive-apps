@@ -1,0 +1,621 @@
+{
+  "schema": "hive.doctor.anatomy/v1",
+  "title": "HIVE Doctor — Anatomy Reference (kinesiology-style, all systems)",
+  "author": "Jeff",
+  "version": "0.1.0",
+  "updated": "2026-11-14",
+  "review_status": "UNVERIFIED",
+  "safety": "Educational anatomy reference for adults. Not a diagnosis. Reproductive sections are clinical/educational. Pending clinician sign-off.",
+  "systems": [
+    {
+      "id": "orientation",
+      "system": "Orientation",
+      "title": "Anatomical position, planes & regions",
+      "phrases": [
+        "anatomical position",
+        "body planes",
+        "anatomical terms",
+        "directional terms",
+        "body regions",
+        "quadrants"
+      ],
+      "overview": "Anatomy is described from the 'anatomical position': standing, facing forward, arms at the sides, palms forward. Directions and planes give everyone a shared map of the body.",
+      "structures": [
+        {
+          "name": "Directional terms",
+          "detail": "Superior/inferior (up/down), anterior/posterior (front/back), medial/lateral (toward/away from midline), proximal/distal (near/far from the trunk), superficial/deep."
+        },
+        {
+          "name": "Planes",
+          "detail": "Sagittal (left/right), coronal/frontal (front/back), transverse/axial (top/bottom)."
+        },
+        {
+          "name": "Abdominal regions",
+          "detail": "Nine regions, or four quadrants (RUQ, LUQ, RLQ, LLQ) used to locate belly pain."
+        },
+        {
+          "name": "Body cavities",
+          "detail": "Cranial (brain), thoracic (heart/lungs), abdominal, and pelvic cavities."
+        }
+      ],
+      "normal": "A shared reference frame; no 'normal/abnormal' — it's the language the rest of anatomy uses.",
+      "common_problems": [
+        "Mislocating pain — e.g., appendicitis pain is classically RLQ; gallbladder RUQ."
+      ],
+      "related_exam": "abdomen",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "skeletal",
+      "system": "Skeletal system",
+      "title": "Bones & the skeleton",
+      "phrases": [
+        "skeleton",
+        "bones",
+        "skeletal system",
+        "how many bones",
+        "axial skeleton",
+        "appendicular skeleton",
+        "bone anatomy"
+      ],
+      "overview": "The adult skeleton has 206 bones. It supports the body, protects organs, anchors muscles for movement, stores calcium, and makes blood cells in the marrow.",
+      "structures": [
+        {
+          "name": "Axial skeleton",
+          "detail": "Skull, spine (cervical 7, thoracic 12, lumbar 5, sacrum, coccyx), ribs (12 pairs), sternum — protects brain, cord, heart, lungs."
+        },
+        {
+          "name": "Appendicular skeleton",
+          "detail": "Shoulder girdle, arms (humerus, radius, ulna, hand), pelvis, legs (femur, tibia, fibula, foot) — for movement."
+        },
+        {
+          "name": "Bone types",
+          "detail": "Long (femur), short (wrist), flat (skull, ribs), irregular (vertebrae)."
+        },
+        {
+          "name": "Bone structure",
+          "detail": "Hard outer cortical bone, spongy inner trabecular bone, and marrow (blood-cell factory)."
+        }
+      ],
+      "normal": "Bones are dense and non-tender, aligned and symmetrical left-to-right; a limb matches its opposite in length and shape.",
+      "common_problems": [
+        "Fractures (breaks), osteoporosis (thinning/fragile bone), osteoarthritis (joint wear), scoliosis (spine curve), bone infection, bone tumours."
+      ],
+      "related_exam": "limb_injury",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "joints",
+      "system": "Joints & movement (kinesiology)",
+      "title": "Joints, ranges & movements",
+      "phrases": [
+        "joints",
+        "joint anatomy",
+        "range of motion",
+        "kinesiology",
+        "types of joints",
+        "how joints move",
+        "ligaments cartilage"
+      ],
+      "overview": "Joints are where bones meet. Most movement happens at freely-moving (synovial) joints, cushioned by cartilage and lubricated by fluid, held by ligaments and moved by muscles.",
+      "structures": [
+        {
+          "name": "Joint types",
+          "detail": "Ball-and-socket (shoulder, hip — move all directions), hinge (elbow, knee — bend/straighten), pivot (neck rotation), gliding (wrist), saddle (thumb)."
+        },
+        {
+          "name": "Support tissues",
+          "detail": "Cartilage (smooth cushion), ligaments (bone-to-bone), tendons (muscle-to-bone), bursae (friction-reducing sacs), joint capsule + synovial fluid."
+        },
+        {
+          "name": "Movements",
+          "detail": "Flexion/extension (bend/straighten), abduction/adduction (away/toward midline), rotation, circumduction, pronation/supination (palm down/up), inversion/eversion (sole in/out), dorsiflexion/plantarflexion (foot up/down)."
+        }
+      ],
+      "normal": "Smooth, pain-free movement through a full expected range, equal to the other side, without swelling, heat, locking, or instability.",
+      "common_problems": [
+        "Sprains (ligament), strains (muscle/tendon), dislocations, arthritis (osteo/rheumatoid/gout), bursitis, tendinitis, torn cartilage, frozen shoulder."
+      ],
+      "related_exam": "limb_injury",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "muscular",
+      "system": "Muscular system",
+      "title": "Muscles & movement",
+      "phrases": [
+        "muscles",
+        "muscular system",
+        "muscle anatomy",
+        "skeletal muscle",
+        "major muscles",
+        "how muscles work"
+      ],
+      "overview": "Over 600 skeletal muscles move the body by contracting and pulling on bones across joints. Muscles work in pairs — one shortens (agonist) while its partner relaxes (antagonist). There are also smooth muscle (organs) and cardiac muscle (heart).",
+      "structures": [
+        {
+          "name": "How it works",
+          "detail": "A muscle attaches at an origin (fixed) and insertion (moving) point; contracting shortens it and moves the insertion toward the origin."
+        },
+        {
+          "name": "Major upper-body",
+          "detail": "Deltoids (shoulder), pectorals (chest), biceps/triceps (arm), trapezius & lats (back), rotator cuff (shoulder stability), abdominals, erector spinae (spine)."
+        },
+        {
+          "name": "Major lower-body",
+          "detail": "Gluteals (hip), quadriceps (knee extend), hamstrings (knee bend), gastrocnemius/soleus (calf), hip flexors, adductors."
+        },
+        {
+          "name": "Muscle types",
+          "detail": "Skeletal (voluntary), smooth (involuntary — gut, vessels), cardiac (heart)."
+        }
+      ],
+      "normal": "Muscles are symmetrical, with normal bulk and tone, full strength against resistance, and no wasting, twitching, or fixed weakness.",
+      "common_problems": [
+        "Strains/tears, cramps, tendinitis, muscle wasting, myositis, rhabdomyolysis (breakdown), neuromuscular disease, fibromyalgia (widespread pain)."
+      ],
+      "related_exam": "limb_injury",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "cardiovascular",
+      "system": "Cardiovascular system",
+      "title": "Heart & blood vessels",
+      "phrases": [
+        "heart",
+        "cardiovascular",
+        "circulation",
+        "blood vessels",
+        "heart anatomy",
+        "arteries veins",
+        "how the heart works"
+      ],
+      "overview": "The heart is a four-chambered muscular pump that drives blood through two circuits: to the lungs for oxygen, and to the body to deliver it. It beats about 60–100 times a minute at rest.",
+      "structures": [
+        {
+          "name": "Chambers",
+          "detail": "Right atrium & ventricle (pump blood to the lungs), left atrium & ventricle (pump oxygen-rich blood to the body — the left ventricle is the strongest)."
+        },
+        {
+          "name": "Valves",
+          "detail": "Tricuspid, pulmonary, mitral, aortic — one-way doors that stop backflow; their closing makes the 'lub-dub'."
+        },
+        {
+          "name": "Vessels",
+          "detail": "Arteries carry blood away from the heart (high pressure), veins return it, capillaries exchange oxygen/nutrients. The aorta is the main artery; coronary arteries feed the heart itself."
+        },
+        {
+          "name": "Electrical system",
+          "detail": "The SA node sets the rhythm; signals spread to make the chambers beat in order."
+        },
+        {
+          "name": "Pulse points",
+          "detail": "Radial (wrist), carotid (neck), brachial (arm), femoral (groin), pedal (foot)."
+        }
+      ],
+      "normal": "A regular pulse 60–100/min at rest, blood pressure around 120/80, warm well-perfused limbs, no chest pain, breathlessness, or swelling.",
+      "common_problems": [
+        "Heart attack (blocked coronary artery), angina, heart failure, arrhythmias (e.g., atrial fibrillation), valve disease, high blood pressure, aneurysm, DVT/PE, peripheral arterial disease."
+      ],
+      "related_exam": "breathing",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "respiratory",
+      "system": "Respiratory system",
+      "title": "Airway & lungs",
+      "phrases": [
+        "lungs",
+        "respiratory system",
+        "breathing anatomy",
+        "airway",
+        "how breathing works",
+        "trachea bronchi"
+      ],
+      "overview": "The respiratory system brings air in, exchanges oxygen for carbon dioxide in the lungs, and breathes the waste out. The diaphragm does most of the work of breathing.",
+      "structures": [
+        {
+          "name": "Upper airway",
+          "detail": "Nose/mouth, pharynx (throat), larynx (voice box with the epiglottis that guards the airway)."
+        },
+        {
+          "name": "Lower airway",
+          "detail": "Trachea (windpipe) → two bronchi → smaller bronchioles → alveoli (tiny air sacs where gas exchange happens)."
+        },
+        {
+          "name": "Lungs",
+          "detail": "Right lung (3 lobes), left lung (2 lobes, smaller — the heart sits there), wrapped in pleura."
+        },
+        {
+          "name": "Muscles",
+          "detail": "Diaphragm (main), intercostals between the ribs; accessory neck muscles when struggling."
+        }
+      ],
+      "normal": "Quiet, effortless breathing ~12–20/min at rest, full sentences, no wheeze or noisy breathing, oxygen ≥95%, both sides of the chest moving equally.",
+      "common_problems": [
+        "Asthma, COPD, pneumonia, bronchitis, pulmonary embolism, pneumothorax (collapsed lung), pleurisy, lung cancer, croup (children)."
+      ],
+      "related_exam": "breathing",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "digestive",
+      "system": "Digestive system",
+      "title": "Gut & digestion",
+      "phrases": [
+        "digestive system",
+        "stomach",
+        "intestines",
+        "gut anatomy",
+        "how digestion works",
+        "liver pancreas gallbladder"
+      ],
+      "overview": "The digestive tract is a ~9-metre tube that breaks food down, absorbs nutrients, and removes waste, helped by the liver, pancreas, and gallbladder.",
+      "structures": [
+        {
+          "name": "Upper tract",
+          "detail": "Mouth → oesophagus → stomach (acid + churning) → small intestine (duodenum, jejunum, ileum — most absorption)."
+        },
+        {
+          "name": "Lower tract",
+          "detail": "Large intestine/colon (water absorption) → rectum → anus."
+        },
+        {
+          "name": "Accessory organs",
+          "detail": "Liver (processes nutrients, makes bile, detoxifies — RUQ), gallbladder (stores bile), pancreas (digestive enzymes + insulin)."
+        },
+        {
+          "name": "Appendix",
+          "detail": "Small pouch at the start of the large intestine (RLQ) — can become inflamed (appendicitis)."
+        }
+      ],
+      "normal": "Comfortable eating and swallowing, no persistent pain, regular bowel habit, no blood in stool, stable weight, no jaundice.",
+      "common_problems": [
+        "Reflux/GERD, gastritis/ulcers, appendicitis, gallstones, pancreatitis, hepatitis, IBS/IBD, diverticulitis, bowel obstruction, coeliac, GI bleeding, colorectal cancer."
+      ],
+      "related_exam": "abdomen",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "nervous",
+      "system": "Nervous system",
+      "title": "Brain, cord & nerves",
+      "phrases": [
+        "nervous system",
+        "brain anatomy",
+        "spinal cord",
+        "nerves",
+        "how the brain works",
+        "neurological"
+      ],
+      "overview": "The nervous system is the body's control and communication network. The brain and spinal cord (central nervous system) process information; nerves (peripheral) carry signals in and out.",
+      "structures": [
+        {
+          "name": "Brain regions",
+          "detail": "Cerebrum (thought, movement, senses — in lobes: frontal, parietal, temporal, occipital), cerebellum (balance/coordination), brainstem (breathing, heart rate, consciousness)."
+        },
+        {
+          "name": "Spinal cord",
+          "detail": "Runs in the spine; relays signals and handles reflexes. Damage affects function below the level."
+        },
+        {
+          "name": "Nerves",
+          "detail": "12 cranial nerves (face/head), spinal nerves to the body; sensory (in), motor (out), and autonomic (automatic — heart, gut)."
+        },
+        {
+          "name": "Protection",
+          "detail": "Skull, vertebrae, meninges (membranes), and cerebrospinal fluid."
+        }
+      ],
+      "normal": "Clear thinking, normal speech, equal strength and sensation on both sides, steady balance, equal reactive pupils, normal coordination.",
+      "common_problems": [
+        "Stroke/TIA, seizures, migraine, meningitis, concussion/head injury, Parkinson's, dementia, MS, neuropathy, Bell's palsy, Guillain-Barré, brain tumour."
+      ],
+      "related_exam": "neuro_fast",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "endocrine",
+      "system": "Endocrine system",
+      "title": "Glands & hormones",
+      "phrases": [
+        "endocrine system",
+        "hormones",
+        "glands",
+        "thyroid adrenal pituitary",
+        "how hormones work"
+      ],
+      "overview": "The endocrine system is a set of glands that release hormones into the blood to control slow, body-wide processes — metabolism, growth, stress, reproduction, and blood sugar.",
+      "structures": [
+        {
+          "name": "Pituitary",
+          "detail": "'Master gland' at the brain's base — directs other glands."
+        },
+        {
+          "name": "Thyroid",
+          "detail": "Neck gland setting metabolic rate (energy, temperature, weight)."
+        },
+        {
+          "name": "Adrenals",
+          "detail": "Atop the kidneys — stress hormones (cortisol, adrenaline), salt/water balance."
+        },
+        {
+          "name": "Pancreas (islets)",
+          "detail": "Insulin and glucagon — control blood sugar."
+        },
+        {
+          "name": "Gonads",
+          "detail": "Ovaries/testes — sex hormones."
+        },
+        {
+          "name": "Parathyroids",
+          "detail": "Calcium balance."
+        }
+      ],
+      "normal": "Stable energy, weight, temperature tolerance, mood, and blood sugar; normal growth and periods.",
+      "common_problems": [
+        "Diabetes, hypo/hyperthyroidism, adrenal insufficiency (Addison's)/excess (Cushing's), PCOS, pituitary disorders."
+      ],
+      "related_exam": "",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "urinary",
+      "system": "Urinary system",
+      "title": "Kidneys & bladder",
+      "phrases": [
+        "urinary system",
+        "kidneys",
+        "bladder",
+        "how kidneys work",
+        "urinary anatomy",
+        "ureters urethra"
+      ],
+      "overview": "The urinary system filters the blood, removes waste and extra water as urine, and balances salts, fluid, and blood pressure.",
+      "structures": [
+        {
+          "name": "Kidneys",
+          "detail": "Two bean-shaped organs (flank/back) filtering blood into urine and controlling fluid, salts, and blood pressure."
+        },
+        {
+          "name": "Ureters",
+          "detail": "Tubes carrying urine from each kidney to the bladder."
+        },
+        {
+          "name": "Bladder",
+          "detail": "Muscular storage sac that signals when full."
+        },
+        {
+          "name": "Urethra",
+          "detail": "Tube that carries urine out (longer in males, passing the prostate)."
+        }
+      ],
+      "normal": "Passing urine comfortably several times a day, pale-yellow, no blood, no burning, good control, no flank pain.",
+      "common_problems": [
+        "UTI, kidney infection, kidney stones, chronic kidney disease, incontinence, retention, bladder/kidney cancer, enlarged prostate (affects flow)."
+      ],
+      "related_exam": "",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "skin",
+      "system": "Integumentary system",
+      "title": "Skin, hair & nails",
+      "phrases": [
+        "skin anatomy",
+        "integumentary",
+        "skin layers",
+        "hair nails",
+        "how skin works",
+        "epidermis dermis"
+      ],
+      "overview": "The skin is the body's largest organ — a waterproof barrier that protects, senses touch, controls temperature, and makes vitamin D.",
+      "structures": [
+        {
+          "name": "Epidermis",
+          "detail": "Thin outer layer — barrier and pigment (melanin)."
+        },
+        {
+          "name": "Dermis",
+          "detail": "Deeper layer with nerves, blood vessels, sweat and oil glands, hair roots, collagen."
+        },
+        {
+          "name": "Subcutaneous fat",
+          "detail": "Insulation and cushioning beneath."
+        },
+        {
+          "name": "Appendages",
+          "detail": "Hair, nails, sweat glands, sebaceous (oil) glands."
+        }
+      ],
+      "normal": "Intact, even-toned for the person, no spreading redness, non-healing sores, or changing moles; warm and well-perfused.",
+      "common_problems": [
+        "Eczema, psoriasis, cellulitis, abscess, shingles, impetigo, hives, fungal infections, skin cancer/melanoma, pressure sores."
+      ],
+      "related_exam": "skin",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "lymphatic",
+      "system": "Lymphatic & immune system",
+      "title": "Lymph nodes, spleen & defence",
+      "phrases": [
+        "lymphatic system",
+        "immune system",
+        "lymph nodes",
+        "spleen",
+        "how immunity works",
+        "lymphatic anatomy"
+      ],
+      "overview": "The lymphatic system drains fluid from tissues, filters it through lymph nodes, and is central to the immune defence against infection.",
+      "structures": [
+        {
+          "name": "Lymph nodes",
+          "detail": "Small filters clustered in the neck, armpits, groin, chest, and abdomen — swell when fighting infection."
+        },
+        {
+          "name": "Spleen",
+          "detail": "LUQ organ that filters blood and supports immunity (can be injured/enlarged)."
+        },
+        {
+          "name": "Thymus & marrow",
+          "detail": "Make and train immune cells."
+        },
+        {
+          "name": "Tonsils/adenoids",
+          "detail": "Immune tissue guarding the throat."
+        }
+      ],
+      "normal": "Nodes usually not felt, or small, soft, mobile, and briefly tender with a nearby infection; no drenching night sweats or unexplained weight loss.",
+      "common_problems": [
+        "Reactive swollen glands (infection), glandular fever, lymphoma, leukaemia, enlarged/ruptured spleen, immune deficiency."
+      ],
+      "related_exam": "lymph_nodes",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "senses",
+      "system": "Special senses",
+      "title": "Eyes, ears, nose & tongue",
+      "phrases": [
+        "special senses",
+        "eye anatomy",
+        "ear anatomy",
+        "how the eye works",
+        "how hearing works",
+        "smell taste"
+      ],
+      "overview": "The special senses gather information about the world: sight, hearing and balance, smell, and taste.",
+      "structures": [
+        {
+          "name": "Eye",
+          "detail": "Cornea and lens focus light onto the retina; the iris sets pupil size; the optic nerve carries images to the brain."
+        },
+        {
+          "name": "Ear",
+          "detail": "Outer ear → eardrum → middle-ear bones → cochlea (hearing) and semicircular canals (balance)."
+        },
+        {
+          "name": "Nose",
+          "detail": "Smell receptors high in the nose; also warms and filters air."
+        },
+        {
+          "name": "Tongue",
+          "detail": "Taste buds (sweet, salt, sour, bitter, umami) and helps speech and swallowing."
+        }
+      ],
+      "normal": "Clear vision, equal reactive pupils, normal hearing and balance, normal smell and taste.",
+      "common_problems": [
+        "Conjunctivitis, glaucoma, retinal detachment, ear infections, hearing loss, vertigo (inner ear), sinus problems, loss of smell/taste."
+      ],
+      "related_exam": "eyes",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "repro_female",
+      "system": "Reproductive system — female (adult)",
+      "title": "Female reproductive anatomy",
+      "phrases": [
+        "female reproductive anatomy",
+        "female anatomy",
+        "ovaries uterus",
+        "vagina anatomy",
+        "menstrual cycle anatomy",
+        "womb"
+      ],
+      "overview": "The adult female reproductive system produces eggs and sex hormones, supports menstruation, and carries a pregnancy. (Educational/clinical reference.)",
+      "structures": [
+        {
+          "name": "Ovaries",
+          "detail": "Two glands that release an egg each cycle and make oestrogen and progesterone."
+        },
+        {
+          "name": "Fallopian tubes",
+          "detail": "Carry the egg toward the uterus; usual site of fertilisation (and of ectopic pregnancy if it implants there)."
+        },
+        {
+          "name": "Uterus (womb)",
+          "detail": "Muscular organ whose lining builds up and sheds each month, and where a pregnancy grows; the cervix is its neck."
+        },
+        {
+          "name": "Vagina & vulva",
+          "detail": "The vagina connects the cervix to the outside; the vulva is the external genital area."
+        },
+        {
+          "name": "Menstrual cycle",
+          "detail": "~21–35 days: lining thickens, an egg is released (ovulation ~mid-cycle), then the lining sheds (period) if no pregnancy."
+        },
+        {
+          "name": "Breasts",
+          "detail": "Glandular tissue for milk, plus ducts and fat."
+        }
+      ],
+      "normal": "Regular-for-the-person cycles, no bleeding between periods/after sex/after menopause, no new breast lump or nipple change, no severe pelvic pain.",
+      "common_problems": [
+        "Period problems, endometriosis, PCOS, fibroids, ovarian cysts, PID, ectopic pregnancy, menopause symptoms, cervical/uterine/ovarian/breast cancer.",
+        "Bleeding after menopause, or a new breast lump, should always be checked."
+      ],
+      "related_exam": "",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    },
+    {
+      "id": "repro_male",
+      "system": "Reproductive system — male (adult)",
+      "title": "Male reproductive anatomy",
+      "phrases": [
+        "male reproductive anatomy",
+        "male anatomy",
+        "testes prostate",
+        "penis anatomy",
+        "how male reproduction works"
+      ],
+      "overview": "The adult male reproductive system makes sperm and sex hormones and delivers them. It overlaps with the urinary tract (shared urethra). (Educational/clinical reference.)",
+      "structures": [
+        {
+          "name": "Testes",
+          "detail": "Two glands in the scrotum that make sperm and testosterone; kept cooler than body temperature."
+        },
+        {
+          "name": "Epididymis & vas deferens",
+          "detail": "Store and carry sperm."
+        },
+        {
+          "name": "Prostate",
+          "detail": "Gland below the bladder surrounding the urethra; adds fluid to semen and can enlarge with age and affect urine flow."
+        },
+        {
+          "name": "Penis & urethra",
+          "detail": "The urethra carries both urine and semen; erectile tissue fills with blood for an erection."
+        },
+        {
+          "name": "Seminal vesicles",
+          "detail": "Add most of the fluid in semen."
+        }
+      ],
+      "normal": "Comfortable, symmetrical testes with no new lump; a normal urine stream; no pain, discharge, or blood in urine/semen.",
+      "common_problems": [
+        "Testicular torsion (sudden severe pain — emergency) or lump (needs checking), epididymitis, prostatitis, enlarged prostate (BPH), erectile problems, STIs, testicular/prostate cancer."
+      ],
+      "related_exam": "",
+      "source": "HIVE Doctor original anatomy reference (standard public-domain anatomy, re-expressed)",
+      "review_status": "UNVERIFIED"
+    }
+  ],
+  "counts": {
+    "entries": 15
+  }
+}

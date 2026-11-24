@@ -1,0 +1,604 @@
+{
+  "id": "ca-yt",
+  "name": "Yukon",
+  "flag": "🇨🇦",
+  "country": "Canada",
+  "region": "Canada",
+  "jur": "CA-YT",
+  "version": "1.0",
+  "kind": "territory",
+  "note": "Full Yukon practice-area pack (common-law). the Residential Tenancies Office (Yukon) for housing, provincial employment standards, the Small Claims Court for money claims (limit $25,000), Yukon Human Rights Commission, family law. Criminal law is federal (core). Verify; not legal advice.",
+  "getLawyer": [
+    {
+      "id": "ca_yt_criminal",
+      "when": [
+        "charged with a crime",
+        "i was arrested",
+        "police arrested me",
+        "in custody",
+        "arrested me"
+      ],
+      "why": "Criminal law is federal (Criminal Code); Yukon has its own courts and Yukon Legal Services Society (Legal Aid). If charged or arrested, say you want a lawyer and stay silent, ask for free duty counsel, and contact a local criminal lawyer through Yukon Legal Services Society (Legal Aid) before any statement."
+    },
+    {
+      "id": "ca_yt_childprot",
+      "when": [
+        "child protection",
+        "took my kids",
+        "took my children",
+        "removed my child",
+        "children's services",
+        "child was apprehended",
+        "cas took"
+      ],
+      "why": "If child protection authorities remove or threaten to remove a child in Yukon, timelines are short. Get a family/child-protection lawyer and contact Yukon Legal Services Society (Legal Aid) immediately; you have the right to be heard at the first hearing."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "ca_yt_tenancy",
+      "jur": "CA-YT",
+      "area": "housing",
+      "title": "Eviction / tenancy notice — act within the stated period",
+      "rule": "In Yukon, residential tenancy disputes (unpaid rent, eviction, deposits, repairs) are decided by the Residential Tenancies Office (Yukon). An eviction or termination notice carries a short response/remedy period — don't wait it out. Paying arrears or fixing the breach in time often preserves the tenancy, and you can dispute the notice before the Residential Tenancies Office (Yukon). Confirm the exact days for your notice type.",
+      "trigger": [
+        "evicting me",
+        "evict me",
+        "eviction notice",
+        "notice to vacate",
+        "being evicted",
+        "unpaid rent",
+        "behind on rent",
+        "keeping my deposit",
+        "withholding my deposit",
+        "my landlord",
+        "landlord won't"
+      ],
+      "source": "Yukon residential tenancy legislation",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "ca_yt_employ",
+      "jur": "CA-YT",
+      "area": "employment",
+      "title": "Unpaid wages / termination — file an Employment Standards claim promptly",
+      "rule": "Unpaid wages, overtime, vacation, and termination pay in Yukon are enforced by the provincial/territorial employment standards office. There is a filing time limit (it varies by jurisdiction) — file promptly. Statutory termination notice is a floor; common-law reasonable notice for a without-cause dismissal is often much larger, so get advice before signing a release.",
+      "trigger": [
+        "fired me",
+        "i was fired",
+        "let me go",
+        "laid off",
+        "without notice",
+        "didnt pay me",
+        "didn't pay me",
+        "unpaid wages",
+        "owed wages",
+        "owed overtime",
+        "wrongful dismissal",
+        "terminated me",
+        "lost my job"
+      ],
+      "source": "Yukon employment standards legislation",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "ca_yt_hr",
+      "jur": "CA-YT",
+      "area": "human_rights",
+      "title": "Human rights complaint — file within the time limit (often 1 year)",
+      "rule": "Discrimination in work, housing, or services can be taken to the Yukon Human Rights Commission. Most Canadian human rights bodies require filing within 1 YEAR of the last incident — confirm the current limit and file promptly.",
+      "trigger": [
+        "discriminated",
+        "discrimination",
+        "discriminated against me",
+        "because of my disability",
+        "because of my race",
+        "because of my religion",
+        "harassment at work",
+        "refused service",
+        "refused housing"
+      ],
+      "source": "Yukon human rights legislation",
+      "verify": true,
+      "urgency": "serious"
+    },
+    {
+      "id": "ca_yt_limit",
+      "jur": "CA-YT",
+      "area": "civil_general",
+      "title": "Civil lawsuit — generally a 2-year limitation",
+      "rule": "Most Yukon civil claims (debt, contract, negligence, property) must be started within the limitation period — generally 2 YEARS from when you discovered the claim in common-law provinces, with an ultimate longstop. Some claim types differ. Confirm before relying.",
+      "trigger": [
+        "sue someone",
+        "want to sue",
+        "how long to sue",
+        "limitation period",
+        "statute of limitations",
+        "file a lawsuit",
+        "they owe me money"
+      ],
+      "source": "Yukon limitations legislation",
+      "verify": true,
+      "urgency": "serious"
+    }
+  ],
+  "statutes": [
+    {
+      "id": "ca_yt_sc",
+      "jur": "CA-YT",
+      "act": "Yukon small-claims rules",
+      "section": "$25,000",
+      "area": "small_claims",
+      "title": "Money claims up to $25,000",
+      "summary": "The Small Claims Court hears civil money claims up to $25,000 in Yukon; larger claims go to the superior court. Small-claims procedure is streamlined and designed to be used without a lawyer.",
+      "source": "https://www.yukoncourts.ca/en/small-claims-court",
+      "verify": false
+    },
+    {
+      "id": "ca_yt_rtb",
+      "jur": "CA-YT",
+      "act": "Yukon residential tenancy legislation",
+      "section": "tenancy",
+      "area": "housing",
+      "title": "Tenancy disputes go to the Residential Tenancies Office (Yukon)",
+      "summary": "Residential tenancy disputes in Yukon — eviction, deposits, repairs, rent — are decided by the Residential Tenancies Office (Yukon), not the regular courts. Notices carry short response windows; dispute in time and keep written records.",
+      "source": "https://www.yukoncourts.ca/en/small-claims-court"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Emergency",
+      "type": "emergency",
+      "contact": "911",
+      "note": "Police, fire, ambulance."
+    },
+    {
+      "name": "Residential Tenancies Office (Yukon)",
+      "type": "tribunal",
+      "contact": "Yukon government",
+      "note": "Tenant/landlord disputes — search the official site for the current number."
+    },
+    {
+      "name": "Employment Standards (Yukon)",
+      "type": "government",
+      "contact": "Yukon government",
+      "note": "Unpaid wages, termination pay — search the official site for the current number."
+    },
+    {
+      "name": "Yukon Human Rights Commission",
+      "type": "tribunal",
+      "contact": "Yukon government",
+      "note": "Discrimination complaints (often a 1-year limit) — search the official site."
+    },
+    {
+      "name": "Yukon Legal Services Society (Legal Aid)",
+      "type": "legal_aid",
+      "contact": "Yukon Legal Services Society (Legal Aid)",
+      "note": "Criminal/family legal aid + free duty counsel on arrest — search the official site for intake."
+    }
+  ],
+  "book": [
+    {
+      "id": "ca_yt_housing",
+      "jur": "CA-YT",
+      "area": "housing",
+      "title": "Renting in Yukon — tenants and landlords",
+      "overview": "Yukon tenancies are governed by provincial/territorial residential-tenancy legislation and decided by the Residential Tenancies Office (Yukon) (not the regular courts). Eviction and termination notices carry short response windows — read the notice, note the deadline, and dispute or remedy in time.",
+      "your_rights": [
+        "Right to dispute an eviction/termination notice before the tenancy body.",
+        "Limits on deposits and on how/when rent can be increased (confirm the local rule).",
+        "Right to habitable premises and essential services.",
+        "Right to a written record of the tenancy and its condition."
+      ],
+      "key_steps": [
+        "Read the notice: identify the type and the exact deadline.",
+        "Pay arrears or fix the breach in time where possible.",
+        "Apply to the Residential Tenancies Office (Yukon) to dispute, before the deadline.",
+        "Document everything (photos, receipts, written notices).",
+        "Get help from Yukon Legal Services Society (Legal Aid) or a local tenant service."
+      ],
+      "common_mistakes": [
+        "Waiting out the notice instead of disputing.",
+        "Not keeping written records.",
+        "Missing the condition inspection.",
+        "Assuming court instead of the tenancy body."
+      ],
+      "when_lawyer": "Most tenancy matters don't need a lawyer; get advice for a bad-faith eviction, a large claim, or an appeal.",
+      "sources": [
+        {
+          "title": "Yukon residential tenancy information",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon residential tenancy legislation",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_employment",
+      "jur": "CA-YT",
+      "area": "employment",
+      "title": "Work in Yukon — your rights and termination",
+      "overview": "Employment standards legislation sets Yukon minimums (wages, overtime, vacation, termination), enforced by the provincial/territorial employment standards office. Statutory termination notice is a floor — for a without-cause dismissal, common-law reasonable notice is often much larger, so don't sign a severance release before getting advice.",
+      "your_rights": [
+        "Statutory minimum termination notice/pay that scales with service.",
+        "Often much more under common law if dismissed without cause.",
+        "Unpaid wages, overtime, and vacation are recoverable.",
+        "Protection from reprisal for asserting your rights."
+      ],
+      "key_steps": [
+        "Don't sign a severance release right away — get it reviewed.",
+        "Compare the statutory minimum with possible common-law notice.",
+        "File an employment standards claim promptly for pay issues.",
+        "Keep the contract, pay stubs, and termination letter.",
+        "For wrongful dismissal above the small-claims limit, consider the superior court."
+      ],
+      "common_mistakes": [
+        "Taking only the statutory minimum.",
+        "Signing a release under pressure.",
+        "Missing the filing deadline.",
+        "Assuming 'at-will' employment (not a thing in Canada)."
+      ],
+      "when_lawyer": "Before signing severance, or for without-cause/constructive dismissal or discrimination — get an employment lawyer.",
+      "sources": [
+        {
+          "title": "Yukon employment standards",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon employment standards legislation",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_small_claims",
+      "jur": "CA-YT",
+      "area": "small_claims",
+      "title": "Suing (and being sued) for money in Yukon",
+      "overview": "The Small Claims Court hears money claims up to $25,000 in Yukon; larger claims go to the superior court. A roughly 2-year limitation period usually applies in common-law jurisdictions — confirm yours.",
+      "your_rights": [
+        "Claims up to $25,000 in the streamlined small-claims process.",
+        "Right to bring or defend a claim yourself.",
+        "Right to a settlement/pre-trial step.",
+        "Right to enforce a judgment (garnishment, seizure)."
+      ],
+      "key_steps": [
+        "Confirm the amount (≤ $25,000 → small claims).",
+        "File within the limitation period (generally ~2 years).",
+        "Gather contracts, invoices, messages, proof of loss.",
+        "Attend the pre-trial/settlement conference.",
+        "After winning, use enforcement to collect."
+      ],
+      "common_mistakes": [
+        "Missing the limitation period.",
+        "Suing a judgment-proof defendant.",
+        "Filing in the wrong court for the amount.",
+        "No documentary proof."
+      ],
+      "when_lawyer": "Small claims is designed to be self-represented; get advice for superior-court claims or complex matters.",
+      "sources": [
+        {
+          "title": "Yukon small claims",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon small-claims rules",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_family",
+      "jur": "CA-YT",
+      "area": "family",
+      "title": "Family law in Yukon — separation, children, support",
+      "overview": "Yukon family law (parenting, support, and property) runs under provincial/territorial legislation; divorce itself is federal. Child and spousal support follow the Guidelines, and parenting is decided on the child's best interests. Many issues can be settled by agreement or mediation.",
+      "your_rights": [
+        "Parenting decided on the child's best interests.",
+        "Child and spousal support under the Guidelines.",
+        "Property/relationship rights under local family legislation (confirm how common-law partners are treated).",
+        "Right to mediation and a written agreement."
+      ],
+      "key_steps": [
+        "Get a parenting plan and a written separation agreement.",
+        "Exchange full financial disclosure.",
+        "Use family mediation where available.",
+        "For safety, seek a protection order.",
+        "File in the correct court for your issue."
+      ],
+      "common_mistakes": [
+        "No financial disclosure.",
+        "Informal, unwritten agreements.",
+        "Assuming common-law partners' rights without checking.",
+        "Withholding a child without an order."
+      ],
+      "when_lawyer": "For property, relocation, protection orders, or any dispute involving children — get a family lawyer; Yukon Legal Services Society (Legal Aid) may apply.",
+      "sources": [
+        {
+          "title": "Yukon family law information",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon family legislation; Divorce Act (federal)",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_criminal",
+      "jur": "CA-YT",
+      "area": "criminal",
+      "title": "Charged with a crime in Yukon",
+      "overview": "Criminal law is the federal Criminal Code, so your core rights are the same across Canada: to be told the charge, to stay silent, and to a lawyer without delay — including free immediate advice. Yukon has its own courts and Yukon Legal Services Society (Legal Aid).",
+      "your_rights": [
+        "Right to silence — you don't have to answer questions.",
+        "Right to a lawyer without delay, and free immediate advice (duty counsel).",
+        "Right to know the charge and to reasonable bail.",
+        "Presumption of innocence."
+      ],
+      "key_steps": [
+        "Say: 'I want a lawyer and I will remain silent.'",
+        "Ask for free duty counsel; contact Yukon Legal Services Society (Legal Aid).",
+        "Don't discuss the case with anyone but your lawyer.",
+        "Note officer details and what happened.",
+        "Attend every court date; follow release conditions."
+      ],
+      "common_mistakes": [
+        "Talking to police without a lawyer.",
+        "Breaching release conditions.",
+        "Assuming a minor charge needs no lawyer.",
+        "Missing a court date."
+      ],
+      "when_lawyer": "Immediately on any arrest or charge — free duty counsel first, then a local criminal lawyer; apply to Yukon Legal Services Society (Legal Aid).",
+      "sources": [
+        {
+          "title": "Yukon Legal Services Society (Legal Aid)",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Criminal Code (federal); Yukon court rules",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_debt",
+      "jur": "CA-YT",
+      "area": "debt_consumer",
+      "title": "Debt & collections in Yukon",
+      "overview": "If a collection agency is after you, Yukon's consumer-protection rules limit how and when they can contact you — generally no harassment, no threats, limited call hours, and no contacting your employer about the debt (except to confirm employment). You can usually require written contact only. Old debt may be past the limitation period, so it can't be successfully sued on — but making a payment or admitting the debt can restart that clock.",
+      "your_rights": [
+        "Freedom from harassment, threats, and calls at unreasonable hours.",
+        "Right to require contact in writing only.",
+        "Collectors generally can't discuss your debt with family/employer.",
+        "A debt past the limitation period can't be successfully sued on."
+      ],
+      "key_steps": [
+        "Ask for details of the debt in writing before paying.",
+        "Send a written notice if you want contact limited to writing.",
+        "Check whether the debt is past the limitation period (often ~2 years).",
+        "Don't make a payment or admission on an old debt without advice.",
+        "Complain to your provincial consumer-protection office about an abusive collector."
+      ],
+      "common_mistakes": [
+        "Paying to make it stop without confirming the debt is yours and in time.",
+        "Restarting the limitation clock by paying a little on an old debt.",
+        "Ignoring a court claim (leads to default judgment + garnishment).",
+        "Giving a collector banking details."
+      ],
+      "when_lawyer": "If you're sued, facing garnishment, or the debt isn't yours — get advice; Yukon Legal Services Society (Legal Aid) or a community legal clinic may help.",
+      "sources": [
+        {
+          "title": "Yukon consumer-protection reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon collection/consumer-protection law",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_pi",
+      "jur": "CA-YT",
+      "area": "personal_injury",
+      "title": "Injured in an accident in Yukon",
+      "overview": "If you're hurt by someone's carelessness — a car crash, a fall, a defective product — you may have a claim for your losses (treatment, lost income, pain and suffering). The general limitation period is usually 2 years from when you knew of the claim, but there are often MUCH shorter notice deadlines (e.g., for injuries on municipal property or involving a government body). Document everything and get advice early.",
+      "your_rights": [
+        "Right to seek compensation for your injuries and losses.",
+        "Right to your own medical care and records.",
+        "Right not to give the other insurer a recorded statement.",
+        "Right to a lawyer before signing any release."
+      ],
+      "key_steps": [
+        "Get medical care and keep all records and receipts.",
+        "Photograph the scene and injuries; get witness contacts.",
+        "Report it and get any incident/police report number.",
+        "Watch for SHORT notice deadlines (municipal/government claims).",
+        "Don't sign a release or accept a quick settlement without advice."
+      ],
+      "common_mistakes": [
+        "Missing a short notice deadline (e.g., slip-and-fall notice).",
+        "Giving the other insurer a recorded statement.",
+        "Settling before your injuries are fully known.",
+        "Admitting fault at the scene."
+      ],
+      "when_lawyer": "For any serious injury, disputed fault, or an insurer lowballing you — get a personal-injury lawyer (usually contingency, free consult).",
+      "sources": [
+        {
+          "title": "Yukon injury-claim reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon negligence law; limitation + notice periods",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_traffic",
+      "jur": "CA-YT",
+      "area": "traffic",
+      "title": "Traffic tickets & driving offences in Yukon",
+      "overview": "A traffic ticket in Yukon usually lets you plead guilty (pay the fine, take the demerit points, and risk higher insurance) or dispute it. Serious matters — impaired driving, dangerous driving, driving while suspended — are Criminal Code offences with severe, often mandatory penalties, and should be treated like any criminal charge: get a lawyer and don't just plead.",
+      "your_rights": [
+        "Right to dispute a ticket instead of paying.",
+        "Right to disclosure of the evidence against you.",
+        "Right to a lawyer for any Criminal Code driving charge.",
+        "Presumption of innocence on contested charges."
+      ],
+      "key_steps": [
+        "Note the deadline to dispute — don't miss it.",
+        "Remember paying the ticket = pleading guilty (points + insurance).",
+        "For demerit/insurance concerns, consider disputing or a plea discussion.",
+        "For impaired/dangerous/suspended driving, get a lawyer immediately.",
+        "Never ignore a ticket — it can lead to a suspension or more charges."
+      ],
+      "common_mistakes": [
+        "Ignoring a ticket.",
+        "Paying one you could have fought or reduced.",
+        "Treating an impaired-driving charge like a parking ticket.",
+        "Not checking the demerit/insurance impact."
+      ],
+      "when_lawyer": "For impaired driving, dangerous driving, driving while suspended, or any accident causing injury — get a lawyer right away.",
+      "sources": [
+        {
+          "title": "Yukon traffic/driving reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Criminal Code (impaired/dangerous driving); Yukon highway traffic law",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_police",
+      "jur": "CA-YT",
+      "area": "police_rights",
+      "title": "Your rights with police in Yukon",
+      "overview": "Across Canada the Charter protects you: the right to be free from unreasonable search (s.8), the right not to be arbitrarily detained (s.9), and — on arrest or detention — the right to be told why and to speak to a lawyer without delay (s.10). You generally don't have to answer questions. Stay calm, don't resist, assert your rights clearly, and challenge any breach later in court.",
+      "your_rights": [
+        "Right to silence — you don't have to answer questions.",
+        "Right, on detention/arrest, to be told why and to call a lawyer without delay.",
+        "Protection from unreasonable search and seizure (s.8).",
+        "Protection from arbitrary detention (s.9)."
+      ],
+      "key_steps": [
+        "Ask: 'Am I being detained, or am I free to go?'",
+        "Say you wish to speak to a lawyer and will remain silent.",
+        "Don't physically resist; keep your hands visible.",
+        "Use free 24-hour duty counsel if offered.",
+        "Write down what happened and officer details afterward."
+      ],
+      "common_mistakes": [
+        "Answering questions without a lawyer.",
+        "Consenting to a search you could refuse.",
+        "Resisting or fleeing (new charges, danger).",
+        "Not clearly asserting the right to counsel."
+      ],
+      "when_lawyer": "After any arrest, detention, or search — exercise your right to a lawyer right away; free duty counsel is available 24/7.",
+      "sources": [
+        {
+          "title": "Charter of Rights (ss.8–10)",
+          "url": "https://laws-lois.justice.gc.ca/eng/const/page-12.html"
+        }
+      ],
+      "statute": "Canadian Charter of Rights and Freedoms, ss.8, 9, 10",
+      "verify": false
+    },
+    {
+      "id": "ca_yt_estates",
+      "jur": "CA-YT",
+      "area": "wills_estates",
+      "title": "Wills & estates in Yukon",
+      "overview": "A will directs who inherits your property and names the executor who administers your estate. Without a valid will you die 'intestate' and Yukon's default rules decide who inherits — often not what you'd choose, and common-law partners may get nothing automatically. After a death the estate is usually 'probated' (the court confirms the will and the executor's authority) before debts are paid and gifts distributed.",
+      "your_rights": [
+        "Right to make a will (signed and properly witnessed) directing your estate.",
+        "Right, as executor, to administer the estate (and to compensation).",
+        "Beneficiaries' right to an accounting.",
+        "Spouses/dependants may have protected claims against an estate."
+      ],
+      "key_steps": [
+        "Make a valid will; name an executor, a backup, and a guardian for minor kids.",
+        "Keep beneficiary designations (insurance, registered accounts) current — they can bypass the will.",
+        "Store the will safely and tell your executor where it is.",
+        "After a death, locate the will and apply for probate; inventory assets/debts.",
+        "Pay debts and taxes BEFORE distributing — an executor can be personally liable."
+      ],
+      "common_mistakes": [
+        "Dying without a will (intestacy).",
+        "An improperly witnessed will.",
+        "Assuming a common-law partner automatically inherits.",
+        "Distributing before debts/taxes are cleared."
+      ],
+      "when_lawyer": "For estate planning, a contested will, a large/insolvent estate, or executor duties — see a wills & estates lawyer; Yukon Legal Services Society (Legal Aid) may help those who qualify.",
+      "sources": [
+        {
+          "title": "Yukon wills & estates reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon wills/estates & probate law",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_insurance",
+      "jur": "CA-YT",
+      "area": "insurance",
+      "title": "Insurance claims & disputes in Yukon",
+      "overview": "Insurers in Yukon owe a duty of good faith — to handle claims fairly and promptly. If a claim is denied or underpaid, demand the reason and policy wording in writing, appeal internally, and escalate to the General Insurance OmbudService (GIO), the provincial regulator, or court. An unreasonable denial can expose the insurer to extra damages.",
+      "your_rights": [
+        "Right to a written reason for a denial and the policy wording.",
+        "Right to a fair, prompt investigation (good faith).",
+        "Right to the GIO/ombudsperson and the regulator.",
+        "Possible extra damages for bad-faith handling."
+      ],
+      "key_steps": [
+        "Report the claim promptly and as the policy requires.",
+        "Document the loss — photos, receipts, a log of every contact.",
+        "Get the denial reason and policy terms in writing.",
+        "Appeal in writing, citing the policy.",
+        "Escalate to the GIO/regulator or a lawyer if stonewalled."
+      ],
+      "common_mistakes": [
+        "Missing policy notice/claim deadlines.",
+        "Accepting a denial without the written reason.",
+        "Unrecorded phone-only dealings.",
+        "Not documenting the loss."
+      ],
+      "when_lawyer": "For a large denied claim, suspected bad faith, or a liability claim against you — consult an insurance lawyer.",
+      "sources": [
+        {
+          "title": "Yukon insurance reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon insurance law; duty of good faith",
+      "verify": true
+    },
+    {
+      "id": "ca_yt_business",
+      "jur": "CA-YT",
+      "area": "business",
+      "title": "Small business & self-employed in Yukon",
+      "overview": "Running a business in Yukon means picking a structure (sole proprietor = simple but personally liable; corporation = separate entity limiting personal liability), using written contracts, registering/licensing as required, and keeping business and personal finances separate. Put deals in writing, invoice with clear terms, and get advice before signing leases or big contracts.",
+      "your_rights": [
+        "Right to choose a structure that fits your risk.",
+        "Right to enforce written contracts and unpaid invoices.",
+        "Right to limited liability if you properly incorporate and maintain the company.",
+        "Right to sue (small claims within the limit) to collect."
+      ],
+      "key_steps": [
+        "Pick sole prop vs incorporation with tax + legal advice.",
+        "Use written contracts and clear invoices.",
+        "Register the business name and get required licences.",
+        "Keep business and personal money separate.",
+        "For unpaid invoices, demand then sue within the limitation period."
+      ],
+      "common_mistakes": [
+        "Handshake deals.",
+        "Mixing personal and business finances.",
+        "Skipping registration/licences.",
+        "Misclassifying employees as contractors."
+      ],
+      "when_lawyer": "For incorporation, a shareholder/partnership agreement, a major contract, or a dispute — get a business lawyer.",
+      "sources": [
+        {
+          "title": "Yukon small-business reference",
+          "url": "https://www.yukoncourts.ca/en/small-claims-court"
+        }
+      ],
+      "statute": "Yukon business/corporations law",
+      "verify": true
+    }
+  ]
+}

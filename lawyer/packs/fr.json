@@ -1,0 +1,306 @@
+{
+ "id": "fr",
+ "name": "France",
+ "flag": "🇫🇷",
+ "country": "France",
+ "region": "Europe",
+ "jur": "FR",
+ "version": "1.0",
+ "kind": "traveler",
+ "note": "Traveler-focused France pack built from Government of Canada travel advice (fetched 2026-11-24): emergencies (112 (police direct: 17)), ID, if detained, drugs, local offences, driving, entry rules, consular contacts. Verify before relying on it; not local legal advice.",
+ "language": {
+  "code": "fr",
+  "name": "French"
+ },
+ "phrasebook": [
+  {
+   "en": "I want to speak to a lawyer.",
+   "local": "Je veux parler à un avocat.",
+   "pron": "zhuh vuh par-LAY ah uhn ah-voh-KAH",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I want to contact the Canadian embassy.",
+   "local": "Je veux contacter l'ambassade du Canada.",
+   "pron": "zhuh vuh kon-tak-TAY lahm-bah-SAHD doo kah-nah-DAH",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I do not understand.",
+   "local": "Je ne comprends pas.",
+   "pron": "zhuh nuh kom-PRAHN pah",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I need an interpreter.",
+   "local": "J'ai besoin d'un interprète.",
+   "pron": "zhay buh-ZWAN duhn an-tair-PRET",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "I will not sign this.",
+   "local": "Je ne signerai pas cela.",
+   "pron": "zhuh nuh seen-yuh-RAY pah suh-LAH",
+   "note": "If stopped or detained."
+  },
+  {
+   "en": "Am I free to go?",
+   "local": "Suis-je libre de partir ?",
+   "pron": "SWEE-zhuh LEE-bruh duh par-TEER",
+   "note": "If stopped or detained."
+  }
+ ],
+ "resources": [
+  {
+   "name": "Emergency (all services)",
+   "type": "emergency",
+   "contact": "112",
+   "note": "EU-wide emergency number. Police direct: 17. Sea rescue: 196."
+  },
+  {
+   "name": "Embassy of Canada (Paris)",
+   "type": "consular",
+   "contact": "+33 (0)1 44 43 29 02",
+   "note": "130 rue du Faubourg Saint-Honoré, 75008 Paris."
+  },
+  {
+   "name": "Canada Emergency Watch & Response (24/7)",
+   "type": "consular",
+   "contact": "00-800-2326-6831",
+   "note": "Toll-free from many European countries; otherwise call Ottawa collect."
+  }
+ ],
+ "getLawyer": [
+  {
+   "id": "fr_detained",
+   "when": [
+    "arrested",
+    "detained",
+    "police took me",
+    "in custody",
+    "charged",
+    "i was arrested"
+   ],
+   "why": "If you are arrested or detained in France, ask for a lawyer and for the Canadian consular office to be notified (Embassy of Canada (Paris): +33 (0)1 44 43 29 02). Sign nothing you do not understand. Dual citizenship is legally recognized; Canadian consular services may be limited and different entry/exit rules may apply."
+  },
+  {
+   "id": "fr_drugs",
+   "when": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed",
+    "pills"
+   ],
+   "why": "Penalties for possession, use or trafficking of illegal drugs in France are severe — jail or heavy fines. Contact the Canadian consular office and get a local lawyer; say and sign nothing without counsel."
+  }
+ ],
+ "deadlines": [
+  {
+   "id": "fr_schengen_90",
+   "jur": "FR",
+   "area": "immigration",
+   "title": "Schengen 90/180 — max 90 days in any 180",
+   "rule": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "trigger": [
+    "how long can i stay",
+    "tourist",
+    "overstay",
+    "visa",
+    "schengen",
+    "etias",
+    "passport valid",
+    "stay in france"
+   ],
+   "source": "Government of Canada travel advice — France",
+   "verify": false,
+   "urgency": "serious"
+  },
+  {
+   "id": "fr_driving",
+   "jur": "FR",
+   "area": "traffic",
+   "title": "Drive up to 1 year on a Canadian licence",
+   "rule": "A valid Canadian licence is accepted for the first YEAR; longer stays require exchanging it for a French licence. Minimum driving age 18. A reflective vest and warning triangle are required in all vehicles; winter tires or chains are compulsory in some mountain areas from November 1 to March 31.",
+   "trigger": [
+    "driving",
+    "drive in france",
+    "rent a car",
+    "licence",
+    "license",
+    "idp"
+   ],
+   "source": "Government of Canada travel advice — France",
+   "verify": false,
+   "urgency": "info"
+  }
+ ],
+ "sentencing": [
+  {
+   "id": "fr_drug_offence",
+   "jur": "FR",
+   "name": "Drug possession / trafficking (France)",
+   "section": "France criminal law",
+   "class": "serious",
+   "triggers": [
+    "drugs",
+    "possession",
+    "trafficking",
+    "cocaine",
+    "marijuana",
+    "weed"
+   ],
+   "mandatory_minimum": "Not stated in the travel advice.",
+   "first_offender": "Convicted offenders can expect jail sentences or heavy fines.",
+   "maximum": "Severe penalties for trafficking.",
+   "collateral": "Criminal record; removal and re-entry consequences.",
+   "source": "Government of Canada travel advice — France",
+   "verify": false,
+   "get_lawyer_urgent": true
+  }
+ ],
+ "statutes": [
+  {
+   "id": "fr_id_law",
+   "jur": "FR",
+   "act": "France law",
+   "section": "ID",
+   "area": "police_rights",
+   "title": "Identification",
+   "summary": "Carry valid ID such as a driver's licence or passport, or a copy; keep photocopies or digital copies stored separately.",
+   "source": "https://travel.gc.ca/destinations/france"
+  }
+ ],
+ "book": [
+  {
+   "id": "fr_police",
+   "jur": "FR",
+   "area": "police_rights",
+   "title": "Police, ID, and if you're detained in France",
+   "overview": "Carry valid ID such as a driver's licence or passport, or a copy; keep photocopies or digital copies stored separately. If you are arrested or detained, ask for a lawyer and ask that the Canadian consular office be told. Emergency: 112 (police direct: 17). Dual citizenship is legally recognized; Canadian consular services may be limited and different entry/exit rules may apply.",
+   "your_rights": [
+    "Ask for a lawyer before answering questions.",
+    "Ask the authorities to notify the Canadian consular office.",
+    "Ask for an interpreter if you do not understand the language.",
+    "Do not sign anything you do not understand."
+   ],
+   "key_steps": [
+    "Carry ID (or a copy) as the local rules require.",
+    "If detained: ask for a lawyer, an interpreter, and the Canadian consular office.",
+    "Save the emergency number (112 (police direct: 17)) and the consular contact (+33 (0)1 44 43 29 02).",
+    "Report theft to the police to get a report for insurance."
+   ],
+   "common_mistakes": [
+    "Not carrying ID or a copy.",
+    "Signing documents you cannot read.",
+    "Assuming dual citizenship guarantees Canadian consular help."
+   ],
+   "when_lawyer": "Immediately on arrest or detention — ask for a lawyer and the Canadian consular office.",
+   "sources": [
+    {
+     "title": "Government of Canada — France travel advice",
+     "url": "https://travel.gc.ca/destinations/france"
+    }
+   ],
+   "statute": "France criminal procedure; Vienna Convention on Consular Relations",
+   "verify": false
+  },
+  {
+   "id": "fr_immigration",
+   "jur": "FR",
+   "area": "immigration",
+   "title": "Entering and staying in France",
+   "overview": "Canadians need no visa for up to 90 DAYS in any 180-day period, counted across the whole Schengen area. Your passport must be valid at least 3 MONTHS beyond the date you expect to leave the Schengen area. The Entry/Exit System (EES) records biometric data on arrival; ETIAS will be required once it opens — apply only on the official EU website. Dual citizens of a participating country must travel on their European passport.",
+   "your_rights": [
+    "Entry without a visa for the tourist period stated, if you meet the passport-validity rule.",
+    "To be told the reason if you are refused entry.",
+    "To contact the Canadian consular office if you are detained at the border."
+   ],
+   "key_steps": [
+    "Check your passport's expiry date against the validity rule before you book.",
+    "Count your days carefully and keep proof of your entry date.",
+    "Carry your return or onward ticket and proof of funds.",
+    "Apply for any required authorization only through official government websites."
+   ],
+   "common_mistakes": [
+    "Travelling on a passport that expires too soon.",
+    "Overstaying — it can mean fines, removal, and a ban on return.",
+    "Paying unofficial websites for travel authorizations."
+   ],
+   "when_lawyer": "If you are refused entry, have overstayed, or want to stay longer or work.",
+   "sources": [
+    {
+     "title": "Government of Canada — France travel advice",
+     "url": "https://travel.gc.ca/destinations/france"
+    }
+   ],
+   "statute": "France immigration rules",
+   "verify": false
+  },
+  {
+   "id": "fr_criminal",
+   "jur": "FR",
+   "area": "criminal",
+   "title": "Local laws that catch visitors in France",
+   "overview": "Penalties for possession, use or trafficking of illegal drugs are severe — convicted offenders can expect jail sentences or heavy fines. Other local rules that surprise visitors: It is illegal to cover your face in public places, including airport arrivals areas — fines apply, with no exemption for tourists or for religious reasons. Drones must be registered before flying; violations risk a fine or imprisonment. Smoking is banned in woods and forests during high fire-risk periods, including within 200 m of wooded areas.",
+   "your_rights": [
+    "The right to a lawyer if you are charged.",
+    "The right to have the Canadian consular office notified.",
+    "The right to an interpreter in proceedings you do not understand."
+   ],
+   "key_steps": [
+    "Do not carry packages or luggage for anyone else.",
+    "Learn the local rules below before you go — ignorance is not a defence.",
+    "It is illegal to cover your face in public places, including airport arrivals areas — fines apply, with no exemption for tourists or for religious reasons.",
+    "Drones must be registered before flying; violations risk a fine or imprisonment."
+   ],
+   "common_mistakes": [
+    "Assuming rules are the same as in Canada.",
+    "Carrying or using drugs because they seem tolerated locally."
+   ],
+   "when_lawyer": "As soon as you are questioned about, or charged with, any offence.",
+   "sources": [
+    {
+     "title": "Government of Canada — France travel advice",
+     "url": "https://travel.gc.ca/destinations/france"
+    }
+   ],
+   "statute": "France criminal law",
+   "verify": false
+  },
+  {
+   "id": "fr_safety",
+   "jur": "FR",
+   "area": "safety",
+   "title": "Crime, scams and driving in France",
+   "overview": "Pickpocketing and bag or phone snatching are frequent, especially on public transport and in tourist areas, often using distraction; illegal taxis at Paris airports and stations overcharge tourists. Driving: A valid Canadian licence is accepted for the first YEAR; longer stays require exchanging it for a French licence. Minimum driving age 18. A reflective vest and warning triangle are required in all vehicles; winter tires or chains are compulsory in some mountain areas from November 1 to March 31.",
+   "your_rights": [
+    "To report a crime to the police and receive a report for insurance.",
+    "To consular assistance from Canada if you are a victim of crime.",
+    "To drive on your Canadian licence for the period stated, if you meet the conditions."
+   ],
+   "key_steps": [
+    "Keep valuables out of sight and bags closed in crowds and on transit.",
+    "Use only licensed taxis and check ATMs before using your card.",
+    "Carry the required safety equipment and documents when driving.",
+    "Report theft promptly and contact your card issuer."
+   ],
+   "common_mistakes": [
+    "Leaving valuables in a parked car.",
+    "Driving without the required permit, equipment, or insurance.",
+    "Ignoring local traffic-zone and alcohol rules."
+   ],
+   "when_lawyer": "After a serious collision, any arrest, or a significant theft or fraud.",
+   "sources": [
+    {
+     "title": "Government of Canada — France travel advice",
+     "url": "https://travel.gc.ca/destinations/france"
+    }
+   ],
+   "statute": "France road traffic law",
+   "verify": false
+  }
+ ]
+}

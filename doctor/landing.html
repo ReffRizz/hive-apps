@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HIVE Doctor</title>
+<meta name="description" content="A complete, offline medical reference — symptoms, medicines, first aid and 68 specialist chapters — that you can question in plain language and that never guesses or invents.">
+<style>
+:root{--bg:#07100f;--panel:#0e1b1a;--line:#1f3331;--ink:#eaf4f2;--mut:#9fb5b1;--acc:#46c6ab;--acc2:#8fe0cf;--serif:Georgia,'Times New Roman',serif}
+
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 48px;text-align:center;background:radial-gradient(900px 420px at 50% -120px,rgba(70,198,171,.14),transparent)}
+
+.badge{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;margin-bottom:22px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,7vw,62px);line-height:1.04;margin:0 0 16px;letter-spacing:.01em}
+h1 .sub{display:block;font-size:.4em;color:var(--acc);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;font-family:inherit;font-weight:600}
+.lede{font-size:clamp(17px,2.4vw,21px);color:var(--mut);max-width:680px;margin:0 auto 30px}
+.cta{display:inline-flex;gap:10px;align-items:center;background:var(--acc);color:#05201c;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;font-size:16px}
+.cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.ctarow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,34px);margin:0 0 10px}
+.sub2{color:var(--mut);margin:0 0 30px;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center}
+.stat .n{font-family:var(--serif);font-size:30px;color:var(--acc);font-weight:600}
+.stat .l{font-size:13px;color:var(--mut);margin-top:4px;line-height:1.35}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 8px;font-size:17px;color:var(--ink)}
+.card p{margin:0;color:var(--mut);font-size:14.5px}
+ul.who{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+ul.who li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:16px 18px;color:var(--mut)}
+ul.who li b{color:var(--ink)}
+.honest{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.honest ul{margin:12px 0 0;padding-left:20px;color:var(--mut)}.honest li{margin:7px 0}
+footer{padding:40px 0 60px;color:var(--mut);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+a{color:var(--acc)}
+@media(prefers-color-scheme:light){:root:not([data-theme]){--bg:#f6faf9;--panel:#fff;--line:#dce6e4;--ink:#10201e;--mut:#4b625e}}
+</style></head><body>
+<header><div class="wrap">
+<div class="badge">Offline · deterministic · private</div>
+<h1><span class="sub">HIVE Doctor</span>The whole clinic, in a book that answers back.</h1>
+<p class="lede">A complete, offline medical reference — symptoms, medicines, first aid and 68 specialist chapters — that you can question in plain language and that never guesses or invents.</p>
+<div class="ctarow"><a class="cta" href="ai.html">Open HIVE Doctor →</a><a class="cta ghost" href="#what">See what's inside</a></div>
+</div></header>
+
+<section id="what"><div class="wrap">
+<h2>What it is</h2>
+<p class="sub2">HIVE Doctor is an educational reference that runs entirely on your device. Ask it about a symptom, a medicine, or a condition and it answers from a fixed, tested body of knowledge — then shows its sources. It reads photos of letters and reports without internet, tracks your medicines for interactions, and holds a medical book deep enough that a specialist would recognise their own field in it.</p>
+<div class="stats"><div class="stat"><div class="n">68</div><div class="l">specialist chapters</div></div><div class="stat"><div class="n">573</div><div class="l">medicines, from official labels</div></div><div class="stat"><div class="n">103</div><div class="l">interaction rules</div></div><div class="stat"><div class="n">379</div><div class="l">labelled photos</div></div><div class="stat"><div class="n">175</div><div class="l">diagrams</div></div><div class="stat"><div class="n">6/6</div><div class="l">emergencies flagged in testing</div></div></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>What it does</h2>
+<p class="sub2">Everything runs on your own device, offline, with no account and no data leaving the machine.</p>
+<div class="grid"><div class="card"><h3>Symptom reasoning</h3><p>A deterministic triage engine weighs your symptoms, flags red-flags and emergencies first, and never fabricates a diagnosis.</p></div><div class="card"><h3>Medicine reference</h3><p>573 medicines drawn verbatim from official US labels, most with a package picture, each with its label date and a link. Dose text is reference only.</p></div><div class="card"><h3>Interaction tracker</h3><p>Tell it what you take and it flags well-known serious interactions, duplicates, grapefruit and food timing — and says plainly which medicines it has no rules for.</p></div><div class="card"><h3>A real medical book</h3><p>68 chapters from emergency and surgery to psychiatry, oncology, genetics and newborn care — each tested against a board-style concept list.</p></div><div class="card"><h3>Picture atlas</h3><p>Original labelled diagrams plus hundreds of real example photographs, every one carrying its author and licence.</p></div><div class="card"><h3>Reads your documents</h3><p>Scan a photo of a lab report or letter and it reads and explains it — with the text-reader bundled, so it works with no connection.</p></div><div class="card"><h3>Teaches and quizzes</h3><p>Ask it to explain any chapter, or to quiz you on it.</p></div><div class="card"><h3>Yours, offline</h3><p>No account, no cloud, no tracking. Everything stays on your device and keeps working with the internet off.</p></div></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Who it's for</h2>
+<ul class="who"><li><b>Working professionals.</b> A fast, offline second reference that covers neighbouring specialties as well as your own.</li><li><b>Students.</b> A board-level body of knowledge you can read, be quizzed on, and carry anywhere.</li><li><b>People without easy access to care.</b> Plain-language answers, red-flag warnings, and a clear push to real care when it matters.</li></ul>
+</div></section>
+
+<section><div class="wrap">
+<h2>Where it stands — honestly</h2>
+<div class="honest">
+<p>HIVE Doctor is content-complete and every automated gate passes — reproducibility, a per-specialty board of 922 concepts, hardening, proofreading of 5,600 passages, picture-fit, and 165 in-browser checks including emergencies and adversarial safety questions. It is not yet signed off by a clinician.</p>
+<ul><li>The content has <b>not yet been independently verified</b> by a licensed physician; a sign-off checklist is included for professional review.</li><li>It is a learning tool, not a doctor, and not a substitute for care.</li><li>Medicine labels are US-only; some medicines have no interaction rules yet, and those are disclosed in the app.</li><li>Photographs are examples; conditions look different on different bodies and a photo cannot diagnose.</li></ul>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+HIVE Doctor · educational reference, not medical advice · compiled 2026-11-24<br>
+© 2026 Jeff Robinson · JR TraceCode. All rights reserved.<br>
+See DISCLAIMER_AND_TERMS.md before relying on it, publishing it, or selling it.
+</div></footer>
+</body></html>

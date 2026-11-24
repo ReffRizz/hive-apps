@@ -1,0 +1,256 @@
+{
+  "schema": "hive.doctor.support/v1",
+  "title": "HIVE Doctor — Abuse recognition & victim support",
+  "author": "Jeff",
+  "review_status": "UNVERIFIED — requires safeguarding / clinician sign-off before real-world use",
+  "safety": "Protective, victim-facing only. Validates, keeps people safe, and signposts real confidential help. Contains NO methods that could enable abuse or grooming. For anyone who may be a minor, always points to a trusted adult and a child helpline and never encourages secrecy.",
+  "danger_triggers": [
+    "in danger right now",
+    "in danger now",
+    "going to hurt me",
+    "going to kill me",
+    "threatening to kill me",
+    "has a weapon",
+    "about to hurt me",
+    "im not safe right now",
+    "they will hurt me if",
+    "he will kill me",
+    "scared for my life"
+  ],
+  "danger_msg": "If you are in immediate danger, call your local emergency number now, or get to a safe place (a neighbour, a shop, anywhere with people) and call from there. Your safety comes first. You deserve to be safe.",
+  "resources_note": "These are examples — most countries and regions have their own free, confidential helpline. This app works offline, so if you can get online, searching 'domestic abuse / sexual assault / child protection helpline' plus your area will find a local one. Contacting a helpline does not commit you to anything; they listen and help you decide.",
+  "categories": [
+    {
+      "id": "dv",
+      "triggers": [
+        "my partner hits me",
+        "he hits me",
+        "she hits me",
+        "they hit me",
+        "being beaten",
+        "someone beats me",
+        "i get hit at home",
+        "punched me",
+        "my husband hurts me",
+        "my wife hurts me",
+        "afraid of my partner",
+        "scared of my husband",
+        "scared of my wife",
+        "hurts me when angry",
+        "throws things at me",
+        "controls everything i do",
+        "wont let me see my friends",
+        "wont let me see my family",
+        "controls my money",
+        "i have to ask permission for everything",
+        "isolates me from everyone",
+        "puts me down all the time",
+        "makes me feel worthless",
+        "threatens me if i leave",
+        "afraid to go home",
+        "scared to go home",
+        "walking on eggshells",
+        "my husband grabs me",
+        "grabs me and pushes me",
+        "grabs me",
+        "pushes me when hes angry",
+        "hurts me when hes angry",
+        "he pushes me",
+        "my partner grabs me",
+        "shoves me",
+        "grabbed my wrist",
+        "grabbed my arm",
+        "he grabbed me",
+        "she grabbed me",
+        "my partner grabbed",
+        "grabbed me again",
+        "left a bruise on me",
+        "bruised my wrist",
+        "i probably deserved it",
+        "i deserved it",
+        "it was my fault he hit",
+        "maybe i deserved it",
+        "he grabbed my wrist",
+        "partner grabbed my wrist"
+      ],
+      "title": "You deserve to be safe — support for abuse at home",
+      "validation": "What you're describing is abuse, and it is not your fault. You deserve to feel safe and respected. Abuse (hitting, threats, controlling what you do, money, or who you see) often repeats and can escalate — reaching out for support is a strong, sensible step.",
+      "markers": [
+        "being hurt, grabbed or threatened",
+        "being controlled — your money, phone, friends or where you go",
+        "being put down, blamed or made to feel afraid",
+        "feeling you have to 'walk on eggshells'"
+      ],
+      "steps": [
+        "Think about a safe place you could go and one person you trust to tell.",
+        "If you can, keep ID, keys, some money and important papers somewhere you can grab quickly.",
+        "Agree a code word with someone so they know to get help.",
+        "You can talk to a confidential helpline to make a plan at your own pace — you don't have to decide anything today."
+      ],
+      "resources": [
+        "Immediate danger: your local emergency number.",
+        "US: National Domestic Violence Hotline 1-800-799-7233 (text START to 88788).",
+        "Canada (Ontario): Assaulted Women's Helpline 1-866-863-0511.",
+        "UK: National Domestic Abuse Helpline 0808 2000 247."
+      ]
+    },
+    {
+      "id": "sexual",
+      "triggers": [
+        "i was raped",
+        "i was sexually assaulted",
+        "someone sexually assaulted me",
+        "forced me to have sex",
+        "made me do sexual things",
+        "touched me without my consent",
+        "someone assaulted me",
+        "made me have sex when i didnt want to"
+      ],
+      "title": "What happened was not your fault — support after sexual assault",
+      "validation": "I'm really sorry this happened. It was not your fault, whatever the circumstances. You deserve support and care. What you do next is your choice, and help is available at every step.",
+      "markers": [
+        "any sexual contact you did not freely agree to",
+        "being pressured, tricked, threatened or unable to consent"
+      ],
+      "steps": [
+        "If it was recent, medical care can check for injuries and offer protection against infection and pregnancy — this is available whether or not you involve police, and you can bring someone with you.",
+        "If you think you might want the option of reporting later, a specialist service can explain how evidence can be kept — but reporting is entirely your choice.",
+        "A confidential helpline can talk it through with you, at your pace."
+      ],
+      "resources": [
+        "Immediate danger or serious injury: your local emergency number.",
+        "US: RAINN National Sexual Assault Hotline 1-800-656-4673.",
+        "UK: Rape Crisis 0808 500 2222.",
+        "Canada: contact a local sexual assault / domestic violence care centre or 211."
+      ]
+    },
+    {
+      "id": "grooming",
+      "triggers": [
+        "an adult wants me to keep secrets",
+        "keep secrets from my parents",
+        "older person gives me gifts and wants it secret",
+        "someone online wants to meet in person",
+        "asked me not to tell anyone",
+        "wants photos of me",
+        "sends me things that make me uncomfortable",
+        "an adult keeps messaging me privately",
+        "says ill get in trouble if i tell",
+        "makes me feel its my fault",
+        "touches me and says not to tell",
+        "older guy i met online",
+        "guy i met online",
+        "met online",
+        "older man online",
+        "older guy online",
+        "keep it secret from my mum",
+        "keep it secret from my mom",
+        "keep it secret from my parents",
+        "keep it a secret",
+        "says to keep it secret",
+        "keep it secret from my",
+        "wants me to send photos",
+        "send photos of myself",
+        "wants me to send pictures",
+        "send pictures of myself",
+        "buys me stuff and says to keep it secret",
+        "gives me gifts and wants it secret",
+        "buys me stuff",
+        "cant tell my mum about us",
+        "cant tell my mom about us",
+        "cant tell my parents about us",
+        "i cant tell my mum",
+        "i cant tell my mom",
+        "my boyfriend is 25",
+        "my boyfriends 25",
+        "hes 25 and im 14",
+        "hes 25 and im 15",
+        "im 14 and my boyfriend",
+        "im 15 and my boyfriend",
+        "im 13 and my boyfriend",
+        "older boyfriend wants it secret",
+        "he says i cant tell",
+        "cant tell anyone about us",
+        "hes much older than me and"
+      ],
+      "title": "This isn't okay, and it isn't your fault — getting help",
+      "validation": "You're right to feel uneasy, and you're doing the right thing by looking for help. What you're describing is not okay and it is NOT your fault. A safe adult should never ask you to keep secrets from your parents or carers, give you gifts for secrecy, try to get you alone, ask for photos, or make you feel you'd be in trouble for telling.",
+      "markers": [
+        "an adult asking you to keep secrets from your parents or carers",
+        "being offered gifts, money or special attention for secrecy",
+        "someone trying to get you alone or to meet privately",
+        "being asked for photos or sent things that make you uncomfortable",
+        "being told it's your fault or that you'd get in trouble if you tell"
+      ],
+      "steps": [
+        "Tell a trusted adult as soon as you can — a parent, carer, teacher, school counsellor, or another adult you trust.",
+        "You will not be in trouble for telling. Keeping it secret is what the other person wants, not what's best for you.",
+        "If anyone has hurt you or you don't feel safe, you can contact a free, confidential child helpline — they are used to helping with exactly this."
+      ],
+      "resources": [
+        "Immediate danger: your local emergency number.",
+        "US: Childhelp National Child Abuse Hotline 1-800-422-4453.",
+        "Canada: Kids Help Phone 1-800-668-6868 (text CONNECT to 686868).",
+        "UK: Childline 0800 1111 / NSPCC 0808 800 5000."
+      ]
+    },
+    {
+      "id": "child_report",
+      "triggers": [
+        "worried my child is being abused",
+        "my child told me someone touched them",
+        "i think a child is being hurt",
+        "a child told me they are being abused",
+        "think my child is being groomed"
+      ],
+      "title": "Helping a child who may be being harmed",
+      "validation": "Thank you for taking this seriously — that protects the child. If a child tells you something, stay calm, believe them, let them know it's not their fault and that they did the right thing telling you. Keep them safe and don't confront the suspected person yourself.",
+      "markers": [
+        "unexplained injuries, fear of a particular person, or a big change in mood or behaviour",
+        "age-inappropriate knowledge, or secrecy around an adult",
+        "withdrawal, or going back to younger behaviours"
+      ],
+      "steps": [
+        "Write down what was said as soon as you can, using the child's own words.",
+        "Report to your local child protection service or the police — they will guide you.",
+        "Get support for yourself too; it's hard to hear."
+      ],
+      "resources": [
+        "A child in immediate danger: your local emergency number.",
+        "US: Childhelp 1-800-422-4453.",
+        "Canada: your provincial child protection services / Kids Help Phone 1-800-668-6868.",
+        "UK: NSPCC 0808 800 5000."
+      ]
+    },
+    {
+      "id": "elder",
+      "triggers": [
+        "my carer hurts me",
+        "mistreated in the care home",
+        "someone takes my pension",
+        "neglected in the care home",
+        "my carer shouts at me and rough with me",
+        "family member takes my money and i am elderly",
+        "being mistreated by my carer"
+      ],
+      "title": "You deserve to be treated with safety and respect",
+      "validation": "Being hurt, neglected, or having your money taken is abuse — including by family or carers — and it is not your fault. You have a right to be safe and to be treated with respect.",
+      "markers": [
+        "being hurt, handled roughly, or left without food, warmth, hygiene or care",
+        "money, pension or belongings being taken or controlled",
+        "being frightened, threatened or ignored by someone who cares for you"
+      ],
+      "steps": [
+        "Tell someone you trust outside the situation — another relative, a GP, or a social worker.",
+        "A confidential helpline can explain your options and what support exists."
+      ],
+      "resources": [
+        "Immediate danger: your local emergency number.",
+        "US: Adult Protective Services / Eldercare Locator 1-800-677-1116.",
+        "UK: Hourglass 0808 808 8141.",
+        "Canada: your local Adult Protective Services or 211."
+      ]
+    }
+  ],
+  "closing": "You are not alone, and none of this is your fault. Talking to someone does not commit you to any action — it just means you don't have to carry it by yourself."
+}

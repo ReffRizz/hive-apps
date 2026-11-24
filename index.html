@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HIVE Apps</title>
+<style>
+  :root{--bg:#0a141f;--card:#111f2e;--line:#203345;--fg:#eef3f8;--mut:#9fb2c4;--teal:#2bb7a3;--brass:#c79a3e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:860px;margin:0 auto;padding:48px max(16px,env(safe-area-inset-left)) 40px}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:.5px}
+  .tag{color:var(--mut);margin:0 0 4px}
+  .by{color:var(--mut);font-size:13px;margin:0 0 28px;text-align:center}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+  .card h2{margin:0 0 4px;font-size:22px}
+  .card .d{color:var(--mut);font-size:14px;flex:1}
+  .card.doc h2{color:var(--teal)}
+  .card.law h2{color:var(--brass)}
+  .stat{color:var(--mut);font-size:12.5px;margin:12px 0 16px}
+  a.btn{display:inline-block;text-align:center;text-decoration:none;font-weight:600;padding:12px 16px;border-radius:11px;color:#06121c}
+  .doc a.btn{background:var(--teal)}
+  .law a.btn{background:var(--brass)}
+  .note{margin-top:30px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:#0e1a27;color:var(--mut);font-size:13px}
+  footer{margin-top:26px;text-align:center;color:var(--mut);font-size:12.5px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>HIVE Apps</h1>
+    <p class="tag">Offline, deterministic reference tools — they run on your device and keep working with no connection.</p>
+  </header>
+  <p class="by">By Jeff Robinson · JR TraceCode</p>
+
+  <div class="grid">
+    <div class="card doc">
+      <h2>HIVE Doctor</h2>
+      <div class="d">Plain-language symptom reasoning, a 573-medicine reference from official US labels, an interaction tracker, a 68-chapter medical book, picture atlas and report reader.</div>
+      <div class="stat">68 chapters · 573 medicines · 204 conditions</div>
+      <a class="btn" href="./doctor/">Try HIVE Doctor →</a>
+    </div>
+    <div class="card law">
+      <h2>HIVE Lawyer</h2>
+      <div class="d">Plain-language legal issue-spotter: the area of law, deadline red flags, get-a-lawyer triggers and specific, sourced guidance across 79 jurisdictions.</div>
+      <div class="stat">60 chapters · 936 entries · 79 jurisdictions</div>
+      <a class="btn" href="./lawyer/">Try HIVE Lawyer →</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Please read:</b> these are educational reference tools for you to try — not a substitute for professional advice, and not yet independently verified by a licensed clinician or lawyer. HIVE Doctor cannot diagnose; HIVE Lawyer is not a lawyer. For an emergency call your local emergency number. For anything serious, consult a professional.
+  </div>
+
+  <footer>
+    © 2026 Jeff Robinson · JR TraceCode. All rights reserved.<br>
+    Preview build for testing. Everything runs in your browser; nothing you type is sent anywhere.
+  </footer>
+</div>
+</body>
+</html>
