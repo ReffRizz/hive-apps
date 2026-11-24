@@ -18,6 +18,9 @@
   // numbers, and falls back to the deterministic sentence if the model is
   // unreachable or tries to drift. Endpoint is a local HIVE model (offline).
   const AI_URL = "http://127.0.0.1:11434/api/generate";
+  // Qwen Assist server endpoint (present only when the app is launched from
+  // assist/qwen_server.js). Same-origin; absent on the static site / phone PWA.
+  const ASSIST_URL = "/assist"; let assistReady = false;
   const AI_MODEL = "hive-local-qwen3-8b:latest";
   const AI_SYS = "You are the spoken-style summary voice of a medical TRIAGE tool speaking to a worried person. " +
     "Rewrite the status sentence to sound calm, clear and professional. STRICT RULES: do not add any medical advice, " +
@@ -60,7 +63,11 @@
     if (!("gpu" in navigator)) { llmTried = true; return null; }   // no WebGPU → stay on fallback
     llmLoading = true;
     try {
-      const webllm = await import("./web-llm.js");
+      // Load the WebLLM runtime: self-hosted copy if present, else a pinned CDN
+      // (first load needs internet; model + runtime then cache for offline use).
+      let webllm;
+      try { webllm = await import("./web-llm.js"); }
+      catch (e) { webllm = await import("https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.79/+esm"); }
       const list = (webllm.prebuiltAppConfig && webllm.prebuiltAppConfig.model_list) || [];
       const pick = list.find(m => /Qwen2\.5-0\.5B-Instruct-q4f16/.test(m.model_id))
         || list.find(m => m.model_id.includes("0.5B") && m.model_id.includes("q4f16"))
@@ -99,6 +106,21 @@
       const j = await r.json();
       return applyGuards(sentence, j.response);
     } catch (e) { return sentence; }
+  }
+  // On-device UNDERSTANDING: Qwen rewrites messy wording into a plain symptom
+  // description that the deterministic engine routes better. Never trusted as an
+  // answer — it only feeds the engine. Falls back to the raw text on any issue.
+  const UNDERSTAND_SYS = "Rewrite the person's health message into a short, plain description of symptoms and context for a triage tool. Keep every concrete detail: body part, how long, what it feels like, any medicines named, age. Do NOT diagnose, do NOT add advice, do NOT invent anything. Reply with the rewritten description only.";
+  async function understandLocal(text) {
+    if (!llm) return text;
+    try {
+      const r = await llm.chat.completions.create({
+        messages: [{ role: "system", content: UNDERSTAND_SYS }, { role: "user", content: text }],
+        temperature: 0, max_tokens: 140, stream: false
+      });
+      const out = (r.choices && r.choices[0] && r.choices[0].message && r.choices[0].message.content || "").trim();
+      return (out && out.length < 500) ? out : text;
+    } catch (e) { return text; }
   }
   // Order: on-device phone model → desktop local model → deterministic fallback.
   async function rewordLocal(sentence) {
@@ -173,7 +195,7 @@
     const n = (HIVETriage._state.map && HIVETriage._state.map.counts) ? HIVETriage._state.map.counts : { conditions: 0, symptoms: 0 };
     const who = activeName() ? ("Profile: " + activeName()) : "Anonymous";
     const styleLbl = (mode === "chat" ? "Conversational" : "Standard");
-    status.textContent = who + " · " + styleLbl + " · private · works offline · " + VERSION;
+    status.textContent = who + " · " + styleLbl + (assistReady ? " · Qwen Assist" : "") + " · private · works offline · " + VERSION;
   }
   function updateModeBtn() {
     const b = $("modebtn"); if (!b) return;
@@ -293,6 +315,14 @@
     renderDoor();
     // first run shows the door; afterwards go straight in
     if (lsGet(ACK, "") === "1") { door.classList.add("hidden"); greet(activeName()); q && q.focus(); }
+    // Probe for the Qwen Assist server (no model call: understand/converse off).
+    (async () => {
+      try {
+        const r = await fetch(ASSIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: "", understand: false, converse: false }) });
+        if (r.ok) { const j = await r.json(); assistReady = !!(j && j.authoritative); }
+      } catch (e) { assistReady = false; }
+      setStatus();
+    })();
   }).catch(() => { status.textContent = "Could not load the knowledge base. Check your connection and reload."; });
 
   // ---------- chat ----------
@@ -302,14 +332,28 @@
     if (!text || !ready) return;
     const youNode = add("you", esc(text));
     q.value = "";
-    const html = HIVETriage.turn(text);
+    // Qwen Assist (only when launched from qwen_server.js): Qwen cleans up the
+    // wording so the engine routes better, and writes a verified intro. The engine
+    // still produces the grounded, cited answer below. Falls back on any error.
+    let engineInput = text, serverIntro = null;
+    if (assistReady) {
+      // Launched from the Qwen Assist server (PC): Qwen understands + writes a verified intro.
+      try {
+        const r = await fetch(ASSIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, understand: true, converse: mode === "chat" }) });
+        if (r.ok) { const j = await r.json(); if (j && j.normalized_query) engineInput = j.normalized_query; if (j && j.assist_intro) serverIntro = j.assist_intro; }
+      } catch (e) { }
+    } else if (llm && mode === "chat") {
+      // On the phone (no server): the on-device Qwen understands the wording.
+      engineInput = await understandLocal(text);
+    }
+    const html = HIVETriage.turn(engineInput);
     const node = add("bot", html);
     // Conversational mode: prepend a plain-language summary above the full
     // deterministic breakdown. The clinical blocks and the locked safety note
     // below are never changed. Falls back silently if the local model is off.
     let pt = null, base = "";
     if (mode === "chat") {
-      base = plainBase(html);
+      base = serverIntro || plainBase(html);   // prefer Qwen's server-verified intro
       if (base) {
         const txt = node.querySelector(".txt");
         pt = document.createElement("div");
@@ -324,7 +368,7 @@
     anchorExchange(youNode);
     setStatus();
     // Then (if on) let the on-device model warm the wording — layout already settled.
-    if (pt && base) {
+    if (pt && base && !serverIntro) {   // server intro is already verified; skip local reword
       try {
         const worded = await rewordLocal(base);
         if (worded && worded !== base) pt.querySelector("p").textContent = worded;

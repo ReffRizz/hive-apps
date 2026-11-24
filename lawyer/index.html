@@ -1129,6 +1129,9 @@ function speakSummary(r){
 /* ===== UI ===== */
 const feed=document.getElementById('feed'), empty=document.getElementById('empty');
 const jurSel=document.getElementById('jur'), qEl=document.getElementById('q');
+// Qwen Assist server endpoint (present only when launched from assist/qwen_server.js).
+const ASSIST_URL="/assist"; let assistReady=false;
+(async()=>{ try{ const r=await fetch(ASSIST_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:"",understand:false,converse:false})}); if(r.ok){const j=await r.json(); assistReady=!!(j&&j.authoritative);} }catch(e){assistReady=false;} })();
 let LABELS={};
 function rebuildLabels(){
   LABELS={};
@@ -1249,8 +1252,37 @@ function render(r){
 let AI_ON = (()=>{try{return localStorage.getItem('hl_ai')==='1';}catch(e){return false;}})();
 const aiBtn=document.getElementById('aitoggle');
 function paintAi(){aiBtn.classList.toggle('on',AI_ON);}
-aiBtn.onclick=()=>{AI_ON=!AI_ON;try{localStorage.setItem('hl_ai',AI_ON?'1':'0');}catch(e){}paintAi();};
-paintAi();
+aiBtn.onclick=()=>{AI_ON=!AI_ON;try{localStorage.setItem('hl_ai',AI_ON?'1':'0');}catch(e){}paintAi();if(AI_ON)ensureLLM();};
+paintAi(); if(AI_ON) try{ensureLLM();}catch(e){}
+
+/* On-device model (phone GPU) via WebLLM — Qwen runs on the phone, offline after the
+   first one-time download. Used to UNDERSTAND messy wording (fed to the deterministic
+   issue-spotter) and to reword the summary (checked by legalGuard). Falls back to the
+   server endpoint, then to pure deterministic, if WebGPU is absent or load fails. */
+let LLM=null, llmLoading=false, llmTried=false;
+async function ensureLLM(){
+  if(LLM||llmLoading||llmTried) return LLM;
+  if(!('gpu' in navigator)){ llmTried=true; return null; }
+  llmLoading=true;
+  try{
+    let webllm; try{ webllm=await import('./web-llm.js'); }catch(e){ webllm=await import('https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.79/+esm'); }
+    const list=(webllm.prebuiltAppConfig&&webllm.prebuiltAppConfig.model_list)||[];
+    const pick=list.find(m=>/Qwen2\.5-0\.5B-Instruct-q4f16/.test(m.model_id))||list.find(m=>m.model_id.includes('0.5B')&&m.model_id.includes('q4f16'))||(list[0]&&list[0].model_id);
+    const id=pick&&(pick.model_id||pick); if(!id){ llmTried=true; llmLoading=false; return null; }
+    LLM=await webllm.CreateMLCEngine(id,{initProgressCallback:()=>{}});
+  }catch(e){ LLM=null; }
+  llmLoading=false; llmTried=true; return LLM;
+}
+async function understandL(text){
+  if(!LLM) return text;
+  try{ const r=await LLM.chat.completions.create({messages:[{role:'system',content:"Rewrite the person's legal message into a short, plain description of the situation for a legal issue-spotter. Keep every concrete detail (who did what, dates, amounts, place). Do NOT give legal advice, do NOT cite law, do NOT invent anything. Reply with the rewritten description only."},{role:'user',content:text}],temperature:0,max_tokens:140,stream:false});
+    const out=(r.choices&&r.choices[0]&&r.choices[0].message&&r.choices[0].message.content||'').trim(); return (out&&out.length<500)?out:text;
+  }catch(e){ return text; }
+}
+async function rewordL(prompt){
+  if(!LLM) return null;
+  try{ const r=await LLM.chat.completions.create({messages:[{role:'user',content:prompt}],temperature:0.3,max_tokens:170,stream:false}); return (r.choices&&r.choices[0]&&r.choices[0].message&&r.choices[0].message.content||'').trim()||null; }catch(e){ return null; }
+}
 
 /* opposing-view setting: show/hide the other side (each card still opens/closes on tap) */
 let OPP_ON=(()=>{try{return localStorage.getItem('hl_opp')!=='0';}catch(e){return true;}})();
@@ -1303,13 +1335,14 @@ function legalGuard(ai, facts) {
   return true;
 }
 async function trySmooth(r,q){
-  if(!AI_ON || !(CFG.ai&&CFG.ai.enabled!==undefined)) return null;
   if(!AI_ON) return null;
   try{
     const facts=factSheet(r);
-    const out=await callEngine(aiPrompt(q,facts));
-    if(legalGuard(out,facts)) return out;
-    return null; // hallucination guard tripped -> deterministic stands
+    // On-device Qwen first (phone, offline); else the configured server endpoint.
+    let out = LLM ? await rewordL(aiPrompt(q,facts)) : null;
+    if(!out && CFG.ai && CFG.ai.enabled!==undefined) out=await callEngine(aiPrompt(q,facts));
+    if(out && legalGuard(out,facts)) return out; // verified against the deterministic facts
+    return null; // hallucination guard tripped or nothing -> deterministic stands
   }catch(e){ return null; } // unreachable engine -> deterministic stands
 }
 
@@ -1346,11 +1379,20 @@ function studyCard(q){
   }
   return h;
 }
-function ask(){
+async function ask(){
   const q=qEl.value.trim(); if(!q) return;
   empty.classList.add('hide');
   feed.appendChild(el(`<div class="msg you">${esc(q)}</div>`));
-  const r=spot(q,jurSel.value);
+  // Qwen Assist (only when launched from qwen_server.js): Qwen cleans up the wording
+  // so the issue-spotter routes better, and writes a verified intro. The engine still
+  // produces the grounded, cited answer. Falls back on any error.
+  let engineQ=q, serverIntro=null;
+  if(assistReady){ try{
+    const rr=await fetch(ASSIST_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,jurisdiction:jurSel.value,understand:true,converse:AI_ON})});
+    if(rr.ok){ const j=await rr.json(); if(j&&j.normalized_query) engineQ=j.normalized_query; if(j&&j.assist_intro) serverIntro=j.assist_intro; }
+  }catch(e){} }
+  else if(LLM && AI_ON){ engineQ=await understandL(q); }   // on-device understanding (phone)
+  const r=spot(engineQ,jurSel.value);
   const sc=studyCard(q);
   if(sc) feed.appendChild(el(`<div class="msg">${sc}</div>`));
   const msg=el(`<div class="msg">${(sc&&!r.issues.length)?'':render(r)}</div>`);
@@ -1365,8 +1407,13 @@ function ask(){
   qEl.value=''; qEl.style.height='auto';
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
   if(outSel && outSel.value!=='text') speak(speakSummary(r));
+  // Qwen server intro (already fact-verified server-side) takes precedence.
+  if(serverIntro){
+    const card=el(`<div class="aicard"><div class="aih">✨ PLAIN-LANGUAGE SUMMARY</div><div class="ait">${esc(serverIntro)}</div><div class="ain">Qwen Assist — phrased only from the verified answer below, which stays authoritative.</div></div>`);
+    msg.insertBefore(card,msg.firstChild);
+  }
   // optional: prepend an AI plain-language summary once it's ready & guard-approved
-  if(AI_ON && r.issues.length){
+  if(AI_ON && r.issues.length && !serverIntro){
     trySmooth(r,q).then(txt=>{ if(!txt) return;
       const card=el(`<div class="aicard"><div class="aih">✨ PLAIN-LANGUAGE SUMMARY</div><div class="ait">${esc(txt)}</div><div class="ain">Rephrased by your HIVE engine from the verified answer below — which stays authoritative.</div></div>`);
       msg.insertBefore(card,msg.firstChild);
