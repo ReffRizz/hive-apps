@@ -833,7 +833,13 @@
     "worst headache",
     "thunderclap",
     "sudden severe headache",
-    "exploded in my head"
+    "exploded in my head",
+    "worst headache ive ever had",
+    "worst headache of my life",
+    "worst headache ever",
+    "sudden worst headache",
+    "head pain came on suddenly",
+    "sudden severe head pain"
    ],
    "ask": ""
   },
@@ -5015,10 +5021,15 @@
     "hot water burn",
     "steam burn",
     "iron burned me",
-    "sunburn",
     "chemical burn",
     "electrical burn",
-    "first degree burn"
+    "first degree burn",
+    "sunburned",
+    "sunburnt",
+    "got a sunburn",
+    "bad sunburn",
+    "i got sunburned",
+    "burned in the sun"
    ],
    "ask": "How big is the burn compared with the palm of a hand, where is it, and is the skin red, blistered, or white/charred?"
   },
@@ -5795,7 +5806,16 @@
     "no fetal movements since yesterday at 34 weeks",
     "no fetal movements since yesterday",
     "baby hasnt moved since yesterday",
-    "reduced movements at 34 weeks"
+    "reduced movements at 34 weeks",
+    "baby hasnt moved much",
+    "baby hasnt moved much today",
+    "baby moving less today",
+    "baby barely moved today",
+    "baby quieter than usual",
+    "hardly felt the baby move today",
+    "baby not very active today",
+    "baby less active today",
+    "havent felt the baby move much"
    ],
    "ask": ""
   },
@@ -7900,6 +7920,26 @@
     "neurontin"
    ],
    "ask": ""
+  },
+  "worst_sudden_onset": {
+   "label": "worst-ever / sudden onset",
+   "system": "neuro",
+   "phrases": [
+    "worst ive ever had",
+    "worst i have ever had",
+    "the worst ever",
+    "worst ever",
+    "worst of my life",
+    "came on suddenly",
+    "came on in seconds",
+    "hit me suddenly",
+    "peaked in seconds",
+    "sudden and severe",
+    "out of nowhere and severe",
+    "suddenly severe",
+    "worst pain of my life"
+   ],
+   "ask": ""
   }
  },
  "redflags": [
@@ -9079,6 +9119,19 @@
     "guide": "when_to_seek_care"
    },
    "msg": "Do NOT pull the object out — it may be plugging the wound and stopping worse bleeding. Call emergency services now. Press firmly AROUND (not on) the object to control bleeding, build up padding either side and bandage around it to hold it still, and keep the person as still as possible."
+  },
+  {
+   "id": "rf_thunderclap_combo",
+   "all_of": [
+    "headache",
+    "worst_sudden_onset"
+   ],
+   "min_count": 2,
+   "urgency": "emergency",
+   "ref": {
+    "book": "stroke"
+   },
+   "msg": "A sudden 'worst-ever' headache that peaks within seconds can be bleeding around the brain. Call emergency services now."
   }
  ],
  "conditions": [
@@ -16157,8 +16210,8 @@
   }
  ],
  "counts": {
-  "symptoms": 385,
+  "symptoms": 386,
   "conditions": 287,
-  "redflags": 79
+  "redflags": 93
  }
 }

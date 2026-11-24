@@ -93,6 +93,8 @@
     cnt: "cant", dnt: "dont", wnt: "wont", goin: "going", gaspin: "gasping",
     bleedin: "bleeding", breathin: "breathing", swellin: "swelling", droopin: "drooping",
     hurtin: "hurting", feelin: "feeling", burnin: "burning", vomitin: "vomiting",
+    chst: "chest", swetin: "sweating", sweatin: "sweating", crushin: "crushing",
+    poundin: "pounding", achin: "aching", stummy: "stomach", tummy: "stomach",
     thru: "through", wks: "weeks", wk: "week", preg: "pregnant", preggo: "pregnant",
     rlly: "really", evr: "ever", rite: "right", abt: "about", bcuz: "because",
     cuz: "because", pls: "please", plz: "please", u: "you", ur: "your", r: "are",
@@ -101,7 +103,7 @@
   function norm(s) {
     let out = (" " + (s || "").toLowerCase() + " ")
       .replace(/['’‘`]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ");
-    out = out.replace(/\b(cnt|dnt|wnt|goin|gaspin|bleedin|breathin|swellin|droopin|hurtin|feelin|burnin|vomitin|thru|wks|wk|preg|preggo|rlly|evr|rite|abt|bcuz|cuz|pls|plz|ur|thr|wer|wheres|whats)\b/g, m => TXTSPEAK[m] || m);
+    out = out.replace(/\b(cnt|dnt|wnt|goin|gaspin|bleedin|breathin|swellin|droopin|hurtin|feelin|burnin|vomitin|chst|swetin|sweatin|crushin|poundin|achin|stummy|tummy|thru|wks|wk|preg|preggo|rlly|evr|rite|abt|bcuz|cuz|pls|plz|ur|thr|wer|wheres|whats)\b/g, m => TXTSPEAK[m] || m);
     return out;
   }
   function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
@@ -1131,6 +1133,13 @@
   }
 
   function compose() {
+    // Light coreference: a blood mention ("blood in it", "some blood") once a cough
+    // is in play, with no other bleeding source named, reads as coughing blood.
+    if (/\b(blood|bloody|bleeding)\b/.test(E.lastText || "") && E.present.has("cough") &&
+        !E.present.has("hemoptysis") && !E.present.has("cough_blood") && !E.present.has("hemoptysis_large") &&
+        !/\b(pee|wee|urine|urinat|stool|poo|poop|faeces|feces|vomit|throw up|nose|nosebleed|gum|period|vagina|rectal|bruis)\b/.test(E.lastText || "")) {
+      E.present.add("cough_blood");
+    }
     const flags = redflagHits();
     const rows = score();
     const focus = focusSystems(rows);
