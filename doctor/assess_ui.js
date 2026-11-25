@@ -207,6 +207,33 @@
       return await wllamaEngine.createCompletion(p, { nPredict: 72, sampling: { temp: 0.3 } });
     } catch (e) { return null; }
   }
+  // Measure-first: run a fixed prompt set through the on-device model on THIS device and
+  // report latency + how often the model's wording survives the fact-guard + memory delta.
+  // The honest basis for deciding whether a bigger/retrieval-grounded engine is worth it.
+  const BENCH_PROMPTS = [
+    "I have a mild sore throat for two days",
+    "sharp headache since this morning and a bit dizzy",
+    "my ankle is swollen and sore after a fall",
+    "upset stomach and nausea since last night",
+    "a small itchy rash on my arm"
+  ];
+  async function benchEngine(onLine) {
+    if (!wllamaReady()) return null;
+    let n = 0, kept = 0, totMs = 0;
+    const m0 = (window.performance && performance.memory && performance.memory.usedJSHeapSize) || 0;
+    for (const p of BENCH_PROMPTS) {
+      const html = HIVETriage.assess(p);
+      const t0 = performance.now();
+      let out = null; try { out = await wllamaIntro(p, html); } catch (e) { }
+      const ms = performance.now() - t0;
+      n++; totMs += ms; if (out) kept++;
+      try { onLine && onLine(n, BENCH_PROMPTS.length, Math.round(ms), !!out); } catch (e) { }
+      try { HIVETriage.reset(); } catch (e) { }
+    }
+    const m1 = (window.performance && performance.memory && performance.memory.usedJSHeapSize) || 0;
+    return { n, kept, avgMs: Math.round(totMs / n), memMB: (m1 && m0) ? Math.round((m1 - m0) / 1e6) : null };
+  }
+
   async function wllamaIntro(question, html) {
     if (!wllamaEngine || wllamaBusy) return null;      // one inference at a time (memory safety)
     const base = plainBase(html); if (!base) return null;
@@ -771,6 +798,7 @@
       if (wllamaReady()) wStat("Installed ✓ — running on this phone, fully offline.", "ok");
       else if (wllamaInstalled()) wStat("Installed — loading on first use (offline).", "ok");
       else wStat("Not installed. Tap Download to add a real engine to this phone.", "");
+      const bw = $("wlbenchwrap"); if (bw) bw.classList.toggle("hidden", !wllamaReady());
     }
     if (hpToggle) hpToggle.addEventListener("change", () => {
       if (hpToggle.checked) lsSet(HP_KEY, "1"); else lsDel(HP_KEY);
@@ -778,6 +806,19 @@
       setTimeout(() => location.reload(), 300);   // hpSync redirects to/from ?hp=1 and isolates
     });
     if (wsel) wsel.addEventListener("change", () => { lsSet(WLM_KEY, wsel.value); if (!wllamaReady()) wStat("Selected. Tap Download & install.", ""); });
+    // Engine benchmark (shown once a model is loaded)
+    const benchWrap = $("wlbenchwrap"), benchBtn = $("wlbench"), benchOut = $("wlbenchout");
+    if (benchWrap) benchWrap.classList.toggle("hidden", !wllamaReady());
+    if (benchBtn) benchBtn.addEventListener("click", async () => {
+      if (!wllamaReady()) { if (benchOut) benchOut.textContent = "Install a model first."; return; }
+      benchBtn.disabled = true;
+      const t = (msg) => { if (benchOut) benchOut.textContent = msg; };
+      t("Benchmarking… running 5 prompts on this phone.");
+      const r = await benchEngine((i, tot, ms, kept) => t("Prompt " + i + "/" + tot + " — " + (ms / 1000).toFixed(1) + "s" + (kept ? " ✓" : " (fell back)")));
+      benchBtn.disabled = false;
+      if (r) { benchOut.className = "engstatus ok"; benchOut.textContent = "Avg " + (r.avgMs / 1000).toFixed(1) + "s/reply · " + r.kept + "/" + r.n + " kept the model's wording" + (r.memMB != null ? " · ~" + r.memMB + " MB used" : "") + ". Use this to judge if a bigger engine is worth it."; }
+      else { benchOut.textContent = "Couldn't run — is a model loaded?"; }
+    });
     if (wdl) wdl.addEventListener("click", async () => {
       lsSet(WLM_KEY, wsel.value);
       const m = WLLAMA_MODELS.find(x => x.id === wsel.value) || WLLAMA_MODELS[1];

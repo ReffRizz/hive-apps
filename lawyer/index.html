@@ -1226,6 +1226,20 @@ async function wllamaGenTextL(prompt){
     return (o||'').replace(/<\|im_end\|>[\s\S]*$/,'').trim()||null;
   }catch(e){ return null; } finally{ wllamaBusyL=false; }
 }
+// Measure-first engine benchmark: latency + guard-fidelity on this device.
+const BENCH_PROMPTS_L=["my landlord is evicting me without notice","i was fired without cause","i got a speeding ticket","someone owes me money and won't pay","my neighbour's tree fell on my fence"];
+async function benchEngineL(onLine){
+  if(!wllamaReadyL()) return null;
+  let n=0,kept=0,tot=0; const m0=(window.performance&&performance.memory&&performance.memory.usedJSHeapSize)||0;
+  for(const q of BENCH_PROMPTS_L){
+    const r=spot(q, (typeof jurSel!=='undefined'&&jurSel?jurSel.value:'CA-ON')); const facts=factSheet(r); const prompt=aiPrompt(q,facts);
+    const t0=performance.now(); let out=null; try{ out=await wllamaGenTextL(prompt); }catch(e){}
+    const ms=performance.now()-t0; const ok=!!(out&&legalGuard(out,facts)); n++; tot+=ms; if(ok) kept++;
+    try{onLine&&onLine(n,BENCH_PROMPTS_L.length,Math.round(ms),ok);}catch(e){}
+  }
+  const m1=(window.performance&&performance.memory&&performance.memory.usedJSHeapSize)||0;
+  return {n,kept,avgMs:Math.round(tot/n),memMB:(m1&&m0)?Math.round((m1-m0)/1e6):null};
+}
 // Crash-loop guard: if the last load didn't finish (tab crashed), don't auto-retry.
 (function(){
   if(!wllamaInstalledL()) return;
@@ -1690,6 +1704,7 @@ function renderTools(){
        <div id="wlbar" class="wlbar" style="display:none;height:8px;border-radius:5px;background:var(--line);overflow:hidden;margin:8px 0"><div id="wlfill" style="height:100%;width:0;background:var(--amber);transition:width .2s"></div></div>
        <div id="wlstatus" class="tdim" style="margin:4px 0" aria-live="polite"></div>
        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pbtn" id="wldownload">Download &amp; install</button><button class="trackbtn" id="wlremove">Remove</button></div>
+       <div id="wlbenchwrap" style="display:none;margin-top:8px"><button class="trackbtn" id="wlbench">Benchmark this engine</button><div id="wlbenchout" class="tdim" style="margin-top:4px"></div></div>
      </div>
      <div class="tdim" style="margin:2px 0 8px"><b>Or</b> point HIVE at a Qwen you host (PC over a tunnel, or cloud). Used only if no on-device model is installed. Blank = fully offline.</div>
      <label class="tl">Endpoint URL <input id="engurl" placeholder="https://… (OpenAI-compatible)" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url"></label>
@@ -1827,6 +1842,16 @@ function renderTools(){
         else if(!/Couldn't install/.test(wst.textContent)) wStat("Install didn't complete — check connection and retry.",'bad');
       };
       wrm.onclick=()=>{try{localStorage.removeItem(WLM_INSTALLED);}catch(e){} wStat('Removed from auto-load. Re-download anytime.','ok');};
+      const bwrap=tbody.querySelector('#wlbenchwrap'), bbtn=tbody.querySelector('#wlbench'), bout=tbody.querySelector('#wlbenchout');
+      if(bwrap) bwrap.style.display=wllamaReadyL()?'block':'none';
+      if(bbtn) bbtn.onclick=async()=>{
+        if(!wllamaReadyL()){ bout.textContent='Install a model first.'; return; }
+        bbtn.disabled=true; bout.textContent='Benchmarking… 5 prompts on this phone.';
+        const res=await benchEngineL((i,t,ms,ok)=>{ bout.textContent='Prompt '+i+'/'+t+' — '+(ms/1000).toFixed(1)+'s'+(ok?' ✓':' (fell back)'); });
+        bbtn.disabled=false;
+        if(res){ bout.style.color='var(--amber)'; bout.textContent='Avg '+(res.avgMs/1000).toFixed(1)+'s/reply · '+res.kept+'/'+res.n+' kept the model’s wording'+(res.memMB!=null?' · ~'+res.memMB+' MB':'')+'. Judge if a bigger engine is worth it.'; }
+        else bout.textContent='Couldn’t run — is a model loaded?';
+      };
     }
     const setS=(t,c)=>{ s.textContent=t||''; s.style.color = c==='ok'?'var(--amber)' : c==='bad'?'#e5484d' : ''; };
     tbody.querySelector('#engsave').onclick=()=>{

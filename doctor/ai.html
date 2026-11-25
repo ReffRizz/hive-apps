@@ -229,6 +229,10 @@ a{color:var(--accent)}
         <button id="wldownload" class="prim">Download &amp; install</button>
         <button id="wlremove" class="ghost">Remove</button>
       </div>
+      <div id="wlbenchwrap" class="hidden" style="margin-top:10px">
+        <button id="wlbench" class="ghost">Benchmark this engine</button>
+        <div id="wlbenchout" class="engstatus" aria-live="polite"></div>
+      </div>
     </div>
     <hr class="enghr">
     <p class="muted"><b>Or</b> point HIVE at a Qwen you host (your PC over a tunnel, or a cloud endpoint). Used only if no on-device model is installed. Leave blank to run fully offline.</p>
