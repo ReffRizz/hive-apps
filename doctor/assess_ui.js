@@ -147,13 +147,13 @@
   // deterministic engine's sentence, fact-checked by applyGuards before it is ever shown.
   const WLLAMA_VER = "2.3.1";
   const WLLAMA_MODELS = [
-    { id: "qwen2.5-0.5b", label: "Qwen2.5 0.5B — lightest (~0.4 GB)", mb: 420, url: "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf" },
-    { id: "qwen2.5-1.5b", label: "Qwen2.5 1.5B — balanced (~1.1 GB)", mb: 1120, url: "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf" },
-    { id: "qwen2.5-3b", label: "Qwen2.5 3B — best (~2.0 GB)", mb: 2020, url: "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf" }
+    { id: "qwen2.5-0.5b", label: "Qwen2.5 0.5B — recommended for iPhone (~0.4 GB)", mb: 420, url: "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf" },
+    { id: "qwen2.5-1.5b", label: "Qwen2.5 1.5B — bigger phones / may be tight (~1.1 GB)", mb: 1120, url: "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf" },
+    { id: "qwen2.5-3b", label: "Qwen2.5 3B — desktop; will likely crash a phone (~2.0 GB)", mb: 2020, url: "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf" }
   ];
   const WLM_KEY = "hive.wllama.model", WLM_INSTALLED = "hive.wllama.installed";
-  let wllamaEngine = null, wllamaLoading = false;
-  function wllamaModelCfg() { const id = lsGet(WLM_KEY, "") || "qwen2.5-1.5b"; return WLLAMA_MODELS.find(m => m.id === id) || WLLAMA_MODELS[1]; }
+  let wllamaEngine = null, wllamaLoading = false, wllamaBusy = false;
+  function wllamaModelCfg() { const id = lsGet(WLM_KEY, "") || "qwen2.5-0.5b"; return WLLAMA_MODELS.find(m => m.id === id) || WLLAMA_MODELS[0]; }
   function wllamaReady() { return !!wllamaEngine; }
   function wllamaInstalled() { return lsGet(WLM_INSTALLED, ""); }
   async function ensureWllama(onProg) {
@@ -167,7 +167,7 @@
       const paths = { "single-thread/wllama.wasm": base + "single-thread/wllama.wasm", "multi-thread/wllama.wasm": base + "multi-thread/wllama.wasm" };
       const w = new Wllama(paths);
       const m = wllamaModelCfg();
-      await w.loadModelFromUrl(m.url, { n_ctx: 2048, progressCallback: (p) => { try { onProg && onProg(p && p.loaded, p && p.total); } catch (e) { } } });
+      await w.loadModelFromUrl(m.url, { n_ctx: 1024, n_batch: 128, progressCallback: (p) => { try { onProg && onProg(p && p.loaded, p && p.total); } catch (e) { } } });
       wllamaEngine = w; lsSet(WLM_INSTALLED, m.id);
       try { setStatus(); } catch (e) { }
     } catch (e) { wllamaEngine = null; if (onProg) onProg(-1, -1, String(e && e.message || e)); }
@@ -177,20 +177,23 @@
   async function wllamaGen(messages) {
     try {
       if (typeof wllamaEngine.createChatCompletion === "function") {
-        return await wllamaEngine.createChatCompletion(messages, { nPredict: 110, sampling: { temp: 0.3 } });
+        return await wllamaEngine.createChatCompletion(messages, { nPredict: 72, sampling: { temp: 0.3 } });
       }
       let p = ""; for (const m of messages) p += "<|im_start|>" + m.role + "\n" + m.content + "<|im_end|>\n"; p += "<|im_start|>assistant\n";
-      return await wllamaEngine.createCompletion(p, { nPredict: 110, sampling: { temp: 0.3 } });
+      return await wllamaEngine.createCompletion(p, { nPredict: 72, sampling: { temp: 0.3 } });
     } catch (e) { return null; }
   }
   async function wllamaIntro(question, html) {
-    if (!wllamaEngine) return null;
+    if (!wllamaEngine || wllamaBusy) return null;      // one inference at a time (memory safety)
     const base = plainBase(html); if (!base) return null;
-    let out = await wllamaGen([{ role: "system", content: INTRO_SYS }, { role: "user", content: introUsr(question, base) }]);
-    out = (out || "").replace(/<\|im_end\|>[\s\S]*$/, "").trim();
-    if (!out) return null;
-    const safe = applyGuards(base, out);
-    return safe === base ? null : safe;
+    wllamaBusy = true;
+    try {
+      let out = await wllamaGen([{ role: "system", content: INTRO_SYS }, { role: "user", content: introUsr(question, base) }]);
+      out = (out || "").replace(/<\|im_end\|>[\s\S]*$/, "").trim();
+      if (!out) return null;
+      const safe = applyGuards(base, out);
+      return safe === base ? null : safe;
+    } finally { wllamaBusy = false; }
   }
   // Auto-load the installed model on startup (from the on-device cache; no network needed).
   if (wllamaInstalled()) setTimeout(() => { ensureWllama((l, t, err) => { if (status && !err && t > 0) status.textContent = "On-device AI loading… " + Math.round(100 * l / t) + "%"; }).then(() => { try { setStatus(); } catch (e) { } }); }, 1500);
@@ -716,7 +719,7 @@
     function wStat(msg, cls) { if (wstat) { wstat.textContent = msg || ""; wstat.className = "engstatus" + (cls ? " " + cls : ""); } }
     function paintWl() {
       if (!wsel) return;
-      wsel.value = lsGet(WLM_KEY, "") || "qwen2.5-1.5b";
+      wsel.value = lsGet(WLM_KEY, "") || "qwen2.5-0.5b";
       if (wllamaReady()) wStat("Installed ✓ — running on this phone, fully offline.", "ok");
       else if (wllamaInstalled()) wStat("Installed — loading on first use (offline).", "ok");
       else wStat("Not installed. Tap Download to add a real engine to this phone.", "");
