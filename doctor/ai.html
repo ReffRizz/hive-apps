@@ -38,6 +38,10 @@ h1{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .vcap.speaking .vdot{background:var(--accent)}
 .vcap .vstate{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em;flex:none}
 .vcap .vtext{overflow-wrap:anywhere;opacity:.95}
+.engfield{display:block;margin:10px 0;font-size:13px;color:var(--mut)}
+.engfield input{display:block;width:100%;margin-top:4px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--you);color:var(--ink);font:inherit;font-size:14px;box-sizing:border-box}
+.engstatus{min-height:18px;font-size:13px;margin:4px 0 2px}
+.engstatus.ok{color:var(--accent)} .engstatus.bad{color:var(--emerg)}
 .micbtn{background:var(--you);color:var(--ink);border:1px solid var(--line);border-radius:10px;min-width:46px;font-size:17px;flex:none}
 .micbtn.on{border-color:var(--emerg);color:#fff;background:var(--emerg);animation:livepulse 1.2s ease-in-out infinite}
 @media(max-width:430px){.offbadge{display:none}h1{font-size:14px}.hbtns{gap:5px}.iconbtn{min-width:30px;height:30px;padding:0 6px}#live{padding:0 8px}}
@@ -154,6 +158,7 @@ a{color:var(--accent)}
         <button id="profbtn" role="menuitem"><span>◔</span> Profiles</button>
         <button id="sharebtn" role="menuitem"><span>⇪</span> Share with a doctor</button>
         <button id="modebtn" role="menuitem"><span id="modeico">◻</span> <span id="modelbl">Response style</span></button>
+        <button id="enginebtn" role="menuitem"><span>⚙</span> AI engine (Qwen)</button>
         <button id="reportbtn" role="menuitem"><span>📄</span> Report Lab</button>
         <button id="atlasbtn" role="menuitem"><span>🖼</span> Picture atlas</button>
         <button id="graphbtn" role="menuitem"><span>📊</span> Track &amp; graph</button>
@@ -197,6 +202,29 @@ a{color:var(--accent)}
       <button id="dlbtn" class="prim">Download</button>
       <button id="savesessbtn" class="ghost">Save as profile</button>
       <button id="sharecancel" class="ghost">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="sheetwrap hidden" id="enginesheet">
+  <div class="sheet">
+    <h3>AI engine (Qwen)</h3>
+    <p class="muted">Optional. Point HIVE at a real Qwen you host (your PC over a tunnel, or a cloud endpoint) for warmer, conversational wording. The deterministic engine still decides everything medical — Qwen only rephrases, fact-checked before you see it. Stays on this device; leave blank to run fully offline.</p>
+    <label class="engfield">Endpoint URL
+      <input id="engurl" placeholder="https://… (OpenAI-compatible)" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url">
+    </label>
+    <label class="engfield">Model
+      <input id="engmodel" placeholder="qwen2.5:7b-instruct" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </label>
+    <label class="engfield">API key <span class="muted">(only for cloud endpoints)</span>
+      <input id="engkey" type="password" placeholder="leave blank for your own PC/Ollama" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </label>
+    <div id="engstatus" class="engstatus" aria-live="polite"></div>
+    <div class="sheetbtns">
+      <button id="engtest" class="prim">Test</button>
+      <button id="engsave" class="prim">Save</button>
+      <button id="engclear" class="ghost">Clear</button>
+      <button id="engcancel" class="ghost">Close</button>
     </div>
   </div>
 </div>

@@ -1147,21 +1147,24 @@ const ASSIST_URL="/assist"; let assistReady=false;
    (…/v1/chat/completions). Qwen only rewords the summary — the deterministic engine still
    produces every statute, deadline and citation, and legalGuard() verifies the wording
    before it's shown. Nothing here can invent or change law. */
-const QK='hl_qwen_url', QKM='hl_qwen_model';
+const QK='hl_qwen_url', QKM='hl_qwen_model', QKK='hl_qwen_key';
 (function(){ try{
   const p=new URLSearchParams(location.search); let ch=false;
   if(p.has('qwen')){ localStorage.setItem(QK,(p.get('qwen')||'').trim()); p.delete('qwen'); ch=true; }
   if(p.has('model')){ localStorage.setItem(QKM,(p.get('model')||'').trim()); p.delete('model'); ch=true; }
-  if(p.has('qwenoff')){ localStorage.removeItem(QK); localStorage.removeItem(QKM); p.delete('qwenoff'); ch=true; }
+  if(p.has('key')){ localStorage.setItem(QKK,(p.get('key')||'').trim()); p.delete('key'); ch=true; }
+  if(p.has('qwenoff')){ localStorage.removeItem(QK); localStorage.removeItem(QKM); localStorage.removeItem(QKK); p.delete('qwenoff'); ch=true; }
   if(ch&&history.replaceState){ const qs=p.toString(); history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash); }
 }catch(e){} })();
+function normEndpoint(url){ let u=(url||'').trim().replace(/\/+$/,''); if(!u) return ''; if(!/\/chat\/completions$/.test(u)) u+=/\/v1$/.test(u)?'/chat/completions':'/v1/chat/completions'; return u; }
 function remoteCfgL(){ let url=''; try{url=localStorage.getItem(QK)||'';}catch(e){} if(!url) return null;
-  let u=url.replace(/\/+$/,''); if(!/\/chat\/completions$/.test(u)) u+=/\/v1$/.test(u)?'/chat/completions':'/v1/chat/completions';
-  let m=''; try{m=localStorage.getItem(QKM)||'';}catch(e){} return {url:u, model:m||'qwen2.5:7b-instruct'}; }
+  let m='',k=''; try{m=localStorage.getItem(QKM)||'';}catch(e){} try{k=localStorage.getItem(QKK)||'';}catch(e){}
+  return {url:normEndpoint(url), model:m||'qwen2.5:7b-instruct', key:k}; }
+function remoteHeadersL(cfg){ const h={'Content-Type':'application/json'}; if(cfg&&cfg.key) h['Authorization']='Bearer '+cfg.key; return h; }
 async function rewordRemote(prompt){
   const cfg=remoteCfgL(); if(!cfg) return null;
   const ctl=new AbortController(); const to=setTimeout(()=>ctl.abort(),12000);
-  try{ const r=await fetch(cfg.url,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctl.signal,
+  try{ const r=await fetch(cfg.url,{method:'POST',headers:remoteHeadersL(cfg),signal:ctl.signal,
       body:JSON.stringify({model:cfg.model,temperature:0.3,max_tokens:200,stream:false,messages:[{role:'user',content:prompt}]})});
     if(!r.ok) return null; const j=await r.json();
     return (j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content||'').trim()||null;
@@ -1611,6 +1614,13 @@ function renderTools(){
   // forms
   tbody.innerHTML=`
    <details class="tsec" open><summary>🆘 Help & emergency — ${esc(LABELS[jur]||jur)}</summary><div class="tin">${rh}</div></details>
+   <details class="tsec"><summary>⚙️ AI engine (Qwen) — optional</summary><div class="tin">
+     <div class="tdim" style="margin:2px 0 8px">Point HIVE at a real Qwen you host (your PC over a tunnel, or a cloud endpoint) for warmer wording. The deterministic engine still decides every legal fact — Qwen only rephrases, fact-checked first. Stays on this device; blank = fully offline.</div>
+     <label class="tl">Endpoint URL <input id="engurl" placeholder="https://… (OpenAI-compatible)" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url"></label>
+     <label class="tl">Model <input id="engmodel" placeholder="qwen2.5:7b-instruct" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+     <label class="tl">API key <span class="tdim">(cloud only)</span> <input id="engkey" type="password" placeholder="blank for your own PC/Ollama" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pbtn" id="engtest">Test</button><button class="pbtn" id="engsave">Save</button><button class="trackbtn" id="engclear">Clear</button></div>
+     <div id="engstatus" class="tdim" style="margin-top:8px" aria-live="polite"></div></div></details>
    <details class="tsec"><summary>🗣 Phrasebook (speak to police abroad)</summary><div class="tin">${ph}</div></details>
    <details class="tsec"><summary>📅 Deadline calculator</summary><div class="tin">
      <label class="tl">The date it happened <input type="date" id="dcDate"></label>
@@ -1709,6 +1719,32 @@ function renderTools(){
    </div></details>`;
   // wire phrasebook speak
   tbody.querySelectorAll('.miniSpeak').forEach(b=>b.onclick=()=>speakLines([decodeURIComponent(b.dataset.l)], b.dataset.c||undefined));
+  // AI engine settings
+  (function(){
+    const u=tbody.querySelector('#engurl'), m=tbody.querySelector('#engmodel'), k=tbody.querySelector('#engkey'), s=tbody.querySelector('#engstatus');
+    if(!u) return;
+    const g=(x)=>{try{return localStorage.getItem(x)||'';}catch(e){return '';}};
+    u.value=g(QK); m.value=g(QKM); k.value=g(QKK);
+    const setS=(t,c)=>{ s.textContent=t||''; s.style.color = c==='ok'?'var(--amber)' : c==='bad'?'#e5484d' : ''; };
+    tbody.querySelector('#engsave').onclick=()=>{
+      try{ u.value.trim()?localStorage.setItem(QK,u.value.trim()):localStorage.removeItem(QK);
+        m.value.trim()?localStorage.setItem(QKM,m.value.trim()):localStorage.removeItem(QKM);
+        k.value.trim()?localStorage.setItem(QKK,k.value.trim()):localStorage.removeItem(QKK); }catch(e){}
+      setS(u.value.trim()?'Saved — HIVE will use this Qwen for wording (legal facts stay deterministic).':'Cleared — running fully offline.','ok');
+    };
+    tbody.querySelector('#engclear').onclick=()=>{ try{localStorage.removeItem(QK);localStorage.removeItem(QKM);localStorage.removeItem(QKK);}catch(e){} u.value=m.value=k.value=''; setS('Cleared — running fully offline.','ok'); };
+    tbody.querySelector('#engtest').onclick=async()=>{
+      const url=normEndpoint(u.value); if(!url){ setS('Enter an endpoint URL first.','bad'); return; }
+      const cfg={url, model:m.value.trim()||'qwen2.5:7b-instruct', key:k.value.trim()};
+      setS('Testing '+cfg.model+'…',''); const t0=Date.now(); const ctl=new AbortController(); const to=setTimeout(()=>ctl.abort(),15000);
+      try{ const r=await fetch(cfg.url,{method:'POST',headers:remoteHeadersL(cfg),signal:ctl.signal,body:JSON.stringify({model:cfg.model,max_tokens:8,stream:false,messages:[{role:'user',content:'Reply with the word OK.'}]})});
+        if(!r.ok){ setS('Reached it, but HTTP '+r.status+(r.status===401?' — check the API key.':r.status===404?' — check the URL/model.':''),'bad'); return; }
+        const j=await r.json(); const out=j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;
+        setS(out!=null?('Connected ✓ '+cfg.model+' replied in '+((Date.now()-t0)/1000).toFixed(1)+'s. Tap Save to use it.'):'Connected, but no reply — check the model name.', out!=null?'ok':'bad');
+      }catch(e){ setS(e&&e.name==='AbortError'?'Timed out — is the endpoint up and reachable from the phone?':'Couldn’t reach it — check the URL, that it’s running, and (on iPhone) that it’s https.','bad'); }
+      finally{ clearTimeout(to); }
+    };
+  })();
   // deadline calc
   tbody.querySelector('#dcGo').onclick=()=>{
     const d=tbody.querySelector('#dcDate').value, n=+tbody.querySelector('#dcN').value, u=tbody.querySelector('#dcU').value;

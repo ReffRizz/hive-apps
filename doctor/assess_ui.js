@@ -98,25 +98,34 @@
   // run through the SAME applyGuards verifier (no invented numbers, no injected
   // directives/urgency) before it is ever shown. If it drifts, the exact engine
   // sentence is used instead. Nothing here can change triage.
-  const QK = "hive.qwen.url", QKM = "hive.qwen.model";
+  const QK = "hive.qwen.url", QKM = "hive.qwen.model", QKK = "hive.qwen.key";
   (function captureQwenCfg() {
     try {
       const p = new URLSearchParams(location.search);
       let changed = false;
       if (p.has("qwen")) { lsSet(QK, (p.get("qwen") || "").trim()); p.delete("qwen"); changed = true; }
       if (p.has("model")) { lsSet(QKM, (p.get("model") || "").trim()); p.delete("model"); changed = true; }
-      if (p.has("qwenoff")) { lsDel(QK); lsDel(QKM); p.delete("qwenoff"); changed = true; }
+      if (p.has("key")) { lsSet(QKK, (p.get("key") || "").trim()); p.delete("key"); changed = true; }
+      if (p.has("qwenoff")) { lsDel(QK); lsDel(QKM); lsDel(QKK); p.delete("qwenoff"); changed = true; }
       if (changed && history.replaceState) {
         const qs = p.toString();
         history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
       }
     } catch (e) { }
   })();
+  function normEndpoint(url) {
+    let u = (url || "").trim().replace(/\/+$/, ""); if (!u) return "";
+    if (!/\/chat\/completions$/.test(u)) u += /\/v1$/.test(u) ? "/chat/completions" : "/v1/chat/completions";
+    return u;
+  }
   function remoteCfg() {
     const url = lsGet(QK, ""); if (!url) return null;
-    let u = url.replace(/\/+$/, "");
-    if (!/\/chat\/completions$/.test(u)) u += /\/v1$/.test(u) ? "/chat/completions" : "/v1/chat/completions";
-    return { url: u, model: lsGet(QKM, "") || "qwen2.5:7b-instruct" };
+    return { url: normEndpoint(url), model: lsGet(QKM, "") || "qwen2.5:7b-instruct", key: lsGet(QKK, "") };
+  }
+  function remoteHeaders(cfg) {
+    const h = { "Content-Type": "application/json" };
+    if (cfg && cfg.key) h["Authorization"] = "Bearer " + cfg.key;
+    return h;
   }
   // Returns a verified conversational intro string, or null (caller falls back).
   async function remoteIntro(question, html) {
@@ -130,7 +139,7 @@
     const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 12000);
     try {
       const r = await fetch(cfg.url, {
-        method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal,
+        method: "POST", headers: remoteHeaders(cfg), signal: ctrl.signal,
         body: JSON.stringify({ model: cfg.model, temperature: 0.3, max_tokens: 160, stream: false,
           messages: [{ role: "system", content: sys }, { role: "user", content: usr }] })
       });
@@ -621,6 +630,47 @@
       unlockAudio();                                   // a tap here also primes iOS audio
       spkOn = !spkOn; try { localStorage.setItem("hive.speak", spkOn ? "1" : "0"); } catch (e) { }
       paintSpk(); if (!spkOn && hasTTS) { try { TTS.cancel(); } catch (e) { } speaking = false; if (live) resume(); }
+    });
+  })();
+
+  // ---------- AI engine (Qwen) settings panel ----------
+  (function engineSettings() {
+    const btn = $("enginebtn"), sheet = $("enginesheet");
+    if (!btn || !sheet) return;
+    const url = $("engurl"), model = $("engmodel"), key = $("engkey"), stat = $("engstatus");
+    const open = () => { url.value = lsGet(QK, ""); model.value = lsGet(QKM, ""); key.value = lsGet(QKK, ""); setStat("", ""); sheet.classList.remove("hidden"); };
+    const close = () => sheet.classList.add("hidden");
+    function setStat(msg, cls) { stat.textContent = msg || ""; stat.className = "engstatus" + (cls ? " " + cls : ""); }
+    btn.addEventListener("click", open);
+    $("engcancel").addEventListener("click", close);
+    sheet.addEventListener("click", (e) => { if (e.target === sheet) close(); });
+    $("engsave").addEventListener("click", () => {
+      const u = url.value.trim();
+      if (u) lsSet(QK, u); else lsDel(QK);
+      if (model.value.trim()) lsSet(QKM, model.value.trim()); else lsDel(QKM);
+      if (key.value.trim()) lsSet(QKK, key.value.trim()); else lsDel(QKK);
+      setStat(u ? "Saved — HIVE will use this Qwen for wording (medical facts stay deterministic)." : "Cleared — running fully offline.", "ok");
+      setStatus();
+    });
+    $("engclear").addEventListener("click", () => {
+      lsDel(QK); lsDel(QKM); lsDel(QKK); url.value = model.value = key.value = "";
+      setStat("Cleared — running fully offline.", "ok"); setStatus();
+    });
+    $("engtest").addEventListener("click", async () => {
+      const u = normEndpoint(url.value); if (!u) { setStat("Enter an endpoint URL first.", "bad"); return; }
+      const cfg = { url: u, model: model.value.trim() || "qwen2.5:7b-instruct", key: key.value.trim() };
+      setStat("Testing " + cfg.model + "…", "");
+      const t0 = Date.now(); const ctrl = new AbortController(); const to = setTimeout(() => ctrl.abort(), 15000);
+      try {
+        const r = await fetch(cfg.url, { method: "POST", headers: remoteHeaders(cfg), signal: ctrl.signal,
+          body: JSON.stringify({ model: cfg.model, max_tokens: 8, stream: false, messages: [{ role: "user", content: "Reply with the word OK." }] }) });
+        if (!r.ok) { setStat("Reached it, but it returned HTTP " + r.status + (r.status === 401 ? " — check the API key." : r.status === 404 ? " — check the URL/model." : "") , "bad"); return; }
+        const j = await r.json();
+        const out = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+        setStat(out != null ? ("Connected ✓ " + cfg.model + " replied in " + ((Date.now() - t0) / 1000).toFixed(1) + "s. Tap Save to use it.") : "Connected, but no reply content — check the model name.", out != null ? "ok" : "bad");
+      } catch (e) {
+        setStat(e && e.name === "AbortError" ? "Timed out — is the endpoint up and reachable from the phone?" : "Couldn't reach it — check the URL, that it's running, and (on iPhone) that it's https.", "bad");
+      } finally { clearTimeout(to); }
     });
   })();
 
