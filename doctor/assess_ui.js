@@ -503,8 +503,15 @@
     const hasSTT = !!SR, hasTTS = !!TTS;
     if (!micBtn && !liveBtn) return;
     if (!hasSTT) { if (micBtn) micBtn.style.display = "none"; if (liveBtn) liveBtn.style.display = "none"; }
-    let live = false, recog = null, recognizing = false, speaking = false, awaitingAnswer = false;
+    let live = false, recog = null, recognizing = false, speaking = false, awaitingAnswer = false, ttsUnlocked = false;
     let spkOn = (function () { try { return localStorage.getItem("hive.speak") !== "0"; } catch (e) { return true; } })();
+
+    // iOS locks speech output until a real utterance is spoken INSIDE a user tap.
+    // Prime it (near-silent) on the first tap so later answers actually speak.
+    function unlockAudio() {
+      if (!hasTTS || ttsUnlocked) return;
+      try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; TTS.speak(u); ttsUnlocked = true; } catch (e) { }
+    }
 
     function paintSpk() { if (spkBtn) { spkBtn.textContent = spkOn ? "🔊" : "🔇"; spkBtn.classList.toggle("on", spkOn); spkBtn.title = spkOn ? "Voice answers on" : "Voice answers muted"; } }
     function paintMic() { if (micBtn) micBtn.classList.toggle("on", recognizing); }
@@ -535,44 +542,83 @@
         TTS.cancel(); speaking = true; stopListen();
         const u = new SpeechSynthesisUtterance(text);
         u.rate = 1; u.pitch = 1; u.lang = "en-US";
-        u.onend = u.onerror = () => { speaking = false; if (live) resume(); };
+        // Finish exactly once, whether TTS signals end/error OR a watchdog fires.
+        // The watchdog is what keeps Live from freezing when iOS silently drops speech.
+        let done = false, wd = 0;
+        const finish = () => { if (done) return; done = true; clearTimeout(wd); speaking = false; if (live) resume(); else if (!recognizing) setCap(null); };
+        u.onend = finish; u.onerror = finish;
+        wd = setTimeout(finish, Math.min(22000, 2600 + text.length * 60));
         TTS.speak(u);
+        try { TTS.resume(); } catch (e) { }   // iOS sometimes parks the queue
       } catch (e) { speaking = false; if (live) resume(); }
     }
-    function resume() { if (live && !speaking && !recognizing) setTimeout(startListen, 350); }
+    function resume() { if (live && !speaking && !recognizing) setTimeout(startListen, 600); }
+
+    // Live caption bar: shows what the mic is hearing, and the current voice state.
+    const cap = $("vcap");
+    function setCap(state, text, cls) {
+      if (!cap) return;
+      if (state === null) { cap.classList.add("hidden"); return; }
+      cap.classList.remove("hidden", "listening", "speaking"); if (cls) cap.classList.add(cls);
+      cap.innerHTML = '<span class="vdot"></span><span class="vstate"></span><span class="vtext"></span>';
+      cap.querySelector(".vstate").textContent = state;
+      cap.querySelector(".vtext").textContent = text || "";
+    }
 
     function startListen() {
       if (!hasSTT || recognizing || speaking) return;
+      if (!navigator.onLine) { setCap("Voice needs a connection", "Apple transcribes speech online. Type instead, or use your keyboard's 🎤 dictation.", ""); if (live) { live = false; paintLive(); } return; }
       try {
-        recog = new SR(); recog.lang = "en-US"; recog.interimResults = false; recog.maxAlternatives = 1; recog.continuous = false;
-        recog.onstart = () => { recognizing = true; paintMic(); };
-        recog.onerror = (e) => { recognizing = false; paintMic(); if (e && e.error === "not-allowed") { live = false; paintLive(); toast("Microphone blocked — allow mic access in Settings"); } };
+        recog = new SR(); recog.lang = "en-US"; recog.interimResults = true; recog.maxAlternatives = 1; recog.continuous = false;
+        recog.onstart = () => { recognizing = true; paintMic(); setCap("Listening", "", "listening"); };
+        recog.onerror = (e) => {
+          recognizing = false; paintMic();
+          const err = e && e.error;
+          if (err === "not-allowed" || err === "service-not-allowed") { live = false; paintLive(); setCap("Mic blocked", "Allow microphone for Safari in iOS Settings, then tap 🎙 again.", ""); }
+          else if (err === "no-speech") { setCap("Didn't catch that", "Tap 🎙 and speak, or type below.", ""); if (live) resume(); }
+          else if (err === "network") { setCap("Voice needs a connection", "Apple transcribes speech online. Type, or use your keyboard's 🎤 dictation.", ""); if (live) { live = false; paintLive(); } }
+          else if (err !== "aborted") { setCap("Voice hiccup", "Tap 🎙 to try again, or type below.", ""); if (live) resume(); }
+        };
         recog.onend = () => { recognizing = false; paintMic(); if (live && !awaitingAnswer && !speaking) resume(); };
         recog.onresult = (e) => {
-          const t = (e.results && e.results[0] && e.results[0][0] && e.results[0][0].transcript || "").trim();
-          if (t) { awaitingAnswer = true; q.value = t; try { form.requestSubmit(); } catch (err) { form.dispatchEvent(new Event("submit", { cancelable: true })); } }
+          let interim = "", final = "";
+          for (let i = e.resultIndex; i < e.results.length; i++) {
+            const r = e.results[i]; const tx = r[0] && r[0].transcript || "";
+            if (r.isFinal) final += tx; else interim += tx;
+          }
+          if (interim) { setCap("Listening", interim, "listening"); q.value = interim; }   // show words as they're heard
+          const t = (final || "").trim();
+          if (t) { awaitingAnswer = true; q.value = t; setCap("Thinking", t, ""); try { form.requestSubmit(); } catch (err) { form.dispatchEvent(new Event("submit", { cancelable: true })); } }
         };
         recog.start();
-      } catch (e) { recognizing = false; paintMic(); }
+      } catch (e) { recognizing = false; paintMic(); setCap("Voice hiccup", "Tap 🎙 to try again, or type below.", ""); }
     }
-    function stopListen() { try { if (recog && recognizing) recog.stop(); } catch (e) { } }
+    function stopListen() { try { if (recog && recognizing) recog.stop(); } catch (e) { } if (!live) setCap(null); }
 
-    // The answer is rendered: speak it, then (in live mode) listen again.
-    voiceHook = function (node) { awaitingAnswer = false; if (spkOn) speak(buildSpoken(node)); else if (live) resume(); };
+    // The answer is rendered: show + speak it, then (in live mode) listen again.
+    voiceHook = function (node) {
+      awaitingAnswer = false;
+      const spoken = buildSpoken(node);
+      if (spkOn && hasTTS) { setCap("Speaking", spoken, "speaking"); speak(spoken); if (!live) setTimeout(() => { if (!speaking && !recognizing) setCap(null); }, 1200); }
+      else if (live) { setCap("Listening", "", "listening"); resume(); }
+      else setCap(null);
+    };
 
     if (micBtn) micBtn.addEventListener("click", () => {
       if (!hasSTT) { toast("Voice input isn't available in this browser"); return; }
+      unlockAudio();                                   // prime talk-back on this tap
       if (recognizing) { stopListen(); return; }
-      if (hasTTS) { try { TTS.cancel(); } catch (e) { } }   // iOS: unlock audio on this gesture
       startListen();
     });
     if (liveBtn) liveBtn.addEventListener("click", () => {
       if (!hasSTT) { toast("Live mode needs voice input, not available here"); return; }
+      unlockAudio();                                   // prime talk-back on this tap
       live = !live; paintLive();
-      if (live) { spkOn = true; paintSpk(); toast("Live mode on — just talk; tap again to stop"); try { if (hasTTS) TTS.cancel(); } catch (e) { } startListen(); }
-      else { stopListen(); try { if (hasTTS) TTS.cancel(); } catch (e) { } speaking = false; }
+      if (live) { spkOn = true; paintSpk(); speaking = false; awaitingAnswer = false; startListen(); }
+      else { stopListen(); try { if (hasTTS) TTS.cancel(); } catch (e) { } speaking = false; awaitingAnswer = false; setCap(null); }
     });
     if (spkBtn) spkBtn.addEventListener("click", () => {
+      unlockAudio();                                   // a tap here also primes iOS audio
       spkOn = !spkOn; try { localStorage.setItem("hive.speak", spkOn ? "1" : "0"); } catch (e) { }
       paintSpk(); if (!spkOn && hasTTS) { try { TTS.cancel(); } catch (e) { } speaking = false; if (live) resume(); }
     });

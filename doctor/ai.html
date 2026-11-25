@@ -32,6 +32,12 @@ h1{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .hmenu a,.hmenu button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:var(--ink);font:inherit;font-size:14px;padding:10px 11px;border-radius:9px;cursor:pointer;text-decoration:none}
 .hmenu a:active,.hmenu button:active,.hmenu a:hover,.hmenu button:hover{background:var(--you)}
 .hmenu span{width:20px;text-align:center;flex:none;color:var(--mut)}
+.vcap{flex:none;margin:0 14px 2px;padding:9px 13px;background:var(--you);border:1px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px;min-height:20px}
+.vcap .vdot{width:9px;height:9px;border-radius:50%;background:var(--mut);flex:none}
+.vcap.listening .vdot{background:var(--emerg);animation:livepulse 1.1s ease-in-out infinite}
+.vcap.speaking .vdot{background:var(--accent)}
+.vcap .vstate{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em;flex:none}
+.vcap .vtext{overflow-wrap:anywhere;opacity:.95}
 .micbtn{background:var(--you);color:var(--ink);border:1px solid var(--line);border-radius:10px;min-width:46px;font-size:17px;flex:none}
 .micbtn.on{border-color:var(--emerg);color:#fff;background:var(--emerg);animation:livepulse 1.2s ease-in-out infinite}
 @media(max-width:430px){.offbadge{display:none}h1{font-size:14px}.hbtns{gap:5px}.iconbtn{min-width:30px;height:30px;padding:0 6px}#live{padding:0 8px}}
@@ -159,6 +165,7 @@ a{color:var(--accent)}
 </header>
 <div id="status">Loading the knowledge base…</div>
 <div id="log"></div>
+<div id="vcap" class="vcap hidden" aria-live="polite"></div>
 <form id="form" autocomplete="off">
   <input id="q" placeholder="Describe the symptom or situation…" maxlength="600" autocomplete="off">
   <button id="mic" type="button" class="micbtn" title="Talk to the doctor" aria-label="Talk">🎙</button>
