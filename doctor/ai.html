@@ -42,6 +42,12 @@ h1{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .engfield input{display:block;width:100%;margin-top:4px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--you);color:var(--ink);font:inherit;font-size:14px;box-sizing:border-box}
 .engstatus{min-height:18px;font-size:13px;margin:4px 0 2px}
 .engstatus.ok{color:var(--accent)} .engstatus.bad{color:var(--emerg)}
+.engblock{border:1px solid var(--line);border-radius:12px;padding:12px;margin:6px 0 10px;background:var(--you)}
+.enghr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.engfield select{display:block;width:100%;margin-top:4px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font:inherit;font-size:14px;box-sizing:border-box}
+.wlbar{height:8px;border-radius:5px;background:var(--line);overflow:hidden;margin:8px 0}
+.wlbar.hidden{display:none}
+#wlfill{height:100%;width:0;background:var(--accent);transition:width .2s}
 .micbtn{background:var(--you);color:var(--ink);border:1px solid var(--line);border-radius:10px;min-width:46px;font-size:17px;flex:none}
 .micbtn.on{border-color:var(--emerg);color:#fff;background:var(--emerg);animation:livepulse 1.2s ease-in-out infinite}
 @media(max-width:430px){.offbadge{display:none}h1{font-size:14px}.hbtns{gap:5px}.iconbtn{min-width:30px;height:30px;padding:0 6px}#live{padding:0 8px}}
@@ -209,7 +215,21 @@ a{color:var(--accent)}
 <div class="sheetwrap hidden" id="enginesheet">
   <div class="sheet">
     <h3>AI engine (Qwen)</h3>
-    <p class="muted">Optional. Point HIVE at a real Qwen you host (your PC over a tunnel, or a cloud endpoint) for warmer, conversational wording. The deterministic engine still decides everything medical — Qwen only rephrases, fact-checked before you see it. Stays on this device; leave blank to run fully offline.</p>
+    <div class="engblock">
+      <b>On this phone — no computer needed</b>
+      <p class="muted" style="margin:4px 0 8px">Download a real Qwen once; it caches on your device and runs fully offline afterwards — no PC, no tunnel, no key. It only rewords the deterministic answer, fact-checked first.</p>
+      <label class="engfield">Model
+        <select id="wlmodel"></select>
+      </label>
+      <div id="wlbar" class="wlbar hidden"><div id="wlfill"></div></div>
+      <div id="wlstatus" class="engstatus" aria-live="polite"></div>
+      <div class="sheetbtns">
+        <button id="wldownload" class="prim">Download &amp; install</button>
+        <button id="wlremove" class="ghost">Remove</button>
+      </div>
+    </div>
+    <hr class="enghr">
+    <p class="muted"><b>Or</b> point HIVE at a Qwen you host (your PC over a tunnel, or a cloud endpoint). Used only if no on-device model is installed. Leave blank to run fully offline.</p>
     <label class="engfield">Endpoint URL
       <input id="engurl" placeholder="https://… (OpenAI-compatible)" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url">
     </label>

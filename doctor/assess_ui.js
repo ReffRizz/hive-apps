@@ -139,15 +139,72 @@
     } catch (e) { remoteHealth = "down"; } finally { clearTimeout(t); try { setStatus(); } catch (e) { } }
   }
   if (remoteCfg()) setTimeout(checkRemoteHealth, 800);
+
+  // ---------- on-device engine: wllama (CPU WASM) — runs on THIS phone, no computer ----------
+  // This is the in-browser path (the same kind HIVE Mind uses): a Qwen GGUF is downloaded
+  // once, cached on the device, and runs fully offline afterwards — no PC, no tunnel, no key.
+  // CPU WASM (not WebGPU), so it works on iPhone Safari. Output is still only a rephrase of the
+  // deterministic engine's sentence, fact-checked by applyGuards before it is ever shown.
+  const WLLAMA_VER = "2.3.1";
+  const WLLAMA_MODELS = [
+    { id: "qwen2.5-0.5b", label: "Qwen2.5 0.5B — lightest (~0.4 GB)", mb: 420, url: "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf" },
+    { id: "qwen2.5-1.5b", label: "Qwen2.5 1.5B — balanced (~1.1 GB)", mb: 1120, url: "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf" },
+    { id: "qwen2.5-3b", label: "Qwen2.5 3B — best (~2.0 GB)", mb: 2020, url: "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf" }
+  ];
+  const WLM_KEY = "hive.wllama.model", WLM_INSTALLED = "hive.wllama.installed";
+  let wllamaEngine = null, wllamaLoading = false;
+  function wllamaModelCfg() { const id = lsGet(WLM_KEY, "") || "qwen2.5-1.5b"; return WLLAMA_MODELS.find(m => m.id === id) || WLLAMA_MODELS[1]; }
+  function wllamaReady() { return !!wllamaEngine; }
+  function wllamaInstalled() { return lsGet(WLM_INSTALLED, ""); }
+  async function ensureWllama(onProg) {
+    if (wllamaEngine) return wllamaEngine;
+    if (wllamaLoading) return null;
+    wllamaLoading = true;
+    try {
+      const base = "https://cdn.jsdelivr.net/npm/@wllama/wllama@" + WLLAMA_VER + "/esm/";
+      const mod = await import(base + "index.js");
+      const Wllama = mod.Wllama || (mod.default && mod.default.Wllama) || mod.default;
+      const paths = { "single-thread/wllama.wasm": base + "single-thread/wllama.wasm", "multi-thread/wllama.wasm": base + "multi-thread/wllama.wasm" };
+      const w = new Wllama(paths);
+      const m = wllamaModelCfg();
+      await w.loadModelFromUrl(m.url, { n_ctx: 2048, progressCallback: (p) => { try { onProg && onProg(p && p.loaded, p && p.total); } catch (e) { } } });
+      wllamaEngine = w; lsSet(WLM_INSTALLED, m.id);
+      try { setStatus(); } catch (e) { }
+    } catch (e) { wllamaEngine = null; if (onProg) onProg(-1, -1, String(e && e.message || e)); }
+    wllamaLoading = false;
+    return wllamaEngine;
+  }
+  async function wllamaGen(messages) {
+    try {
+      if (typeof wllamaEngine.createChatCompletion === "function") {
+        return await wllamaEngine.createChatCompletion(messages, { nPredict: 110, sampling: { temp: 0.3 } });
+      }
+      let p = ""; for (const m of messages) p += "<|im_start|>" + m.role + "\n" + m.content + "<|im_end|>\n"; p += "<|im_start|>assistant\n";
+      return await wllamaEngine.createCompletion(p, { nPredict: 110, sampling: { temp: 0.3 } });
+    } catch (e) { return null; }
+  }
+  async function wllamaIntro(question, html) {
+    if (!wllamaEngine) return null;
+    const base = plainBase(html); if (!base) return null;
+    let out = await wllamaGen([{ role: "system", content: INTRO_SYS }, { role: "user", content: introUsr(question, base) }]);
+    out = (out || "").replace(/<\|im_end\|>[\s\S]*$/, "").trim();
+    if (!out) return null;
+    const safe = applyGuards(base, out);
+    return safe === base ? null : safe;
+  }
+  // Auto-load the installed model on startup (from the on-device cache; no network needed).
+  if (wllamaInstalled()) setTimeout(() => { ensureWllama((l, t, err) => { if (status && !err && t > 0) status.textContent = "On-device AI loading… " + Math.round(100 * l / t) + "%"; }).then(() => { try { setStatus(); } catch (e) { } }); }, 1500);
+  const INTRO_SYS = "You are the calm, plain-language voice of a medical TRIAGE tool speaking to a worried person. " +
+    "Rephrase the STATUS sentence so it sounds warm, clear and human. STRICT RULES: keep the same meaning and the " +
+    "same triage grade number; do NOT add any medical advice, instructions, actions, diagnoses, symptoms, urgency " +
+    "words, or new numbers; do NOT tell them what to do. One or two short sentences. Output only the sentence.";
+  const introUsr = (question, base) => "Person said: " + question + "\nSTATUS to rephrase: " + base;
   // Returns a verified conversational intro string, or null (caller falls back).
   async function remoteIntro(question, html) {
     const cfg = remoteCfg(); if (!cfg) return null;
     const base = plainBase(html); if (!base) return null;          // nothing grounded to rephrase
-    const sys = "You are the calm, plain-language voice of a medical TRIAGE tool speaking to a worried person. " +
-      "Rephrase the STATUS sentence so it sounds warm, clear and human. STRICT RULES: keep the same meaning and the " +
-      "same triage grade number; do NOT add any medical advice, instructions, actions, diagnoses, symptoms, urgency " +
-      "words, or new numbers; do NOT tell them what to do. One or two short sentences. Output only the sentence.";
-    const usr = "Person said: " + question + "\nSTATUS to rephrase: " + base;
+    const sys = INTRO_SYS;
+    const usr = introUsr(question, base);
     const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 12000);
     try {
       const r = await fetch(cfg.url, {
@@ -305,7 +362,7 @@
     const who = activeName() ? ("Profile: " + activeName()) : "Anonymous";
     const styleLbl = (mode === "chat" ? "Conversational" : "Standard");
     const integ = integrity ? (integrity.ok === true ? " · ✓ verified" : integrity.ok === false ? " · ⚠ integrity" : "") : "";
-    const qwen = assistReady ? " · Qwen Assist" : (remoteCfg() ? (" · Qwen" + (remoteHealth === "ok" ? " ✓" : remoteHealth === "down" ? " ⚠" : "")) : "");
+    const qwen = wllamaReady() ? " · On-device AI ✓" : assistReady ? " · Qwen Assist" : (remoteCfg() ? (" · Qwen" + (remoteHealth === "ok" ? " ✓" : remoteHealth === "down" ? " ⚠" : "")) : (wllamaInstalled() ? " · On-device AI …" : ""));
     status.textContent = who + " · " + styleLbl + qwen + integ + " · private · works offline · " + VERSION;
   }
   function updateModeBtn() {
@@ -454,13 +511,16 @@
     const html = HIVETriage.turn(text);
     let serverIntro = null;
     if (mode === "chat") {
-      if (assistReady) {
+      // On-device engine FIRST — runs on this phone, no computer needed.
+      if (wllamaReady()) { try { serverIntro = await wllamaIntro(text, html); } catch (e) { } }
+      else if (wllamaInstalled()) { ensureWllama(); }   // warm it up for next time
+      if (!serverIntro && assistReady) {
         try {
           const r = await fetch(ASSIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: text, understand: false, converse: true }) });
           if (r.ok) { const j = await r.json(); if (j && j.assist_intro) serverIntro = j.assist_intro; }
         } catch (e) { }
       }
-      // A real hosted Qwen (phone): verified conversational intro over the internet.
+      // A hosted Qwen (your PC over a tunnel, or cloud): verified intro over the internet.
       if (!serverIntro && remoteCfg()) { try { serverIntro = await remoteIntro(text, html); } catch (e) { } }
     }
     const node = add("bot", html);
@@ -650,7 +710,37 @@
     const btn = $("enginebtn"), sheet = $("enginesheet");
     if (!btn || !sheet) return;
     const url = $("engurl"), model = $("engmodel"), key = $("engkey"), stat = $("engstatus");
-    const open = () => { url.value = lsGet(QK, ""); model.value = lsGet(QKM, ""); key.value = lsGet(QKK, ""); setStat("", ""); sheet.classList.remove("hidden"); };
+    // ---- on-device (wllama) controls ----
+    const wsel = $("wlmodel"), wbar = $("wlbar"), wfill = $("wlfill"), wstat = $("wlstatus"), wdl = $("wldownload"), wrm = $("wlremove");
+    if (wsel && !wsel.options.length) { WLLAMA_MODELS.forEach(m => { const o = document.createElement("option"); o.value = m.id; o.textContent = m.label; wsel.appendChild(o); }); }
+    function wStat(msg, cls) { if (wstat) { wstat.textContent = msg || ""; wstat.className = "engstatus" + (cls ? " " + cls : ""); } }
+    function paintWl() {
+      if (!wsel) return;
+      wsel.value = lsGet(WLM_KEY, "") || "qwen2.5-1.5b";
+      if (wllamaReady()) wStat("Installed ✓ — running on this phone, fully offline.", "ok");
+      else if (wllamaInstalled()) wStat("Installed — loading on first use (offline).", "ok");
+      else wStat("Not installed. Tap Download to add a real engine to this phone.", "");
+    }
+    if (wsel) wsel.addEventListener("change", () => { lsSet(WLM_KEY, wsel.value); if (!wllamaReady()) wStat("Selected. Tap Download & install.", ""); });
+    if (wdl) wdl.addEventListener("click", async () => {
+      lsSet(WLM_KEY, wsel.value);
+      const m = WLLAMA_MODELS.find(x => x.id === wsel.value) || WLLAMA_MODELS[1];
+      wbar.classList.remove("hidden"); wfill.style.width = "0%";
+      wStat("Downloading " + m.label + " — keep this screen open (one time; ~" + (m.mb >= 1000 ? (m.mb / 1000).toFixed(1) + " GB" : m.mb + " MB") + ").", "");
+      wdl.disabled = true;
+      await ensureWllama((loaded, total, err) => {
+        if (err) { wStat("Couldn't install: " + err + " — check your connection and try again.", "bad"); return; }
+        if (total > 0) { const pct = Math.round(100 * loaded / total); wfill.style.width = pct + "%"; wStat("Downloading… " + pct + "%  (" + (loaded / 1e6).toFixed(0) + " / " + (total / 1e6).toFixed(0) + " MB)", ""); }
+      });
+      wdl.disabled = false;
+      if (wllamaReady()) { wfill.style.width = "100%"; wStat("Installed ✓ — running on this phone, fully offline. No computer needed.", "ok"); setStatus(); }
+      else if (!/Couldn't install/.test(wstat.textContent)) wStat("Install didn't complete — check your connection and try again.", "bad");
+    });
+    if (wrm) wrm.addEventListener("click", () => {
+      lsDel(WLM_INSTALLED); wStat("Removed from auto-load. The cached file is cleared by your browser's site-data settings; re-download anytime.", "ok");
+      setStatus();
+    });
+    const open = () => { url.value = lsGet(QK, ""); model.value = lsGet(QKM, ""); key.value = lsGet(QKK, ""); setStat("", ""); paintWl(); sheet.classList.remove("hidden"); };
     const close = () => sheet.classList.add("hidden");
     function setStat(msg, cls) { stat.textContent = msg || ""; stat.className = "engstatus" + (cls ? " " + cls : ""); }
     btn.addEventListener("click", open);

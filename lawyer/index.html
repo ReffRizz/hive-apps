@@ -1169,6 +1169,42 @@ async function rewordRemote(prompt){
     if(!r.ok) return null; const j=await r.json();
     return (j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content||'').trim()||null;
   }catch(e){ return null; } finally{ clearTimeout(to); } }
+
+/* On-device engine (wllama, CPU WASM) — runs on THIS phone, no computer. Same in-browser
+   approach HIVE Mind uses. Qwen only rewords; legalGuard() verifies before anything shows. */
+const WLLAMA_VER='2.3.1';
+const WLLAMA_MODELS=[
+  {id:'qwen2.5-0.5b',label:'Qwen2.5 0.5B — lightest (~0.4 GB)',mb:420,url:'https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf'},
+  {id:'qwen2.5-1.5b',label:'Qwen2.5 1.5B — balanced (~1.1 GB)',mb:1120,url:'https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf'},
+  {id:'qwen2.5-3b',label:'Qwen2.5 3B — best (~2.0 GB)',mb:2020,url:'https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf'}
+];
+const WLM_KEY='hl_wllama_model', WLM_INSTALLED='hl_wllama_installed';
+let wllamaEngineL=null, wllamaLoadingL=false;
+const lg=(k,d)=>{try{return localStorage.getItem(k)||d;}catch(e){return d;}};
+function wllamaModelCfgL(){ const id=lg(WLM_KEY,'')||'qwen2.5-1.5b'; return WLLAMA_MODELS.find(m=>m.id===id)||WLLAMA_MODELS[1]; }
+function wllamaReadyL(){ return !!wllamaEngineL; }
+function wllamaInstalledL(){ return lg(WLM_INSTALLED,''); }
+async function ensureWllamaL(onProg){
+  if(wllamaEngineL) return wllamaEngineL; if(wllamaLoadingL) return null; wllamaLoadingL=true;
+  try{
+    const base='https://cdn.jsdelivr.net/npm/@wllama/wllama@'+WLLAMA_VER+'/esm/';
+    const mod=await import(base+'index.js'); const Wllama=mod.Wllama||(mod.default&&mod.default.Wllama)||mod.default;
+    const paths={'single-thread/wllama.wasm':base+'single-thread/wllama.wasm','multi-thread/wllama.wasm':base+'multi-thread/wllama.wasm'};
+    const w=new Wllama(paths); const m=wllamaModelCfgL();
+    await w.loadModelFromUrl(m.url,{n_ctx:2048,progressCallback:(p)=>{try{onProg&&onProg(p&&p.loaded,p&&p.total);}catch(e){}}});
+    wllamaEngineL=w; try{localStorage.setItem(WLM_INSTALLED,m.id);}catch(e){}
+  }catch(e){ wllamaEngineL=null; if(onProg) onProg(-1,-1,String(e&&e.message||e)); }
+  wllamaLoadingL=false; return wllamaEngineL;
+}
+async function wllamaGenTextL(prompt){
+  if(!wllamaEngineL) return null;
+  try{
+    if(typeof wllamaEngineL.createChatCompletion==='function'){ const o=await wllamaEngineL.createChatCompletion([{role:'user',content:prompt}],{nPredict:200,sampling:{temp:0.3}}); return (o||'').replace(/<\|im_end\|>[\s\S]*$/,'').trim()||null; }
+    const o=await wllamaEngineL.createCompletion('<|im_start|>user\n'+prompt+'<|im_end|>\n<|im_start|>assistant\n',{nPredict:200,sampling:{temp:0.3}});
+    return (o||'').replace(/<\|im_end\|>[\s\S]*$/,'').trim()||null;
+  }catch(e){ return null; }
+}
+if(wllamaInstalledL()) setTimeout(()=>{ensureWllamaL();},1500);
 let LABELS={};
 function rebuildLabels(){
   LABELS={};
@@ -1372,12 +1408,15 @@ function legalGuard(ai, facts) {
   return true;
 }
 async function trySmooth(r,q){
-  if(!AI_ON && !remoteCfgL()) return null;   // off unless the user opted in, or a real Qwen is configured
+  if(!AI_ON && !remoteCfgL() && !wllamaReadyL() && !wllamaInstalledL()) return null;
   try{
     const facts=factSheet(r); const prompt=aiPrompt(q,facts);
-    // Real hosted Qwen first (phone, over the internet); then on-device Qwen; then a
-    // configured server endpoint. Every path is checked by legalGuard before it's shown.
-    let out = await rewordRemote(prompt);
+    // On-device Qwen FIRST (runs on this phone, no computer); then a hosted Qwen; then the
+    // old on-device path. Every path is checked by legalGuard before it's shown.
+    let out = null;
+    if(wllamaReadyL()) out = await wllamaGenTextL(prompt);
+    else if(wllamaInstalledL()) ensureWllamaL();
+    if(!out) out = await rewordRemote(prompt);
     if(!out && LLM) out = await rewordL(prompt);
     if(!out && CFG.ai && CFG.ai.enabled!==undefined) out=await callEngine(prompt);
     if(out && legalGuard(out,facts)) return out; // verified against the deterministic facts
@@ -1452,7 +1491,7 @@ async function ask(){
     msg.insertBefore(card,msg.firstChild);
   }
   // optional: prepend an AI plain-language summary once it's ready & guard-approved
-  if((AI_ON || remoteCfgL()) && r.issues.length && !serverIntro){
+  if((AI_ON || remoteCfgL() || wllamaInstalledL()) && r.issues.length && !serverIntro){
     trySmooth(r,q).then(txt=>{ if(!txt) return;
       const card=el(`<div class="aicard"><div class="aih">✨ PLAIN-LANGUAGE SUMMARY</div><div class="ait">${esc(txt)}</div><div class="ain">Rephrased by your HIVE engine from the verified answer below — which stays authoritative.</div></div>`);
       msg.insertBefore(card,msg.firstChild);
@@ -1615,7 +1654,15 @@ function renderTools(){
   tbody.innerHTML=`
    <details class="tsec" open><summary>🆘 Help & emergency — ${esc(LABELS[jur]||jur)}</summary><div class="tin">${rh}</div></details>
    <details class="tsec"><summary>⚙️ AI engine (Qwen) — optional</summary><div class="tin">
-     <div class="tdim" style="margin:2px 0 8px">Point HIVE at a real Qwen you host (your PC over a tunnel, or a cloud endpoint) for warmer wording. The deterministic engine still decides every legal fact — Qwen only rephrases, fact-checked first. Stays on this device; blank = fully offline.</div>
+     <div style="border:1px solid var(--line);border-radius:10px;padding:10px;margin:2px 0 10px">
+       <b>On this phone — no computer needed</b>
+       <div class="tdim" style="margin:4px 0 8px">Download a real Qwen once; it caches on your device and runs fully offline afterwards — no PC, no tunnel, no key. It only rewords the deterministic answer, checked first.</div>
+       <label class="tl">Model <select id="wlmodel"></select></label>
+       <div id="wlbar" class="wlbar" style="display:none;height:8px;border-radius:5px;background:var(--line);overflow:hidden;margin:8px 0"><div id="wlfill" style="height:100%;width:0;background:var(--amber);transition:width .2s"></div></div>
+       <div id="wlstatus" class="tdim" style="margin:4px 0" aria-live="polite"></div>
+       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pbtn" id="wldownload">Download &amp; install</button><button class="trackbtn" id="wlremove">Remove</button></div>
+     </div>
+     <div class="tdim" style="margin:2px 0 8px"><b>Or</b> point HIVE at a Qwen you host (PC over a tunnel, or cloud). Used only if no on-device model is installed. Blank = fully offline.</div>
      <label class="tl">Endpoint URL <input id="engurl" placeholder="https://… (OpenAI-compatible)" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url"></label>
      <label class="tl">Model <input id="engmodel" placeholder="qwen2.5:7b-instruct" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
      <label class="tl">API key <span class="tdim">(cloud only)</span> <input id="engkey" type="password" placeholder="blank for your own PC/Ollama" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
@@ -1725,6 +1772,26 @@ function renderTools(){
     if(!u) return;
     const g=(x)=>{try{return localStorage.getItem(x)||'';}catch(e){return '';}};
     u.value=g(QK); m.value=g(QKM); k.value=g(QKK);
+    // on-device (wllama) controls
+    const wsel=tbody.querySelector('#wlmodel'), wbar=tbody.querySelector('#wlbar'), wfill=tbody.querySelector('#wlfill'), wst=tbody.querySelector('#wlstatus'), wdl=tbody.querySelector('#wldownload'), wrm=tbody.querySelector('#wlremove');
+    if(wsel){
+      if(!wsel.options.length) WLLAMA_MODELS.forEach(mm=>{const o=document.createElement('option');o.value=mm.id;o.textContent=mm.label;wsel.appendChild(o);});
+      wsel.value=g(WLM_KEY)||'qwen2.5-1.5b';
+      const wStat=(t,c)=>{wst.textContent=t||''; wst.style.color=c==='ok'?'var(--amber)':c==='bad'?'#e5484d':'';};
+      wStat(wllamaReadyL()?'Installed ✓ — running on this phone, fully offline.':wllamaInstalledL()?'Installed — loads on first use (offline).':'Not installed. Tap Download to add a real engine to this phone.', wllamaInstalledL()?'ok':'');
+      wsel.onchange=()=>{try{localStorage.setItem(WLM_KEY,wsel.value);}catch(e){} if(!wllamaReadyL()) wStat('Selected. Tap Download & install.','');};
+      wdl.onclick=async()=>{
+        try{localStorage.setItem(WLM_KEY,wsel.value);}catch(e){}
+        const mm=WLLAMA_MODELS.find(x=>x.id===wsel.value)||WLLAMA_MODELS[1];
+        wbar.style.display='block'; wfill.style.width='0%'; wdl.disabled=true;
+        wStat('Downloading '+mm.label+' — keep this screen open (one time; ~'+(mm.mb>=1000?(mm.mb/1000).toFixed(1)+' GB':mm.mb+' MB')+').','');
+        await ensureWllamaL((loaded,total,err)=>{ if(err){wStat("Couldn't install: "+err+' — check connection and retry.','bad');return;} if(total>0){const pct=Math.round(100*loaded/total);wfill.style.width=pct+'%';wStat('Downloading… '+pct+'%  ('+(loaded/1e6).toFixed(0)+' / '+(total/1e6).toFixed(0)+' MB)','');}});
+        wdl.disabled=false;
+        if(wllamaReadyL()){ wfill.style.width='100%'; wStat('Installed ✓ — running on this phone, fully offline. No computer needed.','ok'); }
+        else if(!/Couldn't install/.test(wst.textContent)) wStat("Install didn't complete — check connection and retry.",'bad');
+      };
+      wrm.onclick=()=>{try{localStorage.removeItem(WLM_INSTALLED);}catch(e){} wStat('Removed from auto-load. Re-download anytime.','ok');};
+    }
     const setS=(t,c)=>{ s.textContent=t||''; s.style.color = c==='ok'?'var(--amber)' : c==='bad'?'#e5484d' : ''; };
     tbody.querySelector('#engsave').onclick=()=>{
       try{ u.value.trim()?localStorage.setItem(QK,u.value.trim()):localStorage.removeItem(QK);
