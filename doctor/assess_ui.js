@@ -127,6 +127,18 @@
     if (cfg && cfg.key) h["Authorization"] = "Bearer " + cfg.key;
     return h;
   }
+  // Live reachability of the configured engine, reflected in the header (Qwen ✓ / ⚠).
+  let remoteHealth = null;   // null unknown, "ok" reachable, "down" saved but unreachable
+  async function checkRemoteHealth() {
+    const cfg = remoteCfg(); if (!cfg) { remoteHealth = null; return; }
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 8000);
+    try {
+      const r = await fetch(cfg.url, { method: "POST", headers: remoteHeaders(cfg), signal: ctrl.signal,
+        body: JSON.stringify({ model: cfg.model, max_tokens: 1, stream: false, messages: [{ role: "user", content: "ok" }] }) });
+      remoteHealth = r.ok ? "ok" : "down";
+    } catch (e) { remoteHealth = "down"; } finally { clearTimeout(t); try { setStatus(); } catch (e) { } }
+  }
+  if (remoteCfg()) setTimeout(checkRemoteHealth, 800);
   // Returns a verified conversational intro string, or null (caller falls back).
   async function remoteIntro(question, html) {
     const cfg = remoteCfg(); if (!cfg) return null;
@@ -293,7 +305,7 @@
     const who = activeName() ? ("Profile: " + activeName()) : "Anonymous";
     const styleLbl = (mode === "chat" ? "Conversational" : "Standard");
     const integ = integrity ? (integrity.ok === true ? " · ✓ verified" : integrity.ok === false ? " · ⚠ integrity" : "") : "";
-    const qwen = assistReady ? " · Qwen Assist" : (remoteCfg() ? " · Qwen" : "");
+    const qwen = assistReady ? " · Qwen Assist" : (remoteCfg() ? (" · Qwen" + (remoteHealth === "ok" ? " ✓" : remoteHealth === "down" ? " ⚠" : "")) : "");
     status.textContent = who + " · " + styleLbl + qwen + integ + " · private · works offline · " + VERSION;
   }
   function updateModeBtn() {
@@ -650,11 +662,11 @@
       if (model.value.trim()) lsSet(QKM, model.value.trim()); else lsDel(QKM);
       if (key.value.trim()) lsSet(QKK, key.value.trim()); else lsDel(QKK);
       setStat(u ? "Saved — HIVE will use this Qwen for wording (medical facts stay deterministic)." : "Cleared — running fully offline.", "ok");
-      setStatus();
+      remoteHealth = null; setStatus(); if (u) checkRemoteHealth();
     });
     $("engclear").addEventListener("click", () => {
       lsDel(QK); lsDel(QKM); lsDel(QKK); url.value = model.value = key.value = "";
-      setStat("Cleared — running fully offline.", "ok"); setStatus();
+      setStat("Cleared — running fully offline.", "ok"); remoteHealth = null; setStatus();
     });
     $("engtest").addEventListener("click", async () => {
       const u = normEndpoint(url.value); if (!u) { setStat("Enter an endpoint URL first.", "bad"); return; }
@@ -667,6 +679,7 @@
         if (!r.ok) { setStat("Reached it, but it returned HTTP " + r.status + (r.status === 401 ? " — check the API key." : r.status === 404 ? " — check the URL/model." : "") , "bad"); return; }
         const j = await r.json();
         const out = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+        if (out != null) { remoteHealth = "ok"; setStatus(); }
         setStat(out != null ? ("Connected ✓ " + cfg.model + " replied in " + ((Date.now() - t0) / 1000).toFixed(1) + "s. Tap Save to use it.") : "Connected, but no reply content — check the model name.", out != null ? "ok" : "bad");
       } catch (e) {
         setStat(e && e.name === "AbortError" ? "Timed out — is the endpoint up and reachable from the phone?" : "Couldn't reach it — check the URL, that it's running, and (on iPhone) that it's https.", "bad");
