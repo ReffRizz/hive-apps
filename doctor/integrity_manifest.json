@@ -5,7 +5,7 @@
  "publisher": "JR TraceCode",
  "tech": "Content-addressed forged/stale rejection — reuses HIVE AtomStore (MATHLAB_KERNEL) + ARK1 Merkle vault principles.",
  "algo": "sha256",
- "created": "2026-11-24",
+ "created": "2026-11-25",
  "atoms": {
   "hive_symptom_map.json": {
    "sha256": "b67a30a7b0a6a25092a3f872956fbfdb23a2e88e514e73dd968e1efb23aa54aa",

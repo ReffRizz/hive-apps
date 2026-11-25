@@ -44,8 +44,32 @@
     return "In plain terms: based on what you've described, this looks " + label + " for now — a triage grade of " +
       score + " out of 100. This is guidance, not a diagnosis.";
   }
-  // Guard: accept a rewording only if it stays faithful; else keep the exact
-  // deterministic sentence. Same rule whichever model produced it.
+  // HARD RULE (medical): a model may ONLY re-voice the deterministic engine's answer.
+  // It must never add, change, or infer any medical content. Enforcement, all-or-nothing —
+  // if the rewording breaks ANY rule below, the exact deterministic sentence is used instead:
+  //   1. No directive/urgency/clinical word that wasn't already in the engine's text.
+  //   2. No number that wasn't already in the engine's text (no invented grades/doses/stats).
+  //   3. Every CONTENT word in the rewording must come from the engine's own text, or from a
+  //      fixed allowlist of plain conversational words. Any other content word = an introduced
+  //      claim, so it's rejected. This makes "say it in your own way" mean: rephrase with the
+  //      engine's words + everyday words only — it physically cannot smuggle in a new symptom,
+  //      condition, body part, or instruction.
+  // SAFE_WORDS: everyday, non-clinical words the rephrase may use freely for warmth/flow.
+  const SAFE_WORDS = new Set(("a an and or but so the this that these those is are was were be been being am " +
+    "of to in on at for with from by as it its it's your you you're youre my our we i me they them their " +
+    "based on what youve you've described shared told mentioned here below note please thanks thank right now " +
+    "for now looks look looking seems seem sounds sound appears appear like about around just only still also " +
+    "okay ok alright well good lets let's keep take care while when where how why which who there then than " +
+    "more most less few some any much many very really quite bit things thing something anything nothing " +
+    "manageable manage going get getting go let letting help helpful useful guidance not isnt isn't dont don't " +
+    "cant can't need needs needed want wants way simple clear calm gentle short few couple one two several " +
+    "understand understood sense makes making does do did have has had will would could should may might can " +
+    "telling tell saying say said tells talk talking hearing hear heard sharing noticing notice noticed dealing " +
+    "bring bringing brought give gives given giving come comes coming went going seeing see seen feels feeling " +
+    "better best fine common often sometimes usually typically generally overall meantime moment moments today " +
+    "soon later early mild milder manageably worry worried worrying concern concerned concerning rest reassure " +
+    "reassuring steady stable manageable handle handled information info answer answers detail details context " +
+    "experience experiencing situation picture summary everyday regular normal straightforward reasonable because").split(/\s+/));
   function applyGuards(sentence, out) {
     out = (out || "").replace(/\s+/g, " ").trim().replace(/^"|"$/g, "");
     if (!out || out.length > 260) return sentence;
@@ -53,6 +77,14 @@
     while ((m = AI_BANNED.exec(out))) { if (src.indexOf(m[0].toLowerCase()) < 0) return sentence; }
     const ns = new Set(sentence.match(/\d+/g) || []); const no = new Set(out.match(/\d+/g) || []);
     for (const n of no) if (!ns.has(n)) return sentence;   // invented a number
+    // word-origin rule: every content word must be from the engine's text or the allowlist
+    const srcWords = new Set(src.match(/[a-z']{2,}/g) || []);
+    const outWords = (out.toLowerCase().match(/[a-z']{2,}/g) || []);
+    for (const w of outWords) {
+      if (w.length < 4) continue;                         // short function words are fine
+      if (srcWords.has(w) || SAFE_WORDS.has(w)) continue;
+      return sentence;                                    // introduced a new content word → reject
+    }
     return out;
   }
 
@@ -258,7 +290,9 @@
   function updateModeBtn() {
     const b = $("modebtn"); if (!b) return;
     const on = mode === "chat";
-    b.textContent = on ? "◼" : "◻";
+    const ico = $("modeico"), lbl = $("modelbl");
+    if (ico) ico.textContent = on ? "◼" : "◻"; else b.textContent = on ? "◼" : "◻";
+    if (lbl) lbl.textContent = on ? "Style: Conversational" : "Style: Standard";
     b.title = on
       ? "Response style: Conversational (local AI phrasing; safety note always exact). Tap for Standard."
       : "Response style: Standard (deterministic). Tap for Conversational.";
@@ -435,6 +469,7 @@
         if (worded && worded !== base) pt.querySelector("p").textContent = worded;
       } catch (e) { }
     }
+    try { if (voiceHook) voiceHook(node); } catch (e) { }   // speak + continue live mode
   });
 
   // Scroll so the given (newest) question sits at the top of the chat area, with
@@ -456,6 +491,102 @@
     if (an && all[an]) HIVETriage.setProfile(JSON.parse(JSON.stringify(all[an])));  // keep the chosen profile
     log.innerHTML = ""; greet(activeName()); setStatus(); q && q.focus();
   });
+
+  // ---------- voice: talk to the doctor, hear it talk back, live hands-free mode ----------
+  // Speech-to-text feeds the SAME deterministic engine (the words are never rewritten);
+  // text-to-speech reads back a short, grounded summary of the engine's own answer.
+  let voiceHook = null;
+  (function voice() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const TTS = window.speechSynthesis;
+    const micBtn = $("mic"), liveBtn = $("live"), spkBtn = $("speak");
+    const hasSTT = !!SR, hasTTS = !!TTS;
+    if (!micBtn && !liveBtn) return;
+    if (!hasSTT) { if (micBtn) micBtn.style.display = "none"; if (liveBtn) liveBtn.style.display = "none"; }
+    let live = false, recog = null, recognizing = false, speaking = false, awaitingAnswer = false;
+    let spkOn = (function () { try { return localStorage.getItem("hive.speak") !== "0"; } catch (e) { return true; } })();
+
+    function paintSpk() { if (spkBtn) { spkBtn.textContent = spkOn ? "🔊" : "🔇"; spkBtn.classList.toggle("on", spkOn); spkBtn.title = spkOn ? "Voice answers on" : "Voice answers muted"; } }
+    function paintMic() { if (micBtn) micBtn.classList.toggle("on", recognizing); }
+    function paintLive() { if (liveBtn) { liveBtn.classList.toggle("on", live); liveBtn.title = live ? "Live hands-free: on" : "Live hands-free conversation"; } }
+    paintSpk(); paintLive();
+
+    // Build a short spoken summary from the engine's OWN rendered answer — never new content.
+    function buildSpoken(node) {
+      try {
+        const pt = node.querySelector(".plainterms p");
+        const emerg = node.querySelector(".blk.emerg p, .blk.emerg");
+        const cname = node.querySelector(".cname");
+        const parts = [];
+        if (pt) parts.push(pt.textContent.trim());
+        else {
+          const st = node.querySelector(".txt"); if (st) parts.push(st.textContent.trim().split("\n")[0].slice(0, 160));
+        }
+        if (emerg && !pt) parts.push(emerg.textContent.trim().slice(0, 160));
+        if (cname) parts.push("Top consideration: " + cname.textContent.replace(/\s+/g, " ").trim() + ".");
+        let s = parts.join(" ").replace(/\s+/g, " ").trim();
+        if (s.length > 340) s = s.slice(0, 337) + "…";
+        return s || "Here is what the assessment shows. Please read the details on screen.";
+      } catch (e) { return "Here is what the assessment shows. Please read the details on screen."; }
+    }
+    function speak(text) {
+      if (!hasTTS || !spkOn || !text) { if (live) resume(); return; }
+      try {
+        TTS.cancel(); speaking = true; stopListen();
+        const u = new SpeechSynthesisUtterance(text);
+        u.rate = 1; u.pitch = 1; u.lang = "en-US";
+        u.onend = u.onerror = () => { speaking = false; if (live) resume(); };
+        TTS.speak(u);
+      } catch (e) { speaking = false; if (live) resume(); }
+    }
+    function resume() { if (live && !speaking && !recognizing) setTimeout(startListen, 350); }
+
+    function startListen() {
+      if (!hasSTT || recognizing || speaking) return;
+      try {
+        recog = new SR(); recog.lang = "en-US"; recog.interimResults = false; recog.maxAlternatives = 1; recog.continuous = false;
+        recog.onstart = () => { recognizing = true; paintMic(); };
+        recog.onerror = (e) => { recognizing = false; paintMic(); if (e && e.error === "not-allowed") { live = false; paintLive(); toast("Microphone blocked — allow mic access in Settings"); } };
+        recog.onend = () => { recognizing = false; paintMic(); if (live && !awaitingAnswer && !speaking) resume(); };
+        recog.onresult = (e) => {
+          const t = (e.results && e.results[0] && e.results[0][0] && e.results[0][0].transcript || "").trim();
+          if (t) { awaitingAnswer = true; q.value = t; try { form.requestSubmit(); } catch (err) { form.dispatchEvent(new Event("submit", { cancelable: true })); } }
+        };
+        recog.start();
+      } catch (e) { recognizing = false; paintMic(); }
+    }
+    function stopListen() { try { if (recog && recognizing) recog.stop(); } catch (e) { } }
+
+    // The answer is rendered: speak it, then (in live mode) listen again.
+    voiceHook = function (node) { awaitingAnswer = false; if (spkOn) speak(buildSpoken(node)); else if (live) resume(); };
+
+    if (micBtn) micBtn.addEventListener("click", () => {
+      if (!hasSTT) { toast("Voice input isn't available in this browser"); return; }
+      if (recognizing) { stopListen(); return; }
+      if (hasTTS) { try { TTS.cancel(); } catch (e) { } }   // iOS: unlock audio on this gesture
+      startListen();
+    });
+    if (liveBtn) liveBtn.addEventListener("click", () => {
+      if (!hasSTT) { toast("Live mode needs voice input, not available here"); return; }
+      live = !live; paintLive();
+      if (live) { spkOn = true; paintSpk(); toast("Live mode on — just talk; tap again to stop"); try { if (hasTTS) TTS.cancel(); } catch (e) { } startListen(); }
+      else { stopListen(); try { if (hasTTS) TTS.cancel(); } catch (e) { } speaking = false; }
+    });
+    if (spkBtn) spkBtn.addEventListener("click", () => {
+      spkOn = !spkOn; try { localStorage.setItem("hive.speak", spkOn ? "1" : "0"); } catch (e) { }
+      paintSpk(); if (!spkOn && hasTTS) { try { TTS.cancel(); } catch (e) { } speaking = false; if (live) resume(); }
+    });
+  })();
+
+  // ---------- header overflow: keep the top bar fitting the phone ----------
+  (function moreMenu() {
+    const btn = $("morebtn"), menu = $("hmenu");
+    if (!btn || !menu) return;
+    const close = () => { menu.classList.add("hidden"); btn.classList.remove("on"); };
+    btn.addEventListener("click", (e) => { e.stopPropagation(); const open = menu.classList.contains("hidden"); menu.classList.toggle("hidden", !open); btn.classList.toggle("on", open); });
+    menu.addEventListener("click", (e) => { if (e.target.closest("button,a")) close(); });
+    document.addEventListener("click", (e) => { if (!menu.classList.contains("hidden") && !menu.contains(e.target) && e.target !== btn) close(); });
+  })();
 
   // register the service worker so the Doctor works offline when installed.
   if ("serviceWorker" in navigator && location.protocol !== "file:") {
