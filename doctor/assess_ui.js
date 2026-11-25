@@ -9,15 +9,32 @@
 
   // High-performance mode: cross-origin isolation (via sw.js) → multi-thread wllama + bigger
   // models. Off by default; opt-in through the engine panel. ?hp=0 is the escape hatch.
-  const HP_KEY = "hive.hp";
+  const HP_KEY = "hive.hp", HPBOOT_KEY = "hive.hp.boot", HPAUTO_KEY = "hive.hp.auto";
   function hpOn() { try { return localStorage.getItem(HP_KEY) === "1"; } catch (e) { return false; } }
+  function hpBootOk() {   // called once the app is alive and stable → this HP boot did not crash
+    try { localStorage.removeItem(HPBOOT_KEY); } catch (e) { }
+  }
   (function hpSync() {
     const has1 = /[?&]hp=1(?:&|$)/.test(location.search);
     const strip = (s) => { s = s.replace(/[?&]hp=[01]/g, ""); if (s === "?" || s === "&") s = ""; return s.replace(/^&/, "?"); };
-    if (/[?&]hp=0(?:&|$)/.test(location.search)) { try { localStorage.removeItem(HP_KEY); } catch (e) { } location.replace(location.pathname + strip(location.search) + location.hash); return; }
+    if (/[?&]hp=0(?:&|$)/.test(location.search)) { try { localStorage.removeItem(HP_KEY); localStorage.removeItem(HPBOOT_KEY); } catch (e) { } location.replace(location.pathname + strip(location.search) + location.hash); return; }
     const want = hpOn();
     if (want && !has1) { location.replace(location.pathname + (location.search ? location.search + "&" : "?") + "hp=1" + location.hash); return; }
     if (!want && has1) { location.replace(location.pathname + strip(location.search) + location.hash); return; }
+    if (has1 && want) {
+      // Crash-loop guard (mirrors the model-load sentinel): a high-performance
+      // boot that crashes mid-load reloads the whole tab, so the boot counter
+      // survives. If HP has failed to come up twice, turn it OFF automatically
+      // and boot normally — the start page must never get stuck.
+      let n = 0; try { n = parseInt(localStorage.getItem(HPBOOT_KEY) || "0", 10) || 0; } catch (e) { }
+      if (n >= 2) {
+        try { localStorage.removeItem(HP_KEY); localStorage.removeItem(HPBOOT_KEY); localStorage.setItem(HPAUTO_KEY, "1"); } catch (e) { }
+        location.replace(location.pathname + strip(location.search) + location.hash); return;
+      }
+      try { localStorage.setItem(HPBOOT_KEY, String(n + 1)); } catch (e) { }
+      // Survived long enough to run this long → not a crash. Clear the counter.
+      try { setTimeout(hpBootOk, 4000); } catch (e) { }
+    }
     if (has1 && !self.crossOriginIsolated) {
       try { if (navigator.serviceWorker && navigator.serviceWorker.controller && !sessionStorage.getItem("hpR")) { sessionStorage.setItem("hpR", "1"); location.reload(); return; } } catch (e) { }
     } else if (self.crossOriginIsolated) { try { sessionStorage.removeItem("hpR"); } catch (e) { } }
@@ -558,6 +575,7 @@
   // ---------- load engine ----------
   HIVETriage.load().then(() => {
     ready = true;
+    hpBootOk();   // knowledge base loaded under current mode → this boot is healthy
     // apply active profile if one is set
     const an = activeName(); const all = profiles();
     if (an && all[an]) HIVETriage.setProfile(JSON.parse(JSON.stringify(all[an])));
@@ -810,11 +828,17 @@
       if (wsel.selectedOptions[0] && wsel.selectedOptions[0].disabled) wsel.value = "qwen2.5-0.5b";
       if (hpToggle) hpToggle.checked = hpOn();
       if (hpNote) {
-        const bits = [];
-        bits.push(iso ? "Multi-thread: on ✓" : (hpOn() ? "Multi-thread: starting…" : "Multi-thread: off"));
-        bits.push(webgpuAvailable() ? "WebGPU: available ✓" : "WebGPU: not on this device");
-        hpNote.textContent = bits.join("  ·  ") + (iso ? "" : "  — turn on High-performance for bigger models.");
-        hpNote.className = "engstatus" + (iso ? " ok" : "");
+        let autoOff = false; try { autoOff = localStorage.getItem(HPAUTO_KEY) === "1"; } catch (e) { }
+        if (autoOff) {
+          hpNote.textContent = "High-performance turned itself off — it wasn’t stable on this device. The app still runs fully on your phone without it.";
+          hpNote.className = "engstatus warn";
+        } else {
+          const bits = [];
+          bits.push(iso ? "Multi-thread: on ✓" : (hpOn() ? "Multi-thread: starting…" : "Multi-thread: off"));
+          bits.push(webgpuAvailable() ? "WebGPU: available ✓" : "WebGPU: not on this device");
+          hpNote.textContent = bits.join("  ·  ") + (iso ? "" : "  — turn on High-performance for bigger models.");
+          hpNote.className = "engstatus" + (iso ? " ok" : "");
+        }
       }
       if (wllamaReady()) wStat("Installed ✓ — running on this phone, fully offline.", "ok");
       else if (wllamaInstalled()) wStat("Installed — loading on first use (offline).", "ok");
@@ -822,6 +846,7 @@
       const bw = $("wlbenchwrap"); if (bw) bw.classList.toggle("hidden", !wllamaReady());
     }
     if (hpToggle) hpToggle.addEventListener("change", () => {
+      try { localStorage.removeItem(HPAUTO_KEY); localStorage.removeItem(HPBOOT_KEY); } catch (e) { }
       if (hpToggle.checked) lsSet(HP_KEY, "1"); else lsDel(HP_KEY);
       wStat("Reloading to apply high-performance mode…", "");
       setTimeout(() => location.reload(), 300);   // hpSync redirects to/from ?hp=1 and isolates
