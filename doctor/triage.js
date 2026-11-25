@@ -77,6 +77,14 @@
     for (const sid of Object.keys(map.symptoms)) {
       E.rx[sid] = (map.symptoms[sid].phrases || []).map(compilePhrase).filter(Boolean);
     }
+    // Covered vocabulary: every significant word the engine can actually match on.
+    // Used to tell the person honestly when a term they used isn't in its knowledge,
+    // so nothing they said is silently dropped ("nothing left uncovered").
+    E.vocab = new Set();
+    const addVocab = (ph) => { for (const w of norm(String(ph || "")).split(/\s+/)) { const b = w.replace(/[^a-z]/g, ""); if (b.length >= 4) E.vocab.add(b); } };
+    for (const sid of Object.keys(map.symptoms)) { (map.symptoms[sid].phrases || []).forEach(addVocab); addVocab(map.symptoms[sid].label); }
+    for (const c of map.conditions) { addVocab(c.name); addVocab((c.id || "").replace(/_/g, " ")); }
+    for (const r of (map.redflags || [])) addVocab(r.msg);
     // knowledge-web indexes
     E.condById = {};
     for (const c of map.conditions) E.condById[c.id] = c;
@@ -1132,6 +1140,26 @@
     return `<div class="blk web"><div class="htag">📷 Photo reference</div>` + photoRow(hits) + `</div>`;
   }
 
+  // Honest coverage: salient symptom-ish words the person used that the engine does NOT
+  // have in its knowledge. Conservative — only fires when they're clearly describing a
+  // symptom (a cue word is present), and only flags a nearby unknown word or a word with a
+  // medical suffix. Never guesses what the word means; just names what it couldn't cover.
+  const UNC_TIMEFILL = new Set(("yesterday today tonight tomorrow morning evening night week weeks month months day days hour hours minute minutes year years since after before around about really very quite just only still also lately recently sometimes always sudden suddenly slowly quickly been have having with from that this these those when where what while here there then than more most some much many started start starting stopped began comes came going getting worse better same left right side sides area areas spot spots place places thing things something anything nothing everything little lots lot bit times time long short overall mostly kinda sorta maybe please thanks").split(/\s+/));
+  const UNC_CUE = /^(pain|painful|hurts?|hurting|aches?|aching|sore|soreness|feels?|feeling|burning|burn|numb|numbness|tingling|tingly|swollen|swelling|itch|itchy|itching|rash|rashes|bleeding|bleed|lump|lumps|bump|bumps|cramps?|cramping|stiff|stiffness|dizzy|dizziness|nausea|nauseous|throbbing|stabbing|spasm|spasms)$/;
+  function uncoveredTerms(raw) {
+    const toks = norm(raw).split(/\s+/).map(w => w.replace(/[^a-z]/g, "")).filter(Boolean);
+    const cueIdx = []; toks.forEach((w, i) => { if (UNC_CUE.test(w)) cueIdx.push(i); });
+    if (!cueIdx.length) return [];
+    const out = [];
+    toks.forEach((w, i) => {
+      if (w.length < 4 || UNC_TIMEFILL.has(w) || E.vocab.has(w) || UNC_CUE.test(w)) return;
+      const nearCue = cueIdx.some(ci => Math.abs(ci - i) <= 2);
+      const suffix = /(ache|itis|osis|oma|algia|pathy|plegia|paresis)$/.test(w);
+      if ((nearCue || suffix) && out.indexOf(w) < 0) out.push(w);
+    });
+    return out.slice(0, 2);
+  }
+
   function compose() {
     // Light coreference: a blood mention ("blood in it", "some blood") once a cough
     // is in play, with no other bleeding source named, reads as coughing blood.
@@ -1269,6 +1297,12 @@
         html += `</div>`;
       }
       html += `</div>`;
+    }
+
+    // Honest coverage note: name any symptom-ish word we couldn't map, so nothing is hidden.
+    const unc = uncoveredTerms(E.lastText);
+    if (unc.length) {
+      html += `<div class="blk"><div class="htag">Not in my knowledge</div><p class="muted">I don't have specific information on: <b>${unc.map(esc).join(", ")}</b>. I worked from the parts I recognised — if that's central to what's going on, describe it in plainer words or check with a clinician.</p></div>`;
     }
 
     html += carePlanBlock(rows);
