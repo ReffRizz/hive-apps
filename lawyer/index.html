@@ -1170,13 +1170,29 @@ async function rewordRemote(prompt){
     return (j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content||'').trim()||null;
   }catch(e){ return null; } finally{ clearTimeout(to); } }
 
+/* High-performance mode: cross-origin isolation (via sw.js) → multi-thread wllama + bigger
+   models. Off by default; opt-in through the engine panel. ?hp=0 is the escape hatch. */
+const HP_KEY='hl_hp';
+function hpOn(){ try{return localStorage.getItem(HP_KEY)==='1';}catch(e){return false;} }
+(function hpSync(){
+  const has1=/[?&]hp=1(?:&|$)/.test(location.search);
+  const strip=(s)=>{ s=s.replace(/[?&]hp=[01]/g,''); if(s==='?'||s==='&')s=''; return s.replace(/^&/,'?'); };
+  if(/[?&]hp=0(?:&|$)/.test(location.search)){ try{localStorage.removeItem(HP_KEY);}catch(e){} location.replace(location.pathname+strip(location.search)+location.hash); return; }
+  const want=hpOn();
+  if(want&&!has1){ location.replace(location.pathname+(location.search?location.search+'&':'?')+'hp=1'+location.hash); return; }
+  if(!want&&has1){ location.replace(location.pathname+strip(location.search)+location.hash); return; }
+  if(has1&&!self.crossOriginIsolated){ try{ if(navigator.serviceWorker&&navigator.serviceWorker.controller&&!sessionStorage.getItem('hpR')){ sessionStorage.setItem('hpR','1'); location.reload(); return; } }catch(e){} }
+  else if(self.crossOriginIsolated){ try{sessionStorage.removeItem('hpR');}catch(e){} }
+})();
+function webgpuAvailable(){ try{return !!navigator.gpu;}catch(e){return false;} }
 /* On-device engine (wllama, CPU WASM) — runs on THIS phone, no computer. Same in-browser
    approach HIVE Mind uses. Qwen only rewords; legalGuard() verifies before anything shows. */
 const WLLAMA_VER='2.3.1';
 const WLLAMA_MODELS=[
   {id:'qwen2.5-0.5b',label:'Qwen2.5 0.5B — recommended for iPhone (~0.4 GB)',mb:420,url:'https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf'},
   {id:'qwen2.5-1.5b',label:'Qwen2.5 1.5B — bigger phones / may be tight (~1.1 GB)',mb:1120,url:'https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf'},
-  {id:'qwen2.5-3b',label:'Qwen2.5 3B — desktop; will likely crash a phone (~2.0 GB)',mb:2020,url:'https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf'}
+  {id:'qwen2.5-3b',label:'Qwen2.5 3B — needs High-performance (~2.0 GB)',mb:2020,hp:true,url:'https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf'},
+  {id:'qwen2.5-7b-iq3',label:'Qwen2.5 7B IQ3 — experimental, High-performance (~3.3 GB)',mb:3300,hp:true,url:'https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF/resolve/main/Qwen2.5-7B-Instruct-IQ3_M.gguf'}
 ];
 const WLM_KEY='hl_wllama_model', WLM_INSTALLED='hl_wllama_installed';
 let wllamaEngineL=null, wllamaLoadingL=false, wllamaBusyL=false;
@@ -1191,7 +1207,10 @@ async function ensureWllamaL(onProg){
     const mod=await import(base+'index.js'); const Wllama=mod.Wllama||(mod.default&&mod.default.Wllama)||mod.default;
     const paths={'single-thread/wllama.wasm':base+'single-thread/wllama.wasm','multi-thread/wllama.wasm':base+'multi-thread/wllama.wasm'};
     const w=new Wllama(paths); const m=wllamaModelCfgL();
-    await w.loadModelFromUrl(m.url,{n_ctx:1024,n_batch:128,progressCallback:(p)=>{try{onProg&&onProg(p&&p.loaded,p&&p.total);}catch(e){}}});
+    const threads=self.crossOriginIsolated?Math.max(1,Math.min(4,(navigator.hardwareConcurrency||2)-1)):1;
+    const opt={n_ctx:1024,n_batch:128,n_threads:threads,progressCallback:(p)=>{try{onProg&&onProg(p&&p.loaded,p&&p.total);}catch(e){}}};
+    if(webgpuAvailable()) opt.n_gpu_layers=999;
+    await w.loadModelFromUrl(m.url,opt);
     wllamaEngineL=w; try{localStorage.setItem(WLM_INSTALLED,m.id);}catch(e){}
   }catch(e){ wllamaEngineL=null; if(onProg) onProg(-1,-1,String(e&&e.message||e)); }
   wllamaLoadingL=false; return wllamaEngineL;
@@ -1659,6 +1678,8 @@ function renderTools(){
        <b>On this phone — no computer needed</b>
        <div class="tdim" style="margin:4px 0 8px">Download a real Qwen once; it caches on your device and runs fully offline afterwards — no PC, no tunnel, no key. It only rewords the deterministic answer, checked first. <b>On iPhone, use 0.5B</b> — bigger models can run the Safari tab out of memory and crash.</div>
        <label class="tl">Model <select id="wlmodel"></select></label>
+       <label class="tl" style="display:flex;align-items:center;gap:8px;flex-direction:row"><input type="checkbox" id="hptoggle" style="width:auto"> High-performance mode <span class="tdim">— multi-thread; needed above 0.5B. Reloads.</span></label>
+       <div id="hpnote" class="tdim" style="margin:2px 0"></div>
        <div id="wlbar" class="wlbar" style="display:none;height:8px;border-radius:5px;background:var(--line);overflow:hidden;margin:8px 0"><div id="wlfill" style="height:100%;width:0;background:var(--amber);transition:width .2s"></div></div>
        <div id="wlstatus" class="tdim" style="margin:4px 0" aria-live="polite"></div>
        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pbtn" id="wldownload">Download &amp; install</button><button class="trackbtn" id="wlremove">Remove</button></div>
@@ -1775,9 +1796,16 @@ function renderTools(){
     u.value=g(QK); m.value=g(QKM); k.value=g(QKK);
     // on-device (wllama) controls
     const wsel=tbody.querySelector('#wlmodel'), wbar=tbody.querySelector('#wlbar'), wfill=tbody.querySelector('#wlfill'), wst=tbody.querySelector('#wlstatus'), wdl=tbody.querySelector('#wldownload'), wrm=tbody.querySelector('#wlremove');
+    const hpToggle=tbody.querySelector('#hptoggle'), hpNote=tbody.querySelector('#hpnote');
     if(wsel){
       if(!wsel.options.length) WLLAMA_MODELS.forEach(mm=>{const o=document.createElement('option');o.value=mm.id;o.textContent=mm.label;wsel.appendChild(o);});
+      const iso=!!self.crossOriginIsolated;
+      for(const o of wsel.options){ const mm=WLLAMA_MODELS.find(x=>x.id===o.value); o.disabled=!!(mm&&mm.hp&&!iso); }
       wsel.value=g(WLM_KEY)||'qwen2.5-0.5b';
+      if(wsel.selectedOptions[0]&&wsel.selectedOptions[0].disabled) wsel.value='qwen2.5-0.5b';
+      if(hpToggle) hpToggle.checked=hpOn();
+      if(hpNote) hpNote.textContent=(iso?'Multi-thread: on ✓':(hpOn()?'Multi-thread: starting…':'Multi-thread: off'))+'  ·  '+(webgpuAvailable()?'WebGPU: available ✓':'WebGPU: not on this device');
+      if(hpToggle) hpToggle.onchange=()=>{ try{hpToggle.checked?localStorage.setItem(HP_KEY,'1'):localStorage.removeItem(HP_KEY);}catch(e){} setTimeout(()=>location.reload(),300); };
       const wStat=(t,c)=>{wst.textContent=t||''; wst.style.color=c==='ok'?'var(--amber)':c==='bad'?'#e5484d':'';};
       wStat(wllamaReadyL()?'Installed ✓ — running on this phone, fully offline.':wllamaInstalledL()?'Installed — loads on first use (offline).':'Not installed. Tap Download to add a real engine to this phone.', wllamaInstalledL()?'ok':'');
       wsel.onchange=()=>{try{localStorage.setItem(WLM_KEY,wsel.value);}catch(e){} if(!wllamaReadyL()) wStat('Selected. Tap Download & install.','');};

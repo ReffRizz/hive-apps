@@ -221,6 +221,8 @@ a{color:var(--accent)}
       <label class="engfield">Model
         <select id="wlmodel"></select>
       </label>
+      <label class="engfield" style="display:flex;align-items:center;gap:8px;flex-direction:row"><input type="checkbox" id="hptoggle" style="width:auto"> High-performance mode <span class="muted">— multi-thread; needed for models above 0.5B. Reloads the app.</span></label>
+      <div id="hpnote" class="engstatus"></div>
       <div id="wlbar" class="wlbar hidden"><div id="wlfill"></div></div>
       <div id="wlstatus" class="engstatus" aria-live="polite"></div>
       <div class="sheetbtns">

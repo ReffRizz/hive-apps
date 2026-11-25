@@ -6,6 +6,22 @@
 "use strict";
 (function () {
   const $ = (id) => document.getElementById(id);
+
+  // High-performance mode: cross-origin isolation (via sw.js) → multi-thread wllama + bigger
+  // models. Off by default; opt-in through the engine panel. ?hp=0 is the escape hatch.
+  const HP_KEY = "hive.hp";
+  function hpOn() { try { return localStorage.getItem(HP_KEY) === "1"; } catch (e) { return false; } }
+  (function hpSync() {
+    const has1 = /[?&]hp=1(?:&|$)/.test(location.search);
+    const strip = (s) => { s = s.replace(/[?&]hp=[01]/g, ""); if (s === "?" || s === "&") s = ""; return s.replace(/^&/, "?"); };
+    if (/[?&]hp=0(?:&|$)/.test(location.search)) { try { localStorage.removeItem(HP_KEY); } catch (e) { } location.replace(location.pathname + strip(location.search) + location.hash); return; }
+    const want = hpOn();
+    if (want && !has1) { location.replace(location.pathname + (location.search ? location.search + "&" : "?") + "hp=1" + location.hash); return; }
+    if (!want && has1) { location.replace(location.pathname + strip(location.search) + location.hash); return; }
+    if (has1 && !self.crossOriginIsolated) {
+      try { if (navigator.serviceWorker && navigator.serviceWorker.controller && !sessionStorage.getItem("hpR")) { sessionStorage.setItem("hpR", "1"); location.reload(); return; } } catch (e) { }
+    } else if (self.crossOriginIsolated) { try { sessionStorage.removeItem("hpR"); } catch (e) { } }
+  })();
   const log = $("log"), form = $("form"), q = $("q"), status = $("status");
   const PK = "hive.profiles", AK = "hive.active", ACK = "hive.ai.ack", MK = "hive.mode";
   const VERSION = "v116";
@@ -149,8 +165,10 @@
   const WLLAMA_MODELS = [
     { id: "qwen2.5-0.5b", label: "Qwen2.5 0.5B — recommended for iPhone (~0.4 GB)", mb: 420, url: "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf" },
     { id: "qwen2.5-1.5b", label: "Qwen2.5 1.5B — bigger phones / may be tight (~1.1 GB)", mb: 1120, url: "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf" },
-    { id: "qwen2.5-3b", label: "Qwen2.5 3B — desktop; will likely crash a phone (~2.0 GB)", mb: 2020, url: "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf" }
+    { id: "qwen2.5-3b", label: "Qwen2.5 3B — needs High-performance (~2.0 GB)", mb: 2020, hp: true, url: "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf" },
+    { id: "qwen2.5-7b-iq3", label: "Qwen2.5 7B IQ3 — experimental, High-performance (~3.3 GB)", mb: 3300, hp: true, url: "https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF/resolve/main/Qwen2.5-7B-Instruct-IQ3_M.gguf" }
   ];
+  function webgpuAvailable() { try { return !!navigator.gpu; } catch (e) { return false; } }
   const WLM_KEY = "hive.wllama.model", WLM_INSTALLED = "hive.wllama.installed";
   let wllamaEngine = null, wllamaLoading = false, wllamaBusy = false;
   function wllamaModelCfg() { const id = lsGet(WLM_KEY, "") || "qwen2.5-0.5b"; return WLLAMA_MODELS.find(m => m.id === id) || WLLAMA_MODELS[0]; }
@@ -167,7 +185,11 @@
       const paths = { "single-thread/wllama.wasm": base + "single-thread/wllama.wasm", "multi-thread/wllama.wasm": base + "multi-thread/wllama.wasm" };
       const w = new Wllama(paths);
       const m = wllamaModelCfg();
-      await w.loadModelFromUrl(m.url, { n_ctx: 1024, n_batch: 128, progressCallback: (p) => { try { onProg && onProg(p && p.loaded, p && p.total); } catch (e) { } } });
+      // Multi-thread only when cross-origin isolated (SharedArrayBuffer available); else single-thread.
+      const threads = self.crossOriginIsolated ? Math.max(1, Math.min(4, (navigator.hardwareConcurrency || 2) - 1)) : 1;
+      const opt = { n_ctx: 1024, n_batch: 128, n_threads: threads, progressCallback: (p) => { try { onProg && onProg(p && p.loaded, p && p.total); } catch (e) { } } };
+      if (webgpuAvailable()) opt.n_gpu_layers = 999;   // offload to GPU memory where supported (iOS 26 / desktop)
+      await w.loadModelFromUrl(m.url, opt);
       wllamaEngine = w; lsSet(WLM_INSTALLED, m.id);
       try { setStatus(); } catch (e) { }
     } catch (e) { wllamaEngine = null; if (onProg) onProg(-1, -1, String(e && e.message || e)); }
@@ -717,13 +739,31 @@
     const wsel = $("wlmodel"), wbar = $("wlbar"), wfill = $("wlfill"), wstat = $("wlstatus"), wdl = $("wldownload"), wrm = $("wlremove");
     if (wsel && !wsel.options.length) { WLLAMA_MODELS.forEach(m => { const o = document.createElement("option"); o.value = m.id; o.textContent = m.label; wsel.appendChild(o); }); }
     function wStat(msg, cls) { if (wstat) { wstat.textContent = msg || ""; wstat.className = "engstatus" + (cls ? " " + cls : ""); } }
+    const hpToggle = $("hptoggle"), hpNote = $("hpnote");
     function paintWl() {
       if (!wsel) return;
+      const iso = !!self.crossOriginIsolated;
+      // gate models that need high-performance (isolation) mode
+      for (const o of wsel.options) { const m = WLLAMA_MODELS.find(x => x.id === o.value); o.disabled = !!(m && m.hp && !iso); }
       wsel.value = lsGet(WLM_KEY, "") || "qwen2.5-0.5b";
+      if (wsel.selectedOptions[0] && wsel.selectedOptions[0].disabled) wsel.value = "qwen2.5-0.5b";
+      if (hpToggle) hpToggle.checked = hpOn();
+      if (hpNote) {
+        const bits = [];
+        bits.push(iso ? "Multi-thread: on ✓" : (hpOn() ? "Multi-thread: starting…" : "Multi-thread: off"));
+        bits.push(webgpuAvailable() ? "WebGPU: available ✓" : "WebGPU: not on this device");
+        hpNote.textContent = bits.join("  ·  ") + (iso ? "" : "  — turn on High-performance for bigger models.");
+        hpNote.className = "engstatus" + (iso ? " ok" : "");
+      }
       if (wllamaReady()) wStat("Installed ✓ — running on this phone, fully offline.", "ok");
       else if (wllamaInstalled()) wStat("Installed — loading on first use (offline).", "ok");
       else wStat("Not installed. Tap Download to add a real engine to this phone.", "");
     }
+    if (hpToggle) hpToggle.addEventListener("change", () => {
+      if (hpToggle.checked) lsSet(HP_KEY, "1"); else lsDel(HP_KEY);
+      wStat("Reloading to apply high-performance mode…", "");
+      setTimeout(() => location.reload(), 300);   // hpSync redirects to/from ?hp=1 and isolates
+    });
     if (wsel) wsel.addEventListener("change", () => { lsSet(WLM_KEY, wsel.value); if (!wllamaReady()) wStat("Selected. Tap Download & install.", ""); });
     if (wdl) wdl.addEventListener("click", async () => {
       lsSet(WLM_KEY, wsel.value);
