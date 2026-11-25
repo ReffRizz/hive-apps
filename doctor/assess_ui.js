@@ -169,7 +169,7 @@
     { id: "qwen2.5-7b-iq3", label: "Qwen2.5 7B IQ3 — experimental, High-performance (~3.3 GB)", mb: 3300, hp: true, url: "https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF/resolve/main/Qwen2.5-7B-Instruct-IQ3_M.gguf" }
   ];
   function webgpuAvailable() { try { return !!navigator.gpu; } catch (e) { return false; } }
-  const WLM_KEY = "hive.wllama.model", WLM_INSTALLED = "hive.wllama.installed";
+  const WLM_KEY = "hive.wllama.model", WLM_INSTALLED = "hive.wllama.installed", WLM_LOADING = "hive.wllama.loading";
   let wllamaEngine = null, wllamaLoading = false, wllamaBusy = false;
   function wllamaModelCfg() { const id = lsGet(WLM_KEY, "") || "qwen2.5-0.5b"; return WLLAMA_MODELS.find(m => m.id === id) || WLLAMA_MODELS[0]; }
   function wllamaReady() { return !!wllamaEngine; }
@@ -178,6 +178,7 @@
     if (wllamaEngine) return wllamaEngine;
     if (wllamaLoading) return null;
     wllamaLoading = true;
+    lsSet(WLM_LOADING, wllamaModelCfg().id);   // sentinel: a hard crash during load leaves this set
     try {
       const base = "https://cdn.jsdelivr.net/npm/@wllama/wllama@" + WLLAMA_VER + "/esm/";
       const mod = await import(base + "index.js");
@@ -193,6 +194,7 @@
       wllamaEngine = w; lsSet(WLM_INSTALLED, m.id);
       try { setStatus(); } catch (e) { }
     } catch (e) { wllamaEngine = null; if (onProg) onProg(-1, -1, String(e && e.message || e)); }
+    lsDel(WLM_LOADING);   // reached only if the load finished (success or caught error), not on a crash
     wllamaLoading = false;
     return wllamaEngine;
   }
@@ -217,8 +219,19 @@
       return safe === base ? null : safe;
     } finally { wllamaBusy = false; }
   }
-  // Auto-load the installed model on startup (from the on-device cache; no network needed).
-  if (wllamaInstalled()) setTimeout(() => { ensureWllama((l, t, err) => { if (status && !err && t > 0) status.textContent = "On-device AI loading… " + Math.round(100 * l / t) + "%"; }).then(() => { try { setStatus(); } catch (e) { } }); }, 1500);
+  // Auto-load the installed model on startup — unless the last load didn't finish (a crash):
+  // then DON'T retry automatically, or the app spirals into Safari's "problem repeatedly
+  // occurred" crash loop. Drop auto-load and tell the person to pick a smaller model.
+  (function autoLoadGuarded() {
+    if (!wllamaInstalled()) return;
+    if (lsGet(WLM_LOADING, "")) {
+      lsDel(WLM_LOADING); lsDel(WLM_INSTALLED);
+      try { setStatus(); } catch (e) { }
+      setTimeout(() => { try { toast("On-device AI didn't finish loading last time — likely low memory. Open ⋯ → AI engine and choose the 0.5B model."); } catch (e) { } }, 1200);
+      return;
+    }
+    setTimeout(() => { ensureWllama((l, t, err) => { if (status && !err && t > 0) status.textContent = "On-device AI loading… " + Math.round(100 * l / t) + "%"; }).then(() => { try { setStatus(); } catch (e) { } }); }, 1500);
+  })();
   const INTRO_SYS = "You are the calm, plain-language voice of a medical TRIAGE tool speaking to a worried person. " +
     "Rephrase the STATUS sentence so it sounds warm, clear and human. STRICT RULES: keep the same meaning and the " +
     "same triage grade number; do NOT add any medical advice, instructions, actions, diagnoses, symptoms, urgency " +
