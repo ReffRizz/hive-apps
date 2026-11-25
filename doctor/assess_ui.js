@@ -217,21 +217,42 @@
     "upset stomach and nausea since last night",
     "a small itchy rash on my arm"
   ];
+  // EXPERIMENTAL, BENCHMARK-ONLY: retrieval-grounded reasoning. The model reasons over the
+  // deterministic engine's OWN rendered answer (the retrieved cards = the FACTS corpus) and
+  // is fact-verified against that exact corpus. This never touches a live answer — it runs
+  // only inside the benchmark, so we can measure it safely before deciding to ship it.
+  async function retrievalGrounded(question, html) {
+    if (!wllamaEngine || wllamaBusy) return null;
+    const corpus = (html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if (corpus.length < 20) return null;
+    const sys = "You are a careful medical triage helper. Using ONLY the FACTS provided, answer the person's question in 1-3 short, plain sentences. Do NOT add any fact, number, symptom, condition, or instruction that is not in the FACTS. If the FACTS don't answer it, say so plainly.";
+    const usr = "FACTS:\n" + corpus.slice(0, 1800) + "\n\nQUESTION: " + question;
+    wllamaBusy = true;
+    try {
+      let out = await wllamaGen([{ role: "system", content: sys }, { role: "user", content: usr }]);
+      out = (out || "").replace(/<\|im_end\|>[\s\S]*$/, "").trim();
+      if (!out) return null;
+      const safe = applyGuards(corpus, out);      // content must come from the FACTS corpus
+      return safe === corpus ? null : safe;
+    } finally { wllamaBusy = false; }
+  }
   async function benchEngine(onLine) {
     if (!wllamaReady()) return null;
-    let n = 0, kept = 0, totMs = 0;
+    const R = { reword: { kept: 0, ms: 0 }, grounded: { kept: 0, ms: 0 } };
+    let n = 0;
     const m0 = (window.performance && performance.memory && performance.memory.usedJSHeapSize) || 0;
     for (const p of BENCH_PROMPTS) {
       const html = HIVETriage.assess(p);
-      const t0 = performance.now();
-      let out = null; try { out = await wllamaIntro(p, html); } catch (e) { }
-      const ms = performance.now() - t0;
-      n++; totMs += ms; if (out) kept++;
-      try { onLine && onLine(n, BENCH_PROMPTS.length, Math.round(ms), !!out); } catch (e) { }
+      let t0 = performance.now(); let a = null; try { a = await wllamaIntro(p, html); } catch (e) { } R.reword.ms += performance.now() - t0; if (a) R.reword.kept++;
+      t0 = performance.now(); let b = null; try { b = await retrievalGrounded(p, html); } catch (e) { } R.grounded.ms += performance.now() - t0; if (b) R.grounded.kept++;
+      n++;
+      try { onLine && onLine(n, BENCH_PROMPTS.length); } catch (e) { }
       try { HIVETriage.reset(); } catch (e) { }
     }
     const m1 = (window.performance && performance.memory && performance.memory.usedJSHeapSize) || 0;
-    return { n, kept, avgMs: Math.round(totMs / n), memMB: (m1 && m0) ? Math.round((m1 - m0) / 1e6) : null };
+    return { n, memMB: (m1 && m0) ? Math.round((m1 - m0) / 1e6) : null,
+      reword: { kept: R.reword.kept, avgMs: Math.round(R.reword.ms / n) },
+      grounded: { kept: R.grounded.kept, avgMs: Math.round(R.grounded.ms / n) } };
   }
 
   async function wllamaIntro(question, html) {
@@ -813,11 +834,15 @@
       if (!wllamaReady()) { if (benchOut) benchOut.textContent = "Install a model first."; return; }
       benchBtn.disabled = true;
       const t = (msg) => { if (benchOut) benchOut.textContent = msg; };
-      t("Benchmarking… running 5 prompts on this phone.");
-      const r = await benchEngine((i, tot, ms, kept) => t("Prompt " + i + "/" + tot + " — " + (ms / 1000).toFixed(1) + "s" + (kept ? " ✓" : " (fell back)")));
+      t("Benchmarking… 5 prompts × 2 modes on this phone. This takes a bit.");
+      const r = await benchEngine((i, tot) => t("Prompt " + i + "/" + tot + "…"));
       benchBtn.disabled = false;
-      if (r) { benchOut.className = "engstatus ok"; benchOut.textContent = "Avg " + (r.avgMs / 1000).toFixed(1) + "s/reply · " + r.kept + "/" + r.n + " kept the model's wording" + (r.memMB != null ? " · ~" + r.memMB + " MB used" : "") + ". Use this to judge if a bigger engine is worth it."; }
-      else { benchOut.textContent = "Couldn't run — is a model loaded?"; }
+      if (r) {
+        benchOut.className = "engstatus ok";
+        benchOut.innerHTML = "<b>Reword:</b> " + (r.reword.avgMs / 1000).toFixed(1) + "s · " + r.reword.kept + "/" + r.n + " faithful<br>" +
+          "<b>Retrieval-grounded (experimental):</b> " + (r.grounded.avgMs / 1000).toFixed(1) + "s · " + r.grounded.kept + "/" + r.n + " faithful" +
+          (r.memMB != null ? "<br>~" + r.memMB + " MB used" : "") + "<br><span class='muted'>Grounded = model reasons over the engine's own facts. Measure before shipping it live.</span>";
+      } else { benchOut.textContent = "Couldn't run — is a model loaded?"; }
     });
     if (wdl) wdl.addEventListener("click", async () => {
       lsSet(WLM_KEY, wsel.value);

@@ -1226,19 +1226,30 @@ async function wllamaGenTextL(prompt){
     return (o||'').replace(/<\|im_end\|>[\s\S]*$/,'').trim()||null;
   }catch(e){ return null; } finally{ wllamaBusyL=false; }
 }
-// Measure-first engine benchmark: latency + guard-fidelity on this device.
+// EXPERIMENTAL, BENCHMARK-ONLY: retrieval-grounded reasoning over the engine's own rendered
+// facts, verified by legalGuard. Never touches a live answer — runs only inside the benchmark.
+async function retrievalGroundedL(q, facts, corpus){
+  if(!corpus||corpus.length<20) return null;
+  const prompt="You are a careful legal-information helper. Using ONLY the FACTS below, answer in 1-3 short plain sentences. Do NOT add any statute, deadline, number, or claim not in the FACTS. If they don't answer it, say so.\n\nFACTS:\n"+corpus.slice(0,1800)+"\n\nQUESTION: "+q;
+  const out=await wllamaGenTextL(prompt);
+  if(!out) return null;
+  return legalGuard(out, facts) ? out : null;
+}
+// Measure-first engine benchmark: reword vs retrieval-grounded — latency + guard-fidelity on this device.
 const BENCH_PROMPTS_L=["my landlord is evicting me without notice","i was fired without cause","i got a speeding ticket","someone owes me money and won't pay","my neighbour's tree fell on my fence"];
 async function benchEngineL(onLine){
   if(!wllamaReadyL()) return null;
-  let n=0,kept=0,tot=0; const m0=(window.performance&&performance.memory&&performance.memory.usedJSHeapSize)||0;
+  const R={reword:{kept:0,ms:0},grounded:{kept:0,ms:0}}; let n=0;
+  const m0=(window.performance&&performance.memory&&performance.memory.usedJSHeapSize)||0;
   for(const q of BENCH_PROMPTS_L){
-    const r=spot(q, (typeof jurSel!=='undefined'&&jurSel?jurSel.value:'CA-ON')); const facts=factSheet(r); const prompt=aiPrompt(q,facts);
-    const t0=performance.now(); let out=null; try{ out=await wllamaGenTextL(prompt); }catch(e){}
-    const ms=performance.now()-t0; const ok=!!(out&&legalGuard(out,facts)); n++; tot+=ms; if(ok) kept++;
-    try{onLine&&onLine(n,BENCH_PROMPTS_L.length,Math.round(ms),ok);}catch(e){}
+    const jur=(typeof jurSel!=='undefined'&&jurSel?jurSel.value:'CA-ON');
+    const r=spot(q,jur); const facts=factSheet(r); const prompt=aiPrompt(q,facts); let corpus=''; try{corpus=render(r);}catch(e){}
+    let t0=performance.now(); let a=null; try{a=await wllamaGenTextL(prompt);}catch(e){} R.reword.ms+=performance.now()-t0; if(a&&legalGuard(a,facts)) R.reword.kept++;
+    t0=performance.now(); let b=null; try{b=await retrievalGroundedL(q,facts,corpus);}catch(e){} R.grounded.ms+=performance.now()-t0; if(b) R.grounded.kept++;
+    n++; try{onLine&&onLine(n,BENCH_PROMPTS_L.length);}catch(e){}
   }
   const m1=(window.performance&&performance.memory&&performance.memory.usedJSHeapSize)||0;
-  return {n,kept,avgMs:Math.round(tot/n),memMB:(m1&&m0)?Math.round((m1-m0)/1e6):null};
+  return {n,memMB:(m1&&m0)?Math.round((m1-m0)/1e6):null,reword:{kept:R.reword.kept,avgMs:Math.round(R.reword.ms/n)},grounded:{kept:R.grounded.kept,avgMs:Math.round(R.grounded.ms/n)}};
 }
 // Crash-loop guard: if the last load didn't finish (tab crashed), don't auto-retry.
 (function(){
@@ -1846,10 +1857,10 @@ function renderTools(){
       if(bwrap) bwrap.style.display=wllamaReadyL()?'block':'none';
       if(bbtn) bbtn.onclick=async()=>{
         if(!wllamaReadyL()){ bout.textContent='Install a model first.'; return; }
-        bbtn.disabled=true; bout.textContent='Benchmarking… 5 prompts on this phone.';
-        const res=await benchEngineL((i,t,ms,ok)=>{ bout.textContent='Prompt '+i+'/'+t+' — '+(ms/1000).toFixed(1)+'s'+(ok?' ✓':' (fell back)'); });
+        bbtn.disabled=true; bout.textContent='Benchmarking… 5 prompts × 2 modes on this phone.';
+        const res=await benchEngineL((i,t)=>{ bout.textContent='Prompt '+i+'/'+t+'…'; });
         bbtn.disabled=false;
-        if(res){ bout.style.color='var(--amber)'; bout.textContent='Avg '+(res.avgMs/1000).toFixed(1)+'s/reply · '+res.kept+'/'+res.n+' kept the model’s wording'+(res.memMB!=null?' · ~'+res.memMB+' MB':'')+'. Judge if a bigger engine is worth it.'; }
+        if(res){ bout.style.color='var(--amber)'; bout.innerHTML='<b>Reword:</b> '+(res.reword.avgMs/1000).toFixed(1)+'s · '+res.reword.kept+'/'+res.n+' faithful<br><b>Retrieval-grounded (experimental):</b> '+(res.grounded.avgMs/1000).toFixed(1)+'s · '+res.grounded.kept+'/'+res.n+' faithful'+(res.memMB!=null?'<br>~'+res.memMB+' MB':'')+'<br>Grounded = model reasons over the engine’s own facts. Measure before shipping live.'; }
         else bout.textContent='Couldn’t run — is a model loaded?';
       };
     }
